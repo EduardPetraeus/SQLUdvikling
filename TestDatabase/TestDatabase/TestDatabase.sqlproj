@@ -65,4 +65,7 @@
     <Build Include="Security\Extract.sql" />
     <Build Include="Extract\Vaegt.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Test.dev.publish.xml" />
+  </ItemGroup>
 </Project>
