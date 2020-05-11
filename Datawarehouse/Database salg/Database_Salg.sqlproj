@@ -12,8 +12,8 @@
     <OutputType>Database</OutputType>
     <RootPath>
     </RootPath>
-    <RootNamespace>TestDatabase</RootNamespace>
-    <AssemblyName>TestDatabase</AssemblyName>
+    <RootNamespace>Salg</RootNamespace>
+    <AssemblyName>Salg</AssemblyName>
     <ModelCollation>1033, CI</ModelCollation>
     <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
     <DeployToDatabase>True</DeployToDatabase>
