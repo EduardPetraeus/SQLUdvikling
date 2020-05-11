@@ -1,0 +1,4 @@
+﻿CREATE TABLE [dbo].[Vaegt]
+(
+	[Id] INT NOT NULL PRIMARY KEY
+)
