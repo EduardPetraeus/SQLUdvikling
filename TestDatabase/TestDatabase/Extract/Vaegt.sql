@@ -1,4 +1,4 @@
-﻿CREATE TABLE [dbo].[Vaegt]
+﻿CREATE TABLE [Extract].[Vaegt]
 (
 	[Id] INT NOT NULL PRIMARY KEY
 )
