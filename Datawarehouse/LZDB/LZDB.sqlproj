@@ -1,19 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <Name>Database_Salg</Name>
+    <Name>LZDB</Name>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
-    <ProjectGuid>{fe8b664f-937d-49f0-aa66-8dcf20fc96ae}</ProjectGuid>
+    <ProjectGuid>{ea7d88b0-0350-48ca-b674-62c8f5400ae2}</ProjectGuid>
     <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
     </RootPath>
-    <RootNamespace>TestDatabase</RootNamespace>
-    <AssemblyName>TestDatabase</AssemblyName>
+    <RootNamespace>DWDB</RootNamespace>
+    <AssemblyName>DWDB</AssemblyName>
     <ModelCollation>1033, CI</ModelCollation>
     <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
     <DeployToDatabase>True</DeployToDatabase>
@@ -23,7 +22,6 @@
     <SqlServerVerification>False</SqlServerVerification>
     <IncludeCompositeObjects>True</IncludeCompositeObjects>
     <TargetDatabaseSet>True</TargetDatabaseSet>
-    <Recovery>SIMPLE</Recovery>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\Release\</OutputPath>
@@ -59,13 +57,22 @@
   <ItemGroup>
     <Folder Include="Properties" />
     <Folder Include="Security" />
-    <Folder Include="Extract" />
+    <Folder Include="Audit" />
+    <Folder Include="Audit\Tables" />
+    <Folder Include="Audit\Stored Procedures" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="Security\Extract.sql" />
-    <Build Include="Extract\Aisles.sql" />
+    <Build Include="Security\Audit.sql" />
+    <Build Include="Audit\Tables\ExecutionErrorLog.sql" />
+    <Build Include="Audit\Tables\ExecutionLog.sql" />
+    <Build Include="Audit\Tables\ExtractLog.sql" />
+    <Build Include="Audit\Stored Procedures\ExecutionEnd.sql" />
+    <Build Include="Audit\Stored Procedures\ExecutionError.sql" />
+    <Build Include="Audit\Stored Procedures\ExecutionStart.sql" />
+    <Build Include="Audit\Stored Procedures\ExtractEnd.sql" />
+    <Build Include="Audit\Stored Procedures\ExtractStart.sql" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Salg.dev.publish.xml" />
+    <None Include="LZDB.dev.publish.xml" />
   </ItemGroup>
 </Project>
