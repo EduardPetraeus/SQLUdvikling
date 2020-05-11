@@ -1,0 +1,6 @@
+﻿CREATE TABLE [Extract].[Aisles]
+(
+	[Id] INT NOT NULL IDENTITY (1,1)
+
+	CONSTRAINT PK_Aisles_Id PRIMARY KEY CLUSTERED ([Id])
+)

@@ -63,7 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Build Include="Security\Extract.sql" />
-    <Build Include="Extract\Vaegt.sql" />
+    <Build Include="Extract\Aisles.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Test.dev.publish.xml" />

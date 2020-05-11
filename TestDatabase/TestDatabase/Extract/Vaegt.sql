@@ -1,6 +1,0 @@
-﻿CREATE TABLE [Extract].[Vaegt]
-(
-	[Id] INT NOT NULL IDENTITY (1,1)
-
-	CONSTRAINT PK_Vaegt_Id PRIMARY KEY CLUSTERED ([Id])
-)
