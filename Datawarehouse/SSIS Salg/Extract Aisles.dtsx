@@ -11,8 +11,8 @@
   DTS:LocaleID="1030"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="14"
-  DTS:VersionGUID="{CE6070D2-4131-4A95-9250-BF2340DE9F79}">
+  DTS:VersionBuild="19"
+  DTS:VersionGUID="{AD93B1EF-F88C-4ED4-988C-EAA9FF692154}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -83,6 +83,15 @@
       DTS:ObjectName="ExtractId">
       <DTS:VariableValue
         DTS:DataType="20">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{E8A0FE47-028D-45F3-86F5-71763AAF122B}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="PackageName">
+      <DTS:VariableValue
+        DTS:DataType="8">Extract Aisles</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -219,6 +228,28 @@
                               description="Derived Column Friendly Expression"
                               expressionType="Notify"
                               name="FriendlyExpression">(DT_WSTR,100)aisle</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Extract Aisles\Extract Aisles\Derived Column.Outputs[Derived Column Output].Columns[Meta_CreateJob]"
+                          dataType="i8"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Extract Aisles\Extract Aisles\Derived Column.Outputs[Derived Column Output].Columns[Meta_CreateJob]"
+                          name="Meta_CreateJob"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">@[User::ExtractId]</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">@[User::ExtractId]</property>
                           </properties>
                         </outputColumn>
                       </outputColumns>
@@ -455,6 +486,12 @@
                           cachedName="Derived Column Aisle"
                           externalMetadataColumnId="Package\Extract Aisles\Extract Aisles\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Aisle]"
                           lineageId="Package\Extract Aisles\Extract Aisles\Derived Column.Outputs[Derived Column Output].Columns[Derived Column Aisle]" />
+                        <inputColumn
+                          refId="Package\Extract Aisles\Extract Aisles\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Meta_CreateJob]"
+                          cachedDataType="i8"
+                          cachedName="Meta_CreateJob"
+                          externalMetadataColumnId="Package\Extract Aisles\Extract Aisles\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Meta_CreateJob]"
+                          lineageId="Package\Extract Aisles\Extract Aisles\Derived Column.Outputs[Derived Column Output].Columns[Meta_CreateJob]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -476,6 +513,10 @@
                           dataType="dbTimeStamp2"
                           name="Meta_CreateTime"
                           scale="7" />
+                        <externalMetadataColumn
+                          refId="Package\Extract Aisles\Extract Aisles\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Meta_CreateJob]"
+                          dataType="i8"
+                          name="Meta_CreateJob" />
                       </externalMetadataColumns>
                     </input>
                   </inputs>
@@ -505,40 +546,11 @@
                   </outputs>
                 </component>
                 <component
-                  refId="Package\Extract Aisles\Extract Aisles\Row Count"
+                  refId="Package\Extract Aisles\Extract Aisles\RC inserted"
                   componentClassID="Microsoft.RowCount"
                   contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
                   description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
-                  name="Row Count">
-                  <properties>
-                    <property
-                      dataType="System.String"
-                      description="Specifies the variable to hold the row count."
-                      name="VariableName">User::RecordsSelected</property>
-                  </properties>
-                  <inputs>
-                    <input
-                      refId="Package\Extract Aisles\Extract Aisles\Row Count.Inputs[Row Count Input 1]"
-                      hasSideEffects="true"
-                      name="Row Count Input 1">
-                      <externalMetadataColumns />
-                    </input>
-                  </inputs>
-                  <outputs>
-                    <output
-                      refId="Package\Extract Aisles\Extract Aisles\Row Count.Outputs[Row Count Output 1]"
-                      name="Row Count Output 1"
-                      synchronousInputId="Package\Extract Aisles\Extract Aisles\Row Count.Inputs[Row Count Input 1]">
-                      <externalMetadataColumns />
-                    </output>
-                  </outputs>
-                </component>
-                <component
-                  refId="Package\Extract Aisles\Extract Aisles\Row Count 1"
-                  componentClassID="Microsoft.RowCount"
-                  contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-                  description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
-                  name="Row Count 1">
+                  name="RC inserted">
                   <properties>
                     <property
                       dataType="System.String"
@@ -547,7 +559,7 @@
                   </properties>
                   <inputs>
                     <input
-                      refId="Package\Extract Aisles\Extract Aisles\Row Count 1.Inputs[Row Count Input 1]"
+                      refId="Package\Extract Aisles\Extract Aisles\RC inserted.Inputs[Row Count Input 1]"
                       hasSideEffects="true"
                       name="Row Count Input 1">
                       <externalMetadataColumns />
@@ -555,9 +567,38 @@
                   </inputs>
                   <outputs>
                     <output
-                      refId="Package\Extract Aisles\Extract Aisles\Row Count 1.Outputs[Row Count Output 1]"
+                      refId="Package\Extract Aisles\Extract Aisles\RC inserted.Outputs[Row Count Output 1]"
                       name="Row Count Output 1"
-                      synchronousInputId="Package\Extract Aisles\Extract Aisles\Row Count 1.Inputs[Row Count Input 1]">
+                      synchronousInputId="Package\Extract Aisles\Extract Aisles\RC inserted.Inputs[Row Count Input 1]">
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Extract Aisles\Extract Aisles\RC selected"
+                  componentClassID="Microsoft.RowCount"
+                  contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+                  name="RC selected">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable to hold the row count."
+                      name="VariableName">User::RecordsSelected</property>
+                  </properties>
+                  <inputs>
+                    <input
+                      refId="Package\Extract Aisles\Extract Aisles\RC selected.Inputs[Row Count Input 1]"
+                      hasSideEffects="true"
+                      name="Row Count Input 1">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Extract Aisles\Extract Aisles\RC selected.Outputs[Row Count Output 1]"
+                      name="Row Count Output 1"
+                      synchronousInputId="Package\Extract Aisles\Extract Aisles\RC selected.Inputs[Row Count Input 1]">
                       <externalMetadataColumns />
                     </output>
                   </outputs>
@@ -566,24 +607,24 @@
               <paths>
                 <path
                   refId="Package\Extract Aisles\Extract Aisles.Paths[Derived Column Output]"
-                  endId="Package\Extract Aisles\Extract Aisles\Row Count 1.Inputs[Row Count Input 1]"
+                  endId="Package\Extract Aisles\Extract Aisles\RC inserted.Inputs[Row Count Input 1]"
                   name="Derived Column Output"
                   startId="Package\Extract Aisles\Extract Aisles\Derived Column.Outputs[Derived Column Output]" />
                 <path
                   refId="Package\Extract Aisles\Extract Aisles.Paths[Flat File Source Output]"
-                  endId="Package\Extract Aisles\Extract Aisles\Row Count.Inputs[Row Count Input 1]"
+                  endId="Package\Extract Aisles\Extract Aisles\RC selected.Inputs[Row Count Input 1]"
                   name="Flat File Source Output"
                   startId="Package\Extract Aisles\Extract Aisles\Flat File Source.Outputs[Flat File Source Output]" />
                 <path
                   refId="Package\Extract Aisles\Extract Aisles.Paths[Row Count Output 1]"
                   endId="Package\Extract Aisles\Extract Aisles\Derived Column.Inputs[Derived Column Input]"
                   name="Row Count Output 1"
-                  startId="Package\Extract Aisles\Extract Aisles\Row Count.Outputs[Row Count Output 1]" />
+                  startId="Package\Extract Aisles\Extract Aisles\RC selected.Outputs[Row Count Output 1]" />
                 <path
                   refId="Package\Extract Aisles\Extract Aisles.Paths[Row Count Output 11]"
                   endId="Package\Extract Aisles\Extract Aisles\OLE DB Destination.Inputs[OLE DB Destination Input]"
                   name="Row Count Output 1"
-                  startId="Package\Extract Aisles\Extract Aisles\Row Count 1.Outputs[Row Count Output 1]" />
+                  startId="Package\Extract Aisles\Extract Aisles\RC inserted.Outputs[Row Count Output 1]" />
               </paths>
             </pipeline>
           </DTS:ObjectData>
@@ -838,7 +879,7 @@
             SQLTask:ParameterSize="-1" />
           <SQLTask:ParameterBinding
             SQLTask:ParameterName="PackageName"
-            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:DtsVariableName="User::PackageName"
             SQLTask:ParameterDirection="Input"
             SQLTask:DataType="16"
             SQLTask:ParameterSize="-1" />
@@ -973,6 +1014,22 @@
           Size="146,42"
           Id="Package\Extract Aisles\Extract Aisles"
           TopLeft="170.5,209.5" />
+        <NodeLayout
+          Size="191,42"
+          Id="Package\Extract Aisles\SQL ExtractEnd Failed"
+          TopLeft="282,311.5" />
+        <NodeLayout
+          Size="216,42"
+          Id="Package\Extract Aisles\SQL ExtractEnd Succeeded"
+          TopLeft="5.50000000000006,311.5" />
+        <NodeLayout
+          Size="161,42"
+          Id="Package\Extract Aisles\SQL ExtractStart"
+          TopLeft="297,5.5" />
+        <NodeLayout
+          Size="149,42"
+          Id="Package\Extract Aisles\Truncate table"
+          TopLeft="303,107.5" />
         <EdgeLayout
           Id="Package\Extract Aisles.PrecedenceConstraints[Constraint]"
           TopLeft="354,149.5">
@@ -999,6 +1056,28 @@
                     Point3="-110.5,28.3824701195219" />
                   <mssgle:LineSegment
                     End="-110.5,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Extract Aisles.PrecedenceConstraints[Constraint 1]"
+          TopLeft="377.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1041,44 +1120,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="149,42"
-          Id="Package\Extract Aisles\Truncate table"
-          TopLeft="303,107.5" />
-        <EdgeLayout
-          Id="Package\Extract Aisles.PrecedenceConstraints[Constraint 1]"
-          TopLeft="377.5,47.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="161,42"
-          Id="Package\Extract Aisles\SQL ExtractStart"
-          TopLeft="297,5.5" />
-        <NodeLayout
-          Size="216,42"
-          Id="Package\Extract Aisles\SQL ExtractEnd Succeeded"
-          TopLeft="5.50000000000006,311.5" />
-        <NodeLayout
-          Size="191,42"
-          Id="Package\Extract Aisles\SQL ExtractEnd Failed"
-          TopLeft="282,311.5" />
         <EdgeLayout
           Id="Package\Extract Aisles.PrecedenceConstraints[Constraint 3]"
           TopLeft="266.5,251.5">
@@ -1147,6 +1188,14 @@
           Id="Package\Extract Aisles"
           TopLeft="144.5,165.5" />
         <NodeLayout
+          Size="205,42"
+          Id="Package\SQL ExecutionEnd Failed"
+          TopLeft="489,673" />
+        <NodeLayout
+          Size="230,42"
+          Id="Package\SQL ExecutionEnd Succeeded"
+          TopLeft="152,680" />
+        <NodeLayout
           Size="176,42"
           Id="Package\SQL ExecutionStart"
           TopLeft="333,35" />
@@ -1184,10 +1233,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="230,42"
-          Id="Package\SQL ExecutionEnd Succeeded"
-          TopLeft="152,680" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
           TopLeft="383.5,616.5">
@@ -1222,10 +1267,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="205,42"
-          Id="Package\SQL ExecutionEnd Failed"
-          TopLeft="489,673" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
           TopLeft="461.833333333333,616.5">
@@ -1265,11 +1306,35 @@
       </GraphLayout>
     </LayoutInfo>
   </Package>
+  <DtsEventHandler
+    design-time-name="Package.EventHandlers[OnError]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="177,42"
+          Id="Package.EventHandlers[OnError]\SQL ExecutionError"
+          TopLeft="450,168" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
   <TaskHost
     design-time-name="Package\Extract Aisles\Extract Aisles">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="139,42"
+          Id="Package\Extract Aisles\Extract Aisles\RC selected"
+          TopLeft="27.5,107.5" />
+        <NodeLayout
+          Size="158,42"
+          Id="Package\Extract Aisles\Extract Aisles\Derived Column"
+          TopLeft="15,209.5" />
+        <NodeLayout
+          Size="137,42"
+          Id="Package\Extract Aisles\Extract Aisles\RC inserted"
+          TopLeft="23,311.5" />
         <NodeLayout
           Size="177,42"
           Id="Package\Extract Aisles\Extract Aisles\OLE DB Destination"
@@ -1278,65 +1343,9 @@
           Size="156,42"
           Id="Package\Extract Aisles\Extract Aisles\Flat File Source"
           TopLeft="16,5.5" />
-        <NodeLayout
-          Size="158,42"
-          Id="Package\Extract Aisles\Extract Aisles\Derived Column"
-          TopLeft="15,209.5" />
-        <NodeLayout
-          Size="133,42"
-          Id="Package\Extract Aisles\Extract Aisles\Row Count"
-          TopLeft="27.5,107.5" />
-        <NodeLayout
-          Size="142,42"
-          Id="Package\Extract Aisles\Extract Aisles\Row Count 1"
-          TopLeft="23,311.5" />
-        <EdgeLayout
-          Id="Package\Extract Aisles\Extract Aisles.Paths[Flat File Source Output]"
-          TopLeft="94,47.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Extract Aisles\Extract Aisles.Paths[Row Count Output 1]"
-          TopLeft="94,149.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package\Extract Aisles\Extract Aisles.Paths[Derived Column Output]"
-          TopLeft="94,251.5">
+          TopLeft="92.75,251.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1353,12 +1362,14 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Extract Aisles\Extract Aisles.Paths[Row Count Output 11]"
-          TopLeft="94,353.5">
+          TopLeft="92.75,353.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1375,7 +1386,57 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Extract Aisles\Extract Aisles.Paths[Row Count Output 1]"
+          TopLeft="95.5,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Extract Aisles\Extract Aisles.Paths[Flat File Source Output]"
+          TopLeft="95.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -1394,17 +1455,5 @@
       </Property>
     </Properties>
   </PipelineComponentMetadata>
-  <DtsEventHandler
-    design-time-name="Package.EventHandlers[OnError]">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
-        <NodeLayout
-          Size="177,42"
-          Id="Package.EventHandlers[OnError]\SQL ExecutionError"
-          TopLeft="450,168" />
-      </GraphLayout>
-    </LayoutInfo>
-  </DtsEventHandler>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>

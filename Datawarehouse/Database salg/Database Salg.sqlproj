@@ -60,10 +60,16 @@
     <Folder Include="Properties" />
     <Folder Include="Security" />
     <Folder Include="Extract" />
+    <Folder Include="System" />
+    <Folder Include="Archive" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Security\Extract.sql" />
     <Build Include="Extract\Aisles.sql" />
+    <Build Include="Security\System.sql" />
+    <Build Include="System\ArchiveQueue.sql" />
+    <Build Include="Security\Archive.sql" />
+    <Build Include="Archive\Aisles.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Salg.dev.publish.xml" />

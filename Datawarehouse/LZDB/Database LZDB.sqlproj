@@ -61,6 +61,11 @@
     <Folder Include="Audit" />
     <Folder Include="Audit\Tables" />
     <Folder Include="Audit\Stored Procedures" />
+    <Folder Include="Archive" />
+    <Folder Include="Archive\Stored Procedures" />
+    <Folder Include="Utility" />
+    <Folder Include="Utility\Functions" />
+    <Folder Include="Utility\Stored Procedures" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Security\Audit.sql" />
@@ -72,6 +77,18 @@
     <Build Include="Audit\Stored Procedures\ExecutionStart.sql" />
     <Build Include="Audit\Stored Procedures\ExtractEnd.sql" />
     <Build Include="Audit\Stored Procedures\ExtractStart.sql" />
+    <Build Include="Security\Archive.sql" />
+    <Build Include="Archive\Stored Procedures\UpdateArchive.sql" />
+    <Build Include="Audit\Tables\ArchiveLog.sql" />
+    <Build Include="Audit\Stored Procedures\ArchiveEnd.sql" />
+    <Build Include="Audit\Stored Procedures\ArchiveStart.sql" />
+    <Build Include="Security\Utility.sql" />
+    <Build Include="Utility\Functions\BeginningOfUniverse.sql" />
+    <Build Include="Utility\Functions\EndOfUniverse.sql" />
+    <Build Include="Utility\Functions\GetObjectId.sql" />
+    <Build Include="Utility\Stored Procedures\GetKeyColumns.sql" />
+    <Build Include="Utility\Stored Procedures\GetNonKeyColumns.sql" />
+    <Build Include="Utility\Stored Procedures\PrintLargeString.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="LZDB.dev.publish.xml" />

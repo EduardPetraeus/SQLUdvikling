@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "SSIS Salg", "SSIS TestDatabase\SSIS Salg.dtproj", "{4E64C1AD-F7AC-49E8-ACC6-B0A1DAB11E5A}"
-EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Database Salg", "Database salg\Database Salg.sqlproj", "{FE8B664F-937D-49F0-AA66-8DCF20FC96AE}"
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Database LZDB", "LZDB\Database LZDB.sqlproj", "{EA7D88B0-0350-48CA-B674-62C8F5400AE2}"
+EndProject
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "SSIS Salg", "SSIS Salg\SSIS Salg.dtproj", "{BB166723-F068-4777-A7CC-B007FD266221}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -16,12 +16,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4E64C1AD-F7AC-49E8-ACC6-B0A1DAB11E5A}.Debug|Any CPU.ActiveCfg = Development
-		{4E64C1AD-F7AC-49E8-ACC6-B0A1DAB11E5A}.Debug|Any CPU.Build.0 = Development
-		{4E64C1AD-F7AC-49E8-ACC6-B0A1DAB11E5A}.Development|Any CPU.ActiveCfg = Development
-		{4E64C1AD-F7AC-49E8-ACC6-B0A1DAB11E5A}.Development|Any CPU.Build.0 = Development
-		{4E64C1AD-F7AC-49E8-ACC6-B0A1DAB11E5A}.Release|Any CPU.ActiveCfg = Development
-		{4E64C1AD-F7AC-49E8-ACC6-B0A1DAB11E5A}.Release|Any CPU.Build.0 = Development
 		{FE8B664F-937D-49F0-AA66-8DCF20FC96AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FE8B664F-937D-49F0-AA66-8DCF20FC96AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE8B664F-937D-49F0-AA66-8DCF20FC96AE}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
@@ -40,6 +34,12 @@ Global
 		{EA7D88B0-0350-48CA-B674-62C8F5400AE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EA7D88B0-0350-48CA-B674-62C8F5400AE2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EA7D88B0-0350-48CA-B674-62C8F5400AE2}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{BB166723-F068-4777-A7CC-B007FD266221}.Debug|Any CPU.ActiveCfg = Development
+		{BB166723-F068-4777-A7CC-B007FD266221}.Debug|Any CPU.Build.0 = Development
+		{BB166723-F068-4777-A7CC-B007FD266221}.Development|Any CPU.ActiveCfg = Development
+		{BB166723-F068-4777-A7CC-B007FD266221}.Development|Any CPU.Build.0 = Development
+		{BB166723-F068-4777-A7CC-B007FD266221}.Release|Any CPU.ActiveCfg = Development
+		{BB166723-F068-4777-A7CC-B007FD266221}.Release|Any CPU.Build.0 = Development
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,9 +1,14 @@
 ﻿CREATE TABLE [Extract].[Aisles]
 (
-	[Aisle_Id] INT NOT NULL,
-	[Aisle] NVARCHAR(100) NULL,
-	[Meta_Id] BIGINT IDENTITY (1,1) NOT NULL,
-	[Meta_CreateTime] DATETIME2 DEFAULT GETDATE() NOT NULL,
+	[Aisle_Id]          INT                          NOT NULL,
+	[Aisle]             NVARCHAR(100)                NULL,
+	[Meta_Id]           BIGINT IDENTITY (1,1)        NOT NULL,
+	[Meta_CreateTime]   DATETIME2 DEFAULT GETDATE()  NOT NULL,
+	[Meta_CreateJob]	BIGINT		                 NOT NULL
 
-	CONSTRAINT PK_Aisles_Id PRIMARY KEY CLUSTERED ([Aisle_Id])
+	CONSTRAINT PK_Aisles_Id PRIMARY KEY CLUSTERED ([Meta_Id])
 )
+GO
+
+CREATE UNIQUE INDEX IDX_Aisles
+ON [Extract].[Aisles] ([Aisle_Id], [Meta_CreateTime])
