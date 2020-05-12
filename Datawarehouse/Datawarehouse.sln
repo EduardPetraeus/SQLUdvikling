@@ -5,9 +5,9 @@ VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "SSIS Salg", "SSIS TestDatabase\SSIS Salg.dtproj", "{4E64C1AD-F7AC-49E8-ACC6-B0A1DAB11E5A}"
 EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Database_Salg", "Database salg\Database_Salg.sqlproj", "{FE8B664F-937D-49F0-AA66-8DCF20FC96AE}"
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Database Salg", "Database salg\Database Salg.sqlproj", "{FE8B664F-937D-49F0-AA66-8DCF20FC96AE}"
 EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "LZDB", "LZDB\LZDB.sqlproj", "{EA7D88B0-0350-48CA-B674-62C8F5400AE2}"
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Database LZDB", "LZDB\Database LZDB.sqlproj", "{EA7D88B0-0350-48CA-B674-62C8F5400AE2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
