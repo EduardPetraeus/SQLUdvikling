@@ -11,8 +11,8 @@
   DTS:LocaleID="1030"
   DTS:ObjectName="Extract Departments"
   DTS:PackageType="5"
-  DTS:VersionBuild="22"
-  DTS:VersionGUID="{A4E3CB56-7510-4FA5-B1F4-6C70CA2C0EC6}">
+  DTS:VersionBuild="23"
+  DTS:VersionGUID="{62A2A3E1-11C4-45D2-9DA4-00DF7AD7171A}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -790,7 +790,7 @@
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{4C698B0F-6DC2-4EF8-8560-DB4005626B48}"
+              SQLTask:Connection="{2DCEA24E-59E6-4852-B49E-196FAD5AB954}"
               SQLTask:SqlStatementSource="truncate table Extract.Departments" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>

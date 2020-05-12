@@ -89,6 +89,7 @@
     <Build Include="Utility\Stored Procedures\GetKeyColumns.sql" />
     <Build Include="Utility\Stored Procedures\GetNonKeyColumns.sql" />
     <Build Include="Utility\Stored Procedures\PrintLargeString.sql" />
+    <Build Include="Archive\Stored Procedures\MultipleUpdateArchive.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="LZDB.dev.publish.xml" />
