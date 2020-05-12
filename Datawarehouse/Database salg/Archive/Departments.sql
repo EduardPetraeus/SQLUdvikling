@@ -1,7 +1,7 @@
-﻿CREATE TABLE [Archive].[Aisles]
+﻿CREATE TABLE [Archive].[Departments]
 (
-	[Aisle_Id]          INT            NOT NULL,
-	[Aisle]             NVARCHAR(100)  NULL,
+	[Department_Id]     INT            NOT NULL,
+	[Department]        NVARCHAR(100)  NULL,
 
 	/* Metadata */
     [Meta_Id]           BIGINT         NOT NULL IDENTITY (1, 1),
@@ -18,8 +18,8 @@
     [Meta_DeleteTime]   DATETIME       NULL,
     [Meta_DeleteJob]    BIGINT         NULL, -- Reference to the audit framework
           /* Constraints */
-	CONSTRAINT PK_Archive_Aisles PRIMARY KEY CLUSTERED ([Aisle_Id], Meta_ValidFrom)
+	CONSTRAINT PK_Archive_Department PRIMARY KEY CLUSTERED ([Department_Id], Meta_ValidFrom)
 );
 GO
 	
-CREATE UNIQUE INDEX IDX_Archive_Aisles ON [Archive].[Aisles] (Meta_Id)
+CREATE UNIQUE INDEX IDX_Archive_Department ON [Archive].[Departments] (Meta_Id)

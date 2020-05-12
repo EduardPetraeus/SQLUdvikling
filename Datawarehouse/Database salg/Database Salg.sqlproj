@@ -70,6 +70,8 @@
     <Build Include="System\ArchiveQueue.sql" />
     <Build Include="Security\Archive.sql" />
     <Build Include="Archive\Aisles.sql" />
+    <Build Include="Extract\Departments.sql" />
+    <Build Include="Archive\Departments.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Salg.dev.publish.xml" />

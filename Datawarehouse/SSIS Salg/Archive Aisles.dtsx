@@ -11,8 +11,8 @@
   DTS:LocaleID="1030"
   DTS:ObjectName="Archive Aisles"
   DTS:PackageType="5"
-  DTS:VersionBuild="34"
-  DTS:VersionGUID="{43FA7DD8-58FC-4A66-9FC4-A9546C090B33}">
+  DTS:VersionBuild="35"
+  DTS:VersionGUID="{2D49C3C0-5312-4B41-A596-831EB244E214}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:PackageParameters>
@@ -103,30 +103,6 @@ WHERE 1=1
       <DTS:Variables />
       <DTS:Executables>
         <DTS:Executable
-          DTS:refId="Package\Archive\SQL CleanUp ArchiveQueue 1"
-          DTS:CreationName="Microsoft.ExecuteSQLTask"
-          DTS:Description="Execute SQL Task"
-          DTS:DTSID="{0a134e3f-0e37-4e9f-9da8-d0a871371285}"
-          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-          DTS:LocaleID="-1"
-          DTS:ObjectName="SQL CleanUp ArchiveQueue 1"
-          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
-          <DTS:Variables />
-          <DTS:ObjectData>
-            <SQLTask:SqlTaskData
-              SQLTask:Connection="{451A5FA4-85FC-408B-8604-3DF653A42D2B}"
-              SQLTask:SqlStatementSource="DELETE FROM System.ArchiveQueue WITH (ROWLOCK)&#xA;WHERE ExecutionId = @ExecutionId" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
-              <SQLTask:ParameterBinding
-                SQLTask:ParameterName="ExecutionId"
-                SQLTask:DtsVariableName="User::ExecutionId"
-                SQLTask:ParameterDirection="Input"
-                SQLTask:DataType="12"
-                SQLTask:ParameterSize="-1" />
-            </SQLTask:SqlTaskData>
-          </DTS:ObjectData>
-        </DTS:Executable>
-        <DTS:Executable
           DTS:refId="Package\Archive\SQL UpdateArchive1"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
@@ -135,7 +111,7 @@ WHERE 1=1
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL UpdateArchive1"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -170,16 +146,6 @@ WHERE 1=1
           </DTS:ObjectData>
         </DTS:Executable>
       </DTS:Executables>
-      <DTS:PrecedenceConstraints>
-        <DTS:PrecedenceConstraint
-          DTS:refId="Package\Archive.PrecedenceConstraints[Constraint]"
-          DTS:CreationName=""
-          DTS:DTSID="{72B326F8-2FAB-4265-A76F-4E4C726D50B7}"
-          DTS:From="Package\Archive\SQL UpdateArchive1"
-          DTS:LogicalAnd="True"
-          DTS:ObjectName="Constraint"
-          DTS:To="Package\Archive\SQL CleanUp ArchiveQueue 1" />
-      </DTS:PrecedenceConstraints>
     </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\Sequence Container"
@@ -215,7 +181,7 @@ WHERE 1=1
               DTS:LocaleID="-1"
               DTS:ObjectName="Fetch next Archive table"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="0">
+              DTS:ThreadHint="1">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
@@ -245,7 +211,7 @@ WHERE 1=1
               DTS:LocaleID="-1"
               DTS:ObjectName="SQL UpdateArchive"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="0">
+              DTS:ThreadHint="1">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
@@ -303,7 +269,7 @@ WHERE 1=1
           DTS:LocaleID="-1"
           DTS:ObjectName="Insert into Archive Queue"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -330,7 +296,7 @@ WHERE 1=1
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL CleanUp ArchiveQueue"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -374,7 +340,7 @@ WHERE 1=1
       DTS:LocaleID="-1"
       DTS:ObjectName="SQL ExecutionEnd Failed"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="2">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -423,7 +389,7 @@ WHERE 1=1
       DTS:LocaleID="-1"
       DTS:ObjectName="SQL ExecutionEnd Succeeded"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="2">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -449,7 +415,7 @@ WHERE 1=1
       DTS:LocaleID="-1"
       DTS:ObjectName="SQL ExecutionEnd Succeeded 1"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -474,7 +440,7 @@ WHERE 1=1
       DTS:LocaleID="-1"
       DTS:ObjectName="SQL ExecutionStart"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -524,7 +490,7 @@ WHERE 1=1
       DTS:LocaleID="-1"
       DTS:ObjectName="SQL ExecutionStart 1"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -702,158 +668,16 @@ WHERE 1=1
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="229,42"
-          Id="Package\Archive\SQL CleanUp ArchiveQueue 1"
-          TopLeft="5.50000000000001,107.5" />
-        <NodeLayout
           Size="182,42"
           Id="Package\Archive\SQL UpdateArchive1"
           TopLeft="29,5.5" />
-        <EdgeLayout
-          Id="Package\Archive.PrecedenceConstraints[Constraint]"
-          TopLeft="120,47.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="240,204"
-          Size="240,248"
+          PanelSize="240,104"
+          Size="240,147"
           Id="Package\Archive"
           TopLeft="278.5,261.5" />
-        <NodeLayout
-          Size="205,42"
-          Id="Package\SQL ExecutionEnd Failed"
-          TopLeft="343,576.5" />
-        <NodeLayout
-          Size="230,42"
-          Id="Package\SQL ExecutionEnd Succeeded"
-          TopLeft="67.5,578.5" />
-        <NodeLayout
-          Size="176,42"
-          Id="Package\SQL ExecutionStart"
-          TopLeft="326.5,178.5" />
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="414.5,220.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-16,41.0000000000001"
-              Start="0,0"
-              End="-16,33.5000000000001">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,16.5000000000001" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,16.5000000000001"
-                    Point2="0,20.5000000000001"
-                    Point3="-4,20.5000000000001" />
-                  <mssgle:LineSegment
-                    End="-12,20.5000000000001" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-12,20.5000000000001"
-                    Point2="-16,20.5000000000001"
-                    Point3="-16,24.5000000000001" />
-                  <mssgle:LineSegment
-                    End="-16,33.5000000000001" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="359.833333333333,509.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-177.333333333333,69"
-              Start="0,0"
-              End="-177.333333333333,61.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,23.8741721854305" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,23.8741721854305"
-                    Point2="0,27.8741721854305"
-                    Point3="-4,27.8741721854305" />
-                  <mssgle:LineSegment
-                    End="-173.333333333333,27.8741721854305" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-173.333333333333,27.8741721854305"
-                    Point2="-177.333333333333,27.8741721854305"
-                    Point3="-177.333333333333,31.8741721854305" />
-                  <mssgle:LineSegment
-                    End="-177.333333333333,61.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="437.166666666667,509.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="8.33333333333337,67"
-              Start="0,0"
-              End="8.33333333333337,59.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,23.0662251655629" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,23.0662251655629"
-                    Point2="0,27.0662251655629"
-                    Point3="4,27.0662251655629" />
-                  <mssgle:LineSegment
-                    End="4.33333333333337,27.0662251655629" />
-                  <mssgle:CubicBezierSegment
-                    Point1="4.33333333333337,27.0662251655629"
-                    Point2="8.33333333333337,27.0662251655629"
-                    Point3="8.33333333333337,31.0662251655629" />
-                  <mssgle:LineSegment
-                    End="8.33333333333337,59.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-11.0746809895833,32.0662251655629,30.4826953125,9.7490234375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <NodeLayout
           Size="197,42"
           Id="Package\Sequence Container\For Loop Container\Fetch next Archive table"
@@ -889,10 +713,18 @@ WHERE 1=1
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="208,204"
+          PanelSize="208,205"
           Size="208,248"
           Id="Package\Sequence Container\For Loop Container"
           TopLeft="11,107.5" />
+        <NodeLayout
+          Size="203,42"
+          Id="Package\Sequence Container\Insert into Archive Queue"
+          TopLeft="13.5,5.5" />
+        <NodeLayout
+          Size="219,42"
+          Id="Package\Sequence Container\SQL CleanUp ArchiveQueue"
+          TopLeft="5.50000000000004,415.5" />
         <EdgeLayout
           Id="Package\Sequence Container.PrecedenceConstraints[Constraint 3]"
           TopLeft="115,47.5">
@@ -937,33 +769,141 @@ WHERE 1=1
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="203,42"
-          Id="Package\Sequence Container\Insert into Archive Queue"
-          TopLeft="13.5,5.5" />
-        <NodeLayout
-          Size="219,42"
-          Id="Package\Sequence Container\SQL CleanUp ArchiveQueue"
-          TopLeft="5.50000000000004,415.5" />
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="230,512"
+          PanelSize="230,513"
           Size="230,556"
           Id="Package\Sequence Container"
           TopLeft="579.5,107.5" />
         <NodeLayout
-          Size="176,42"
-          Id="Package\SQL ExecutionStart 1"
-          TopLeft="606.5,5.49999999999977" />
+          Size="205,42"
+          Id="Package\SQL ExecutionEnd Failed"
+          TopLeft="349,466.5" />
+        <NodeLayout
+          Size="205,42"
+          Id="Package\SQL ExecutionEnd Failed 1"
+          TopLeft="852,723.5" />
+        <NodeLayout
+          Size="230,42"
+          Id="Package\SQL ExecutionEnd Succeeded"
+          TopLeft="73.5,468.5" />
         <NodeLayout
           Size="230,42"
           Id="Package\SQL ExecutionEnd Succeeded 1"
           TopLeft="561.5,723.5" />
         <NodeLayout
-          Size="205,42"
-          Id="Package\SQL ExecutionEnd Failed 1"
-          TopLeft="852,723.5" />
+          Size="176,42"
+          Id="Package\SQL ExecutionStart"
+          TopLeft="326.5,178.5" />
+        <NodeLayout
+          Size="176,42"
+          Id="Package\SQL ExecutionStart 1"
+          TopLeft="606.5,5.49999999999977" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="414.5,220.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-16,41"
+              Start="0,0"
+              End="-16,33.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.5"
+                    Point2="0,20.5"
+                    Point3="-4,20.5" />
+                  <mssgle:LineSegment
+                    End="-12,20.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-12,20.5"
+                    Point2="-16,20.5"
+                    Point3="-16,24.5" />
+                  <mssgle:LineSegment
+                    End="-16,33.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="359.833333333333,408.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-171.333333333333,60"
+              Start="0,0"
+              End="-171.333333333333,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.2384105960265" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.2384105960265"
+                    Point2="0,24.2384105960265"
+                    Point3="-4,24.2384105960265" />
+                  <mssgle:LineSegment
+                    End="-167.333333333333,24.2384105960265" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-167.333333333333,24.2384105960265"
+                    Point2="-171.333333333333,24.2384105960265"
+                    Point3="-171.333333333333,28.2384105960265" />
+                  <mssgle:LineSegment
+                    End="-171.333333333333,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="437.166666666667,408.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="14.3333333333334,58"
+              Start="0,0"
+              End="14.3333333333334,50.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.4304635761589" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19.4304635761589"
+                    Point2="0,23.4304635761589"
+                    Point3="4,23.4304635761589" />
+                  <mssgle:LineSegment
+                    End="10.3333333333334,23.4304635761589" />
+                  <mssgle:CubicBezierSegment
+                    Point1="10.3333333333334,23.4304635761589"
+                    Point2="14.3333333333334,23.4304635761589"
+                    Point3="14.3333333333334,27.4304635761589" />
+                  <mssgle:LineSegment
+                    End="14.3333333333334,50.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8.07468098958331,28.4304635761589,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
           TopLeft="694.5,47.4999999999998">

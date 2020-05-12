@@ -5,21 +5,21 @@
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="PC0QGDKR"
   DTS:CreatorName="NCLAN\cep"
-  DTS:DTSID="{E429C664-4BC2-46D1-A7FE-7AAF115DA0F7}"
+  DTS:DTSID="{D02AFF13-E44B-4A92-A230-FF528DB6F206}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="15.0.2000.94"
   DTS:LocaleID="1030"
-  DTS:ObjectName="Package"
+  DTS:ObjectName="Extract Departments"
   DTS:PackageType="5"
   DTS:VersionBuild="22"
-  DTS:VersionGUID="{2CE095BA-6481-46A3-8F7C-A718CF3A8040}">
+  DTS:VersionGUID="{A4E3CB56-7510-4FA5-B1F4-6C70CA2C0EC6}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[Ailes data]"
       DTS:CreationName="FLATFILE"
-      DTS:DTSID="{C40B7309-A9A8-414B-8A7D-BDADC114CB9E}"
+      DTS:DTSID="{24A998EB-2E62-4171-A04F-14D9EB101FBC}"
       DTS:ObjectName="Ailes data">
       <DTS:ObjectData>
         <DTS:ConnectionManager
@@ -39,7 +39,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="aisle_id"
-              DTS:DTSID="{CC161892-7723-46AF-A429-456DCB050B2A}"
+              DTS:DTSID="{44392666-3925-4557-B062-E7202631679E}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -48,7 +48,45 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="aisle"
-              DTS:DTSID="{86A3DFB1-0146-4A58-B815-9E1B1710B2D2}"
+              DTS:DTSID="{5B2B1647-69FA-4C74-B8D0-666FB4715626}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Departments]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{51483F74-F9CA-452C-A9CC-32285EE0A376}"
+      DTS:ObjectName="Departments">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1030"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\Users\cep\Documents\Data til Datavarehus\Departments.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="department_id"
+              DTS:DTSID="{5B738D8A-D3D5-442F-9948-A5D220F055E4}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Department"
+              DTS:DTSID="{CA403301-9648-469C-AAA7-F9912062733E}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -59,7 +97,7 @@
     <DTS:PackageParameter
       DTS:CreationName=""
       DTS:DataType="11"
-      DTS:DTSID="{3DCA0CF0-3E6E-4E61-AAF6-030E5A278825}"
+      DTS:DTSID="{3D110E18-966D-4729-BA4A-F93C3E958762}"
       DTS:ObjectName="IsFullLoad">
       <DTS:Property
         DTS:DataType="11"
@@ -69,7 +107,7 @@
   <DTS:Variables>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{8C17B357-2CB8-4B4A-AD2A-65141DE95C57}"
+      DTS:DTSID="{544CA4CE-F053-46C3-83C6-0A98F95E9491}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="ExecutionId">
@@ -78,7 +116,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{A33F3D0B-8A14-4233-A564-27F8E2961FC2}"
+      DTS:DTSID="{90EB39FC-E14E-4B09-BE51-935F1D0AD21D}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="ExtractId">
@@ -87,16 +125,16 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{E8A0FE47-028D-45F3-86F5-71763AAF122B}"
+      DTS:DTSID="{423E804E-1180-403B-946C-ADA9845CB0BC}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="PackageName">
       <DTS:VariableValue
-        DTS:DataType="8">Extract Aisles</DTS:VariableValue>
+        DTS:DataType="8">Extract Departments</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{CFEB270A-9268-4409-A017-13733F272A71}"
+      DTS:DTSID="{CC3430F3-4472-440F-B674-AB322AF5E08C}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="RecordsInserted">
@@ -105,7 +143,7 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{4A4399B6-54CB-4FCA-A3DA-DF5E2FB13E60}"
+      DTS:DTSID="{A7DEB67A-91DC-4C67-BBA7-9C8415C9ABC3}"
       DTS:IncludeInDebugDump="6789"
       DTS:Namespace="User"
       DTS:ObjectName="RecordsSelected">
@@ -114,33 +152,33 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
-      DTS:DTSID="{D3C97803-5228-4B45-B04D-F0212EBADC09}"
+      DTS:DTSID="{862A0146-A6F2-49BE-A884-793BDB85ED8C}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="TableName">
       <DTS:VariableValue
-        DTS:DataType="8">Aisles</DTS:VariableValue>
+        DTS:DataType="8">Departments</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
     <DTS:Executable
-      DTS:refId="Package\Extract Aisles"
+      DTS:refId="Package\Extract Departments"
       DTS:CreationName="STOCK:SEQUENCE"
       DTS:Description="Sequence Container"
-      DTS:DTSID="{84902D53-796C-447E-BEA5-15D6C2D52326}"
+      DTS:DTSID="{6F85543B-C431-4891-9773-63306C08D8C3}"
       DTS:ExecutableType="STOCK:SEQUENCE"
       DTS:LocaleID="-1"
-      DTS:ObjectName="Extract Aisles">
+      DTS:ObjectName="Extract Departments">
       <DTS:Variables />
       <DTS:Executables>
         <DTS:Executable
-          DTS:refId="Package\Extract Aisles\Extract Aisles"
+          DTS:refId="Package\Extract Departments\Extract Departments"
           DTS:CreationName="Microsoft.Pipeline"
           DTS:Description="Data Flow Task"
-          DTS:DTSID="{F905D7BB-BBEE-4F21-88D9-7DE712735C43}"
+          DTS:DTSID="{B8B62908-AE9A-41C8-B63D-0C4371B8683F}"
           DTS:ExecutableType="Microsoft.Pipeline"
           DTS:LocaleID="-1"
-          DTS:ObjectName="Extract Aisles"
+          DTS:ObjectName="Extract Departments"
           DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
           <DTS:Variables />
           <DTS:ObjectData>
@@ -148,7 +186,7 @@
               version="1">
               <components>
                 <component
-                  refId="Package\Extract Aisles\Extract Aisles\Derived Column"
+                  refId="Package\Extract Departments\Extract Departments\Derived Column"
                   componentClassID="Microsoft.DerivedColumn"
                   contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
                   description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
@@ -156,87 +194,87 @@
                   usesDispositions="true">
                   <inputs>
                     <input
-                      refId="Package\Extract Aisles\Extract Aisles\Derived Column.Inputs[Derived Column Input]"
+                      refId="Package\Extract Departments\Extract Departments\Derived Column.Inputs[Derived Column Input]"
                       description="Input to the Derived Column Transformation"
                       name="Derived Column Input">
                       <inputColumns>
                         <inputColumn
-                          refId="Package\Extract Aisles\Extract Aisles\Derived Column.Inputs[Derived Column Input].Columns[aisle_id]"
+                          refId="Package\Extract Departments\Extract Departments\Derived Column.Inputs[Derived Column Input].Columns[department_id]"
                           cachedCodepage="1252"
                           cachedDataType="str"
                           cachedLength="50"
-                          cachedName="aisle_id"
-                          lineageId="Package\Extract Aisles\Extract Aisles\Flat File Source.Outputs[Flat File Source Output].Columns[aisle_id]" />
+                          cachedName="department_id"
+                          lineageId="Package\Extract Departments\Extract Departments\Flat File Source.Outputs[Flat File Source Output].Columns[department_id]" />
                         <inputColumn
-                          refId="Package\Extract Aisles\Extract Aisles\Derived Column.Inputs[Derived Column Input].Columns[aisle]"
+                          refId="Package\Extract Departments\Extract Departments\Derived Column.Inputs[Derived Column Input].Columns[Department]"
                           cachedCodepage="1252"
                           cachedDataType="str"
                           cachedLength="50"
-                          cachedName="aisle"
-                          lineageId="Package\Extract Aisles\Extract Aisles\Flat File Source.Outputs[Flat File Source Output].Columns[aisle]" />
+                          cachedName="Department"
+                          lineageId="Package\Extract Departments\Extract Departments\Flat File Source.Outputs[Flat File Source Output].Columns[Department]" />
                       </inputColumns>
                       <externalMetadataColumns />
                     </input>
                   </inputs>
                   <outputs>
                     <output
-                      refId="Package\Extract Aisles\Extract Aisles\Derived Column.Outputs[Derived Column Output]"
+                      refId="Package\Extract Departments\Extract Departments\Derived Column.Outputs[Derived Column Output]"
                       description="Default Output of the Derived Column Transformation"
                       exclusionGroup="1"
                       name="Derived Column Output"
-                      synchronousInputId="Package\Extract Aisles\Extract Aisles\Derived Column.Inputs[Derived Column Input]">
+                      synchronousInputId="Package\Extract Departments\Extract Departments\Derived Column.Inputs[Derived Column Input]">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\Extract Aisles\Extract Aisles\Derived Column.Outputs[Derived Column Output].Columns[Derived Column Aisle ID]"
+                          refId="Package\Extract Departments\Extract Departments\Derived Column.Outputs[Derived Column Output].Columns[Derived Column department_id]"
                           dataType="i4"
                           errorOrTruncationOperation="Computation"
                           errorRowDisposition="FailComponent"
-                          lineageId="Package\Extract Aisles\Extract Aisles\Derived Column.Outputs[Derived Column Output].Columns[Derived Column Aisle ID]"
-                          name="Derived Column Aisle ID"
+                          lineageId="Package\Extract Departments\Extract Departments\Derived Column.Outputs[Derived Column Output].Columns[Derived Column department_id]"
+                          name="Derived Column department_id"
                           truncationRowDisposition="FailComponent">
                           <properties>
                             <property
                               containsID="true"
                               dataType="System.String"
                               description="Derived Column Expression"
-                              name="Expression">(DT_I4)#{Package\Extract Aisles\Extract Aisles\Flat File Source.Outputs[Flat File Source Output].Columns[aisle_id]}</property>
+                              name="Expression">(DT_I4)#{Package\Extract Departments\Extract Departments\Flat File Source.Outputs[Flat File Source Output].Columns[department_id]}</property>
                             <property
                               containsID="true"
                               dataType="System.String"
                               description="Derived Column Friendly Expression"
                               expressionType="Notify"
-                              name="FriendlyExpression">(DT_I4)aisle_id</property>
+                              name="FriendlyExpression">(DT_I4)department_id</property>
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\Extract Aisles\Extract Aisles\Derived Column.Outputs[Derived Column Output].Columns[Derived Column Aisle]"
+                          refId="Package\Extract Departments\Extract Departments\Derived Column.Outputs[Derived Column Output].Columns[Derived Column Department]"
                           dataType="wstr"
                           errorOrTruncationOperation="Computation"
                           errorRowDisposition="FailComponent"
                           length="100"
-                          lineageId="Package\Extract Aisles\Extract Aisles\Derived Column.Outputs[Derived Column Output].Columns[Derived Column Aisle]"
-                          name="Derived Column Aisle"
+                          lineageId="Package\Extract Departments\Extract Departments\Derived Column.Outputs[Derived Column Output].Columns[Derived Column Department]"
+                          name="Derived Column Department"
                           truncationRowDisposition="FailComponent">
                           <properties>
                             <property
                               containsID="true"
                               dataType="System.String"
                               description="Derived Column Expression"
-                              name="Expression">(DT_WSTR,100)#{Package\Extract Aisles\Extract Aisles\Flat File Source.Outputs[Flat File Source Output].Columns[aisle]}</property>
+                              name="Expression">(DT_WSTR,100)#{Package\Extract Departments\Extract Departments\Flat File Source.Outputs[Flat File Source Output].Columns[Department]}</property>
                             <property
                               containsID="true"
                               dataType="System.String"
                               description="Derived Column Friendly Expression"
                               expressionType="Notify"
-                              name="FriendlyExpression">(DT_WSTR,100)aisle</property>
+                              name="FriendlyExpression">(DT_WSTR,100)Department</property>
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\Extract Aisles\Extract Aisles\Derived Column.Outputs[Derived Column Output].Columns[Meta_CreateJob]"
+                          refId="Package\Extract Departments\Extract Departments\Derived Column.Outputs[Derived Column Output].Columns[Meta_CreateJob]"
                           dataType="i8"
                           errorOrTruncationOperation="Computation"
                           errorRowDisposition="FailComponent"
-                          lineageId="Package\Extract Aisles\Extract Aisles\Derived Column.Outputs[Derived Column Output].Columns[Meta_CreateJob]"
+                          lineageId="Package\Extract Departments\Extract Departments\Derived Column.Outputs[Derived Column Output].Columns[Meta_CreateJob]"
                           name="Meta_CreateJob"
                           truncationRowDisposition="FailComponent">
                           <properties>
@@ -257,23 +295,23 @@
                       <externalMetadataColumns />
                     </output>
                     <output
-                      refId="Package\Extract Aisles\Extract Aisles\Derived Column.Outputs[Derived Column Error Output]"
+                      refId="Package\Extract Departments\Extract Departments\Derived Column.Outputs[Derived Column Error Output]"
                       description="Error Output of the Derived Column Transformation"
                       exclusionGroup="1"
                       isErrorOut="true"
                       name="Derived Column Error Output"
-                      synchronousInputId="Package\Extract Aisles\Extract Aisles\Derived Column.Inputs[Derived Column Input]">
+                      synchronousInputId="Package\Extract Departments\Extract Departments\Derived Column.Inputs[Derived Column Input]">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\Extract Aisles\Extract Aisles\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          refId="Package\Extract Departments\Extract Departments\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
                           dataType="i4"
-                          lineageId="Package\Extract Aisles\Extract Aisles\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          lineageId="Package\Extract Departments\Extract Departments\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
                           name="ErrorCode"
                           specialFlags="1" />
                         <outputColumn
-                          refId="Package\Extract Aisles\Extract Aisles\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          refId="Package\Extract Departments\Extract Departments\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                           dataType="i4"
-                          lineageId="Package\Extract Aisles\Extract Aisles\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          lineageId="Package\Extract Departments\Extract Departments\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                           name="ErrorColumn"
                           specialFlags="2" />
                       </outputColumns>
@@ -282,7 +320,7 @@
                   </outputs>
                 </component>
                 <component
-                  refId="Package\Extract Aisles\Extract Aisles\Flat File Source"
+                  refId="Package\Extract Departments\Extract Departments\Flat File Source"
                   componentClassID="Microsoft.FlatFileSource"
                   contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
                   description="Flat File Source"
@@ -302,26 +340,26 @@
                   </properties>
                   <connections>
                     <connection
-                      refId="Package\Extract Aisles\Extract Aisles\Flat File Source.Connections[FlatFileConnection]"
-                      connectionManagerID="Package.ConnectionManagers[Ailes data]"
-                      connectionManagerRefId="Package.ConnectionManagers[Ailes data]"
+                      refId="Package\Extract Departments\Extract Departments\Flat File Source.Connections[FlatFileConnection]"
+                      connectionManagerID="Package.ConnectionManagers[Departments]"
+                      connectionManagerRefId="Package.ConnectionManagers[Departments]"
                       name="FlatFileConnection" />
                   </connections>
                   <outputs>
                     <output
-                      refId="Package\Extract Aisles\Extract Aisles\Flat File Source.Outputs[Flat File Source Output]"
+                      refId="Package\Extract Departments\Extract Departments\Flat File Source.Outputs[Flat File Source Output]"
                       name="Flat File Source Output">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\Extract Aisles\Extract Aisles\Flat File Source.Outputs[Flat File Source Output].Columns[aisle_id]"
+                          refId="Package\Extract Departments\Extract Departments\Flat File Source.Outputs[Flat File Source Output].Columns[department_id]"
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\Extract Aisles\Extract Aisles\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[aisle_id]"
+                          externalMetadataColumnId="Package\Extract Departments\Extract Departments\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[department_id]"
                           length="50"
-                          lineageId="Package\Extract Aisles\Extract Aisles\Flat File Source.Outputs[Flat File Source Output].Columns[aisle_id]"
-                          name="aisle_id"
+                          lineageId="Package\Extract Departments\Extract Departments\Flat File Source.Outputs[Flat File Source Output].Columns[department_id]"
+                          name="department_id"
                           truncationRowDisposition="FailComponent">
                           <properties>
                             <property
@@ -335,15 +373,15 @@
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\Extract Aisles\Extract Aisles\Flat File Source.Outputs[Flat File Source Output].Columns[aisle]"
+                          refId="Package\Extract Departments\Extract Departments\Flat File Source.Outputs[Flat File Source Output].Columns[Department]"
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\Extract Aisles\Extract Aisles\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[aisle]"
+                          externalMetadataColumnId="Package\Extract Departments\Extract Departments\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Department]"
                           length="50"
-                          lineageId="Package\Extract Aisles\Extract Aisles\Flat File Source.Outputs[Flat File Source Output].Columns[aisle]"
-                          name="aisle"
+                          lineageId="Package\Extract Departments\Extract Departments\Flat File Source.Outputs[Flat File Source Output].Columns[Department]"
+                          name="Department"
                           truncationRowDisposition="FailComponent">
                           <properties>
                             <property
@@ -360,41 +398,41 @@
                       <externalMetadataColumns
                         isUsed="True">
                         <externalMetadataColumn
-                          refId="Package\Extract Aisles\Extract Aisles\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[aisle_id]"
+                          refId="Package\Extract Departments\Extract Departments\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[department_id]"
                           codePage="1252"
                           dataType="str"
                           length="50"
-                          name="aisle_id" />
+                          name="department_id" />
                         <externalMetadataColumn
-                          refId="Package\Extract Aisles\Extract Aisles\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[aisle]"
+                          refId="Package\Extract Departments\Extract Departments\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Department]"
                           codePage="1252"
                           dataType="str"
                           length="50"
-                          name="aisle" />
+                          name="Department" />
                       </externalMetadataColumns>
                     </output>
                     <output
-                      refId="Package\Extract Aisles\Extract Aisles\Flat File Source.Outputs[Flat File Source Error Output]"
+                      refId="Package\Extract Departments\Extract Departments\Flat File Source.Outputs[Flat File Source Error Output]"
                       isErrorOut="true"
                       name="Flat File Source Error Output">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\Extract Aisles\Extract Aisles\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          refId="Package\Extract Departments\Extract Departments\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
                           codePage="1252"
                           dataType="text"
                           description="Flat File Source Error Output Column"
-                          lineageId="Package\Extract Aisles\Extract Aisles\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          lineageId="Package\Extract Departments\Extract Departments\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
                           name="Flat File Source Error Output Column" />
                         <outputColumn
-                          refId="Package\Extract Aisles\Extract Aisles\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          refId="Package\Extract Departments\Extract Departments\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
                           dataType="i4"
-                          lineageId="Package\Extract Aisles\Extract Aisles\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          lineageId="Package\Extract Departments\Extract Departments\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
                           name="ErrorCode"
                           specialFlags="1" />
                         <outputColumn
-                          refId="Package\Extract Aisles\Extract Aisles\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                          refId="Package\Extract Departments\Extract Departments\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
                           dataType="i4"
-                          lineageId="Package\Extract Aisles\Extract Aisles\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                          lineageId="Package\Extract Departments\Extract Departments\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
                           name="ErrorColumn"
                           specialFlags="2" />
                       </outputColumns>
@@ -403,7 +441,7 @@
                   </outputs>
                 </component>
                 <component
-                  refId="Package\Extract Aisles\Extract Aisles\OLE DB Destination"
+                  refId="Package\Extract Departments\Extract Departments\OLE DB Destination"
                   componentClassID="Microsoft.OLEDBDestination"
                   contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
                   description="OLE DB Destination"
@@ -418,7 +456,7 @@
                     <property
                       dataType="System.String"
                       description="Specifies the name of the database object used to open a rowset."
-                      name="OpenRowset">[Extract].[Aisles]</property>
+                      name="OpenRowset">[Extract].[Departments]</property>
                     <property
                       dataType="System.String"
                       description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -460,7 +498,7 @@
                   </properties>
                   <connections>
                     <connection
-                      refId="Package\Extract Aisles\Extract Aisles\OLE DB Destination.Connections[OleDbConnection]"
+                      refId="Package\Extract Departments\Extract Departments\OLE DB Destination.Connections[OleDbConnection]"
                       connectionManagerID="{2DCEA24E-59E6-4852-B49E-196FAD5AB954}:external"
                       connectionManagerRefId="Project.ConnectionManagers[OLEDB Salg]"
                       description="The OLE DB runtime connection used to access the database."
@@ -468,76 +506,76 @@
                   </connections>
                   <inputs>
                     <input
-                      refId="Package\Extract Aisles\Extract Aisles\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                      refId="Package\Extract Departments\Extract Departments\OLE DB Destination.Inputs[OLE DB Destination Input]"
                       errorOrTruncationOperation="Insert"
                       errorRowDisposition="FailComponent"
                       hasSideEffects="true"
                       name="OLE DB Destination Input">
                       <inputColumns>
                         <inputColumn
-                          refId="Package\Extract Aisles\Extract Aisles\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Derived Column Aisle ID]"
-                          cachedDataType="i4"
-                          cachedName="Derived Column Aisle ID"
-                          externalMetadataColumnId="Package\Extract Aisles\Extract Aisles\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Aisle_Id]"
-                          lineageId="Package\Extract Aisles\Extract Aisles\Derived Column.Outputs[Derived Column Output].Columns[Derived Column Aisle ID]" />
-                        <inputColumn
-                          refId="Package\Extract Aisles\Extract Aisles\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Derived Column Aisle]"
-                          cachedDataType="wstr"
-                          cachedLength="100"
-                          cachedName="Derived Column Aisle"
-                          externalMetadataColumnId="Package\Extract Aisles\Extract Aisles\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Aisle]"
-                          lineageId="Package\Extract Aisles\Extract Aisles\Derived Column.Outputs[Derived Column Output].Columns[Derived Column Aisle]" />
-                        <inputColumn
-                          refId="Package\Extract Aisles\Extract Aisles\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Meta_CreateJob]"
+                          refId="Package\Extract Departments\Extract Departments\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Meta_CreateJob]"
                           cachedDataType="i8"
                           cachedName="Meta_CreateJob"
-                          externalMetadataColumnId="Package\Extract Aisles\Extract Aisles\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Meta_CreateJob]"
-                          lineageId="Package\Extract Aisles\Extract Aisles\Derived Column.Outputs[Derived Column Output].Columns[Meta_CreateJob]" />
+                          externalMetadataColumnId="Package\Extract Departments\Extract Departments\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Meta_CreateJob]"
+                          lineageId="Package\Extract Departments\Extract Departments\Derived Column.Outputs[Derived Column Output].Columns[Meta_CreateJob]" />
+                        <inputColumn
+                          refId="Package\Extract Departments\Extract Departments\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Derived Column department_id]"
+                          cachedDataType="i4"
+                          cachedName="Derived Column department_id"
+                          externalMetadataColumnId="Package\Extract Departments\Extract Departments\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Department_Id]"
+                          lineageId="Package\Extract Departments\Extract Departments\Derived Column.Outputs[Derived Column Output].Columns[Derived Column department_id]" />
+                        <inputColumn
+                          refId="Package\Extract Departments\Extract Departments\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Derived Column Department]"
+                          cachedDataType="wstr"
+                          cachedLength="100"
+                          cachedName="Derived Column Department"
+                          externalMetadataColumnId="Package\Extract Departments\Extract Departments\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Department]"
+                          lineageId="Package\Extract Departments\Extract Departments\Derived Column.Outputs[Derived Column Output].Columns[Derived Column Department]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
                         <externalMetadataColumn
-                          refId="Package\Extract Aisles\Extract Aisles\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Aisle_Id]"
-                          dataType="i4"
-                          name="Aisle_Id" />
-                        <externalMetadataColumn
-                          refId="Package\Extract Aisles\Extract Aisles\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Aisle]"
-                          dataType="wstr"
-                          length="100"
-                          name="Aisle" />
-                        <externalMetadataColumn
-                          refId="Package\Extract Aisles\Extract Aisles\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Meta_Id]"
+                          refId="Package\Extract Departments\Extract Departments\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Meta_Id]"
                           dataType="i8"
                           name="Meta_Id" />
                         <externalMetadataColumn
-                          refId="Package\Extract Aisles\Extract Aisles\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Meta_CreateTime]"
+                          refId="Package\Extract Departments\Extract Departments\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Meta_CreateTime]"
                           dataType="dbTimeStamp"
                           name="Meta_CreateTime" />
                         <externalMetadataColumn
-                          refId="Package\Extract Aisles\Extract Aisles\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Meta_CreateJob]"
+                          refId="Package\Extract Departments\Extract Departments\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Meta_CreateJob]"
                           dataType="i8"
                           name="Meta_CreateJob" />
+                        <externalMetadataColumn
+                          refId="Package\Extract Departments\Extract Departments\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Department_Id]"
+                          dataType="i4"
+                          name="Department_Id" />
+                        <externalMetadataColumn
+                          refId="Package\Extract Departments\Extract Departments\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Department]"
+                          dataType="wstr"
+                          length="100"
+                          name="Department" />
                       </externalMetadataColumns>
                     </input>
                   </inputs>
                   <outputs>
                     <output
-                      refId="Package\Extract Aisles\Extract Aisles\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                      refId="Package\Extract Departments\Extract Departments\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
                       exclusionGroup="1"
                       isErrorOut="true"
                       name="OLE DB Destination Error Output"
-                      synchronousInputId="Package\Extract Aisles\Extract Aisles\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                      synchronousInputId="Package\Extract Departments\Extract Departments\OLE DB Destination.Inputs[OLE DB Destination Input]">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\Extract Aisles\Extract Aisles\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          refId="Package\Extract Departments\Extract Departments\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                           dataType="i4"
-                          lineageId="Package\Extract Aisles\Extract Aisles\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          lineageId="Package\Extract Departments\Extract Departments\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                           name="ErrorCode"
                           specialFlags="1" />
                         <outputColumn
-                          refId="Package\Extract Aisles\Extract Aisles\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          refId="Package\Extract Departments\Extract Departments\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                           dataType="i4"
-                          lineageId="Package\Extract Aisles\Extract Aisles\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          lineageId="Package\Extract Departments\Extract Departments\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                           name="ErrorColumn"
                           specialFlags="2" />
                       </outputColumns>
@@ -546,7 +584,7 @@
                   </outputs>
                 </component>
                 <component
-                  refId="Package\Extract Aisles\Extract Aisles\RC inserted"
+                  refId="Package\Extract Departments\Extract Departments\RC inserted"
                   componentClassID="Microsoft.RowCount"
                   contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
                   description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
@@ -559,7 +597,7 @@
                   </properties>
                   <inputs>
                     <input
-                      refId="Package\Extract Aisles\Extract Aisles\RC inserted.Inputs[Row Count Input 1]"
+                      refId="Package\Extract Departments\Extract Departments\RC inserted.Inputs[Row Count Input 1]"
                       hasSideEffects="true"
                       name="Row Count Input 1">
                       <externalMetadataColumns />
@@ -567,15 +605,15 @@
                   </inputs>
                   <outputs>
                     <output
-                      refId="Package\Extract Aisles\Extract Aisles\RC inserted.Outputs[Row Count Output 1]"
+                      refId="Package\Extract Departments\Extract Departments\RC inserted.Outputs[Row Count Output 1]"
                       name="Row Count Output 1"
-                      synchronousInputId="Package\Extract Aisles\Extract Aisles\RC inserted.Inputs[Row Count Input 1]">
+                      synchronousInputId="Package\Extract Departments\Extract Departments\RC inserted.Inputs[Row Count Input 1]">
                       <externalMetadataColumns />
                     </output>
                   </outputs>
                 </component>
                 <component
-                  refId="Package\Extract Aisles\Extract Aisles\RC selected"
+                  refId="Package\Extract Departments\Extract Departments\RC selected"
                   componentClassID="Microsoft.RowCount"
                   contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
                   description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
@@ -588,7 +626,7 @@
                   </properties>
                   <inputs>
                     <input
-                      refId="Package\Extract Aisles\Extract Aisles\RC selected.Inputs[Row Count Input 1]"
+                      refId="Package\Extract Departments\Extract Departments\RC selected.Inputs[Row Count Input 1]"
                       hasSideEffects="true"
                       name="Row Count Input 1">
                       <externalMetadataColumns />
@@ -596,9 +634,9 @@
                   </inputs>
                   <outputs>
                     <output
-                      refId="Package\Extract Aisles\Extract Aisles\RC selected.Outputs[Row Count Output 1]"
+                      refId="Package\Extract Departments\Extract Departments\RC selected.Outputs[Row Count Output 1]"
                       name="Row Count Output 1"
-                      synchronousInputId="Package\Extract Aisles\Extract Aisles\RC selected.Inputs[Row Count Input 1]">
+                      synchronousInputId="Package\Extract Departments\Extract Departments\RC selected.Inputs[Row Count Input 1]">
                       <externalMetadataColumns />
                     </output>
                   </outputs>
@@ -606,34 +644,34 @@
               </components>
               <paths>
                 <path
-                  refId="Package\Extract Aisles\Extract Aisles.Paths[Derived Column Output]"
-                  endId="Package\Extract Aisles\Extract Aisles\RC inserted.Inputs[Row Count Input 1]"
+                  refId="Package\Extract Departments\Extract Departments.Paths[Derived Column Output]"
+                  endId="Package\Extract Departments\Extract Departments\RC inserted.Inputs[Row Count Input 1]"
                   name="Derived Column Output"
-                  startId="Package\Extract Aisles\Extract Aisles\Derived Column.Outputs[Derived Column Output]" />
+                  startId="Package\Extract Departments\Extract Departments\Derived Column.Outputs[Derived Column Output]" />
                 <path
-                  refId="Package\Extract Aisles\Extract Aisles.Paths[Flat File Source Output]"
-                  endId="Package\Extract Aisles\Extract Aisles\RC selected.Inputs[Row Count Input 1]"
+                  refId="Package\Extract Departments\Extract Departments.Paths[Flat File Source Output]"
+                  endId="Package\Extract Departments\Extract Departments\RC selected.Inputs[Row Count Input 1]"
                   name="Flat File Source Output"
-                  startId="Package\Extract Aisles\Extract Aisles\Flat File Source.Outputs[Flat File Source Output]" />
+                  startId="Package\Extract Departments\Extract Departments\Flat File Source.Outputs[Flat File Source Output]" />
                 <path
-                  refId="Package\Extract Aisles\Extract Aisles.Paths[Row Count Output 1]"
-                  endId="Package\Extract Aisles\Extract Aisles\Derived Column.Inputs[Derived Column Input]"
+                  refId="Package\Extract Departments\Extract Departments.Paths[Row Count Output 1]"
+                  endId="Package\Extract Departments\Extract Departments\Derived Column.Inputs[Derived Column Input]"
                   name="Row Count Output 1"
-                  startId="Package\Extract Aisles\Extract Aisles\RC selected.Outputs[Row Count Output 1]" />
+                  startId="Package\Extract Departments\Extract Departments\RC selected.Outputs[Row Count Output 1]" />
                 <path
-                  refId="Package\Extract Aisles\Extract Aisles.Paths[Row Count Output 11]"
-                  endId="Package\Extract Aisles\Extract Aisles\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  refId="Package\Extract Departments\Extract Departments.Paths[Row Count Output 11]"
+                  endId="Package\Extract Departments\Extract Departments\OLE DB Destination.Inputs[OLE DB Destination Input]"
                   name="Row Count Output 1"
-                  startId="Package\Extract Aisles\Extract Aisles\RC inserted.Outputs[Row Count Output 1]" />
+                  startId="Package\Extract Departments\Extract Departments\RC inserted.Outputs[Row Count Output 1]" />
               </paths>
             </pipeline>
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
-          DTS:refId="Package\Extract Aisles\SQL ExtractEnd Failed"
+          DTS:refId="Package\Extract Departments\SQL ExtractEnd Failed"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
-          DTS:DTSID="{3dff8300-1ac5-41f8-bf3a-b51b3fb7046c}"
+          DTS:DTSID="{1F190903-38E0-4D98-89BB-AD623B8EBB5F}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL ExtractEnd Failed"
@@ -654,10 +692,10 @@
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
-          DTS:refId="Package\Extract Aisles\SQL ExtractEnd Succeeded"
+          DTS:refId="Package\Extract Departments\SQL ExtractEnd Succeeded"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
-          DTS:DTSID="{38836f11-fe9b-450d-9944-9ddb4c7d23a6}"
+          DTS:DTSID="{5201EF9E-BCCD-466C-B3D2-11C83DE4D436}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL ExtractEnd Succeeded"
@@ -691,10 +729,10 @@
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
-          DTS:refId="Package\Extract Aisles\SQL ExtractStart"
+          DTS:refId="Package\Extract Departments\SQL ExtractStart"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
-          DTS:DTSID="{57B57193-0BAC-45CD-9BD9-E033379BCD05}"
+          DTS:DTSID="{A94EBA4B-BE13-485F-8D8E-A9C699DBA039}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL ExtractStart"
@@ -740,10 +778,10 @@
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
-          DTS:refId="Package\Extract Aisles\Truncate table"
+          DTS:refId="Package\Extract Departments\Truncate table"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
-          DTS:DTSID="{F21D4A62-6A11-443E-B692-5F37982BB653}"
+          DTS:DTSID="{3EAEB27C-125A-4B31-A803-0409D5B188DD}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Truncate table"
@@ -752,51 +790,51 @@
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{F4FD3BB0-C073-4B12-B257-B3370F6B65D8}"
-              SQLTask:SqlStatementSource="truncate table extract.aisles" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              SQLTask:Connection="{4C698B0F-6DC2-4EF8-8560-DB4005626B48}"
+              SQLTask:SqlStatementSource="truncate table Extract.Departments" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
       </DTS:Executables>
       <DTS:PrecedenceConstraints>
         <DTS:PrecedenceConstraint
-          DTS:refId="Package\Extract Aisles.PrecedenceConstraints[Constraint]"
+          DTS:refId="Package\Extract Departments.PrecedenceConstraints[Constraint]"
           DTS:CreationName=""
-          DTS:DTSID="{E6E2245E-501E-4421-8B6D-0B0F747063DF}"
-          DTS:From="Package\Extract Aisles\Truncate table"
+          DTS:DTSID="{E269870F-FC29-4BBE-92C7-F13FEA0D06B3}"
+          DTS:From="Package\Extract Departments\Truncate table"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint"
-          DTS:To="Package\Extract Aisles\Extract Aisles" />
+          DTS:To="Package\Extract Departments\Extract Departments" />
         <DTS:PrecedenceConstraint
-          DTS:refId="Package\Extract Aisles.PrecedenceConstraints[Constraint 1]"
+          DTS:refId="Package\Extract Departments.PrecedenceConstraints[Constraint 1]"
           DTS:CreationName=""
-          DTS:DTSID="{7B184961-BF39-4C55-BD2C-12111E3BB4B1}"
-          DTS:From="Package\Extract Aisles\SQL ExtractStart"
+          DTS:DTSID="{7A960142-6013-44E1-A553-5392A25B0822}"
+          DTS:From="Package\Extract Departments\SQL ExtractStart"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 1"
-          DTS:To="Package\Extract Aisles\Truncate table" />
+          DTS:To="Package\Extract Departments\Truncate table" />
         <DTS:PrecedenceConstraint
-          DTS:refId="Package\Extract Aisles.PrecedenceConstraints[Constraint 2]"
+          DTS:refId="Package\Extract Departments.PrecedenceConstraints[Constraint 2]"
           DTS:CreationName=""
-          DTS:DTSID="{A6FC714B-668C-49D4-A998-270DAB2FCAED}"
-          DTS:From="Package\Extract Aisles\Extract Aisles"
+          DTS:DTSID="{6B5DEC25-807E-435D-899E-FC8B86C4FE89}"
+          DTS:From="Package\Extract Departments\Extract Departments"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 2"
-          DTS:To="Package\Extract Aisles\SQL ExtractEnd Succeeded" />
+          DTS:To="Package\Extract Departments\SQL ExtractEnd Succeeded" />
         <DTS:PrecedenceConstraint
-          DTS:refId="Package\Extract Aisles.PrecedenceConstraints[Constraint 3]"
+          DTS:refId="Package\Extract Departments.PrecedenceConstraints[Constraint 3]"
           DTS:CreationName=""
-          DTS:DTSID="{5DAC7494-C7A0-4E83-B99C-B3456C705EAB}"
-          DTS:From="Package\Extract Aisles\Extract Aisles"
+          DTS:DTSID="{F3FB20C5-7B4D-4386-B6CA-049D688DC0A3}"
+          DTS:From="Package\Extract Departments\Extract Departments"
           DTS:ObjectName="Constraint 3"
-          DTS:To="Package\Extract Aisles\SQL ExtractEnd Failed"
+          DTS:To="Package\Extract Departments\SQL ExtractEnd Failed"
           DTS:Value="1" />
         <DTS:PrecedenceConstraint
-          DTS:refId="Package\Extract Aisles.PrecedenceConstraints[Constraint 4]"
+          DTS:refId="Package\Extract Departments.PrecedenceConstraints[Constraint 4]"
           DTS:CreationName=""
-          DTS:DTSID="{C0912413-C5BB-43FB-8240-12453D5CD797}"
-          DTS:From="Package\Extract Aisles\Truncate table"
+          DTS:DTSID="{5C34CCB1-7E38-434E-B0C9-563B5BA8A903}"
+          DTS:From="Package\Extract Departments\Truncate table"
           DTS:ObjectName="Constraint 4"
-          DTS:To="Package\Extract Aisles\SQL ExtractEnd Failed"
+          DTS:To="Package\Extract Departments\SQL ExtractEnd Failed"
           DTS:Value="1" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
@@ -804,7 +842,7 @@
       DTS:refId="Package\SQL ExecutionEnd Failed"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:DTSID="{55ca47de-279e-42ee-b427-ad7abdf0180b}"
+      DTS:DTSID="{86F6D100-28D6-4512-A219-92342464E3FE}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="SQL ExecutionEnd Failed"
@@ -828,7 +866,7 @@
       DTS:refId="Package\SQL ExecutionEnd Succeeded"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:DTSID="{4cd6582f-2fbb-47bd-ace4-67aa97a12998}"
+      DTS:DTSID="{5D9BDDDC-4722-48B1-8162-34E32D4C3A72}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="SQL ExecutionEnd Succeeded"
@@ -853,7 +891,7 @@
       DTS:refId="Package\SQL ExecutionStart"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:DTSID="{79ff7c91-b7af-4ec1-a156-93257e439ac6}"
+      DTS:DTSID="{E09797CC-6FC9-4579-B995-0F8C60D489F1}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="SQL ExecutionStart"
@@ -879,7 +917,7 @@
             SQLTask:ParameterSize="-1" />
           <SQLTask:ParameterBinding
             SQLTask:ParameterName="PackageName"
-            SQLTask:DtsVariableName="User::PackageName"
+            SQLTask:DtsVariableName="System::PackageName"
             SQLTask:ParameterDirection="Input"
             SQLTask:DataType="16"
             SQLTask:ParameterSize="-1" />
@@ -903,24 +941,24 @@
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint]"
       DTS:CreationName=""
-      DTS:DTSID="{F5BC244B-FA92-4CFB-BDEC-723879E3FC3C}"
+      DTS:DTSID="{9C1BB1B2-B3A3-444C-8DA8-0D016B61B6E0}"
       DTS:From="Package\SQL ExecutionStart"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
-      DTS:To="Package\Extract Aisles" />
+      DTS:To="Package\Extract Departments" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
       DTS:CreationName=""
-      DTS:DTSID="{817972FD-4C69-4A2B-854A-BBEC2D7B06CF}"
-      DTS:From="Package\Extract Aisles"
+      DTS:DTSID="{470010E6-ECF1-4A32-AFA3-D8D02F0CE36B}"
+      DTS:From="Package\Extract Departments"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 1"
       DTS:To="Package\SQL ExecutionEnd Succeeded" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
       DTS:CreationName=""
-      DTS:DTSID="{22D2677C-59E2-4C9D-A85D-736F78B8C30C}"
-      DTS:From="Package\Extract Aisles"
+      DTS:DTSID="{97169911-1791-48EA-A242-57D726FA75B7}"
+      DTS:From="Package\Extract Departments"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 2"
       DTS:To="Package\SQL ExecutionEnd Failed"
@@ -930,7 +968,7 @@
     <DTS:EventHandler
       DTS:refId="Package.EventHandlers[OnError]"
       DTS:CreationName="OnError"
-      DTS:DTSID="{B2148C41-4C6E-4D9D-A4AF-B153878895D6}"
+      DTS:DTSID="{D65731D7-4FD7-4FB7-AB73-948CAE817519}"
       DTS:EventID="0"
       DTS:EventName="OnError"
       DTS:LocaleID="-1">
@@ -938,7 +976,7 @@
         <DTS:Variable
           DTS:CreationName=""
           DTS:Description="The propagate property of the event"
-          DTS:DTSID="{2FCF6E49-5253-459D-8A8A-7DAA1234A4F7}"
+          DTS:DTSID="{314EE292-EAB9-4C96-96F4-86EA7DB796C3}"
           DTS:IncludeInDebugDump="6789"
           DTS:Namespace="System"
           DTS:ObjectName="Propagate">
@@ -951,7 +989,7 @@
           DTS:refId="Package.EventHandlers[OnError]\SQL ExecutionError"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
-          DTS:DTSID="{82A1164D-B1CA-48B7-9325-D9CF6A1FD034}"
+          DTS:DTSID="{ED007901-F4B7-43BE-8AFC-0708C967E161}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL ExecutionError"
@@ -1011,34 +1049,34 @@
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="146,42"
-          Id="Package\Extract Aisles\Extract Aisles"
+          Size="179,42"
+          Id="Package\Extract Departments\Extract Departments"
           TopLeft="170.5,209.5" />
         <NodeLayout
           Size="191,42"
-          Id="Package\Extract Aisles\SQL ExtractEnd Failed"
+          Id="Package\Extract Departments\SQL ExtractEnd Failed"
           TopLeft="282,311.5" />
         <NodeLayout
           Size="216,42"
-          Id="Package\Extract Aisles\SQL ExtractEnd Succeeded"
+          Id="Package\Extract Departments\SQL ExtractEnd Succeeded"
           TopLeft="5.50000000000006,311.5" />
         <NodeLayout
           Size="161,42"
-          Id="Package\Extract Aisles\SQL ExtractStart"
+          Id="Package\Extract Departments\SQL ExtractStart"
           TopLeft="297,5.5" />
         <NodeLayout
           Size="149,42"
-          Id="Package\Extract Aisles\Truncate table"
+          Id="Package\Extract Departments\Truncate table"
           TopLeft="303,107.5" />
         <EdgeLayout
-          Id="Package\Extract Aisles.PrecedenceConstraints[Constraint]"
+          Id="Package\Extract Departments.PrecedenceConstraints[Constraint]"
           TopLeft="354,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-110.5,60"
+              EndConnector="-94,60"
               Start="0,0"
-              End="-110.5,52.5">
+              End="-94,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -1049,13 +1087,13 @@
                     Point2="0,24.3824701195219"
                     Point3="-4,24.3824701195219" />
                   <mssgle:LineSegment
-                    End="-106.5,24.3824701195219" />
+                    End="-90,24.3824701195219" />
                   <mssgle:CubicBezierSegment
-                    Point1="-106.5,24.3824701195219"
-                    Point2="-110.5,24.3824701195219"
-                    Point3="-110.5,28.3824701195219" />
+                    Point1="-90,24.3824701195219"
+                    Point2="-94,24.3824701195219"
+                    Point3="-94,28.3824701195219" />
                   <mssgle:LineSegment
-                    End="-110.5,52.5" />
+                    End="-94,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1065,7 +1103,7 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Extract Aisles.PrecedenceConstraints[Constraint 1]"
+          Id="Package\Extract Departments.PrecedenceConstraints[Constraint 1]"
           TopLeft="377.5,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -1087,31 +1125,31 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Extract Aisles.PrecedenceConstraints[Constraint 2]"
-          TopLeft="220.5,251.5">
+          Id="Package\Extract Departments.PrecedenceConstraints[Constraint 2]"
+          TopLeft="231.5,251.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-107,60"
+              EndConnector="-118,60"
               Start="0,0"
-              End="-107,52.5">
+              End="-118,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,20.390243902439" />
+                    End="0,20.3189368770764" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,20.390243902439"
-                    Point2="0,24.390243902439"
-                    Point3="-4,24.390243902439" />
+                    Point1="0,20.3189368770764"
+                    Point2="0,24.3189368770764"
+                    Point3="-4,24.3189368770764" />
                   <mssgle:LineSegment
-                    End="-103,24.390243902439" />
+                    End="-114,24.3189368770764" />
                   <mssgle:CubicBezierSegment
-                    Point1="-103,24.390243902439"
-                    Point2="-107,24.390243902439"
-                    Point3="-107,28.390243902439" />
+                    Point1="-114,24.3189368770764"
+                    Point2="-118,24.3189368770764"
+                    Point3="-118,28.3189368770764" />
                   <mssgle:LineSegment
-                    End="-107,52.5" />
+                    End="-118,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1121,43 +1159,43 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Extract Aisles.PrecedenceConstraints[Constraint 3]"
-          TopLeft="266.5,251.5">
+          Id="Package\Extract Departments.PrecedenceConstraints[Constraint 3]"
+          TopLeft="288.5,251.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="80.5000000000001,60"
+              EndConnector="58.5,60"
               Start="0,0"
-              End="80.5000000000001,52.5">
+              End="58.5,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,26.0945378151261" />
+                    End="0,26.0206132440093" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,26.0945378151261"
-                    Point2="0,30.0945378151261"
-                    Point3="4,30.0945378151261" />
+                    Point1="0,26.0206132440093"
+                    Point2="0,30.0206132440093"
+                    Point3="4,30.0206132440093" />
                   <mssgle:LineSegment
-                    End="76.5000000000001,30.0945378151261" />
+                    End="54.5,30.0206132440093" />
                   <mssgle:CubicBezierSegment
-                    Point1="76.5000000000001,30.0945378151261"
-                    Point2="80.5000000000001,30.0945378151261"
-                    Point3="80.5000000000001,34.0945378151261" />
+                    Point1="54.5,30.0206132440093"
+                    Point2="58.5,30.0206132440093"
+                    Point3="58.5,34.0206132440093" />
                   <mssgle:LineSegment
-                    End="80.5000000000001,52.5" />
+                    End="58.5,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="25.00865234375,35.0945378151261,30.4826953125,9.7490234375"
+              BoundingBox="14.00865234375,35.0206132440093,30.4826953125,9.7490234375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Extract Aisles.PrecedenceConstraints[Constraint 4]"
+          Id="Package\Extract Departments.PrecedenceConstraints[Constraint 4]"
           TopLeft="404.5,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -1185,7 +1223,7 @@
           IsExpanded="True"
           PanelSize="478,408"
           Size="478,451"
-          Id="Package\Extract Aisles"
+          Id="Package\Extract Departments"
           TopLeft="144.5,165.5" />
         <NodeLayout
           Size="205,42"
@@ -1205,9 +1243,9 @@
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-37.4999999999999,88.5"
+              EndConnector="-37.5,88.5"
               Start="0,0"
-              End="-37.4999999999999,81">
+              End="-37.5,81">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -1218,13 +1256,13 @@
                     Point2="0,44.25"
                     Point3="-4,44.25" />
                   <mssgle:LineSegment
-                    End="-33.4999999999999,44.25" />
+                    End="-33.5,44.25" />
                   <mssgle:CubicBezierSegment
-                    Point1="-33.4999999999999,44.25"
-                    Point2="-37.4999999999999,44.25"
-                    Point3="-37.4999999999999,48.25" />
+                    Point1="-33.5,44.25"
+                    Point2="-37.5,44.25"
+                    Point3="-37.5,48.25" />
                   <mssgle:LineSegment
-                    End="-37.4999999999999,81" />
+                    End="-37.5,81" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1235,30 +1273,30 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="383.5,616.5">
+          TopLeft="305.166666666667,616.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-116.5,63.5"
+              EndConnector="-38.1666666666666,63.5"
               Start="0,0"
-              End="-116.5,56">
+              End="-38.1666666666666,56">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,27.75" />
+                    End="0,21.5271059216013" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,27.75"
-                    Point2="0,31.75"
-                    Point3="-4,31.75" />
+                    Point1="0,21.5271059216013"
+                    Point2="0,25.5271059216013"
+                    Point3="-4,25.5271059216013" />
                   <mssgle:LineSegment
-                    End="-112.5,31.75" />
+                    End="-34.1666666666666,25.5271059216013" />
                   <mssgle:CubicBezierSegment
-                    Point1="-112.5,31.75"
-                    Point2="-116.5,31.75"
-                    Point3="-116.5,35.75" />
+                    Point1="-34.1666666666666,25.5271059216013"
+                    Point2="-38.1666666666666,25.5271059216013"
+                    Point3="-38.1666666666666,29.5271059216013" />
                   <mssgle:LineSegment
-                    End="-116.5,56" />
+                    End="-38.1666666666666,56" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1319,32 +1357,32 @@
     </LayoutInfo>
   </DtsEventHandler>
   <TaskHost
-    design-time-name="Package\Extract Aisles\Extract Aisles">
+    design-time-name="Package\Extract Departments\Extract Departments">
     <LayoutInfo>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="139,42"
-          Id="Package\Extract Aisles\Extract Aisles\RC selected"
+          Id="Package\Extract Departments\Extract Departments\RC selected"
           TopLeft="27.5,107.5" />
         <NodeLayout
           Size="158,42"
-          Id="Package\Extract Aisles\Extract Aisles\Derived Column"
+          Id="Package\Extract Departments\Extract Departments\Derived Column"
           TopLeft="15,209.5" />
         <NodeLayout
           Size="137,42"
-          Id="Package\Extract Aisles\Extract Aisles\RC inserted"
+          Id="Package\Extract Departments\Extract Departments\RC inserted"
           TopLeft="23,311.5" />
         <NodeLayout
           Size="177,42"
-          Id="Package\Extract Aisles\Extract Aisles\OLE DB Destination"
+          Id="Package\Extract Departments\Extract Departments\OLE DB Destination"
           TopLeft="5.50000000000004,413.5" />
         <NodeLayout
           Size="156,42"
-          Id="Package\Extract Aisles\Extract Aisles\Flat File Source"
+          Id="Package\Extract Departments\Extract Departments\Flat File Source"
           TopLeft="16,5.5" />
         <EdgeLayout
-          Id="Package\Extract Aisles\Extract Aisles.Paths[Derived Column Output]"
+          Id="Package\Extract Departments\Extract Departments.Paths[Derived Column Output]"
           TopLeft="92.75,251.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -1366,7 +1404,7 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Extract Aisles\Extract Aisles.Paths[Row Count Output 11]"
+          Id="Package\Extract Departments\Extract Departments.Paths[Row Count Output 11]"
           TopLeft="92.75,353.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -1388,7 +1426,7 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Extract Aisles\Extract Aisles.Paths[Row Count Output 1]"
+          Id="Package\Extract Departments\Extract Departments.Paths[Row Count Output 1]"
           TopLeft="95.5,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -1410,7 +1448,7 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Extract Aisles\Extract Aisles.Paths[Flat File Source Output]"
+          Id="Package\Extract Departments\Extract Departments.Paths[Flat File Source Output]"
           TopLeft="95.5,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -1435,7 +1473,7 @@
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Extract Aisles\Extract Aisles\OLE DB Destination">
+    design-time-name="Package\Extract Departments\Extract Departments\OLE DB Destination">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
