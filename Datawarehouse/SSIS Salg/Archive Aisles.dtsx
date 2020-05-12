@@ -11,8 +11,8 @@
   DTS:LocaleID="1030"
   DTS:ObjectName="Archive Aisles"
   DTS:PackageType="5"
-  DTS:VersionBuild="32"
-  DTS:VersionGUID="{9EDFC457-4BD8-4631-9589-0C92E5989B6A}">
+  DTS:VersionBuild="34"
+  DTS:VersionGUID="{43FA7DD8-58FC-4A66-9FC4-A9546C090B33}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:PackageParameters>
@@ -111,7 +111,7 @@ WHERE 1=1
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL CleanUp ArchiveQueue 1"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -135,7 +135,7 @@ WHERE 1=1
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL UpdateArchive1"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -182,88 +182,165 @@ WHERE 1=1
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
     <DTS:Executable
-      DTS:refId="Package\For Loop Container"
-      DTS:CreationName="STOCK:FORLOOP"
-      DTS:Description="For Loop Container"
+      DTS:refId="Package\Sequence Container"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
       DTS:Disabled="True"
-      DTS:DTSID="{498A507A-E6E6-4D04-ABBA-540A28BD4E1B}"
-      DTS:EvalExpression="!ISNULL(@[User::TableName]) &amp;&amp;  LEN(@[User::TableName]) &gt; 0"
-      DTS:ExecutableType="STOCK:FORLOOP"
-      DTS:InitExpression="@[User::TableName]=&quot;None&quot;"
+      DTS:DTSID="{E1F605E2-C7CB-44B9-82E6-E9084C15EB6C}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
       DTS:LocaleID="-1"
-      DTS:MaxConcurrent="1"
-      DTS:ObjectName="For Loop Container">
+      DTS:ObjectName="Sequence Container">
       <DTS:Variables />
       <DTS:Executables>
         <DTS:Executable
-          DTS:refId="Package\For Loop Container\Fetch next Archive table"
+          DTS:refId="Package\Sequence Container\For Loop Container"
+          DTS:CreationName="STOCK:FORLOOP"
+          DTS:Description="For Loop Container"
+          DTS:Disabled="True"
+          DTS:DTSID="{498A507A-E6E6-4D04-ABBA-540A28BD4E1B}"
+          DTS:EvalExpression="!ISNULL(@[User::TableName]) &amp;&amp;  LEN(@[User::TableName]) &gt; 0"
+          DTS:ExecutableType="STOCK:FORLOOP"
+          DTS:InitExpression="@[User::TableName]=&quot;None&quot;"
+          DTS:LocaleID="-1"
+          DTS:MaxConcurrent="1"
+          DTS:ObjectName="For Loop Container">
+          <DTS:Variables />
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\Sequence Container\For Loop Container\Fetch next Archive table"
+              DTS:CreationName="Microsoft.ExecuteSQLTask"
+              DTS:Description="Execute SQL Task"
+              DTS:DTSID="{C70A4362-8919-4395-BFCE-2DB7423A9AC1}"
+              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Fetch next Archive table"
+              DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+              DTS:ThreadHint="0">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData
+                  SQLTask:Connection="{451A5FA4-85FC-408B-8604-3DF653A42D2B}"
+                  SQLTask:SqlStatementSource="DECLARE @Tables TABLE (TableName NVARCHAR(255))&#xA;&#xA;DELETE TOP (1) FROM System.ArchiveQueue WITH (ROWLOCK, READPAST)&#xA;OUTPUT DELETED.TableName INTO @Tables&#xA;WHERE ExecutionId = @ExecutionId&#xA;&#xA;SELECT TOP 1 @TableName = TableName FROM @Tables" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="ExecutionId"
+                    SQLTask:DtsVariableName="User::ExecutionId"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="12"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="TableName"
+                    SQLTask:DtsVariableName="User::TableName"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="16"
+                    SQLTask:ParameterSize="-1" />
+                </SQLTask:SqlTaskData>
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\Sequence Container\For Loop Container\SQL UpdateArchive"
+              DTS:CreationName="Microsoft.ExecuteSQLTask"
+              DTS:Description="Execute SQL Task"
+              DTS:DTSID="{42E59549-B914-4E40-B3CD-E1253F0A235F}"
+              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="SQL UpdateArchive"
+              DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+              DTS:ThreadHint="0">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData
+                  SQLTask:Connection="{B4D3DEFE-1F92-4C84-A98D-98DCB1F090F6}"
+                  SQLTask:IsStoredProc="True"
+                  SQLTask:SqlStatementSource="Archive.UpdateArchive" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="TableName"
+                    SQLTask:DtsVariableName="User::TableName"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="16"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="ExecutionId"
+                    SQLTask:DtsVariableName="User::ExecutionId"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="12"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="ExtractDeleteAction"
+                    SQLTask:DtsVariableName="$Package::ExtractDeleteAction"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="16"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="Database"
+                    SQLTask:DtsVariableName="$Project::Database"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="16"
+                    SQLTask:ParameterSize="-1" />
+                </SQLTask:SqlTaskData>
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+          <DTS:PrecedenceConstraints>
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\Sequence Container\For Loop Container.PrecedenceConstraints[Constraint]"
+              DTS:CreationName=""
+              DTS:DTSID="{2FAA38BD-F116-460C-B318-716A297F30ED}"
+              DTS:EvalOp="3"
+              DTS:Expression="!ISNULL( @[User::TableName]  ) &amp;&amp;  LEN( @[User::TableName]  ) &gt; 0"
+              DTS:From="Package\Sequence Container\For Loop Container\Fetch next Archive table"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Constraint"
+              DTS:To="Package\Sequence Container\For Loop Container\SQL UpdateArchive" />
+          </DTS:PrecedenceConstraints>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\Insert into Archive Queue"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
-          DTS:DTSID="{C70A4362-8919-4395-BFCE-2DB7423A9AC1}"
+          DTS:Disabled="True"
+          DTS:DTSID="{37ED0CA2-D279-4868-9929-98B21C48BA31}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
-          DTS:ObjectName="Fetch next Archive table"
+          DTS:ObjectName="Insert into Archive Queue"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="2">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{451A5FA4-85FC-408B-8604-3DF653A42D2B}"
-              SQLTask:SqlStatementSource="DECLARE @Tables TABLE (TableName NVARCHAR(255))&#xA;&#xA;DELETE TOP (1) FROM System.ArchiveQueue WITH (ROWLOCK, READPAST)&#xA;OUTPUT DELETED.TableName INTO @Tables&#xA;WHERE ExecutionId = @ExecutionId&#xA;&#xA;SELECT TOP 1 @TableName = TableName FROM @Tables" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              SQLTask:SqlStmtSourceType="Variable"
+              SQLTask:SqlStatementSource="User::SQL_TableSelect"
+              SQLTask:TypeConversionMode="None" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
                 SQLTask:ParameterName="ExecutionId"
                 SQLTask:DtsVariableName="User::ExecutionId"
                 SQLTask:ParameterDirection="Input"
                 SQLTask:DataType="12"
-                SQLTask:ParameterSize="-1" />
-              <SQLTask:ParameterBinding
-                SQLTask:ParameterName="TableName"
-                SQLTask:DtsVariableName="User::TableName"
-                SQLTask:ParameterDirection="Input"
-                SQLTask:DataType="16"
                 SQLTask:ParameterSize="-1" />
             </SQLTask:SqlTaskData>
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
-          DTS:refId="Package\For Loop Container\SQL UpdateArchive"
+          DTS:refId="Package\Sequence Container\SQL CleanUp ArchiveQueue"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
-          DTS:DTSID="{42E59549-B914-4E40-B3CD-E1253F0A235F}"
+          DTS:Disabled="True"
+          DTS:DTSID="{152b8269-1c40-4c2b-aeda-4ef882ad3f25}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
-          DTS:ObjectName="SQL UpdateArchive"
+          DTS:ObjectName="SQL CleanUp ArchiveQueue"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="2">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
-              SQLTask:Connection="{B4D3DEFE-1F92-4C84-A98D-98DCB1F090F6}"
-              SQLTask:IsStoredProc="True"
-              SQLTask:SqlStatementSource="Archive.UpdateArchive" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
-              <SQLTask:ParameterBinding
-                SQLTask:ParameterName="TableName"
-                SQLTask:DtsVariableName="User::TableName"
-                SQLTask:ParameterDirection="Input"
-                SQLTask:DataType="16"
-                SQLTask:ParameterSize="-1" />
+              SQLTask:Connection="{451A5FA4-85FC-408B-8604-3DF653A42D2B}"
+              SQLTask:SqlStatementSource="DELETE FROM System.ArchiveQueue WITH (ROWLOCK)&#xA;WHERE ExecutionId = @ExecutionId" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
                 SQLTask:ParameterName="ExecutionId"
                 SQLTask:DtsVariableName="User::ExecutionId"
                 SQLTask:ParameterDirection="Input"
                 SQLTask:DataType="12"
-                SQLTask:ParameterSize="-1" />
-              <SQLTask:ParameterBinding
-                SQLTask:ParameterName="ExtractDeleteAction"
-                SQLTask:DtsVariableName="$Package::ExtractDeleteAction"
-                SQLTask:ParameterDirection="Input"
-                SQLTask:DataType="16"
-                SQLTask:ParameterSize="-1" />
-              <SQLTask:ParameterBinding
-                SQLTask:ParameterName="Database"
-                SQLTask:DtsVariableName="$Project::Database"
-                SQLTask:ParameterDirection="Input"
-                SQLTask:DataType="16"
                 SQLTask:ParameterSize="-1" />
             </SQLTask:SqlTaskData>
           </DTS:ObjectData>
@@ -271,68 +348,22 @@ WHERE 1=1
       </DTS:Executables>
       <DTS:PrecedenceConstraints>
         <DTS:PrecedenceConstraint
-          DTS:refId="Package\For Loop Container.PrecedenceConstraints[Constraint]"
+          DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint 3]"
           DTS:CreationName=""
-          DTS:DTSID="{2FAA38BD-F116-460C-B318-716A297F30ED}"
-          DTS:EvalOp="3"
-          DTS:Expression="!ISNULL( @[User::TableName]  ) &amp;&amp;  LEN( @[User::TableName]  ) &gt; 0"
-          DTS:From="Package\For Loop Container\Fetch next Archive table"
+          DTS:DTSID="{CEA53C0B-AAF3-44A1-AEBD-BC7759ABC29A}"
+          DTS:From="Package\Sequence Container\Insert into Archive Queue"
           DTS:LogicalAnd="True"
-          DTS:ObjectName="Constraint"
-          DTS:To="Package\For Loop Container\SQL UpdateArchive" />
+          DTS:ObjectName="Constraint 3"
+          DTS:To="Package\Sequence Container\For Loop Container" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint 4]"
+          DTS:CreationName=""
+          DTS:DTSID="{B707890C-73FD-4270-82F3-44B6574920C7}"
+          DTS:From="Package\Sequence Container\For Loop Container"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 4"
+          DTS:To="Package\Sequence Container\SQL CleanUp ArchiveQueue" />
       </DTS:PrecedenceConstraints>
-    </DTS:Executable>
-    <DTS:Executable
-      DTS:refId="Package\Insert into Archive Queue"
-      DTS:CreationName="Microsoft.ExecuteSQLTask"
-      DTS:Description="Execute SQL Task"
-      DTS:Disabled="True"
-      DTS:DTSID="{37ED0CA2-D279-4868-9929-98B21C48BA31}"
-      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="Insert into Archive Queue"
-      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="2">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <SQLTask:SqlTaskData
-          SQLTask:Connection="{451A5FA4-85FC-408B-8604-3DF653A42D2B}"
-          SQLTask:SqlStmtSourceType="Variable"
-          SQLTask:SqlStatementSource="User::SQL_TableSelect"
-          SQLTask:TypeConversionMode="None" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
-          <SQLTask:ParameterBinding
-            SQLTask:ParameterName="ExecutionId"
-            SQLTask:DtsVariableName="User::ExecutionId"
-            SQLTask:ParameterDirection="Input"
-            SQLTask:DataType="12"
-            SQLTask:ParameterSize="-1" />
-        </SQLTask:SqlTaskData>
-      </DTS:ObjectData>
-    </DTS:Executable>
-    <DTS:Executable
-      DTS:refId="Package\SQL CleanUp ArchiveQueue"
-      DTS:CreationName="Microsoft.ExecuteSQLTask"
-      DTS:Description="Execute SQL Task"
-      DTS:Disabled="True"
-      DTS:DTSID="{152b8269-1c40-4c2b-aeda-4ef882ad3f25}"
-      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="SQL CleanUp ArchiveQueue"
-      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="2">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <SQLTask:SqlTaskData
-          SQLTask:Connection="{451A5FA4-85FC-408B-8604-3DF653A42D2B}"
-          SQLTask:SqlStatementSource="DELETE FROM System.ArchiveQueue WITH (ROWLOCK)&#xA;WHERE ExecutionId = @ExecutionId" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
-          <SQLTask:ParameterBinding
-            SQLTask:ParameterName="ExecutionId"
-            SQLTask:DtsVariableName="User::ExecutionId"
-            SQLTask:ParameterDirection="Input"
-            SQLTask:DataType="12"
-            SQLTask:ParameterSize="-1" />
-        </SQLTask:SqlTaskData>
-      </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\SQL ExecutionEnd Failed"
@@ -359,6 +390,31 @@ WHERE 1=1
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
+      DTS:refId="Package\SQL ExecutionEnd Failed 1"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{d0381477-cc33-4dd0-933b-36df79cc077c}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL ExecutionEnd Failed 1"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="3">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{B4D3DEFE-1F92-4C84-A98D-98DCB1F090F6}"
+          SQLTask:SqlStatementSource="EXEC Audit.ExecutionEnd @Id, 'Failed'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="Id"
+            SQLTask:DtsVariableName="User::ExecutionId"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="12"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
       DTS:refId="Package\SQL ExecutionEnd Succeeded"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
@@ -366,6 +422,32 @@ WHERE 1=1
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="SQL ExecutionEnd Succeeded"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="2">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{B4D3DEFE-1F92-4C84-A98D-98DCB1F090F6}"
+          SQLTask:IsStoredProc="True"
+          SQLTask:SqlStatementSource="Audit.ExecutionEnd" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="Id"
+            SQLTask:DtsVariableName="User::ExecutionId"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="12"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL ExecutionEnd Succeeded 1"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{5dc6a287-2dae-47c9-8642-18102d4ae2f1}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL ExecutionEnd Succeeded 1"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
       DTS:ThreadHint="0">
       <DTS:Variables />
@@ -391,6 +473,56 @@ WHERE 1=1
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="SQL ExecutionStart"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{B4D3DEFE-1F92-4C84-A98D-98DCB1F090F6}"
+          SQLTask:IsStoredProc="True"
+          SQLTask:SqlStatementSource="Audit.ExecutionStart" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="Id"
+            SQLTask:DtsVariableName="User::ExecutionId"
+            SQLTask:ParameterDirection="Output"
+            SQLTask:DataType="12"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="PackageID"
+            SQLTask:DtsVariableName="System::PackageID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="9"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="PackageName"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="16"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="Database"
+            SQLTask:DtsVariableName="$Project::Database"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="16"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="ServerExecutionID"
+            SQLTask:DtsVariableName="System::ServerExecutionID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="12"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL ExecutionStart 1"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{91f39312-8439-4757-827b-349b769a4bb9}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL ExecutionStart 1"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
       DTS:ThreadHint="0">
       <DTS:Variables />
@@ -462,19 +594,28 @@ WHERE 1=1
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
       DTS:CreationName=""
-      DTS:DTSID="{CEA53C0B-AAF3-44A1-AEBD-BC7759ABC29A}"
-      DTS:From="Package\Insert into Archive Queue"
+      DTS:DTSID="{B7A443DB-CBE6-446B-A684-4C781A18EE10}"
+      DTS:From="Package\SQL ExecutionStart 1"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 3"
-      DTS:To="Package\For Loop Container" />
+      DTS:To="Package\Sequence Container" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
       DTS:CreationName=""
-      DTS:DTSID="{B707890C-73FD-4270-82F3-44B6574920C7}"
-      DTS:From="Package\For Loop Container"
+      DTS:DTSID="{AFF3C99D-A1DA-45EF-964D-D0C33F496F7B}"
+      DTS:From="Package\Sequence Container"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 4"
-      DTS:To="Package\SQL CleanUp ArchiveQueue" />
+      DTS:To="Package\SQL ExecutionEnd Succeeded 1" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
+      DTS:CreationName=""
+      DTS:DTSID="{5D81C953-6CB6-4D81-A91D-92D1CA3D79D9}"
+      DTS:From="Package\Sequence Container"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 5"
+      DTS:To="Package\SQL ExecutionEnd Failed 1"
+      DTS:Value="1" />
   </DTS:PrecedenceConstraints>
   <DTS:EventHandlers>
     <DTS:EventHandler
@@ -561,13 +702,13 @@ WHERE 1=1
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="182,42"
-          Id="Package\Archive\SQL UpdateArchive1"
-          TopLeft="29,5.5" />
-        <NodeLayout
           Size="229,42"
           Id="Package\Archive\SQL CleanUp ArchiveQueue 1"
           TopLeft="5.50000000000001,107.5" />
+        <NodeLayout
+          Size="182,42"
+          Id="Package\Archive\SQL UpdateArchive1"
+          TopLeft="29,5.5" />
         <EdgeLayout
           Id="Package\Archive.PrecedenceConstraints[Constraint]"
           TopLeft="120,47.5">
@@ -596,33 +737,45 @@ WHERE 1=1
           PanelSize="240,204"
           Size="240,248"
           Id="Package\Archive"
-          TopLeft="266.5,107.5" />
+          TopLeft="278.5,261.5" />
         <NodeLayout
           Size="205,42"
           Id="Package\SQL ExecutionEnd Failed"
-          TopLeft="296,415.5" />
+          TopLeft="343,576.5" />
         <NodeLayout
           Size="230,42"
           Id="Package\SQL ExecutionEnd Succeeded"
-          TopLeft="5.5,415.5" />
+          TopLeft="67.5,578.5" />
         <NodeLayout
           Size="176,42"
           Id="Package\SQL ExecutionStart"
-          TopLeft="298.5,5.49999999999989" />
+          TopLeft="326.5,178.5" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="386.5,47.4999999999999">
+          TopLeft="414.5,220.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60"
+              EndConnector="-16,41.0000000000001"
               Start="0,0"
-              End="0,52.5">
+              End="-16,33.5000000000001">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5" />
+                    End="0,16.5000000000001" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.5000000000001"
+                    Point2="0,20.5000000000001"
+                    Point3="-4,20.5000000000001" />
+                  <mssgle:LineSegment
+                    End="-12,20.5000000000001" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-12,20.5000000000001"
+                    Point2="-16,20.5000000000001"
+                    Point3="-16,24.5000000000001" />
+                  <mssgle:LineSegment
+                    End="-16,33.5000000000001" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -633,30 +786,30 @@ WHERE 1=1
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="347.833333333333,355.5">
+          TopLeft="359.833333333333,509.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-227.333333333333,60.0000000000001"
+              EndConnector="-177.333333333333,69"
               Start="0,0"
-              End="-227.333333333333,52.5000000000001">
+              End="-177.333333333333,61.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,20.2384105960265" />
+                    End="0,23.8741721854305" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,20.2384105960265"
-                    Point2="0,24.2384105960265"
-                    Point3="-4,24.2384105960265" />
+                    Point1="0,23.8741721854305"
+                    Point2="0,27.8741721854305"
+                    Point3="-4,27.8741721854305" />
                   <mssgle:LineSegment
-                    End="-223.333333333333,24.2384105960265" />
+                    End="-173.333333333333,27.8741721854305" />
                   <mssgle:CubicBezierSegment
-                    Point1="-223.333333333333,24.2384105960265"
-                    Point2="-227.333333333333,24.2384105960265"
-                    Point3="-227.333333333333,28.2384105960265" />
+                    Point1="-173.333333333333,27.8741721854305"
+                    Point2="-177.333333333333,27.8741721854305"
+                    Point3="-177.333333333333,31.8741721854305" />
                   <mssgle:LineSegment
-                    End="-227.333333333333,52.5000000000001" />
+                    End="-177.333333333333,61.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -667,54 +820,50 @@ WHERE 1=1
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="425.166666666667,355.5">
+          TopLeft="437.166666666667,509.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-26.6666666666666,60"
+              EndConnector="8.33333333333337,67"
               Start="0,0"
-              End="-26.6666666666666,52.5">
+              End="8.33333333333337,59.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,20.2384105960265" />
+                    End="0,23.0662251655629" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,20.2384105960265"
-                    Point2="0,24.2384105960265"
-                    Point3="-4,24.2384105960265" />
+                    Point1="0,23.0662251655629"
+                    Point2="0,27.0662251655629"
+                    Point3="4,27.0662251655629" />
                   <mssgle:LineSegment
-                    End="-22.6666666666666,24.2384105960265" />
+                    End="4.33333333333337,27.0662251655629" />
                   <mssgle:CubicBezierSegment
-                    Point1="-22.6666666666666,24.2384105960265"
-                    Point2="-26.6666666666666,24.2384105960265"
-                    Point3="-26.6666666666666,28.2384105960265" />
+                    Point1="4.33333333333337,27.0662251655629"
+                    Point2="8.33333333333337,27.0662251655629"
+                    Point3="8.33333333333337,31.0662251655629" />
                   <mssgle:LineSegment
-                    End="-26.6666666666666,52.5" />
+                    End="8.33333333333337,59.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-28.5746809895833,29.2384105960265,30.4826953125,9.7490234375"
+              BoundingBox="-11.0746809895833,32.0662251655629,30.4826953125,9.7490234375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
-          Size="219,42"
-          Id="Package\SQL CleanUp ArchiveQueue"
-          TopLeft="562,415.5" />
-        <NodeLayout
           Size="197,42"
-          Id="Package\For Loop Container\Fetch next Archive table"
+          Id="Package\Sequence Container\For Loop Container\Fetch next Archive table"
           TopLeft="5.50000000000001,5.5" />
         <NodeLayout
           Size="176,42"
-          Id="Package\For Loop Container\SQL UpdateArchive"
+          Id="Package\Sequence Container\For Loop Container\SQL UpdateArchive"
           TopLeft="16,107.5" />
         <EdgeLayout
-          Id="Package\For Loop Container.PrecedenceConstraints[Constraint]"
+          Id="Package\Sequence Container\For Loop Container.PrecedenceConstraints[Constraint]"
           TopLeft="104,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -742,15 +891,82 @@ WHERE 1=1
           IsExpanded="True"
           PanelSize="208,204"
           Size="208,248"
-          Id="Package\For Loop Container"
-          TopLeft="567.5,107.5" />
+          Id="Package\Sequence Container\For Loop Container"
+          TopLeft="11,107.5" />
+        <EdgeLayout
+          Id="Package\Sequence Container.PrecedenceConstraints[Constraint 3]"
+          TopLeft="115,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container.PrecedenceConstraints[Constraint 4]"
+          TopLeft="115,355.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <NodeLayout
           Size="203,42"
-          Id="Package\Insert into Archive Queue"
-          TopLeft="570,5.49999999999989" />
+          Id="Package\Sequence Container\Insert into Archive Queue"
+          TopLeft="13.5,5.5" />
+        <NodeLayout
+          Size="219,42"
+          Id="Package\Sequence Container\SQL CleanUp ArchiveQueue"
+          TopLeft="5.50000000000004,415.5" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="230,512"
+          Size="230,556"
+          Id="Package\Sequence Container"
+          TopLeft="579.5,107.5" />
+        <NodeLayout
+          Size="176,42"
+          Id="Package\SQL ExecutionStart 1"
+          TopLeft="606.5,5.49999999999977" />
+        <NodeLayout
+          Size="230,42"
+          Id="Package\SQL ExecutionEnd Succeeded 1"
+          TopLeft="561.5,723.5" />
+        <NodeLayout
+          Size="205,42"
+          Id="Package\SQL ExecutionEnd Failed 1"
+          TopLeft="852,723.5" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="671.5,47.4999999999999">
+          TopLeft="694.5,47.4999999999998">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -772,24 +988,72 @@ WHERE 1=1
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 4]"
-          TopLeft="671.5,355.5">
+          TopLeft="657.5,663.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60"
+              EndConnector="19,60"
               Start="0,0"
-              End="0,52.5">
+              End="19,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5" />
+                    End="0,20.2487046632124" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.2487046632124"
+                    Point2="0,24.2487046632124"
+                    Point3="4,24.2487046632124" />
+                  <mssgle:LineSegment
+                    End="15,24.2487046632124" />
+                  <mssgle:CubicBezierSegment
+                    Point1="15,24.2487046632124"
+                    Point2="19,24.2487046632124"
+                    Point3="19,28.2487046632124" />
+                  <mssgle:LineSegment
+                    End="19,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 5]"
+          TopLeft="731.5,663.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="223,60"
+              Start="0,0"
+              End="223,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.2487046632124" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.2487046632124"
+                    Point2="0,24.2487046632124"
+                    Point3="4,24.2487046632124" />
+                  <mssgle:LineSegment
+                    End="219,24.2487046632124" />
+                  <mssgle:CubicBezierSegment
+                    Point1="219,24.2487046632124"
+                    Point2="223,24.2487046632124"
+                    Point3="223,28.2487046632124" />
+                  <mssgle:LineSegment
+                    End="223,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="96.25865234375,29.2487046632124,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
