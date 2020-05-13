@@ -11,8 +11,8 @@
   DTS:LocaleID="1030"
   DTS:ObjectName="Master Salg"
   DTS:PackageType="5"
-  DTS:VersionBuild="25"
-  DTS:VersionGUID="{C43DB546-BFF6-4FE6-8D57-FE1FCADC41A7}">
+  DTS:VersionBuild="26"
+  DTS:VersionGUID="{A0839E06-7210-46AC-A888-CF9E56FA90B8}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -148,6 +148,23 @@
                 </ExecutePackageTask>
               </DTS:ObjectData>
             </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\Master Salg\Extract SSIS pakker\Execute Extract Order_Products__Prior"
+              DTS:CreationName="Microsoft.ExecutePackageTask"
+              DTS:Description="Execute Package Task"
+              DTS:DTSID="{83695171-7381-4455-9645-cd4b910dad4c}"
+              DTS:ExecutableType="Microsoft.ExecutePackageTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Execute Extract Order_Products__Prior"
+              DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <ExecutePackageTask>
+                  <UseProjectReference>True</UseProjectReference>
+                  <PackageName>Extract Order_Products__Prior.dtsx</PackageName>
+                </ExecutePackageTask>
+              </DTS:ObjectData>
+            </DTS:Executable>
           </DTS:Executables>
           <DTS:PrecedenceConstraints>
             <DTS:PrecedenceConstraint
@@ -158,6 +175,14 @@
               DTS:LogicalAnd="True"
               DTS:ObjectName="Constraint"
               DTS:To="Package\Master Salg\Extract SSIS pakker\Execute Extract Departments" />
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\Master Salg\Extract SSIS pakker.PrecedenceConstraints[Constraint 1]"
+              DTS:CreationName=""
+              DTS:DTSID="{CE19EB87-29D8-4447-9A22-AF0CA90745E9}"
+              DTS:From="Package\Master Salg\Extract SSIS pakker\Execute Extract Departments"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Constraint 1"
+              DTS:To="Package\Master Salg\Extract SSIS pakker\Execute Extract Order_Products__Prior" />
           </DTS:PrecedenceConstraints>
         </DTS:Executable>
       </DTS:Executables>
@@ -383,13 +408,17 @@
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
+          Size="191,42"
+          Id="Package\Master Salg\Execute Archive tables"
+          TopLeft="9.50000000000007,415.5" />
+        <NodeLayout
           Size="188,42"
           Id="Package\Master Salg\Extract SSIS pakker\Execute Extract Aisles"
           TopLeft="5.50000000000001,5.5" />
         <NodeLayout
           Size="188,42"
           Id="Package\Master Salg\Extract SSIS pakker\Execute Extract Departments"
-          TopLeft="5.50000000000001,107.5" />
+          TopLeft="5.50000000000003,107.5" />
         <EdgeLayout
           Id="Package\Master Salg\Extract SSIS pakker.PrecedenceConstraints[Constraint]"
           TopLeft="99.5,47.5">
@@ -412,31 +441,24 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <ContainerLayout
-          HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="199,204"
-          Size="200,247"
-          Id="Package\Master Salg\Extract SSIS pakker"
-          TopLeft="5.50000000000003,5.5" />
         <NodeLayout
-          Size="191,42"
-          Id="Package\Master Salg\Execute Archive tables"
-          TopLeft="9.50000000000004,313.5" />
+          Size="188,42"
+          Id="Package\Master Salg\Extract SSIS pakker\Execute Extract Order_Products__Prior"
+          TopLeft="5.50000000000003,209.5" />
         <EdgeLayout
-          Id="Package\Master Salg.PrecedenceConstraints[Constraint]"
-          TopLeft="105.25,252.5">
+          Id="Package\Master Salg\Extract SSIS pakker.PrecedenceConstraints[Constraint 1]"
+          TopLeft="99.5,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,61"
+              EndConnector="0,60"
               Start="0,0"
-              End="0,53.5">
+              End="0,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,53.5" />
+                    End="0,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -448,18 +470,47 @@
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="230,410"
-          Size="230,454"
+          PanelSize="199,306"
+          Size="199,350"
+          Id="Package\Master Salg\Extract SSIS pakker"
+          TopLeft="5.50000000000004,5.5" />
+        <EdgeLayout
+          Id="Package\Master Salg.PrecedenceConstraints[Constraint]"
+          TopLeft="105,355.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="210,512"
+          Size="210,556"
           Id="Package\Master Salg"
           TopLeft="293.5,107.5" />
         <NodeLayout
           Size="205,42"
           Id="Package\SQL ExecutionEnd Failed"
-          TopLeft="296,621.5" />
+          TopLeft="296,723.5" />
         <NodeLayout
           Size="230,42"
           Id="Package\SQL ExecutionEnd Succeeded"
-          TopLeft="5.50000000000011,621.5" />
+          TopLeft="5.50000000000011,723.5" />
         <NodeLayout
           Size="176,42"
           Id="Package\SQL ExecutionStart"
@@ -488,7 +539,7 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="364.833333333333,561.5">
+          TopLeft="364.833333333333,663.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -522,7 +573,7 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="432.166666666667,561.5">
+          TopLeft="432.166666666667,663.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"

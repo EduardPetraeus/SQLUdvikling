@@ -11,8 +11,8 @@
   DTS:LocaleID="1030"
   DTS:ObjectName="Extract Departments"
   DTS:PackageType="5"
-  DTS:VersionBuild="23"
-  DTS:VersionGUID="{62A2A3E1-11C4-45D2-9DA4-00DF7AD7171A}">
+  DTS:VersionBuild="26"
+  DTS:VersionGUID="{6CEE1C93-DBFB-4976-877B-1735B2BEDF72}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -122,15 +122,6 @@
       DTS:ObjectName="ExtractId">
       <DTS:VariableValue
         DTS:DataType="20">0</DTS:VariableValue>
-    </DTS:Variable>
-    <DTS:Variable
-      DTS:CreationName=""
-      DTS:DTSID="{423E804E-1180-403B-946C-ADA9845CB0BC}"
-      DTS:IncludeInDebugDump="2345"
-      DTS:Namespace="User"
-      DTS:ObjectName="PackageName">
-      <DTS:VariableValue
-        DTS:DataType="8">Extract Departments</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""

@@ -72,6 +72,9 @@
     <Build Include="Archive\Aisles.sql" />
     <Build Include="Extract\Departments.sql" />
     <Build Include="Archive\Departments.sql" />
+    <Build Include="Extract\Order_Products__Prior.sql" />
+    <Build Include="Archive\Order_Products__Prior.sql" />
+    <Build Include="Extract\Temp_Order_Products__Prior.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Salg.dev.publish.xml" />

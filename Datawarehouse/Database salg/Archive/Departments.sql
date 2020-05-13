@@ -18,8 +18,8 @@
     [Meta_DeleteTime]   DATETIME       NULL,
     [Meta_DeleteJob]    BIGINT         NULL, -- Reference to the audit framework
           /* Constraints */
-	CONSTRAINT PK_Archive_Department PRIMARY KEY CLUSTERED ([Department_Id], Meta_ValidFrom)
+	CONSTRAINT PK_Archive_Department PRIMARY KEY CLUSTERED ([Department_Id], [Meta_ValidFrom])
 );
 GO
 	
-CREATE UNIQUE INDEX IDX_Archive_Department ON [Archive].[Departments] (Meta_Id)
+CREATE UNIQUE INDEX IDX_Archive_Department ON [Archive].[Departments] ([Meta_Id])

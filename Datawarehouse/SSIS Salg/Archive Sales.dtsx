@@ -11,8 +11,8 @@
   DTS:LocaleID="1030"
   DTS:ObjectName="Archive Sales"
   DTS:PackageType="5"
-  DTS:VersionBuild="44"
-  DTS:VersionGUID="{2B2B70BA-1CAB-4AD9-B32C-A8EC53533023}">
+  DTS:VersionBuild="49"
+  DTS:VersionGUID="{6984D30E-CBEB-48AC-BA53-701C5B461B82}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:PackageParameters>
@@ -50,7 +50,7 @@
       DTS:ObjectName="TableNameStrings">
       <DTS:Property
         DTS:DataType="8"
-        DTS:Name="ParameterValue">'Aisles', 'Departments'</DTS:Property>
+        DTS:Name="ParameterValue">'Aisles', 'Departments', 'Order_Products__Prior'</DTS:Property>
     </DTS:PackageParameter>
   </DTS:PackageParameters>
   <DTS:Variables>
@@ -75,7 +75,7 @@
         DTS:DataType="8">INSERT INTO system.ArchiveQueue (ExecutionId, TableName)
 SELECT @ExecutionId, TABLE_NAME
 FROM INFORMATION_SCHEMA.TABLES
-WHERE TABLE_SCHEMA = 'Archive' AND TABLE_NAME IN ('Aisles', 'Departments')</DTS:VariableValue>
+WHERE TABLE_SCHEMA = 'Archive' AND TABLE_NAME IN ('Aisles', 'Departments', 'Order_Products__Prior')</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -408,13 +408,17 @@ WHERE TABLE_SCHEMA = 'Archive' AND TABLE_NAME IN ('Aisles', 'Departments')</DTS:
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="176,42"
-          Id="Package\Archive Sales\SQL UpdateArchive"
-          TopLeft="24,107.5" />
-        <NodeLayout
           Size="203,42"
           Id="Package\Archive Sales\Insert into Archive Queue"
           TopLeft="13.5,5.5" />
+        <NodeLayout
+          Size="219,42"
+          Id="Package\Archive Sales\SQL CleanUp ArchiveQueue"
+          TopLeft="5.50000000000003,209.5" />
+        <NodeLayout
+          Size="176,42"
+          Id="Package\Archive Sales\SQL UpdateArchive"
+          TopLeft="24,107.5" />
         <EdgeLayout
           Id="Package\Archive Sales.PrecedenceConstraints[Constraint]"
           TopLeft="113.5,47.5">
@@ -437,10 +441,6 @@ WHERE TABLE_SCHEMA = 'Archive' AND TABLE_NAME IN ('Aisles', 'Departments')</DTS:
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="219,42"
-          Id="Package\Archive Sales\SQL CleanUp ArchiveQueue"
-          TopLeft="5.50000000000003,209.5" />
         <EdgeLayout
           Id="Package\Archive Sales.PrecedenceConstraints[Constraint 1]"
           TopLeft="113.5,149.5">
