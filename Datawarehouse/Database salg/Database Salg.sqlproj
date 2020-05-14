@@ -80,6 +80,8 @@
     <Build Include="Archive\Order_Products__Train.sql" />
     <Build Include="Extract\Orders.sql" />
     <Build Include="Archive\Orders.sql" />
+    <Build Include="Extract\Products.sql" />
+    <Build Include="Archive\Products.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Salg.dev.publish.xml" />
