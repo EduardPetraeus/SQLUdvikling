@@ -5,11 +5,13 @@ VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Database Salg", "Database salg\Database Salg.sqlproj", "{FE8B664F-937D-49F0-AA66-8DCF20FC96AE}"
 EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Database LZDB", "LZDB\Database LZDB.sqlproj", "{EA7D88B0-0350-48CA-B674-62C8F5400AE2}"
-EndProject
 Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "SSIS Salg", "SSIS Salg\SSIS Salg.dtproj", "{BB166723-F068-4777-A7CC-B007FD266221}"
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Database Staging", "Database Staging\Database Staging.sqlproj", "{F3DBFCCA-32B1-46EA-AD8D-C375A567608C}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Database LZDB", "Database LZDB\Database LZDB.sqlproj", "{EA7D88B0-0350-48CA-B674-62C8F5400AE2}"
+EndProject
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "SSIS Staging", "SSIS Staging\SSIS Staging.dtproj", "{06168960-9AB5-461B-A66A-0D36F5E20285}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,15 +29,6 @@ Global
 		{FE8B664F-937D-49F0-AA66-8DCF20FC96AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE8B664F-937D-49F0-AA66-8DCF20FC96AE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FE8B664F-937D-49F0-AA66-8DCF20FC96AE}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{EA7D88B0-0350-48CA-B674-62C8F5400AE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EA7D88B0-0350-48CA-B674-62C8F5400AE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EA7D88B0-0350-48CA-B674-62C8F5400AE2}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{EA7D88B0-0350-48CA-B674-62C8F5400AE2}.Development|Any CPU.ActiveCfg = Debug|Any CPU
-		{EA7D88B0-0350-48CA-B674-62C8F5400AE2}.Development|Any CPU.Build.0 = Debug|Any CPU
-		{EA7D88B0-0350-48CA-B674-62C8F5400AE2}.Development|Any CPU.Deploy.0 = Debug|Any CPU
-		{EA7D88B0-0350-48CA-B674-62C8F5400AE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EA7D88B0-0350-48CA-B674-62C8F5400AE2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EA7D88B0-0350-48CA-B674-62C8F5400AE2}.Release|Any CPU.Deploy.0 = Release|Any CPU
 		{BB166723-F068-4777-A7CC-B007FD266221}.Debug|Any CPU.ActiveCfg = Development
 		{BB166723-F068-4777-A7CC-B007FD266221}.Debug|Any CPU.Build.0 = Development
 		{BB166723-F068-4777-A7CC-B007FD266221}.Development|Any CPU.ActiveCfg = Development
@@ -51,6 +44,21 @@ Global
 		{F3DBFCCA-32B1-46EA-AD8D-C375A567608C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F3DBFCCA-32B1-46EA-AD8D-C375A567608C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F3DBFCCA-32B1-46EA-AD8D-C375A567608C}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{EA7D88B0-0350-48CA-B674-62C8F5400AE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA7D88B0-0350-48CA-B674-62C8F5400AE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA7D88B0-0350-48CA-B674-62C8F5400AE2}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{EA7D88B0-0350-48CA-B674-62C8F5400AE2}.Development|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA7D88B0-0350-48CA-B674-62C8F5400AE2}.Development|Any CPU.Build.0 = Debug|Any CPU
+		{EA7D88B0-0350-48CA-B674-62C8F5400AE2}.Development|Any CPU.Deploy.0 = Debug|Any CPU
+		{EA7D88B0-0350-48CA-B674-62C8F5400AE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA7D88B0-0350-48CA-B674-62C8F5400AE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA7D88B0-0350-48CA-B674-62C8F5400AE2}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{06168960-9AB5-461B-A66A-0D36F5E20285}.Debug|Any CPU.ActiveCfg = Development
+		{06168960-9AB5-461B-A66A-0D36F5E20285}.Debug|Any CPU.Build.0 = Development
+		{06168960-9AB5-461B-A66A-0D36F5E20285}.Development|Any CPU.ActiveCfg = Development
+		{06168960-9AB5-461B-A66A-0D36F5E20285}.Development|Any CPU.Build.0 = Development
+		{06168960-9AB5-461B-A66A-0D36F5E20285}.Release|Any CPU.ActiveCfg = Development
+		{06168960-9AB5-461B-A66A-0D36F5E20285}.Release|Any CPU.Build.0 = Development
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

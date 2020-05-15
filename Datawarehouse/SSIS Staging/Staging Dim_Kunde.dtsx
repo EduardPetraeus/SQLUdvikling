@@ -1,0 +1,1493 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/11/2020 9:36:52 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="PC0QGDKR"
+  DTS:CreatorName="NCLAN\cep"
+  DTS:DTSID="{AF6DD8C6-9932-4380-92E2-7ADE21267172}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.94"
+  DTS:LocaleID="1030"
+  DTS:ObjectName="Staging Dim_Kunde"
+  DTS:PackageType="5"
+  DTS:VersionBuild="33"
+  DTS:VersionGUID="{4CBE096B-CE54-4694-AD62-A129A671DD2C}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="11"
+      DTS:DTSID="{7605D7B4-1212-41B3-95CC-42135BB9F7F1}"
+      DTS:ObjectName="FullLoad">
+      <DTS:Property
+        DTS:DataType="11"
+        DTS:Name="ParameterValue">-1</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{D67436FD-560D-4900-8728-056EE28D776D}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="ExecutionId">
+      <DTS:VariableValue
+        DTS:DataType="20">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{1073AD42-A795-4ECD-8FBB-E7F9A6E74577}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RecordsInserted">
+      <DTS:VariableValue
+        DTS:DataType="20">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{85C2BF16-B559-4C0D-9867-CABC4F3F66EE}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RecordsSelected">
+      <DTS:VariableValue
+        DTS:DataType="20">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{14B09744-AF03-426B-B33B-09D3671B37E3}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="StagingId">
+      <DTS:VariableValue
+        DTS:DataType="20">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{13BCA860-6E9B-419D-B6B6-586B308BA57C}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="TableName">
+      <DTS:VariableValue
+        DTS:DataType="8">Dim_Kunde</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\SQL ExecutionEnd Failed"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{57E3BBFF-0F58-451D-B119-4D3E6BC03975}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL ExecutionEnd Failed"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{A27AA4A5-6ECE-4E5D-8B16-03150D0523A3}"
+          SQLTask:SqlStatementSource="EXEC Audit.ExecutionEnd @Id, 'Failed'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="Id"
+            SQLTask:DtsVariableName="User::ExecutionId"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="12"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL ExecutionEnd Succeeded"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{238B8500-E768-42EF-8FC0-6621256242D0}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL ExecutionEnd Succeeded"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{A27AA4A5-6ECE-4E5D-8B16-03150D0523A3}"
+          SQLTask:IsStoredProc="True"
+          SQLTask:SqlStatementSource="Audit.ExecutionEnd" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="Id"
+            SQLTask:DtsVariableName="User::ExecutionId"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="12"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL ExecutionStart"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{BD07287D-D57A-4E17-85E4-FA16C03BF186}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL ExecutionStart"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{A27AA4A5-6ECE-4E5D-8B16-03150D0523A3}"
+          SQLTask:IsStoredProc="True"
+          SQLTask:SqlStatementSource="Audit.ExecutionStart" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="Id"
+            SQLTask:DtsVariableName="User::ExecutionId"
+            SQLTask:ParameterDirection="Output"
+            SQLTask:DataType="12"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="PackageID"
+            SQLTask:DtsVariableName="System::PackageID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="9"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="PackageName"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="16"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="Database"
+            SQLTask:DtsVariableName="$Project::Database"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="16"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="ServerExecutionID"
+            SQLTask:DtsVariableName="System::ServerExecutionID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="12"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Staging Dim_Kunde"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{8E8446CA-4E53-44FD-BF6F-77EB60A40555}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Staging Dim_Kunde">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Staging Dim_Kunde\SQL StagingEnd Failed"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{0CF07744-8EB5-4C64-AE0D-A8A49E1A12D0}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL StagingEnd Failed"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{A27AA4A5-6ECE-4E5D-8B16-03150D0523A3}"
+              SQLTask:SqlStatementSource="EXEC Audit.StagingEnd @StagingId, 'Failed'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="StagingId"
+                SQLTask:DtsVariableName="User::StagingId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="12"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Staging Dim_Kunde\SQL StagingEnd Succeeded"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{CD8BB583-2D57-4F9A-9954-489CD498450D}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL StagingEnd Succeeded"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{A27AA4A5-6ECE-4E5D-8B16-03150D0523A3}"
+              SQLTask:IsStoredProc="True"
+              SQLTask:SqlStatementSource="Audit.StagingEnd" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="StagingId"
+                SQLTask:DtsVariableName="User::StagingId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="12"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="RecordsSelected"
+                SQLTask:DtsVariableName="User::RecordsSelected"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="12"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="RecordsInserted"
+                SQLTask:DtsVariableName="User::RecordsInserted"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="12"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Staging Dim_Kunde\SQL StagingStart"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{FDAD4A64-2E9B-443E-B219-6A5436A9AA05}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL StagingStart"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{A27AA4A5-6ECE-4E5D-8B16-03150D0523A3}"
+              SQLTask:IsStoredProc="True"
+              SQLTask:SqlStatementSource="[Audit].[StagingStart]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="ExecutionId"
+                SQLTask:DtsVariableName="User::ExecutionId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="12"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="StagingId"
+                SQLTask:DtsVariableName="User::StagingId"
+                SQLTask:ParameterDirection="Output"
+                SQLTask:DataType="12"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="TableName"
+                SQLTask:DtsVariableName="User::TableName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="16"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="Database"
+                SQLTask:DtsVariableName="$Project::Database"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="16"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="Schema"
+                SQLTask:DtsVariableName="$Project::Schema"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="16"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Staging Dim_Kunde\Staging Dim_Kunde"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{012BBDCC-12BA-44BA-8672-0946FBC872BC}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Staging Dim_Kunde"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Staging Dim_Kunde\Staging Dim_Kunde\Derived Column"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="Derived Column"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Staging Dim_Kunde\Staging Dim_Kunde\Derived Column.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Staging Dim_Kunde\Staging Dim_Kunde\Derived Column.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\Staging Dim_Kunde\Staging Dim_Kunde\Derived Column.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Staging Dim_Kunde\Staging Dim_Kunde\Derived Column.Outputs[Derived Column Output].Columns[Meta_CreateJob]"
+                          dataType="i8"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Staging Dim_Kunde\Staging Dim_Kunde\Derived Column.Outputs[Derived Column Output].Columns[Meta_CreateJob]"
+                          name="Meta_CreateJob"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">@[User::StagingId]</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">@[User::StagingId]</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Staging Dim_Kunde\Staging Dim_Kunde\Derived Column.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\Staging Dim_Kunde\Staging Dim_Kunde\Derived Column.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Staging Dim_Kunde\Staging Dim_Kunde\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Staging Dim_Kunde\Staging Dim_Kunde\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Staging Dim_Kunde\Staging Dim_Kunde\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Staging Dim_Kunde\Staging Dim_Kunde\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Staging Dim_Kunde\Staging Dim_Kunde\OLE DB Destination"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLE DB Destination"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[Staging].[Dim_Kunde]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Staging Dim_Kunde\Staging Dim_Kunde\OLE DB Destination.Connections[OleDbConnection]"
+                      connectionManagerID="{603B99B8-8572-47C2-BA0D-DDC6CD1EE57B}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[OLEDB Staging]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Staging Dim_Kunde\Staging Dim_Kunde\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Staging Dim_Kunde\Staging Dim_Kunde\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Meta_CreateJob]"
+                          cachedDataType="i8"
+                          cachedName="Meta_CreateJob"
+                          externalMetadataColumnId="Package\Staging Dim_Kunde\Staging Dim_Kunde\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Meta_CreateJob]"
+                          lineageId="Package\Staging Dim_Kunde\Staging Dim_Kunde\Derived Column.Outputs[Derived Column Output].Columns[Meta_CreateJob]" />
+                        <inputColumn
+                          refId="Package\Staging Dim_Kunde\Staging Dim_Kunde\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Order_Id]"
+                          cachedDataType="i8"
+                          cachedName="Order_Id"
+                          externalMetadataColumnId="Package\Staging Dim_Kunde\Staging Dim_Kunde\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Order_Id]"
+                          lineageId="Package\Staging Dim_Kunde\Staging Dim_Kunde\OLE DB Source.Outputs[OLE DB Source Output].Columns[Order_Id]" />
+                        <inputColumn
+                          refId="Package\Staging Dim_Kunde\Staging Dim_Kunde\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[User_Id]"
+                          cachedDataType="i4"
+                          cachedName="User_Id"
+                          externalMetadataColumnId="Package\Staging Dim_Kunde\Staging Dim_Kunde\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[User_Id]"
+                          lineageId="Package\Staging Dim_Kunde\Staging Dim_Kunde\OLE DB Source.Outputs[OLE DB Source Output].Columns[User_Id]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Staging Dim_Kunde\Staging Dim_Kunde\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Meta_Id]"
+                          dataType="i8"
+                          name="Meta_Id" />
+                        <externalMetadataColumn
+                          refId="Package\Staging Dim_Kunde\Staging Dim_Kunde\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Meta_CreateTime]"
+                          dataType="dbTimeStamp"
+                          name="Meta_CreateTime" />
+                        <externalMetadataColumn
+                          refId="Package\Staging Dim_Kunde\Staging Dim_Kunde\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Meta_CreateJob]"
+                          dataType="i8"
+                          name="Meta_CreateJob" />
+                        <externalMetadataColumn
+                          refId="Package\Staging Dim_Kunde\Staging Dim_Kunde\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Order_Id]"
+                          dataType="i8"
+                          name="Order_Id" />
+                        <externalMetadataColumn
+                          refId="Package\Staging Dim_Kunde\Staging Dim_Kunde\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[User_Id]"
+                          dataType="i4"
+                          name="User_Id" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Staging Dim_Kunde\Staging Dim_Kunde\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Staging Dim_Kunde\Staging Dim_Kunde\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Staging Dim_Kunde\Staging Dim_Kunde\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Staging Dim_Kunde\Staging Dim_Kunde\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Staging Dim_Kunde\Staging Dim_Kunde\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Staging Dim_Kunde\Staging Dim_Kunde\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Staging Dim_Kunde\Staging Dim_Kunde\OLE DB Source"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="OLE DB Source"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[Staging].[v_Dim_Kunde]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Staging Dim_Kunde\Staging Dim_Kunde\OLE DB Source.Connections[OleDbConnection]"
+                      connectionManagerID="{603B99B8-8572-47C2-BA0D-DDC6CD1EE57B}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[OLEDB Staging]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Staging Dim_Kunde\Staging Dim_Kunde\OLE DB Source.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Staging Dim_Kunde\Staging Dim_Kunde\OLE DB Source.Outputs[OLE DB Source Output].Columns[Order_Id]"
+                          dataType="i8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Staging Dim_Kunde\Staging Dim_Kunde\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Order_Id]"
+                          lineageId="Package\Staging Dim_Kunde\Staging Dim_Kunde\OLE DB Source.Outputs[OLE DB Source Output].Columns[Order_Id]"
+                          name="Order_Id"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Staging Dim_Kunde\Staging Dim_Kunde\OLE DB Source.Outputs[OLE DB Source Output].Columns[User_Id]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Staging Dim_Kunde\Staging Dim_Kunde\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[User_Id]"
+                          lineageId="Package\Staging Dim_Kunde\Staging Dim_Kunde\OLE DB Source.Outputs[OLE DB Source Output].Columns[User_Id]"
+                          name="User_Id"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Staging Dim_Kunde\Staging Dim_Kunde\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Order_Id]"
+                          dataType="i8"
+                          name="Order_Id" />
+                        <externalMetadataColumn
+                          refId="Package\Staging Dim_Kunde\Staging Dim_Kunde\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[User_Id]"
+                          dataType="i4"
+                          name="User_Id" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Staging Dim_Kunde\Staging Dim_Kunde\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Staging Dim_Kunde\Staging Dim_Kunde\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Order_Id]"
+                          dataType="i8"
+                          lineageId="Package\Staging Dim_Kunde\Staging Dim_Kunde\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Order_Id]"
+                          name="Order_Id" />
+                        <outputColumn
+                          refId="Package\Staging Dim_Kunde\Staging Dim_Kunde\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[User_Id]"
+                          dataType="i4"
+                          lineageId="Package\Staging Dim_Kunde\Staging Dim_Kunde\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[User_Id]"
+                          name="User_Id" />
+                        <outputColumn
+                          refId="Package\Staging Dim_Kunde\Staging Dim_Kunde\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Staging Dim_Kunde\Staging Dim_Kunde\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Staging Dim_Kunde\Staging Dim_Kunde\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Staging Dim_Kunde\Staging Dim_Kunde\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Staging Dim_Kunde\Staging Dim_Kunde\RC inserted"
+                  componentClassID="Microsoft.RowCount"
+                  contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+                  name="RC inserted">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable to hold the row count."
+                      name="VariableName">User::RecordsInserted</property>
+                  </properties>
+                  <inputs>
+                    <input
+                      refId="Package\Staging Dim_Kunde\Staging Dim_Kunde\RC inserted.Inputs[Row Count Input 1]"
+                      hasSideEffects="true"
+                      name="Row Count Input 1">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Staging Dim_Kunde\Staging Dim_Kunde\RC inserted.Outputs[Row Count Output 1]"
+                      name="Row Count Output 1"
+                      synchronousInputId="Package\Staging Dim_Kunde\Staging Dim_Kunde\RC inserted.Inputs[Row Count Input 1]">
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Staging Dim_Kunde\Staging Dim_Kunde\RC selected"
+                  componentClassID="Microsoft.RowCount"
+                  contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+                  name="RC selected">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable to hold the row count."
+                      name="VariableName">User::RecordsSelected</property>
+                  </properties>
+                  <inputs>
+                    <input
+                      refId="Package\Staging Dim_Kunde\Staging Dim_Kunde\RC selected.Inputs[Row Count Input 1]"
+                      hasSideEffects="true"
+                      name="Row Count Input 1">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Staging Dim_Kunde\Staging Dim_Kunde\RC selected.Outputs[Row Count Output 1]"
+                      name="Row Count Output 1"
+                      synchronousInputId="Package\Staging Dim_Kunde\Staging Dim_Kunde\RC selected.Inputs[Row Count Input 1]">
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Staging Dim_Kunde\Staging Dim_Kunde.Paths[Derived Column Output]"
+                  endId="Package\Staging Dim_Kunde\Staging Dim_Kunde\RC inserted.Inputs[Row Count Input 1]"
+                  name="Derived Column Output"
+                  startId="Package\Staging Dim_Kunde\Staging Dim_Kunde\Derived Column.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\Staging Dim_Kunde\Staging Dim_Kunde.Paths[OLE DB Source Output]"
+                  endId="Package\Staging Dim_Kunde\Staging Dim_Kunde\RC selected.Inputs[Row Count Input 1]"
+                  name="OLE DB Source Output"
+                  startId="Package\Staging Dim_Kunde\Staging Dim_Kunde\OLE DB Source.Outputs[OLE DB Source Output]" />
+                <path
+                  refId="Package\Staging Dim_Kunde\Staging Dim_Kunde.Paths[Row Count Output 1]"
+                  endId="Package\Staging Dim_Kunde\Staging Dim_Kunde\Derived Column.Inputs[Derived Column Input]"
+                  name="Row Count Output 1"
+                  startId="Package\Staging Dim_Kunde\Staging Dim_Kunde\RC selected.Outputs[Row Count Output 1]" />
+                <path
+                  refId="Package\Staging Dim_Kunde\Staging Dim_Kunde.Paths[Row Count Output 11]"
+                  endId="Package\Staging Dim_Kunde\Staging Dim_Kunde\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  name="Row Count Output 1"
+                  startId="Package\Staging Dim_Kunde\Staging Dim_Kunde\RC inserted.Outputs[Row Count Output 1]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Staging Dim_Kunde\Truncate table Dim_Kunde"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{2C0B04D9-AE5D-411B-B44E-05A9DDC3170D}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Truncate table Dim_Kunde"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{603B99B8-8572-47C2-BA0D-DDC6CD1EE57B}"
+              SQLTask:SqlStatementSource="truncate table Staging.Dim_Kunde" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Staging Dim_Kunde\Update Map"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{8D657D78-8AFD-43A9-8190-07B029473BC5}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Update Map"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{603B99B8-8572-47C2-BA0D-DDC6CD1EE57B}"
+              SQLTask:SqlStatementSource="Map.UpdateMap ?, ?, ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="@StagingTableName"
+                SQLTask:DtsVariableName="User::TableName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="130"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="@ExecutionId"
+                SQLTask:DtsVariableName="User::ExecutionId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="20"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="@MarkDelet"
+                SQLTask:DtsVariableName="$Package::FullLoad"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="11"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Staging Dim_Kunde.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{F716E296-AF56-4CB0-BE8D-320568C30712}"
+          DTS:From="Package\Staging Dim_Kunde\Truncate table Dim_Kunde"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Staging Dim_Kunde\Staging Dim_Kunde" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Staging Dim_Kunde.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{5567DE3B-0CC1-4BEC-892D-44925FD793A0}"
+          DTS:From="Package\Staging Dim_Kunde\SQL StagingStart"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Staging Dim_Kunde\Truncate table Dim_Kunde" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Staging Dim_Kunde.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{CB1752F0-7119-4A37-8BF4-3CF8E074F171}"
+          DTS:From="Package\Staging Dim_Kunde\Staging Dim_Kunde"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\Staging Dim_Kunde\Update Map" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Staging Dim_Kunde.PrecedenceConstraints[Constraint 3]"
+          DTS:CreationName=""
+          DTS:DTSID="{81408AC1-3CC0-4FEF-9AC9-EC50966DC2A8}"
+          DTS:From="Package\Staging Dim_Kunde\Staging Dim_Kunde"
+          DTS:ObjectName="Constraint 3"
+          DTS:To="Package\Staging Dim_Kunde\SQL StagingEnd Failed"
+          DTS:Value="1" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Staging Dim_Kunde.PrecedenceConstraints[Constraint 4]"
+          DTS:CreationName=""
+          DTS:DTSID="{D958A4B4-DBA8-45E0-9730-2FD7C29402F9}"
+          DTS:From="Package\Staging Dim_Kunde\Truncate table Dim_Kunde"
+          DTS:ObjectName="Constraint 4"
+          DTS:To="Package\Staging Dim_Kunde\SQL StagingEnd Failed"
+          DTS:Value="1" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Staging Dim_Kunde.PrecedenceConstraints[Constraint 5]"
+          DTS:CreationName=""
+          DTS:DTSID="{C2868B59-70AE-4E92-AEC9-EF41BACA96CE}"
+          DTS:From="Package\Staging Dim_Kunde\Update Map"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 5"
+          DTS:To="Package\Staging Dim_Kunde\SQL StagingEnd Succeeded" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Staging Dim_Kunde.PrecedenceConstraints[Constraint 6]"
+          DTS:CreationName=""
+          DTS:DTSID="{B3396B20-1F6C-4771-9595-B076AAD60DE7}"
+          DTS:From="Package\Staging Dim_Kunde\Update Map"
+          DTS:ObjectName="Constraint 6"
+          DTS:To="Package\Staging Dim_Kunde\SQL StagingEnd Failed"
+          DTS:Value="1" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{A3FE9330-3789-4D1B-AC77-4D78D638C970}"
+      DTS:From="Package\SQL ExecutionStart"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Staging Dim_Kunde" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{EB9B8A3C-5825-434F-867A-D598A12CFBFB}"
+      DTS:From="Package\Staging Dim_Kunde"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\SQL ExecutionEnd Succeeded" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{07C2E415-4496-4477-B7A0-83AD49692D5F}"
+      DTS:From="Package\Staging Dim_Kunde"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\SQL ExecutionEnd Failed"
+      DTS:Value="1" />
+  </DTS:PrecedenceConstraints>
+  <DTS:EventHandlers>
+    <DTS:EventHandler
+      DTS:refId="Package.EventHandlers[OnError]"
+      DTS:CreationName="OnError"
+      DTS:DTSID="{506884F6-332D-495A-BCED-09B7AB9B421F}"
+      DTS:EventID="0"
+      DTS:EventName="OnError"
+      DTS:LocaleID="-1">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:Description="The propagate property of the event"
+          DTS:DTSID="{3B7BD004-4B4F-412D-8F76-EB7908388D9C}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="System"
+          DTS:ObjectName="Propagate">
+          <DTS:VariableValue
+            DTS:DataType="11">-1</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package.EventHandlers[OnError]\SQL ExecutionError"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{5B02C42B-D46A-42A4-9212-7D87CCE8382D}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL ExecutionError"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{A27AA4A5-6ECE-4E5D-8B16-03150D0523A3}"
+              SQLTask:IsStoredProc="True"
+              SQLTask:SqlStatementSource="Audit.ExecutionError" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="ExecutionID"
+                SQLTask:DtsVariableName="User::ExecutionId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="12"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="ErrorCode"
+                SQLTask:DtsVariableName="System::ErrorCode"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="11"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="ErrorDescription"
+                SQLTask:DtsVariableName="System::ErrorDescription"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="16"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="SourceName"
+                SQLTask:DtsVariableName="System::SourceName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="16"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="SourceDescription"
+                SQLTask:DtsVariableName="System::SourceDescription"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="16"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:EventHandler>
+  </DTS:EventHandlers>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="205,42"
+          Id="Package\SQL ExecutionEnd Failed"
+          TopLeft="296,721.5" />
+        <NodeLayout
+          Size="230,42"
+          Id="Package\SQL ExecutionEnd Succeeded"
+          TopLeft="5.50000000000011,721.5" />
+        <NodeLayout
+          Size="176,42"
+          Id="Package\SQL ExecutionStart"
+          TopLeft="310.5,5.5" />
+        <NodeLayout
+          Size="191,42"
+          Id="Package\Staging Dim_Kunde\SQL StagingEnd Failed"
+          TopLeft="282,413.5" />
+        <NodeLayout
+          Size="216,42"
+          Id="Package\Staging Dim_Kunde\SQL StagingEnd Succeeded"
+          TopLeft="5.50000000000006,413.5" />
+        <NodeLayout
+          Size="161,42"
+          Id="Package\Staging Dim_Kunde\SQL StagingStart"
+          TopLeft="297,5.5" />
+        <NodeLayout
+          Size="177,42"
+          Id="Package\Staging Dim_Kunde\Staging Dim_Kunde"
+          TopLeft="137,209.5" />
+        <NodeLayout
+          Size="210,42"
+          Id="Package\Staging Dim_Kunde\Truncate table Dim_Kunde"
+          TopLeft="303,107.5" />
+        <NodeLayout
+          Size="170,42"
+          Id="Package\Staging Dim_Kunde\Update Map"
+          TopLeft="84.5,311.5" />
+        <EdgeLayout
+          Id="Package\Staging Dim_Kunde.PrecedenceConstraints[Constraint]"
+          TopLeft="374.333333333333,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-148.833333333333,60"
+              Start="0,0"
+              End="-148.833333333333,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.2722117202268" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.2722117202268"
+                    Point2="0,24.2722117202268"
+                    Point3="-4,24.2722117202268" />
+                  <mssgle:LineSegment
+                    End="-144.833333333333,24.2722117202268" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-144.833333333333,24.2722117202268"
+                    Point2="-148.833333333333,24.2722117202268"
+                    Point3="-148.833333333333,28.2722117202268" />
+                  <mssgle:LineSegment
+                    End="-148.833333333333,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Staging Dim_Kunde.PrecedenceConstraints[Constraint 1]"
+          TopLeft="377.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="33.5,60"
+              Start="0,0"
+              End="33.5,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26"
+                    Point2="0,30"
+                    Point3="4,30" />
+                  <mssgle:LineSegment
+                    End="29.5,30" />
+                  <mssgle:CubicBezierSegment
+                    Point1="29.5,30"
+                    Point2="33.5,30"
+                    Point3="33.5,34" />
+                  <mssgle:LineSegment
+                    End="33.5,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Staging Dim_Kunde.PrecedenceConstraints[Constraint 2]"
+          TopLeft="197.333333333333,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-27.8333333333333,60"
+              Start="0,0"
+              End="-27.8333333333333,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.3225083986562" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.3225083986562"
+                    Point2="0,24.3225083986562"
+                    Point3="-4,24.3225083986562" />
+                  <mssgle:LineSegment
+                    End="-23.8333333333333,24.3225083986562" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-23.8333333333333,24.3225083986562"
+                    Point2="-27.8333333333333,24.3225083986562"
+                    Point3="-27.8333333333333,28.3225083986562" />
+                  <mssgle:LineSegment
+                    End="-27.8333333333333,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Staging Dim_Kunde.PrecedenceConstraints[Constraint 3]"
+          TopLeft="253.666666666667,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="123.833333333333,162"
+              Start="0,0"
+              End="123.833333333333,154.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,61.6707726763718" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,61.6707726763718"
+                    Point2="0,65.6707726763718"
+                    Point3="4,65.6707726763718" />
+                  <mssgle:LineSegment
+                    End="119.833333333333,65.6707726763718" />
+                  <mssgle:CubicBezierSegment
+                    Point1="119.833333333333,65.6707726763718"
+                    Point2="123.833333333333,65.6707726763718"
+                    Point3="123.833333333333,69.6707726763718" />
+                  <mssgle:LineSegment
+                    End="123.833333333333,154.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="46.6753190104167,70.6707726763718,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Staging Dim_Kunde.PrecedenceConstraints[Constraint 4]"
+          TopLeft="445.666666666667,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-22.4166666666666,264"
+              Start="0,0"
+              End="-22.4166666666666,256.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,145.388348730103" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,145.388348730103"
+                    Point2="0,149.388348730103"
+                    Point3="-4,149.388348730103" />
+                  <mssgle:LineSegment
+                    End="-18.4166666666666,149.388348730103" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-18.4166666666666,149.388348730103"
+                    Point2="-22.4166666666666,149.388348730103"
+                    Point3="-22.4166666666666,153.388348730103" />
+                  <mssgle:LineSegment
+                    End="-22.4166666666666,256.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-26.4496809895833,154.388348730103,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Staging Dim_Kunde.PrecedenceConstraints[Constraint 5]"
+          TopLeft="142.5,353.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-29,60"
+              Start="0,0"
+              End="-29,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.3356643356643" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.3356643356643"
+                    Point2="0,24.3356643356643"
+                    Point3="-4,24.3356643356643" />
+                  <mssgle:LineSegment
+                    End="-25,24.3356643356643" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-25,24.3356643356643"
+                    Point2="-29,24.3356643356643"
+                    Point3="-29,28.3356643356643" />
+                  <mssgle:LineSegment
+                    End="-29,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Staging Dim_Kunde.PrecedenceConstraints[Constraint 6]"
+          TopLeft="196.5,353.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="135.25,60"
+              Start="0,0"
+              End="135.25,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.0242123313967" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,30.0242123313967"
+                    Point2="0,34.0242123313967"
+                    Point3="4,34.0242123313967" />
+                  <mssgle:LineSegment
+                    End="131.25,34.0242123313967" />
+                  <mssgle:CubicBezierSegment
+                    Point1="131.25,34.0242123313967"
+                    Point2="135.25,34.0242123313967"
+                    Point3="135.25,38.0242123313967" />
+                  <mssgle:LineSegment
+                    End="135.25,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="52.38365234375,39.0242123313967,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="524,511"
+          Size="524,554"
+          Id="Package\Staging Dim_Kunde"
+          TopLeft="159.5,107.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="398.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="320.166666666667,661.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-199.666666666667,60"
+              Start="0,0"
+              End="-199.666666666667,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.1201000834028" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.1201000834028"
+                    Point2="0,24.1201000834028"
+                    Point3="-4,24.1201000834028" />
+                  <mssgle:LineSegment
+                    End="-195.666666666667,24.1201000834028" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-195.666666666667,24.1201000834028"
+                    Point2="-199.666666666667,24.1201000834028"
+                    Point3="-199.666666666667,28.1201000834028" />
+                  <mssgle:LineSegment
+                    End="-199.666666666667,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="476.833333333333,661.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-78.3333333333333,60"
+              Start="0,0"
+              End="-78.3333333333333,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.1201000834028" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.1201000834028"
+                    Point2="0,24.1201000834028"
+                    Point3="-4,24.1201000834028" />
+                  <mssgle:LineSegment
+                    End="-74.3333333333333,24.1201000834028" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-74.3333333333333,24.1201000834028"
+                    Point2="-78.3333333333333,24.1201000834028"
+                    Point3="-78.3333333333333,28.1201000834028" />
+                  <mssgle:LineSegment
+                    End="-78.3333333333333,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-54.4080143229167,29.1201000834028,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <DtsEventHandler
+    design-time-name="Package.EventHandlers[OnError]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="177,42"
+          Id="Package.EventHandlers[OnError]\SQL ExecutionError"
+          TopLeft="450,168" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+  <TaskHost
+    design-time-name="Package\Staging Dim_Kunde\Staging Dim_Kunde">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="137,42"
+          Id="Package\Staging Dim_Kunde\Staging Dim_Kunde\RC inserted"
+          TopLeft="23,311.5" />
+        <NodeLayout
+          Size="177,42"
+          Id="Package\Staging Dim_Kunde\Staging Dim_Kunde\OLE DB Destination"
+          TopLeft="5.50000000000004,413.5" />
+        <NodeLayout
+          Size="157,42"
+          Id="Package\Staging Dim_Kunde\Staging Dim_Kunde\OLE DB Source"
+          TopLeft="25,14" />
+        <NodeLayout
+          Size="139,42"
+          Id="Package\Staging Dim_Kunde\Staging Dim_Kunde\RC selected"
+          TopLeft="27.5,107.5" />
+        <NodeLayout
+          Size="158,42"
+          Id="Package\Staging Dim_Kunde\Staging Dim_Kunde\Derived Column"
+          TopLeft="15,209.5" />
+        <EdgeLayout
+          Id="Package\Staging Dim_Kunde\Staging Dim_Kunde.Paths[OLE DB Source Output]"
+          TopLeft="100.25,56">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,51.5"
+              Start="0,0"
+              End="0,44">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,44" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Staging Dim_Kunde\Staging Dim_Kunde.Paths[Derived Column Output]"
+          TopLeft="92.75,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Staging Dim_Kunde\Staging Dim_Kunde.Paths[Row Count Output 11]"
+          TopLeft="92.75,353.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Staging Dim_Kunde\Staging Dim_Kunde.Paths[Row Count Output 1]"
+          TopLeft="95.5,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Staging Dim_Kunde\Staging Dim_Kunde\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">View</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Staging Dim_Kunde\Staging Dim_Kunde\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

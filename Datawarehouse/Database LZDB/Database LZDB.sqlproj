@@ -91,6 +91,9 @@
     <Build Include="Utility\Stored Procedures\GetNonKeyColumns.sql" />
     <Build Include="Utility\Stored Procedures\PrintLargeString.sql" />
     <Build Include="Archive\Stored Procedures\MultipleUpdateArchive.sql" />
+    <Build Include="Audit\Tables\StagingLog.sql" />
+    <Build Include="Audit\Stored Procedures\StagingEnd.sql" />
+    <Build Include="Audit\Stored Procedures\StagingStart.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="LZDB.dev.publish.xml" />

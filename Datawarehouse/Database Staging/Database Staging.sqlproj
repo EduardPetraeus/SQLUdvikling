@@ -60,6 +60,10 @@
     <Folder Include="Security" />
     <Folder Include="Staging" />
     <Folder Include="Staging\Views" />
+    <Folder Include="Staging\Tables" />
+    <Folder Include="Map" />
+    <Folder Include="Map\Tables" />
+    <Folder Include="Map\Stored Procedures" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Staging.dev.publish.xml" />
@@ -67,6 +71,17 @@
   <ItemGroup>
     <Build Include="Security\Staging.sql" />
     <Build Include="Staging\Views\v_Dim_Produkt.sql" />
+    <Build Include="Staging\Tables\Dim_Produkt.sql" />
+    <Build Include="Security\Map.sql" />
+    <Build Include="Map\Tables\Dim_Produkt.sql" />
+    <Build Include="Map\Stored Procedures\UpdateMap.sql" />
+    <Build Include="Staging\Views\v_Dim_Kunde.sql" />
+    <Build Include="Staging\Tables\Dim_Kunde.sql" />
+    <Build Include="Map\Tables\Dim_Kunde.sql" />
+    <Build Include="Staging\Views\v_Temp_Orders_Products.sql" />
+    <Build Include="Staging\Tables\Temp_Orders_Products.sql" />
+    <Build Include="Staging\Views\v_Fact_Ordre.sql" />
+    <Build Include="Staging\Tables\Fact_Ordre.sql" />
   </ItemGroup>
   <ItemGroup>
     <SqlCmdVariable Include="Salg">

@@ -1,0 +1,1362 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/11/2020 9:36:52 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="PC0QGDKR"
+  DTS:CreatorName="NCLAN\cep"
+  DTS:DTSID="{17B46862-AB7A-4A10-B109-C05D03B6E942}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.94"
+  DTS:LocaleID="1030"
+  DTS:ObjectName="Staging Fact Ordre"
+  DTS:PackageType="5"
+  DTS:VersionBuild="35"
+  DTS:VersionGUID="{2CCA6A47-3F7B-46D4-90C3-B1AF94409D40}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="11"
+      DTS:DTSID="{37E33826-7004-4A7A-B6D5-ECE391A4389D}"
+      DTS:ObjectName="FullLoad">
+      <DTS:Property
+        DTS:DataType="11"
+        DTS:Name="ParameterValue">-1</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{1576B85E-309D-4750-936D-250B51B35E35}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="ExecutionId">
+      <DTS:VariableValue
+        DTS:DataType="20">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{39BCE49C-FDB7-499F-8A4A-E7F54A6645C5}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RecordsInserted">
+      <DTS:VariableValue
+        DTS:DataType="20">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{8EFB3C42-C8B6-4083-84E8-7BBB7995BAB6}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RecordsSelected">
+      <DTS:VariableValue
+        DTS:DataType="20">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{45097470-8C31-4AD7-8C26-1DF55E72E35D}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="StagingId">
+      <DTS:VariableValue
+        DTS:DataType="20">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{9B06F31C-035E-42A3-BFC3-138A6A2687A2}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="TableName">
+      <DTS:VariableValue
+        DTS:DataType="8">Fact_Ordre</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\SQL ExecutionEnd Failed"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{B2E8F604-D7CC-45FF-8F8D-C3E55B832DE3}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL ExecutionEnd Failed"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{A27AA4A5-6ECE-4E5D-8B16-03150D0523A3}"
+          SQLTask:SqlStatementSource="EXEC Audit.ExecutionEnd @Id, 'Failed'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="Id"
+            SQLTask:DtsVariableName="User::ExecutionId"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="12"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL ExecutionEnd Succeeded"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{E9D1DED1-B918-4999-9BA5-3A6D95FBFF5A}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL ExecutionEnd Succeeded"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{A27AA4A5-6ECE-4E5D-8B16-03150D0523A3}"
+          SQLTask:IsStoredProc="True"
+          SQLTask:SqlStatementSource="Audit.ExecutionEnd" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="Id"
+            SQLTask:DtsVariableName="User::ExecutionId"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="12"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL ExecutionStart"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{4964429F-E6A9-4206-99D7-64B356F490DD}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL ExecutionStart"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{A27AA4A5-6ECE-4E5D-8B16-03150D0523A3}"
+          SQLTask:IsStoredProc="True"
+          SQLTask:SqlStatementSource="Audit.ExecutionStart" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="Id"
+            SQLTask:DtsVariableName="User::ExecutionId"
+            SQLTask:ParameterDirection="Output"
+            SQLTask:DataType="12"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="PackageID"
+            SQLTask:DtsVariableName="System::PackageID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="9"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="PackageName"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="16"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="Database"
+            SQLTask:DtsVariableName="$Project::Database"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="16"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="ServerExecutionID"
+            SQLTask:DtsVariableName="System::ServerExecutionID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="12"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Staging Dim_Produkt"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{488529DC-D041-4C07-BFAC-92AA70057AD9}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Staging Dim_Produkt">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Staging Dim_Produkt\SQL StagingEnd Failed"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{04F30E53-3DF6-42F7-ABF9-D4818DC47D63}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL StagingEnd Failed"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{A27AA4A5-6ECE-4E5D-8B16-03150D0523A3}"
+              SQLTask:SqlStatementSource="EXEC Audit.StagingEnd @StagingId, 'Failed'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="StagingId"
+                SQLTask:DtsVariableName="User::StagingId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="12"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Staging Dim_Produkt\SQL StagingEnd Succeeded"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{A098998D-FB0A-499D-A626-1BE475EA64A7}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL StagingEnd Succeeded"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{A27AA4A5-6ECE-4E5D-8B16-03150D0523A3}"
+              SQLTask:IsStoredProc="True"
+              SQLTask:SqlStatementSource="Audit.StagingEnd" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="StagingId"
+                SQLTask:DtsVariableName="User::StagingId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="12"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="RecordsSelected"
+                SQLTask:DtsVariableName="User::RecordsSelected"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="12"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="RecordsInserted"
+                SQLTask:DtsVariableName="User::RecordsInserted"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="12"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Staging Dim_Produkt\SQL StagingStart"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{3DA4957F-B79A-4ECC-B08A-5A30E83EAAE1}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL StagingStart"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{A27AA4A5-6ECE-4E5D-8B16-03150D0523A3}"
+              SQLTask:IsStoredProc="True"
+              SQLTask:SqlStatementSource="[Audit].[StagingStart]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="ExecutionId"
+                SQLTask:DtsVariableName="User::ExecutionId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="12"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="StagingId"
+                SQLTask:DtsVariableName="User::StagingId"
+                SQLTask:ParameterDirection="Output"
+                SQLTask:DataType="12"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="TableName"
+                SQLTask:DtsVariableName="User::TableName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="16"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="Database"
+                SQLTask:DtsVariableName="$Project::Database"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="16"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="Schema"
+                SQLTask:DtsVariableName="$Project::Schema"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="16"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{AAF26EB8-BF35-4C99-B560-A63FE90612F3}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Staging Temp_Orders_Products"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\Derived Column"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="Derived Column"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\Derived Column.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\Derived Column.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\Derived Column.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\Derived Column.Outputs[Derived Column Output].Columns[Meta_CreateJob]"
+                          dataType="i8"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\Derived Column.Outputs[Derived Column Output].Columns[Meta_CreateJob]"
+                          name="Meta_CreateJob"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">@[User::StagingId]</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">@[User::StagingId]</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\Derived Column.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\Derived Column.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Destination"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLE DB Destination"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[Staging].[Temp_Orders_Products]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Destination.Connections[OleDbConnection]"
+                      connectionManagerID="{603B99B8-8572-47C2-BA0D-DDC6CD1EE57B}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[OLEDB Staging]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Meta_CreateJob]"
+                          cachedDataType="i8"
+                          cachedName="Meta_CreateJob"
+                          externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Meta_CreateJob]"
+                          lineageId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\Derived Column.Outputs[Derived Column Output].Columns[Meta_CreateJob]" />
+                        <inputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Product_Id]"
+                          cachedDataType="i8"
+                          cachedName="Product_Id"
+                          externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Product_Id]"
+                          lineageId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Source.Outputs[OLE DB Source Output].Columns[Product_Id]" />
+                        <inputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Order_Id]"
+                          cachedDataType="i4"
+                          cachedName="Order_Id"
+                          externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Order_Id]"
+                          lineageId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Source.Outputs[OLE DB Source Output].Columns[Order_Id]" />
+                        <inputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Add_To_Cart_Order]"
+                          cachedDataType="i4"
+                          cachedName="Add_To_Cart_Order"
+                          externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Add_To_Cart_Order]"
+                          lineageId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Source.Outputs[OLE DB Source Output].Columns[Add_To_Cart_Order]" />
+                        <inputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Reordered]"
+                          cachedDataType="i4"
+                          cachedName="Reordered"
+                          externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Reordered]"
+                          lineageId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Source.Outputs[OLE DB Source Output].Columns[Reordered]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Meta_CreateTime]"
+                          dataType="dbTimeStamp"
+                          name="Meta_CreateTime" />
+                        <externalMetadataColumn
+                          refId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Meta_CreateJob]"
+                          dataType="i8"
+                          name="Meta_CreateJob" />
+                        <externalMetadataColumn
+                          refId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Product_Id]"
+                          dataType="i4"
+                          name="Product_Id" />
+                        <externalMetadataColumn
+                          refId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Id_Order_Products]"
+                          dataType="i8"
+                          name="Id_Order_Products" />
+                        <externalMetadataColumn
+                          refId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Order_Id]"
+                          dataType="i4"
+                          name="Order_Id" />
+                        <externalMetadataColumn
+                          refId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Add_To_Cart_Order]"
+                          dataType="i4"
+                          name="Add_To_Cart_Order" />
+                        <externalMetadataColumn
+                          refId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Reordered]"
+                          dataType="i4"
+                          name="Reordered" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Source"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="OLE DB Source"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[Staging].[v_Temp_Orders_Products]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Source.Connections[OleDbConnection]"
+                      connectionManagerID="{603B99B8-8572-47C2-BA0D-DDC6CD1EE57B}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[OLEDB Staging]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Source.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Source.Outputs[OLE DB Source Output].Columns[Product_Id]"
+                          dataType="i8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Product_Id]"
+                          lineageId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Source.Outputs[OLE DB Source Output].Columns[Product_Id]"
+                          name="Product_Id"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Source.Outputs[OLE DB Source Output].Columns[Order_Id]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Order_Id]"
+                          lineageId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Source.Outputs[OLE DB Source Output].Columns[Order_Id]"
+                          name="Order_Id"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Source.Outputs[OLE DB Source Output].Columns[Add_To_Cart_Order]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Add_To_Cart_Order]"
+                          lineageId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Source.Outputs[OLE DB Source Output].Columns[Add_To_Cart_Order]"
+                          name="Add_To_Cart_Order"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Source.Outputs[OLE DB Source Output].Columns[Reordered]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Reordered]"
+                          lineageId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Source.Outputs[OLE DB Source Output].Columns[Reordered]"
+                          name="Reordered"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Product_Id]"
+                          dataType="i4"
+                          name="Product_Id" />
+                        <externalMetadataColumn
+                          refId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Order_Id]"
+                          dataType="i4"
+                          name="Order_Id" />
+                        <externalMetadataColumn
+                          refId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Add_To_Cart_Order]"
+                          dataType="i4"
+                          name="Add_To_Cart_Order" />
+                        <externalMetadataColumn
+                          refId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Reordered]"
+                          dataType="i4"
+                          name="Reordered" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Order_Id]"
+                          dataType="i4"
+                          lineageId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Order_Id]"
+                          name="Order_Id" />
+                        <outputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Product_Id]"
+                          dataType="i4"
+                          lineageId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Product_Id]"
+                          name="Product_Id" />
+                        <outputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Add_To_Cart_Order]"
+                          dataType="i4"
+                          lineageId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Add_To_Cart_Order]"
+                          name="Add_To_Cart_Order" />
+                        <outputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Reordered]"
+                          dataType="i4"
+                          lineageId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Reordered]"
+                          name="Reordered" />
+                        <outputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products.Paths[Derived Column Output]"
+                  endId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  name="Derived Column Output"
+                  startId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\Derived Column.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products.Paths[OLE DB Source Output]"
+                  endId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\Derived Column.Inputs[Derived Column Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Source.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Staging Dim_Produkt\Truncate table Temp_Orders_Products"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{8167C887-03F4-4ABA-808C-2D59E3E4A4A3}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Truncate table Temp_Orders_Products"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{603B99B8-8572-47C2-BA0D-DDC6CD1EE57B}"
+              SQLTask:SqlStatementSource="truncate table Staging.Temp_Orders_Products" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Staging Dim_Produkt\Truncate table Temp_Orders_Products 1"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{1b3e5ade-a739-4f77-ba91-587fb30da7b9}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Truncate table Temp_Orders_Products 1"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{603B99B8-8572-47C2-BA0D-DDC6CD1EE57B}"
+              SQLTask:SqlStatementSource="truncate table Staging.Temp_Orders_Products" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Staging Dim_Produkt.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{76C2C960-26BB-41C4-A62F-E232FE732B12}"
+          DTS:From="Package\Staging Dim_Produkt\Truncate table Temp_Orders_Products"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Staging Dim_Produkt\Staging Temp_Orders_Products" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Staging Dim_Produkt.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{18A45523-E5E0-4A3A-A16D-FE1F5AB94F79}"
+          DTS:From="Package\Staging Dim_Produkt\SQL StagingStart"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Staging Dim_Produkt\Truncate table Temp_Orders_Products" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Staging Dim_Produkt.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{75D80E4F-5221-43B2-B7F3-03968B5AC697}"
+          DTS:From="Package\Staging Dim_Produkt\Staging Temp_Orders_Products"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\Staging Dim_Produkt\Truncate table Temp_Orders_Products 1" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Staging Dim_Produkt.PrecedenceConstraints[Constraint 3]"
+          DTS:CreationName=""
+          DTS:DTSID="{56BAD730-3E83-4179-8641-70451C2D7385}"
+          DTS:From="Package\Staging Dim_Produkt\Staging Temp_Orders_Products"
+          DTS:ObjectName="Constraint 3"
+          DTS:To="Package\Staging Dim_Produkt\SQL StagingEnd Failed"
+          DTS:Value="1" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Staging Dim_Produkt.PrecedenceConstraints[Constraint 4]"
+          DTS:CreationName=""
+          DTS:DTSID="{D78DB3AF-4BD5-4DB7-A3A1-EE62019EEF5E}"
+          DTS:From="Package\Staging Dim_Produkt\Truncate table Temp_Orders_Products"
+          DTS:ObjectName="Constraint 4"
+          DTS:To="Package\Staging Dim_Produkt\SQL StagingEnd Failed"
+          DTS:Value="1" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Staging Dim_Produkt.PrecedenceConstraints[Constraint 5]"
+          DTS:CreationName=""
+          DTS:DTSID="{E8C961E9-15E0-43D2-9CE0-74499A73D094}"
+          DTS:From="Package\Staging Dim_Produkt\Truncate table Temp_Orders_Products 1"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 5"
+          DTS:To="Package\Staging Dim_Produkt\SQL StagingEnd Succeeded" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Staging Dim_Produkt.PrecedenceConstraints[Constraint 6]"
+          DTS:CreationName=""
+          DTS:DTSID="{CA2C1E37-6735-4F55-A582-1D19AB67F647}"
+          DTS:From="Package\Staging Dim_Produkt\Truncate table Temp_Orders_Products 1"
+          DTS:ObjectName="Constraint 6"
+          DTS:To="Package\Staging Dim_Produkt\SQL StagingEnd Failed"
+          DTS:Value="1" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{FDA4DD02-9505-47EE-9CAD-A71CC498DE92}"
+      DTS:From="Package\SQL ExecutionStart"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Staging Dim_Produkt" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{CB63EAFC-2E8B-4B20-A7B5-AD25BBA3AA51}"
+      DTS:From="Package\Staging Dim_Produkt"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\SQL ExecutionEnd Succeeded" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{EE313159-8F1A-4142-B34A-2B66BA87D011}"
+      DTS:From="Package\Staging Dim_Produkt"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\SQL ExecutionEnd Failed"
+      DTS:Value="1" />
+  </DTS:PrecedenceConstraints>
+  <DTS:EventHandlers>
+    <DTS:EventHandler
+      DTS:refId="Package.EventHandlers[OnError]"
+      DTS:CreationName="OnError"
+      DTS:DTSID="{24B00F48-1028-48E3-B8C3-F72122C88CED}"
+      DTS:EventID="0"
+      DTS:EventName="OnError"
+      DTS:LocaleID="-1">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:Description="The propagate property of the event"
+          DTS:DTSID="{4D4905E3-1352-43E6-B520-7B699982EC31}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="System"
+          DTS:ObjectName="Propagate">
+          <DTS:VariableValue
+            DTS:DataType="11">-1</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package.EventHandlers[OnError]\SQL ExecutionError"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{27CBE998-3241-4EEF-A13F-1F28394415A9}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL ExecutionError"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{A27AA4A5-6ECE-4E5D-8B16-03150D0523A3}"
+              SQLTask:IsStoredProc="True"
+              SQLTask:SqlStatementSource="Audit.ExecutionError" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="ExecutionID"
+                SQLTask:DtsVariableName="User::ExecutionId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="12"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="ErrorCode"
+                SQLTask:DtsVariableName="System::ErrorCode"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="11"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="ErrorDescription"
+                SQLTask:DtsVariableName="System::ErrorDescription"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="16"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="SourceName"
+                SQLTask:DtsVariableName="System::SourceName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="16"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="SourceDescription"
+                SQLTask:DtsVariableName="System::SourceDescription"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="16"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:EventHandler>
+  </DTS:EventHandlers>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="205,42"
+          Id="Package\SQL ExecutionEnd Failed"
+          TopLeft="296,721.5" />
+        <NodeLayout
+          Size="230,42"
+          Id="Package\SQL ExecutionEnd Succeeded"
+          TopLeft="5.50000000000011,721.5" />
+        <NodeLayout
+          Size="176,42"
+          Id="Package\SQL ExecutionStart"
+          TopLeft="310.5,5.5" />
+        <NodeLayout
+          Size="191,42"
+          Id="Package\Staging Dim_Produkt\SQL StagingEnd Failed"
+          TopLeft="249,311.5" />
+        <NodeLayout
+          Size="216,42"
+          Id="Package\Staging Dim_Produkt\SQL StagingEnd Succeeded"
+          TopLeft="5.50000000000006,413.5" />
+        <NodeLayout
+          Size="161,42"
+          Id="Package\Staging Dim_Produkt\SQL StagingStart"
+          TopLeft="264,5.5" />
+        <NodeLayout
+          Size="237,42"
+          Id="Package\Staging Dim_Produkt\Staging Temp_Orders_Products"
+          TopLeft="46,209.5" />
+        <NodeLayout
+          Size="149,42"
+          Id="Package\Staging Dim_Produkt\Truncate table Temp_Orders_Products"
+          TopLeft="270,107.5" />
+        <EdgeLayout
+          Id="Package\Staging Dim_Produkt.PrecedenceConstraints[Constraint]"
+          TopLeft="321,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-156.5,60"
+              Start="0,0"
+              End="-156.5,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.3824701195219" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.3824701195219"
+                    Point2="0,24.3824701195219"
+                    Point3="-4,24.3824701195219" />
+                  <mssgle:LineSegment
+                    End="-152.5,24.3824701195219" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-152.5,24.3824701195219"
+                    Point2="-156.5,24.3824701195219"
+                    Point3="-156.5,28.3824701195219" />
+                  <mssgle:LineSegment
+                    End="-156.5,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Staging Dim_Produkt.PrecedenceConstraints[Constraint 1]"
+          TopLeft="344.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Staging Dim_Produkt.PrecedenceConstraints[Constraint 3]"
+          TopLeft="202.666666666667,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="111.333333333333,60"
+              Start="0,0"
+              End="111.333333333333,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.940160006938" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,25.940160006938"
+                    Point2="0,29.940160006938"
+                    Point3="4,29.940160006938" />
+                  <mssgle:LineSegment
+                    End="107.333333333333,29.940160006938" />
+                  <mssgle:CubicBezierSegment
+                    Point1="107.333333333333,29.940160006938"
+                    Point2="111.333333333333,29.940160006938"
+                    Point3="111.333333333333,33.940160006938" />
+                  <mssgle:LineSegment
+                    End="111.333333333333,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="40.4253190104167,34.940160006938,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Staging Dim_Produkt.PrecedenceConstraints[Constraint 4]"
+          TopLeft="371.5,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,162"
+              Start="0,0"
+              End="0,154.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,154.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-15.24134765625,72.37548828125,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="149,42"
+          Id="Package\Staging Dim_Produkt\Truncate table Temp_Orders_Products 1"
+          TopLeft="39,311.5" />
+        <EdgeLayout
+          Id="Package\Staging Dim_Produkt.PrecedenceConstraints[Constraint 2]"
+          TopLeft="126.333333333333,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-12.8333333333333,60"
+              Start="0,0"
+              End="-12.8333333333333,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.2414082145851" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.2414082145851"
+                    Point2="0,24.2414082145851"
+                    Point3="-4,24.2414082145851" />
+                  <mssgle:LineSegment
+                    End="-8.83333333333333,24.2414082145851" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-8.83333333333333,24.2414082145851"
+                    Point2="-12.8333333333333,24.2414082145851"
+                    Point3="-12.8333333333333,28.2414082145851" />
+                  <mssgle:LineSegment
+                    End="-12.8333333333333,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Staging Dim_Produkt.PrecedenceConstraints[Constraint 5]"
+          TopLeft="113.5,353.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Staging Dim_Produkt.PrecedenceConstraints[Constraint 6]"
+          TopLeft="188,332.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="61,0"
+              Start="0,0"
+              End="53.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="53.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="11.50865234375,5,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="446,510"
+          Size="446,554"
+          Id="Package\Staging Dim_Produkt"
+          TopLeft="175.5,107.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="398.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="325.5,661.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-205,60"
+              Start="0,0"
+              End="-205,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.1286863270777" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.1286863270777"
+                    Point2="0,24.1286863270777"
+                    Point3="-4,24.1286863270777" />
+                  <mssgle:LineSegment
+                    End="-201,24.1286863270777" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-201,24.1286863270777"
+                    Point2="-205,24.1286863270777"
+                    Point3="-205,28.1286863270777" />
+                  <mssgle:LineSegment
+                    End="-205,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="471.5,661.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-72.9999999999999,60"
+              Start="0,0"
+              End="-72.9999999999999,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.1286863270777" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.1286863270777"
+                    Point2="0,24.1286863270777"
+                    Point3="-4,24.1286863270777" />
+                  <mssgle:LineSegment
+                    End="-68.9999999999999,24.1286863270777" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-68.9999999999999,24.1286863270777"
+                    Point2="-72.9999999999999,24.1286863270777"
+                    Point3="-72.9999999999999,28.1286863270777" />
+                  <mssgle:LineSegment
+                    End="-72.9999999999999,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-51.74134765625,29.1286863270777,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <DtsEventHandler
+    design-time-name="Package.EventHandlers[OnError]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="177,42"
+          Id="Package.EventHandlers[OnError]\SQL ExecutionError"
+          TopLeft="450,168" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+  <TaskHost
+    design-time-name="Package\Staging Dim_Produkt\Staging Temp_Orders_Products">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="177,42"
+          Id="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Destination"
+          TopLeft="5.50000000000003,209.5" />
+        <NodeLayout
+          Size="157,42"
+          Id="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Source"
+          TopLeft="15.5,5.5" />
+        <NodeLayout
+          Size="158,42"
+          Id="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\Derived Column"
+          TopLeft="15,107.5" />
+        <EdgeLayout
+          Id="Package\Staging Dim_Produkt\Staging Temp_Orders_Products.Paths[OLE DB Source Output]"
+          TopLeft="94,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Staging Dim_Produkt\Staging Temp_Orders_Products.Paths[Derived Column Output]"
+          TopLeft="94,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">View</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
