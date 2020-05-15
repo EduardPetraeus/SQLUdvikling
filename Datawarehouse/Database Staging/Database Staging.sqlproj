@@ -1,19 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <Name>Database Salg</Name>
+    <Name>Database_Staging</Name>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
-    <ProjectGuid>{fe8b664f-937d-49f0-aa66-8dcf20fc96ae}</ProjectGuid>
+    <ProjectGuid>{f3dbfcca-32b1-46ea-ad8d-c375a567608c}</ProjectGuid>
     <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
     </RootPath>
-    <RootNamespace>Salg</RootNamespace>
-    <AssemblyName>Salg</AssemblyName>
+    <RootNamespace>Staging</RootNamespace>
+    <AssemblyName>Staging</AssemblyName>
     <ModelCollation>1033, CI</ModelCollation>
     <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
     <DeployToDatabase>True</DeployToDatabase>
@@ -23,7 +22,6 @@
     <SqlServerVerification>False</SqlServerVerification>
     <IncludeCompositeObjects>True</IncludeCompositeObjects>
     <TargetDatabaseSet>True</TargetDatabaseSet>
-    <Recovery>SIMPLE</Recovery>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\Release\</OutputPath>
@@ -47,7 +45,7 @@
     <DefineTrace>true</DefineTrace>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <SqlTargetName>Salg</SqlTargetName>
+    <SqlTargetName>Staging</SqlTargetName>
   </PropertyGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
@@ -60,31 +58,29 @@
   <ItemGroup>
     <Folder Include="Properties" />
     <Folder Include="Security" />
-    <Folder Include="Extract" />
-    <Folder Include="System" />
-    <Folder Include="Archive" />
+    <Folder Include="Staging" />
+    <Folder Include="Staging\Views" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="Security\Extract.sql" />
-    <Build Include="Extract\Aisles.sql" />
-    <Build Include="Security\System.sql" />
-    <Build Include="System\ArchiveQueue.sql" />
-    <Build Include="Security\Archive.sql" />
-    <Build Include="Archive\Aisles.sql" />
-    <Build Include="Extract\Departments.sql" />
-    <Build Include="Archive\Departments.sql" />
-    <Build Include="Extract\Order_Products__Prior.sql" />
-    <Build Include="Archive\Order_Products__Prior.sql" />
-    <Build Include="Extract\Temp_Order_Products__Prior.sql" />
-    <Build Include="Extract\Temp_Order_Products__Train.sql" />
-    <Build Include="Extract\Order_Products__Train.sql" />
-    <Build Include="Archive\Order_Products__Train.sql" />
-    <Build Include="Extract\Orders.sql" />
-    <Build Include="Archive\Orders.sql" />
-    <Build Include="Extract\Products.sql" />
-    <Build Include="Archive\Products.sql" />
+    <None Include="Staging.dev.publish.xml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Salg.dev.publish.xml" />
+    <Build Include="Security\Staging.sql" />
+    <Build Include="Staging\Views\v_Dim_Produkt.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <SqlCmdVariable Include="Salg">
+      <DefaultValue>Salg</DefaultValue>
+      <Value>$(SqlCmdVar__1)</Value>
+    </SqlCmdVariable>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Database salg\Database Salg.sqlproj">
+      <Name>Database Salg</Name>
+      <Project>{fe8b664f-937d-49f0-aa66-8dcf20fc96ae}</Project>
+      <Private>True</Private>
+      <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
+      <DatabaseVariableLiteralValue>Salg</DatabaseVariableLiteralValue>
+    </ProjectReference>
   </ItemGroup>
 </Project>
