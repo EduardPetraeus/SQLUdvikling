@@ -11,8 +11,8 @@
   DTS:LocaleID="1030"
   DTS:ObjectName="Staging Fact Ordre"
   DTS:PackageType="5"
-  DTS:VersionBuild="35"
-  DTS:VersionGUID="{2CCA6A47-3F7B-46D4-90C3-B1AF94409D40}">
+  DTS:VersionBuild="40"
+  DTS:VersionGUID="{3CF31827-194F-46DA-8FE3-6BCCBFC06FB2}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:PackageParameters>
@@ -290,6 +290,1193 @@
                 SQLTask:DataType="16"
                 SQLTask:ParameterSize="-1" />
             </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Staging Dim_Produkt\Staging Fact_Ordre"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{9c1b51d2-eaf1-4dcb-bea9-afc0c463ca92}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Staging Fact_Ordre"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Derived Column"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="Derived Column"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Derived Column.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Derived Column.Inputs[Derived Column Input].Columns[Days_Since_Prior_Order]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Days_Since_Prior_Order"
+                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Days_Since_Prior_Order]" />
+                        <inputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Derived Column.Inputs[Derived Column Input].Columns[Add_To_Cart_Order]"
+                          cachedDataType="i4"
+                          cachedName="Add_To_Cart_Order"
+                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Add_To_Cart_Order]" />
+                        <inputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Derived Column.Inputs[Derived Column Input].Columns[Reordered]"
+                          cachedDataType="i4"
+                          cachedName="Reordered"
+                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Reordered]" />
+                        <inputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Derived Column.Inputs[Derived Column Input].Columns[Ekey_Kunde]"
+                          cachedDataType="i8"
+                          cachedName="Ekey_Kunde"
+                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Lookup Dim_Kunde.Outputs[Lookup Match Output].Columns[Ekey_Kunde]" />
+                        <inputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Derived Column.Inputs[Derived Column Input].Columns[Ekey_Produkt]"
+                          cachedDataType="i8"
+                          cachedName="Ekey_Produkt"
+                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Lookup Dim_Produkt.Outputs[Lookup Match Output].Columns[Ekey_Produkt]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Derived Column.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Derived Column.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Derived Column.Outputs[Derived Column Output].Columns[Meta_CreateJob]"
+                          dataType="i8"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Derived Column.Outputs[Derived Column Output].Columns[Meta_CreateJob]"
+                          name="Meta_CreateJob"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">@[User::StagingId]</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">@[User::StagingId]</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Derived Column.Outputs[Derived Column Output].Columns[Derived Column Ekey_Kunde]"
+                          dataType="i8"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Derived Column.Outputs[Derived Column Output].Columns[Derived Column Ekey_Kunde]"
+                          name="Derived Column Ekey_Kunde"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">[REPLACENULL](#{Package\Staging Dim_Produkt\Staging Fact_Ordre\Lookup Dim_Kunde.Outputs[Lookup Match Output].Columns[Ekey_Kunde]},-1)</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">REPLACENULL(Ekey_Kunde,-1)</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Derived Column.Outputs[Derived Column Output].Columns[Derived Column Ekey_Produkt]"
+                          dataType="i8"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Derived Column.Outputs[Derived Column Output].Columns[Derived Column Ekey_Produkt]"
+                          name="Derived Column Ekey_Produkt"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">[REPLACENULL](#{Package\Staging Dim_Produkt\Staging Fact_Ordre\Lookup Dim_Produkt.Outputs[Lookup Match Output].Columns[Ekey_Produkt]},-1)</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">REPLACENULL(Ekey_Produkt,-1)</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Derived Column.Outputs[Derived Column Output].Columns[Derived Column Days_Since_Prior_Order]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="102"
+                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Derived Column.Outputs[Derived Column Output].Columns[Derived Column Days_Since_Prior_Order]"
+                          name="Derived Column Days_Since_Prior_Order"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">[REPLACENULL](#{Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Days_Since_Prior_Order]},-1)</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">REPLACENULL(Days_Since_Prior_Order,-1)</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Derived Column.Outputs[Derived Column Output].Columns[Derived Column Add_To_Cart_Order]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Derived Column.Outputs[Derived Column Output].Columns[Derived Column Add_To_Cart_Order]"
+                          name="Derived Column Add_To_Cart_Order"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">[REPLACENULL](#{Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Add_To_Cart_Order]},-1)</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">REPLACENULL(Add_To_Cart_Order,-1)</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Derived Column.Outputs[Derived Column Output].Columns[Derived Column Reordered]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Derived Column.Outputs[Derived Column Output].Columns[Derived Column Reordered]"
+                          name="Derived Column Reordered"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">[REPLACENULL](#{Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Reordered]},-1)</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">REPLACENULL(Reordered,-1)</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Derived Column.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Derived Column.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Lookup Dim_Kunde"
+                  componentClassID="Microsoft.Lookup"
+                  contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+                  description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+                  name="Lookup Dim_Kunde"
+                  usesDispositions="true"
+                  version="6">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the SQL statement that generates the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [Ekey_Kunde]
+      ,[Order_Id]
+  FROM [DMSA].[DMSA].[Dim_Kunde]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommandParam"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT [Ekey_Kunde]
+      ,[Order_Id]
+  FROM [DMSA].[DMSA].[Dim_Kunde]) [refTable]
+where [refTable].[Order_Id] = ?</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the type of connection used to access the reference dataset."
+                      name="ConnectionType"
+                      typeConverter="LookupConnectionType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the cache type of the lookup table."
+                      name="CacheType"
+                      typeConverter="CacheType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                      name="NoMatchBehavior"
+                      typeConverter="LookupNoMatchBehavior">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                      name="NoMatchCachePercentage">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                      name="MaxMemoryUsage">25</property>
+                    <property
+                      dataType="System.Int64"
+                      description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                      name="MaxMemoryUsage64">25</property>
+                    <property
+                      dataType="System.String"
+                      description="Indicates whether to reference metadata in an XML format."
+                      name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Ekey_Kunde" dataType="DT_I8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Order_Id" dataType="DT_I8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                      name="ParameterMap">#{Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Bkey_Dim_Kunde]};</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                      name="TreatDuplicateKeysAsError">false</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Lookup Dim_Kunde.Connections[OleDbConnection]"
+                      connectionManagerID="{0D5E664B-323A-4101-804A-0EDF9E4AFD94}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[OLEDB DMSA]"
+                      description="Connection manager used to access lookup data."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Lookup Dim_Kunde.Inputs[Lookup Input]"
+                      name="Lookup Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Lookup Dim_Kunde.Inputs[Lookup Input].Columns[Bkey_Dim_Kunde]"
+                          cachedDataType="i8"
+                          cachedName="Bkey_Dim_Kunde"
+                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Bkey_Dim_Kunde]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table that a column joins."
+                              name="JoinToReferenceColumn">Order_Id</property>
+                            <property
+                              dataType="System.Null"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn" />
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Lookup Dim_Kunde.Outputs[Lookup Match Output]"
+                      errorOrTruncationOperation="Lookup"
+                      errorRowDisposition="IgnoreFailure"
+                      exclusionGroup="1"
+                      name="Lookup Match Output"
+                      synchronousInputId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Lookup Dim_Kunde.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Lookup Dim_Kunde.Outputs[Lookup Match Output].Columns[Ekey_Kunde]"
+                          dataType="i8"
+                          errorOrTruncationOperation="Copy Column"
+                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Lookup Dim_Kunde.Outputs[Lookup Match Output].Columns[Ekey_Kunde]"
+                          name="Ekey_Kunde"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn">Ekey_Kunde</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Lookup Dim_Kunde.Outputs[Lookup No Match Output]"
+                      description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                      exclusionGroup="1"
+                      name="Lookup No Match Output"
+                      synchronousInputId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Lookup Dim_Kunde.Inputs[Lookup Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Lookup Dim_Kunde.Outputs[Lookup Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Lookup Error Output"
+                      synchronousInputId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Lookup Dim_Kunde.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Lookup Dim_Kunde.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Lookup Dim_Kunde.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Lookup Dim_Kunde.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Lookup Dim_Kunde.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Lookup Dim_Produkt"
+                  componentClassID="Microsoft.Lookup"
+                  contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+                  description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+                  name="Lookup Dim_Produkt"
+                  usesDispositions="true"
+                  version="6">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the SQL statement that generates the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [Ekey_Produkt]
+      ,[Product_Id]
+  FROM [DMSA].[DMSA].[Dim_Produkt]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommandParam"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT [Ekey_Produkt]
+      ,[Product_Id]
+  FROM [DMSA].[DMSA].[Dim_Produkt]) [refTable]
+where [refTable].[Product_Id] = ?</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the type of connection used to access the reference dataset."
+                      name="ConnectionType"
+                      typeConverter="LookupConnectionType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the cache type of the lookup table."
+                      name="CacheType"
+                      typeConverter="CacheType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                      name="NoMatchBehavior"
+                      typeConverter="LookupNoMatchBehavior">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                      name="NoMatchCachePercentage">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                      name="MaxMemoryUsage">25</property>
+                    <property
+                      dataType="System.Int64"
+                      description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                      name="MaxMemoryUsage64">25</property>
+                    <property
+                      dataType="System.String"
+                      description="Indicates whether to reference metadata in an XML format."
+                      name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Ekey_Produkt" dataType="DT_I8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Product_Id" dataType="DT_I8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                      name="ParameterMap">#{Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Bkey_Dim_Produkt]};</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                      name="TreatDuplicateKeysAsError">false</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Lookup Dim_Produkt.Connections[OleDbConnection]"
+                      connectionManagerID="{0D5E664B-323A-4101-804A-0EDF9E4AFD94}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[OLEDB DMSA]"
+                      description="Connection manager used to access lookup data."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Lookup Dim_Produkt.Inputs[Lookup Input]"
+                      name="Lookup Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Lookup Dim_Produkt.Inputs[Lookup Input].Columns[Bkey_Dim_Produkt]"
+                          cachedDataType="i8"
+                          cachedName="Bkey_Dim_Produkt"
+                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Bkey_Dim_Produkt]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table that a column joins."
+                              name="JoinToReferenceColumn">Product_Id</property>
+                            <property
+                              dataType="System.Null"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn" />
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Lookup Dim_Produkt.Outputs[Lookup Match Output]"
+                      errorOrTruncationOperation="Lookup"
+                      errorRowDisposition="IgnoreFailure"
+                      exclusionGroup="1"
+                      name="Lookup Match Output"
+                      synchronousInputId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Lookup Dim_Produkt.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Lookup Dim_Produkt.Outputs[Lookup Match Output].Columns[Ekey_Produkt]"
+                          dataType="i8"
+                          errorOrTruncationOperation="Copy Column"
+                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Lookup Dim_Produkt.Outputs[Lookup Match Output].Columns[Ekey_Produkt]"
+                          name="Ekey_Produkt"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn">Ekey_Produkt</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Lookup Dim_Produkt.Outputs[Lookup No Match Output]"
+                      description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                      exclusionGroup="1"
+                      name="Lookup No Match Output"
+                      synchronousInputId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Lookup Dim_Produkt.Inputs[Lookup Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Lookup Dim_Produkt.Outputs[Lookup Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Lookup Error Output"
+                      synchronousInputId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Lookup Dim_Produkt.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Lookup Dim_Produkt.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Lookup Dim_Produkt.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Lookup Dim_Produkt.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Lookup Dim_Produkt.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLE DB Destination"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[Staging].[Fact_Ordre]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Connections[OleDbConnection]"
+                      connectionManagerID="{603B99B8-8572-47C2-BA0D-DDC6CD1EE57B}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[OLEDB Staging]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Meta_CreateJob]"
+                          cachedDataType="i8"
+                          cachedName="Meta_CreateJob"
+                          externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Meta_CreateJob]"
+                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Derived Column.Outputs[Derived Column Output].Columns[Meta_CreateJob]" />
+                        <inputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Order_Id]"
+                          cachedDataType="i8"
+                          cachedName="Order_Id"
+                          externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Order_Id]"
+                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Order_Id]" />
+                        <inputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Eval_Set]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Eval_Set"
+                          externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Eval_Set]"
+                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Eval_Set]" />
+                        <inputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Order_Number]"
+                          cachedDataType="i4"
+                          cachedName="Order_Number"
+                          externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Order_Number]"
+                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Order_Number]" />
+                        <inputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Order_Dow]"
+                          cachedDataType="i4"
+                          cachedName="Order_Dow"
+                          externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Order_Dow]"
+                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Order_Dow]" />
+                        <inputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Order_Hour_Of_Day]"
+                          cachedDataType="i4"
+                          cachedName="Order_Hour_Of_Day"
+                          externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Order_Hour_Of_Day]"
+                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Order_Hour_Of_Day]" />
+                        <inputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Initial_Load_Time]"
+                          cachedDataType="dbTimeStamp2"
+                          cachedName="Initial_Load_Time"
+                          cachedScale="7"
+                          externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Initial_Load_Time]"
+                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Initial_Load_Time]" />
+                        <inputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Derived Column Reordered]"
+                          cachedDataType="i4"
+                          cachedName="Derived Column Reordered"
+                          externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Reordered]"
+                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Derived Column.Outputs[Derived Column Output].Columns[Derived Column Reordered]" />
+                        <inputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Derived Column Days_Since_Prior_Order]"
+                          cachedDataType="wstr"
+                          cachedLength="102"
+                          cachedName="Derived Column Days_Since_Prior_Order"
+                          externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Days_Since_Prior_Order]"
+                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Derived Column.Outputs[Derived Column Output].Columns[Derived Column Days_Since_Prior_Order]" />
+                        <inputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Derived Column Add_To_Cart_Order]"
+                          cachedDataType="i4"
+                          cachedName="Derived Column Add_To_Cart_Order"
+                          externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Add_To_Cart_Order]"
+                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Derived Column.Outputs[Derived Column Output].Columns[Derived Column Add_To_Cart_Order]" />
+                        <inputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Derived Column Ekey_Kunde]"
+                          cachedDataType="i8"
+                          cachedName="Derived Column Ekey_Kunde"
+                          externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Ekey_Kunde]"
+                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Derived Column.Outputs[Derived Column Output].Columns[Derived Column Ekey_Kunde]" />
+                        <inputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Derived Column Ekey_Produkt]"
+                          cachedDataType="i8"
+                          cachedName="Derived Column Ekey_Produkt"
+                          externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Ekey_Produkt]"
+                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Derived Column.Outputs[Derived Column Output].Columns[Derived Column Ekey_Produkt]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Meta_CreateTime]"
+                          dataType="dbTimeStamp"
+                          name="Meta_CreateTime" />
+                        <externalMetadataColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Meta_CreateJob]"
+                          dataType="i8"
+                          name="Meta_CreateJob" />
+                        <externalMetadataColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Order_Id]"
+                          dataType="i8"
+                          name="Order_Id" />
+                        <externalMetadataColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Add_To_Cart_Order]"
+                          dataType="i4"
+                          name="Add_To_Cart_Order" />
+                        <externalMetadataColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Reordered]"
+                          dataType="i4"
+                          name="Reordered" />
+                        <externalMetadataColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Eval_Set]"
+                          dataType="wstr"
+                          length="50"
+                          name="Eval_Set" />
+                        <externalMetadataColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Order_Number]"
+                          dataType="i4"
+                          name="Order_Number" />
+                        <externalMetadataColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Order_Dow]"
+                          dataType="i4"
+                          name="Order_Dow" />
+                        <externalMetadataColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Order_Hour_Of_Day]"
+                          dataType="i4"
+                          name="Order_Hour_Of_Day" />
+                        <externalMetadataColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Days_Since_Prior_Order]"
+                          dataType="wstr"
+                          length="50"
+                          name="Days_Since_Prior_Order" />
+                        <externalMetadataColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Initial_Load_Time]"
+                          dataType="dbTimeStamp2"
+                          name="Initial_Load_Time"
+                          scale="7" />
+                        <externalMetadataColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Meta_Id]"
+                          dataType="i8"
+                          name="Meta_Id" />
+                        <externalMetadataColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Ekey_Kunde]"
+                          dataType="i8"
+                          name="Ekey_Kunde" />
+                        <externalMetadataColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Ekey_Produkt]"
+                          dataType="i8"
+                          name="Ekey_Produkt" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="OLE DB Source"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[Staging].[v_Temp_Orders_Products]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [Bkey_Dim_Kunde]
+      ,[Order_Id]
+      ,[Eval_Set]
+      ,[Order_Number]
+      ,[Order_Dow]
+      ,[Order_Hour_Of_Day]
+      ,[Days_Since_Prior_Order]
+      ,[Bkey_Dim_Produkt]
+      ,[Add_To_Cart_Order]
+      ,[Reordered]
+      ,[Initial_Load_Time]
+  FROM [Staging].[Staging].[v_Fact_Ordre]</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Connections[OleDbConnection]"
+                      connectionManagerID="{603B99B8-8572-47C2-BA0D-DDC6CD1EE57B}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[OLEDB Staging]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Order_Id]"
+                          dataType="i8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Order_Id]"
+                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Order_Id]"
+                          name="Order_Id"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Add_To_Cart_Order]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Add_To_Cart_Order]"
+                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Add_To_Cart_Order]"
+                          name="Add_To_Cart_Order"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Reordered]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Reordered]"
+                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Reordered]"
+                          name="Reordered"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Bkey_Dim_Kunde]"
+                          dataType="i8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Bkey_Dim_Kunde]"
+                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Bkey_Dim_Kunde]"
+                          name="Bkey_Dim_Kunde"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Eval_Set]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Eval_Set]"
+                          length="50"
+                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Eval_Set]"
+                          name="Eval_Set"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Order_Number]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Order_Number]"
+                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Order_Number]"
+                          name="Order_Number"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Order_Dow]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Order_Dow]"
+                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Order_Dow]"
+                          name="Order_Dow"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Order_Hour_Of_Day]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Order_Hour_Of_Day]"
+                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Order_Hour_Of_Day]"
+                          name="Order_Hour_Of_Day"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Days_Since_Prior_Order]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Days_Since_Prior_Order]"
+                          length="50"
+                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Days_Since_Prior_Order]"
+                          name="Days_Since_Prior_Order"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Bkey_Dim_Produkt]"
+                          dataType="i8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Bkey_Dim_Produkt]"
+                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Bkey_Dim_Produkt]"
+                          name="Bkey_Dim_Produkt"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Initial_Load_Time]"
+                          dataType="dbTimeStamp2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Initial_Load_Time]"
+                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Initial_Load_Time]"
+                          name="Initial_Load_Time"
+                          scale="7"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Order_Id]"
+                          dataType="i8"
+                          name="Order_Id" />
+                        <externalMetadataColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Add_To_Cart_Order]"
+                          dataType="i4"
+                          name="Add_To_Cart_Order" />
+                        <externalMetadataColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Reordered]"
+                          dataType="i4"
+                          name="Reordered" />
+                        <externalMetadataColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Bkey_Dim_Kunde]"
+                          dataType="i8"
+                          name="Bkey_Dim_Kunde" />
+                        <externalMetadataColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Eval_Set]"
+                          dataType="wstr"
+                          length="50"
+                          name="Eval_Set" />
+                        <externalMetadataColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Order_Number]"
+                          dataType="i4"
+                          name="Order_Number" />
+                        <externalMetadataColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Order_Dow]"
+                          dataType="i4"
+                          name="Order_Dow" />
+                        <externalMetadataColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Order_Hour_Of_Day]"
+                          dataType="i4"
+                          name="Order_Hour_Of_Day" />
+                        <externalMetadataColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Days_Since_Prior_Order]"
+                          dataType="wstr"
+                          length="50"
+                          name="Days_Since_Prior_Order" />
+                        <externalMetadataColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Bkey_Dim_Produkt]"
+                          dataType="i8"
+                          name="Bkey_Dim_Produkt" />
+                        <externalMetadataColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Initial_Load_Time]"
+                          dataType="dbTimeStamp2"
+                          name="Initial_Load_Time"
+                          scale="7" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Bkey_Dim_Kunde]"
+                          dataType="i8"
+                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Bkey_Dim_Kunde]"
+                          name="Bkey_Dim_Kunde" />
+                        <outputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Order_Id]"
+                          dataType="i8"
+                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Order_Id]"
+                          name="Order_Id" />
+                        <outputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Eval_Set]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Eval_Set]"
+                          name="Eval_Set" />
+                        <outputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Order_Number]"
+                          dataType="i4"
+                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Order_Number]"
+                          name="Order_Number" />
+                        <outputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Order_Dow]"
+                          dataType="i4"
+                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Order_Dow]"
+                          name="Order_Dow" />
+                        <outputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Order_Hour_Of_Day]"
+                          dataType="i4"
+                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Order_Hour_Of_Day]"
+                          name="Order_Hour_Of_Day" />
+                        <outputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Days_Since_Prior_Order]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Days_Since_Prior_Order]"
+                          name="Days_Since_Prior_Order" />
+                        <outputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Bkey_Dim_Produkt]"
+                          dataType="i8"
+                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Bkey_Dim_Produkt]"
+                          name="Bkey_Dim_Produkt" />
+                        <outputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Add_To_Cart_Order]"
+                          dataType="i4"
+                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Add_To_Cart_Order]"
+                          name="Add_To_Cart_Order" />
+                        <outputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Reordered]"
+                          dataType="i4"
+                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Reordered]"
+                          name="Reordered" />
+                        <outputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Initial_Load_Time]"
+                          dataType="dbTimeStamp2"
+                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Initial_Load_Time]"
+                          name="Initial_Load_Time"
+                          scale="7" />
+                        <outputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\RC Inserted"
+                  componentClassID="Microsoft.RowCount"
+                  contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+                  name="RC Inserted">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable to hold the row count."
+                      name="VariableName">User::RecordsInserted</property>
+                  </properties>
+                  <inputs>
+                    <input
+                      refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\RC Inserted.Inputs[Row Count Input 1]"
+                      hasSideEffects="true"
+                      name="Row Count Input 1">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\RC Inserted.Outputs[Row Count Output 1]"
+                      name="Row Count Output 1"
+                      synchronousInputId="Package\Staging Dim_Produkt\Staging Fact_Ordre\RC Inserted.Inputs[Row Count Input 1]">
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\RC Selected"
+                  componentClassID="Microsoft.RowCount"
+                  contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+                  name="RC Selected">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable to hold the row count."
+                      name="VariableName">User::RecordsSelected</property>
+                  </properties>
+                  <inputs>
+                    <input
+                      refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\RC Selected.Inputs[Row Count Input 1]"
+                      hasSideEffects="true"
+                      name="Row Count Input 1">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\RC Selected.Outputs[Row Count Output 1]"
+                      name="Row Count Output 1"
+                      synchronousInputId="Package\Staging Dim_Produkt\Staging Fact_Ordre\RC Selected.Inputs[Row Count Input 1]">
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Staging Dim_Produkt\Staging Fact_Ordre.Paths[Derived Column Output]"
+                  endId="Package\Staging Dim_Produkt\Staging Fact_Ordre\RC Inserted.Inputs[Row Count Input 1]"
+                  name="Derived Column Output"
+                  startId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Derived Column.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\Staging Dim_Produkt\Staging Fact_Ordre.Paths[Lookup Match Output]"
+                  endId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Lookup Dim_Produkt.Inputs[Lookup Input]"
+                  name="Lookup Match Output"
+                  startId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Lookup Dim_Kunde.Outputs[Lookup Match Output]" />
+                <path
+                  refId="Package\Staging Dim_Produkt\Staging Fact_Ordre.Paths[Lookup Match Output1]"
+                  endId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Derived Column.Inputs[Derived Column Input]"
+                  name="Lookup Match Output"
+                  startId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Lookup Dim_Produkt.Outputs[Lookup Match Output]" />
+                <path
+                  refId="Package\Staging Dim_Produkt\Staging Fact_Ordre.Paths[OLE DB Source Output]"
+                  endId="Package\Staging Dim_Produkt\Staging Fact_Ordre\RC Selected.Inputs[Row Count Input 1]"
+                  name="OLE DB Source Output"
+                  startId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output]" />
+                <path
+                  refId="Package\Staging Dim_Produkt\Staging Fact_Ordre.Paths[Row Count Output 1]"
+                  endId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Lookup Dim_Kunde.Inputs[Lookup Input]"
+                  name="Row Count Output 1"
+                  startId="Package\Staging Dim_Produkt\Staging Fact_Ordre\RC Selected.Outputs[Row Count Output 1]" />
+                <path
+                  refId="Package\Staging Dim_Produkt\Staging Fact_Ordre.Paths[Row Count Output 11]"
+                  endId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  name="Row Count Output 1"
+                  startId="Package\Staging Dim_Produkt\Staging Fact_Ordre\RC Inserted.Outputs[Row Count Output 1]" />
+              </paths>
+            </pipeline>
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
@@ -717,6 +1904,23 @@
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
+          DTS:refId="Package\Staging Dim_Produkt\Truncate table Fact_Ordre"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{aca1e9c9-e163-46a0-a04b-bfde9acd5f81}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Truncate table Fact_Ordre"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{603B99B8-8572-47C2-BA0D-DDC6CD1EE57B}"
+              SQLTask:SqlStatementSource="truncate table Staging.Fact_Ordre" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
           DTS:refId="Package\Staging Dim_Produkt\Truncate table Temp_Orders_Products"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
@@ -734,13 +1938,13 @@
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
-          DTS:refId="Package\Staging Dim_Produkt\Truncate table Temp_Orders_Products 1"
+          DTS:refId="Package\Staging Dim_Produkt\Truncate table Temp_Orders_Products igen"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
           DTS:DTSID="{1b3e5ade-a739-4f77-ba91-587fb30da7b9}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
-          DTS:ObjectName="Truncate table Temp_Orders_Products 1"
+          DTS:ObjectName="Truncate table Temp_Orders_Products igen"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
           DTS:ThreadHint="0">
           <DTS:Variables />
@@ -769,13 +1973,21 @@
           DTS:ObjectName="Constraint 1"
           DTS:To="Package\Staging Dim_Produkt\Truncate table Temp_Orders_Products" />
         <DTS:PrecedenceConstraint
+          DTS:refId="Package\Staging Dim_Produkt.PrecedenceConstraints[Constraint 10]"
+          DTS:CreationName=""
+          DTS:DTSID="{7A661FDA-AFE5-49BD-A51E-2EBD649D48E3}"
+          DTS:From="Package\Staging Dim_Produkt\Staging Fact_Ordre"
+          DTS:ObjectName="Constraint 10"
+          DTS:To="Package\Staging Dim_Produkt\SQL StagingEnd Failed"
+          DTS:Value="1" />
+        <DTS:PrecedenceConstraint
           DTS:refId="Package\Staging Dim_Produkt.PrecedenceConstraints[Constraint 2]"
           DTS:CreationName=""
-          DTS:DTSID="{75D80E4F-5221-43B2-B7F3-03968B5AC697}"
+          DTS:DTSID="{9F086CA9-1DFD-40A8-BAAB-4CD7D7596C97}"
           DTS:From="Package\Staging Dim_Produkt\Staging Temp_Orders_Products"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 2"
-          DTS:To="Package\Staging Dim_Produkt\Truncate table Temp_Orders_Products 1" />
+          DTS:To="Package\Staging Dim_Produkt\Truncate table Fact_Ordre" />
         <DTS:PrecedenceConstraint
           DTS:refId="Package\Staging Dim_Produkt.PrecedenceConstraints[Constraint 3]"
           DTS:CreationName=""
@@ -796,7 +2008,7 @@
           DTS:refId="Package\Staging Dim_Produkt.PrecedenceConstraints[Constraint 5]"
           DTS:CreationName=""
           DTS:DTSID="{E8C961E9-15E0-43D2-9CE0-74499A73D094}"
-          DTS:From="Package\Staging Dim_Produkt\Truncate table Temp_Orders_Products 1"
+          DTS:From="Package\Staging Dim_Produkt\Truncate table Temp_Orders_Products igen"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 5"
           DTS:To="Package\Staging Dim_Produkt\SQL StagingEnd Succeeded" />
@@ -804,8 +2016,32 @@
           DTS:refId="Package\Staging Dim_Produkt.PrecedenceConstraints[Constraint 6]"
           DTS:CreationName=""
           DTS:DTSID="{CA2C1E37-6735-4F55-A582-1D19AB67F647}"
-          DTS:From="Package\Staging Dim_Produkt\Truncate table Temp_Orders_Products 1"
+          DTS:From="Package\Staging Dim_Produkt\Truncate table Temp_Orders_Products igen"
           DTS:ObjectName="Constraint 6"
+          DTS:To="Package\Staging Dim_Produkt\SQL StagingEnd Failed"
+          DTS:Value="1" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Staging Dim_Produkt.PrecedenceConstraints[Constraint 7]"
+          DTS:CreationName=""
+          DTS:DTSID="{F3A6D344-BDBA-496B-BEDA-3D66E67EA417}"
+          DTS:From="Package\Staging Dim_Produkt\Truncate table Fact_Ordre"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 7"
+          DTS:To="Package\Staging Dim_Produkt\Staging Fact_Ordre" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Staging Dim_Produkt.PrecedenceConstraints[Constraint 8]"
+          DTS:CreationName=""
+          DTS:DTSID="{CD9BD486-69C3-40DE-9778-DA38373DD5B5}"
+          DTS:From="Package\Staging Dim_Produkt\Staging Fact_Ordre"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 8"
+          DTS:To="Package\Staging Dim_Produkt\Truncate table Temp_Orders_Products igen" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Staging Dim_Produkt.PrecedenceConstraints[Constraint 9]"
+          DTS:CreationName=""
+          DTS:DTSID="{95A22D3A-3E40-4A4D-98B0-E99EA73B132B}"
+          DTS:From="Package\Staging Dim_Produkt\Truncate table Fact_Ordre"
+          DTS:ObjectName="Constraint 9"
           DTS:To="Package\Staging Dim_Produkt\SQL StagingEnd Failed"
           DTS:Value="1" />
       </DTS:PrecedenceConstraints>
@@ -925,11 +2161,11 @@
         <NodeLayout
           Size="205,42"
           Id="Package\SQL ExecutionEnd Failed"
-          TopLeft="296,721.5" />
+          TopLeft="296,925.5" />
         <NodeLayout
           Size="230,42"
           Id="Package\SQL ExecutionEnd Succeeded"
-          TopLeft="5.50000000000011,721.5" />
+          TopLeft="5.50000000000011,925.5" />
         <NodeLayout
           Size="176,42"
           Id="Package\SQL ExecutionStart"
@@ -937,26 +2173,38 @@
         <NodeLayout
           Size="191,42"
           Id="Package\Staging Dim_Produkt\SQL StagingEnd Failed"
-          TopLeft="249,311.5" />
+          TopLeft="326.5,617.5" />
         <NodeLayout
           Size="216,42"
           Id="Package\Staging Dim_Produkt\SQL StagingEnd Succeeded"
-          TopLeft="5.50000000000006,413.5" />
+          TopLeft="44.0000000000001,617.5" />
         <NodeLayout
           Size="161,42"
           Id="Package\Staging Dim_Produkt\SQL StagingStart"
-          TopLeft="264,5.5" />
+          TopLeft="465.5,5.5" />
+        <NodeLayout
+          Size="175,42"
+          Id="Package\Staging Dim_Produkt\Staging Fact_Ordre"
+          TopLeft="185.5,413.5" />
         <NodeLayout
           Size="237,42"
           Id="Package\Staging Dim_Produkt\Staging Temp_Orders_Products"
-          TopLeft="46,209.5" />
+          TopLeft="247.5,209.5" />
+        <NodeLayout
+          Size="149,42"
+          Id="Package\Staging Dim_Produkt\Truncate table Fact_Ordre"
+          TopLeft="273.5,311.5" />
         <NodeLayout
           Size="149,42"
           Id="Package\Staging Dim_Produkt\Truncate table Temp_Orders_Products"
-          TopLeft="270,107.5" />
+          TopLeft="471.5,107.5" />
+        <NodeLayout
+          Size="293,42"
+          Id="Package\Staging Dim_Produkt\Truncate table Temp_Orders_Products igen"
+          TopLeft="5.50000000000006,515.5" />
         <EdgeLayout
           Id="Package\Staging Dim_Produkt.PrecedenceConstraints[Constraint]"
-          TopLeft="321,149.5">
+          TopLeft="522.5,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -990,7 +2238,7 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Staging Dim_Produkt.PrecedenceConstraints[Constraint 1]"
-          TopLeft="344.5,47.5">
+          TopLeft="546,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1002,6 +2250,76 @@
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Staging Dim_Produkt.PrecedenceConstraints[Constraint 10]"
+          TopLeft="300.833333333333,455.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="90.6666666666667,162"
+              Start="0,0"
+              End="90.6666666666667,154.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,77.0758848845039" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,77.0758848845039"
+                    Point2="0,81.0758848845039"
+                    Point3="4,81.0758848845039" />
+                  <mssgle:LineSegment
+                    End="86.6666666666667,81.0758848845039" />
+                  <mssgle:CubicBezierSegment
+                    Point1="86.6666666666667,81.0758848845039"
+                    Point2="90.6666666666667,81.0758848845039"
+                    Point3="90.6666666666667,85.0758848845039" />
+                  <mssgle:LineSegment
+                    End="90.6666666666667,154.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="30.0919856770834,86.0758848845039,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Staging Dim_Produkt.PrecedenceConstraints[Constraint 2]"
+          TopLeft="327.833333333333,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="20.1666666666667,60"
+              Start="0,0"
+              End="20.1666666666667,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.2414082145851" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.2414082145851"
+                    Point2="0,24.2414082145851"
+                    Point3="4,24.2414082145851" />
+                  <mssgle:LineSegment
+                    End="16.1666666666667,24.2414082145851" />
+                  <mssgle:CubicBezierSegment
+                    Point1="16.1666666666667,24.2414082145851"
+                    Point2="20.1666666666667,24.2414082145851"
+                    Point3="20.1666666666667,28.2414082145851" />
+                  <mssgle:LineSegment
+                    End="20.1666666666667,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1012,116 +2330,102 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Staging Dim_Produkt.PrecedenceConstraints[Constraint 3]"
-          TopLeft="202.666666666667,251.5">
+          TopLeft="404.166666666667,251.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="111.333333333333,60"
+              EndConnector="48.3333333333334,366"
               Start="0,0"
-              End="111.333333333333,52.5">
+              End="48.3333333333334,358.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,25.940160006938" />
+                    End="0,178.634976042322" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,25.940160006938"
-                    Point2="0,29.940160006938"
-                    Point3="4,29.940160006938" />
+                    Point1="0,178.634976042322"
+                    Point2="0,182.634976042322"
+                    Point3="4,182.634976042322" />
                   <mssgle:LineSegment
-                    End="107.333333333333,29.940160006938" />
+                    End="44.3333333333334,182.634976042322" />
                   <mssgle:CubicBezierSegment
-                    Point1="107.333333333333,29.940160006938"
-                    Point2="111.333333333333,29.940160006938"
-                    Point3="111.333333333333,33.940160006938" />
+                    Point1="44.3333333333334,182.634976042322"
+                    Point2="48.3333333333334,182.634976042322"
+                    Point3="48.3333333333334,186.634976042322" />
                   <mssgle:LineSegment
-                    End="111.333333333333,52.5" />
+                    End="48.3333333333334,358.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="40.4253190104167,34.940160006938,30.4826953125,9.7490234375"
+              BoundingBox="8.92531901041671,187.634976042322,30.4826953125,9.7490234375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Staging Dim_Produkt.PrecedenceConstraints[Constraint 4]"
-          TopLeft="371.5,149.5">
+          TopLeft="569.5,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,162"
+              EndConnector="-86.4999999999999,468"
               Start="0,0"
-              End="0,154.5">
+              End="-86.4999999999999,460.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,154.5" />
+                    End="0,302.339280314484" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,302.339280314484"
+                    Point2="0,306.339280314484"
+                    Point3="-4,306.339280314484" />
+                  <mssgle:LineSegment
+                    End="-82.4999999999999,306.339280314484" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-82.4999999999999,306.339280314484"
+                    Point2="-86.4999999999999,306.339280314484"
+                    Point3="-86.4999999999999,310.339280314484" />
+                  <mssgle:LineSegment
+                    End="-86.4999999999999,460.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-15.24134765625,72.37548828125,30.4826953125,9.7490234375"
+              BoundingBox="-58.49134765625,311.339280314484,30.4826953125,9.7490234375"
               RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="149,42"
-          Id="Package\Staging Dim_Produkt\Truncate table Temp_Orders_Products 1"
-          TopLeft="39,311.5" />
-        <EdgeLayout
-          Id="Package\Staging Dim_Produkt.PrecedenceConstraints[Constraint 2]"
-          TopLeft="126.333333333333,251.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-12.8333333333333,60"
-              Start="0,0"
-              End="-12.8333333333333,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,20.2414082145851" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,20.2414082145851"
-                    Point2="0,24.2414082145851"
-                    Point3="-4,24.2414082145851" />
-                  <mssgle:LineSegment
-                    End="-8.83333333333333,24.2414082145851" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-8.83333333333333,24.2414082145851"
-                    Point2="-12.8333333333333,24.2414082145851"
-                    Point3="-12.8333333333333,28.2414082145851" />
-                  <mssgle:LineSegment
-                    End="-12.8333333333333,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Staging Dim_Produkt.PrecedenceConstraints[Constraint 5]"
-          TopLeft="113.5,353.5">
+          TopLeft="104.5,557.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60"
+              EndConnector="47.5,60"
               Start="0,0"
-              End="0,52.5">
+              End="47.5,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5" />
+                    End="0,20.1955193482688" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.1955193482688"
+                    Point2="0,24.1955193482688"
+                    Point3="4,24.1955193482688" />
+                  <mssgle:LineSegment
+                    End="43.5,24.1955193482688" />
+                  <mssgle:CubicBezierSegment
+                    Point1="43.5,24.1955193482688"
+                    Point2="47.5,24.1955193482688"
+                    Point3="47.5,28.1955193482688" />
+                  <mssgle:LineSegment
+                    End="47.5,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1132,35 +2436,151 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Staging Dim_Produkt.PrecedenceConstraints[Constraint 6]"
-          TopLeft="188,332.5">
+          TopLeft="199.5,557.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="61,0"
+              EndConnector="161.5,60"
               Start="0,0"
-              End="53.5,0">
+              End="161.5,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="53.5,0" />
+                    End="0,35.0984750581546" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,35.0984750581546"
+                    Point2="0,39.0984750581546"
+                    Point3="4,39.0984750581546" />
+                  <mssgle:LineSegment
+                    End="157.5,39.0984750581546" />
+                  <mssgle:CubicBezierSegment
+                    Point1="157.5,39.0984750581546"
+                    Point2="161.5,39.0984750581546"
+                    Point3="161.5,43.0984750581546" />
+                  <mssgle:LineSegment
+                    End="161.5,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="11.50865234375,5,30.4826953125,9.7490234375"
+              BoundingBox="65.50865234375,44.0984750581546,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Staging Dim_Produkt.PrecedenceConstraints[Constraint 7]"
+          TopLeft="324.5,353.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-51.5,60"
+              Start="0,0"
+              End="-51.5,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.3824701195219" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.3824701195219"
+                    Point2="0,24.3824701195219"
+                    Point3="-4,24.3824701195219" />
+                  <mssgle:LineSegment
+                    End="-47.5,24.3824701195219" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-47.5,24.3824701195219"
+                    Point2="-51.5,24.3824701195219"
+                    Point3="-51.5,28.3824701195219" />
+                  <mssgle:LineSegment
+                    End="-51.5,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Staging Dim_Produkt.PrecedenceConstraints[Constraint 8]"
+          TopLeft="245.166666666667,455.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-93.1666666666666,60"
+              Start="0,0"
+              End="-93.1666666666666,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.326160815402" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.326160815402"
+                    Point2="0,24.326160815402"
+                    Point3="-4,24.326160815402" />
+                  <mssgle:LineSegment
+                    End="-89.1666666666666,24.326160815402" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-89.1666666666666,24.326160815402"
+                    Point2="-93.1666666666666,24.326160815402"
+                    Point3="-93.1666666666666,28.326160815402" />
+                  <mssgle:LineSegment
+                    End="-93.1666666666666,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Staging Dim_Produkt.PrecedenceConstraints[Constraint 9]"
+          TopLeft="371.5,353.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="50.5000000000001,264"
+              Start="0,0"
+              End="50.5000000000001,256.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,103.282868525896" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,103.282868525896"
+                    Point2="0,107.282868525896"
+                    Point3="4,107.282868525896" />
+                  <mssgle:LineSegment
+                    End="46.5000000000001,107.282868525896" />
+                  <mssgle:CubicBezierSegment
+                    Point1="46.5000000000001,107.282868525896"
+                    Point2="50.5000000000001,107.282868525896"
+                    Point3="50.5000000000001,111.282868525896" />
+                  <mssgle:LineSegment
+                    End="50.5000000000001,256.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="10.00865234375,112.282868525896,30.4826953125,9.7490234375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="446,510"
-          Size="446,554"
+          PanelSize="632,715"
+          Size="632,758"
           Id="Package\Staging Dim_Produkt"
-          TopLeft="175.5,107.5" />
+          TopLeft="82.5000000000001,107.5" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="398.5,47.5">
@@ -1185,30 +2605,30 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="325.5,661.5">
+          TopLeft="294.5,865.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-205,60"
+              EndConnector="-174,60"
               Start="0,0"
-              End="-205,52.5">
+              End="-174,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,20.1286863270777" />
+                    End="0,20.0909090909091" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,20.1286863270777"
-                    Point2="0,24.1286863270777"
-                    Point3="-4,24.1286863270777" />
+                    Point1="0,20.0909090909091"
+                    Point2="0,24.0909090909091"
+                    Point3="-4,24.0909090909091" />
                   <mssgle:LineSegment
-                    End="-201,24.1286863270777" />
+                    End="-170,24.0909090909091" />
                   <mssgle:CubicBezierSegment
-                    Point1="-201,24.1286863270777"
-                    Point2="-205,24.1286863270777"
-                    Point3="-205,28.1286863270777" />
+                    Point1="-170,24.0909090909091"
+                    Point2="-174,24.0909090909091"
+                    Point3="-174,28.0909090909091" />
                   <mssgle:LineSegment
-                    End="-205,52.5" />
+                    End="-174,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1219,37 +2639,37 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="471.5,661.5">
+          TopLeft="502.5,865.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-72.9999999999999,60"
+              EndConnector="-104,60"
               Start="0,0"
-              End="-72.9999999999999,52.5">
+              End="-104,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,20.1286863270777" />
+                    End="0,20.0909090909091" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,20.1286863270777"
-                    Point2="0,24.1286863270777"
-                    Point3="-4,24.1286863270777" />
+                    Point1="0,20.0909090909091"
+                    Point2="0,24.0909090909091"
+                    Point3="-4,24.0909090909091" />
                   <mssgle:LineSegment
-                    End="-68.9999999999999,24.1286863270777" />
+                    End="-99.9999999999999,24.0909090909091" />
                   <mssgle:CubicBezierSegment
-                    Point1="-68.9999999999999,24.1286863270777"
-                    Point2="-72.9999999999999,24.1286863270777"
-                    Point3="-72.9999999999999,28.1286863270777" />
+                    Point1="-99.9999999999999,24.0909090909091"
+                    Point2="-104,24.0909090909091"
+                    Point3="-104,28.0909090909091" />
                   <mssgle:LineSegment
-                    End="-72.9999999999999,52.5" />
+                    End="-104,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-51.74134765625,29.1286863270777,30.4826953125,9.7490234375"
+              BoundingBox="-67.24134765625,29.0909090909091,30.4826953125,9.7490234375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -1269,18 +2689,257 @@
     </LayoutInfo>
   </DtsEventHandler>
   <TaskHost
+    design-time-name="Package\Staging Dim_Produkt\Staging Fact_Ordre">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="138,42"
+          Id="Package\Staging Dim_Produkt\Staging Fact_Ordre\RC Inserted"
+          TopLeft="25.5000000000001,515.5" />
+        <NodeLayout
+          Size="175,42"
+          Id="Package\Staging Dim_Produkt\Staging Fact_Ordre\Lookup Dim_Kunde"
+          TopLeft="9.00000000000003,209.5" />
+        <NodeLayout
+          Size="177,42"
+          Id="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination"
+          TopLeft="8.00000000000007,617.5" />
+        <NodeLayout
+          Size="141,42"
+          Id="Package\Staging Dim_Produkt\Staging Fact_Ordre\RC Selected"
+          TopLeft="30,107.5" />
+        <NodeLayout
+          Size="182,42"
+          Id="Package\Staging Dim_Produkt\Staging Fact_Ordre\Lookup Dim_Produkt"
+          TopLeft="5.50000000000004,311.5" />
+        <NodeLayout
+          Size="158,42"
+          Id="Package\Staging Dim_Produkt\Staging Fact_Ordre\Derived Column"
+          TopLeft="17.5000000000001,413.5" />
+        <NodeLayout
+          Size="157,42"
+          Id="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source"
+          TopLeft="18,5.5" />
+        <EdgeLayout
+          Id="Package\Staging Dim_Produkt\Staging Fact_Ordre.Paths[Row Count Output 11]"
+          TopLeft="95.5000000000001,557.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Staging Dim_Produkt\Staging Fact_Ordre.Paths[Row Count Output 1]"
+          TopLeft="98.5,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Staging Dim_Produkt\Staging Fact_Ordre.Paths[OLE DB Source Output]"
+          TopLeft="98.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Staging Dim_Produkt\Staging Fact_Ordre.Paths[Lookup Match Output1]"
+          TopLeft="96.5000000000001,353.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Staging Dim_Produkt\Staging Fact_Ordre.Paths[Lookup Match Output]"
+          TopLeft="96.5,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Staging Dim_Produkt\Staging Fact_Ordre.Paths[Derived Column Output]"
+          TopLeft="95.5000000000001,455.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Staging Dim_Produkt\Staging Fact_Ordre\Lookup Dim_Kunde">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Staging Dim_Produkt\Staging Fact_Ordre\Lookup Dim_Produkt">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
     design-time-name="Package\Staging Dim_Produkt\Staging Temp_Orders_Products">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="177,42"
-          Id="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Destination"
-          TopLeft="5.50000000000003,209.5" />
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="157,42"
           Id="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Source"
           TopLeft="15.5,5.5" />
+        <NodeLayout
+          Size="177,42"
+          Id="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Destination"
+          TopLeft="5.50000000000003,209.5" />
         <NodeLayout
           Size="158,42"
           Id="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\Derived Column"
@@ -1304,7 +2963,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -1326,7 +2987,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

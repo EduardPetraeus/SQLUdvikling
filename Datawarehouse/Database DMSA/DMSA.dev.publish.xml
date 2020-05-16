@@ -2,19 +2,11 @@
 <Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <IncludeCompositeObjects>True</IncludeCompositeObjects>
-    <TargetDatabaseName>Staging</TargetDatabaseName>
-    <DeployScriptFileName>Staging.sql</DeployScriptFileName>
+    <TargetDatabaseName>DMSA</TargetDatabaseName>
+    <DeployScriptFileName>DMSA.sql</DeployScriptFileName>
     <TargetConnectionString>Data Source=PC0QGDKR;Integrated Security=True;Persist Security Info=False;Pooling=False;MultipleActiveResultSets=False;Connect Timeout=60;Encrypt=False;TrustServerCertificate=True</TargetConnectionString>
     <ProfileVersionNumber>1</ProfileVersionNumber>
     <BlockOnPossibleDataLoss>True</BlockOnPossibleDataLoss>
     <CreateNewDatabase>False</CreateNewDatabase>
   </PropertyGroup>
-  <ItemGroup>
-    <SqlCmdVariable Include="LZDB">
-      <Value>LZDB</Value>
-    </SqlCmdVariable>
-    <SqlCmdVariable Include="Salg">
-      <Value>Salg</Value>
-    </SqlCmdVariable>
-  </ItemGroup>
 </Project>

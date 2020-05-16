@@ -1,0 +1,260 @@
+{
+  "name": "SemanticModel",
+  "compatibilityLevel": 1200,
+  "model": {
+    "culture": "da-DK",
+    "dataSources": [
+      {
+        "name": "DMSA",
+        "connectionString": "Provider=SQLNCLI11;Data Source=.;Initial Catalog=DMSA;Integrated Security=SSPI;Persist Security Info=false",
+        "impersonationMode": "impersonateAccount",
+        "account": "NCLAN\\CEP",
+        "annotations": [
+          {
+            "name": "ConnectionEditUISource",
+            "value": "SqlServer"
+          }
+        ]
+      }
+    ],
+    "tables": [
+      {
+        "name": "Ordre",
+        "columns": [
+          {
+            "name": "Ekey_Kunde",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "Ekey_Kunde",
+            "sourceProviderType": "BigInt"
+          },
+          {
+            "name": "Ordre Id",
+            "dataType": "int64",
+            "sourceColumn": "Ordre Id",
+            "sourceProviderType": "BigInt"
+          },
+          {
+            "name": "Evaluerings sæt",
+            "dataType": "string",
+            "sourceColumn": "Evaluerings sæt",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "Ordre nummer",
+            "dataType": "int64",
+            "sourceColumn": "Ordre nummer",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Dag for bestilling",
+            "dataType": "string",
+            "sourceColumn": "Dag for bestilling",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Ugedag for bestilling",
+            "dataType": "int64",
+            "sourceColumn": "Ugedag for bestilling",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Tidspunkt for bestilling",
+            "dataType": "string",
+            "sourceColumn": "Tidspunkt for bestilling",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "Dage siden sidste bestilling",
+            "dataType": "string",
+            "sourceColumn": "Dage siden sidste bestilling",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "Ekey_Produkt",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "Ekey_Produkt",
+            "sourceProviderType": "BigInt"
+          },
+          {
+            "name": "Antal produkter i en given ordre",
+            "dataType": "int64",
+            "sourceColumn": "Antal produkter i en given ordre",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Genbestilt (Ja /Nej)",
+            "dataType": "string",
+            "sourceColumn": "Genbestilt (Ja /Nej)",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Række indlæst i Datavarehus",
+            "dataType": "dateTime",
+            "sourceColumn": "Række indlæst i Datavarehus",
+            "formatString": "General Date",
+            "sourceProviderType": "DBTimeStamp"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Ordre",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " SELECT [Ordre].[v_Ordre].* FROM [Ordre].[v_Ordre] ",
+              "dataSource": "DMSA"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [Ordre].[v_Ordre].* FROM [Ordre].[v_Ordre] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "v_Ordre"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "Ordre"
+          }
+        ]
+      },
+      {
+        "name": "Produkt",
+        "columns": [
+          {
+            "name": "Ekey_Produkt",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "Ekey_Produkt",
+            "sourceProviderType": "BigInt"
+          },
+          {
+            "name": "Produkt Id",
+            "dataType": "int64",
+            "sourceColumn": "Produkt Id",
+            "sourceProviderType": "BigInt"
+          },
+          {
+            "name": "Produkt navn",
+            "dataType": "string",
+            "sourceColumn": "Produkt navn",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Afdeling",
+            "dataType": "string",
+            "sourceColumn": "Afdeling",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "Gang",
+            "dataType": "string",
+            "sourceColumn": "Gang",
+            "sourceProviderType": "WChar"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Produkt",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " SELECT [Ordre].[v_Produkt].* FROM [Ordre].[v_Produkt] ",
+              "dataSource": "DMSA"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [Ordre].[v_Produkt].* FROM [Ordre].[v_Produkt] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "v_Produkt"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "Ordre"
+          }
+        ]
+      },
+      {
+        "name": "Kunde",
+        "columns": [
+          {
+            "name": "Ekey_Kunde",
+            "dataType": "int64",
+            "sourceColumn": "Ekey_Kunde",
+            "sourceProviderType": "BigInt"
+          },
+          {
+            "name": "Ordre Id",
+            "dataType": "int64",
+            "sourceColumn": "Ordre Id",
+            "sourceProviderType": "BigInt"
+          },
+          {
+            "name": "Kunde Id",
+            "dataType": "int64",
+            "sourceColumn": "Kunde Id",
+            "sourceProviderType": "Integer"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Kunde",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " SELECT [Ordre].[v_Kunde].* FROM [Ordre].[v_Kunde] ",
+              "dataSource": "DMSA"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [Ordre].[v_Kunde].* FROM [Ordre].[v_Kunde] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "v_Kunde"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "Ordre"
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "10cfb00d-fb39-4aa1-a745-8781f932ab2b",
+        "fromTable": "Ordre",
+        "fromColumn": "Ekey_Produkt",
+        "toTable": "Produkt",
+        "toColumn": "Ekey_Produkt"
+      },
+      {
+        "name": "7c0eb8fe-de21-462a-a2f9-7f6093928538",
+        "fromTable": "Ordre",
+        "fromColumn": "Ekey_Kunde",
+        "toTable": "Kunde",
+        "toColumn": "Ekey_Kunde"
+      }
+    ],
+    "annotations": [
+      {
+        "name": "ClientCompatibilityLevel",
+        "value": "400"
+      }
+    ]
+  },
+  "id": "SemanticModel"
+}

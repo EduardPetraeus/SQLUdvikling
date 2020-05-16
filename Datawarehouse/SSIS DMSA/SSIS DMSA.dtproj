@@ -5,8 +5,8 @@
   <SchemaVersion>9.0.1.0</SchemaVersion>
   <State>$base64$PFNvdXJjZUNvbnRyb2xJbmZvIHhtbG5zOnhzZD0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEiIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiIHhtbG5zOmRkbDI9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDAzL2VuZ2luZS8yIiB4bWxuczpkZGwyXzI9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDAzL2VuZ2luZS8yLzIiIHhtbG5zOmRkbDEwMF8xMDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDA4L2VuZ2luZS8xMDAvMTAwIiB4bWxuczpkZGwyMDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDEwL2VuZ2luZS8yMDAiIHhtbG5zOmRkbDIwMF8yMDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDEwL2VuZ2luZS8yMDAvMjAwIiB4bWxuczpkZGwzMDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDExL2VuZ2luZS8zMDAiIHhtbG5zOmRkbDMwMF8zMDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDExL2VuZ2luZS8zMDAvMzAwIiB4bWxuczpkZGw0MDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDEyL2VuZ2luZS80MDAiIHhtbG5zOmRkbDQwMF80MDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDEyL2VuZ2luZS80MDAvNDAwIiB4bWxuczpkZGw1MDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDEzL2VuZ2luZS81MDAiIHhtbG5zOmRkbDUwMF81MDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDEzL2VuZ2luZS81MDAvNTAwIiB4bWxuczpkd2Q9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vRGF0YVdhcmVob3VzZS9EZXNpZ25lci8xLjAiPg0KICA8RW5hYmxlZD5mYWxzZTwvRW5hYmxlZD4NCiAgPFByb2plY3ROYW1lPjwvUHJvamVjdE5hbWU+DQogIDxBdXhQYXRoPjwvQXV4UGF0aD4NCiAgPExvY2FsUGF0aD48L0xvY2FsUGF0aD4NCiAgPFByb3ZpZGVyPjwvUHJvdmlkZXI+DQo8L1NvdXJjZUNvbnRyb2xJbmZvPg==</State>
   <Database>
-    <Name>SSIS Staging.database</Name>
-    <FullPath>SSIS Staging.database</FullPath>
+    <Name>SSIS DMSA.database</Name>
+    <FullPath>SSIS DMSA.database</FullPath>
   </Database>
   <DataSources />
   <DataSourceViews />
@@ -14,36 +14,37 @@
     <Manifest>
       <SSIS:Project SSIS:ProtectionLevel="EncryptSensitiveWithUserKey" xmlns:SSIS="www.microsoft.com/SqlServer/SSIS">
         <SSIS:Properties>
-          <SSIS:Property SSIS:Name="ID">{4a4e6888-000d-40a5-84e2-b740d1def685}</SSIS:Property>
-          <SSIS:Property SSIS:Name="Name">SSIS Staging</SSIS:Property>
+          <SSIS:Property SSIS:Name="ID">{a7b72811-ac4c-4a0e-a391-73d25a91de6c}</SSIS:Property>
+          <SSIS:Property SSIS:Name="Name">SSIS DMSA</SSIS:Property>
           <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
           <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
           <SSIS:Property SSIS:Name="VersionBuild">0</SSIS:Property>
           <SSIS:Property SSIS:Name="VersionComments">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="CreationDate">2020-05-15T17:31:58.453157+02:00</SSIS:Property>
+          <SSIS:Property SSIS:Name="CreationDate">2020-05-16T11:01:22.0091061+02:00</SSIS:Property>
           <SSIS:Property SSIS:Name="CreatorName">NCLAN\cep</SSIS:Property>
           <SSIS:Property SSIS:Name="CreatorComputerName">PC0QGDKR</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAlP6nPMG2QU6PRcSLgzoq2QAAAAACAAAAAAADZgAAwAAAABAAAADfFB0k8+1MCuVuY/5izeieAAAAAASAAACgAAAAEAAAALaK2T4dtTWuyJuRm4eCbWKIAAAAekRl222RIdFHysJZ8dUVcx48k1NwgMVnkpl/FYUwBzppjuN/4BNVpg1RZmmB9tiFkQWINHggQO5w0chvBQ+qtXGy3m48V6sHK+vJgtKUjvtEiRXsk1chlKb3Chk0YT+r10a29+gkr23MENG4pZeBRDTvOOE8hX1Q9RQHCKhpLBhBQotoDsAmHBQAAABrtmsmkV6cBDyREgbcXRbwJ0lUdg==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAlP6nPMG2QU6PRcSLgzoq2QAAAAACAAAAAAADZgAAwAAAABAAAABGI89OhV9aE1ASitU4mDNhAAAAAASAAACgAAAAEAAAAPPghuMQu5PXvJwK0wW8r2CIAAAAKxsLQtXg/NycHFf7zKWie8NS1hk33G2osZb0BLdNzbxf7kPxbV6ldPjiiYC7L49aOTh/fGFiWbKZoIJYfeHWoDSsf/SQOWyE/FCdDbfQbra9bGmZR3TNJKBSNDBuDZEDL+fCXUDr3WdzdJ++vlWvcL6ctt5+lZheGMit3pgl6P0Iqzw8Qn5BURQAAAC/xU4N/hbq2mMPsbJFaUhvmDuOMw==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
-          <SSIS:Package SSIS:Name="Staging Dim_Kunde.dtsx" SSIS:EntryPoint="1" />
-          <SSIS:Package SSIS:Name="Staging Fact Ordre.dtsx" SSIS:EntryPoint="1" />
-          <SSIS:Package SSIS:Name="Staging Dim_Produkt.dtsx" SSIS:EntryPoint="1" />
-          <SSIS:Package SSIS:Name="Master Staging Dimension.dtsx" SSIS:EntryPoint="1" />
-          <SSIS:Package SSIS:Name="Master Staging Fact.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="DMSA Dim_Kunde.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="DMSA Dim_Produkt.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="DMSA Fact_Ordre.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="Master DMSA Dimension.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="Master DMSA Fact.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="Utility InsertNullRecords.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
-          <SSIS:ConnectionManager SSIS:Name="ADO.NET LZDB.conmgr" />
-          <SSIS:ConnectionManager SSIS:Name="OLEDB Staging.conmgr" />
+          <SSIS:ConnectionManager SSIS:Name="ADO.NET DZDB.conmgr" />
+          <SSIS:ConnectionManager SSIS:Name="OLEDDB Staging.conmgr" />
           <SSIS:ConnectionManager SSIS:Name="OLEDB DMSA.conmgr" />
         </SSIS:ConnectionManagers>
         <SSIS:DeploymentInfo>
           <SSIS:ProjectConnectionParameters>
-            <SSIS:Parameter SSIS:Name="CM.ADO NET LZDB.ConnectionString">
+            <SSIS:Parameter SSIS:Name="CM.ADO NET DZDB.ConnectionString">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -54,11 +55,11 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">Data Source=.;Initial Catalog=LZDB;Integrated Security=True;Application Name=SSIS-SSIS Staging-{A27AA4A5-6ECE-4E5D-8B16-03150D0523A3}LocalHost.LZDB;</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">Data Source=.;Initial Catalog=DZDB;Integrated Security=True;Application Name=SSIS-SSIS DMSA-{0F0C7406-5396-43EE-BD83-FE1D8F5C75FD}LocalHost.DZDB;</SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.ADO NET LZDB.ConnectUsingManagedIdentity">
+            <SSIS:Parameter SSIS:Name="CM.ADO NET DZDB.ConnectUsingManagedIdentity">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -73,7 +74,7 @@
                 <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.ADO NET LZDB.InitialCatalog">
+            <SSIS:Parameter SSIS:Name="CM.ADO NET DZDB.InitialCatalog">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -84,11 +85,11 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">LZDB</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">DZDB</SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.ADO NET LZDB.Password">
+            <SSIS:Parameter SSIS:Name="CM.ADO NET DZDB.Password">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -102,7 +103,7 @@
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.ADO NET LZDB.RetainSameConnection">
+            <SSIS:Parameter SSIS:Name="CM.ADO NET DZDB.RetainSameConnection">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -117,7 +118,7 @@
                 <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.ADO NET LZDB.ServerName">
+            <SSIS:Parameter SSIS:Name="CM.ADO NET DZDB.ServerName">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -132,7 +133,7 @@
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.ADO NET LZDB.UserName">
+            <SSIS:Parameter SSIS:Name="CM.ADO NET DZDB.UserName">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -146,7 +147,7 @@
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.OLEDB Staging.ConnectByProxy">
+            <SSIS:Parameter SSIS:Name="CM.OLEDDB Staging.ConnectByProxy">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -161,7 +162,7 @@
                 <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.OLEDB Staging.ConnectionString">
+            <SSIS:Parameter SSIS:Name="CM.OLEDDB Staging.ConnectionString">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -176,7 +177,7 @@
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.OLEDB Staging.ConnectUsingManagedIdentity">
+            <SSIS:Parameter SSIS:Name="CM.OLEDDB Staging.ConnectUsingManagedIdentity">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -191,7 +192,7 @@
                 <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.OLEDB Staging.InitialCatalog">
+            <SSIS:Parameter SSIS:Name="CM.OLEDDB Staging.InitialCatalog">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -206,7 +207,7 @@
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.OLEDB Staging.Password">
+            <SSIS:Parameter SSIS:Name="CM.OLEDDB Staging.Password">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -220,7 +221,7 @@
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.OLEDB Staging.RetainSameConnection">
+            <SSIS:Parameter SSIS:Name="CM.OLEDDB Staging.RetainSameConnection">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -235,7 +236,7 @@
                 <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.OLEDB Staging.ServerName">
+            <SSIS:Parameter SSIS:Name="CM.OLEDDB Staging.ServerName">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -250,7 +251,7 @@
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
-            <SSIS:Parameter SSIS:Name="CM.OLEDB Staging.UserName">
+            <SSIS:Parameter SSIS:Name="CM.OLEDDB Staging.UserName">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">
                 </SSIS:Property>
@@ -384,112 +385,16 @@
             </SSIS:Parameter>
           </SSIS:ProjectConnectionParameters>
           <SSIS:PackageInfo>
-            <SSIS:PackageMetaData SSIS:Name="Staging Dim_Kunde.dtsx">
+            <SSIS:PackageMetaData SSIS:Name="DMSA Dim_Kunde.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{AF6DD8C6-9932-4380-92E2-7ADE21267172}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">Staging Dim_Kunde</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">33</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{4CBE096B-CE54-4694-AD62-A129A671DD2C}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="FullLoad">
-                  <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{7605D7B4-1212-41B3-95CC-42135BB9F7F1}</SSIS:Property>
-                    <SSIS:Property SSIS:Name="CreationName">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="Description">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">true</SSIS:Property>
-                    <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
-                  </SSIS:Properties>
-                </SSIS:Parameter>
-              </SSIS:Parameters>
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="Staging Fact Ordre.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{17B46862-AB7A-4A10-B109-C05D03B6E942}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">Staging Fact Ordre</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{35F75744-91C7-42AB-BE33-B7DA2719BB29}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">DMSA Dim_Kunde</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionBuild">38</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{E806268E-D70D-4A15-B770-1C8EFDF75B56}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="FullLoad">
-                  <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{37E33826-7004-4A7A-B6D5-ECE391A4389D}</SSIS:Property>
-                    <SSIS:Property SSIS:Name="CreationName">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="Description">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">true</SSIS:Property>
-                    <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
-                  </SSIS:Properties>
-                </SSIS:Parameter>
-              </SSIS:Parameters>
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="Staging Dim_Produkt.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{EFD673AE-354F-45F3-A94C-BAEB0118511D}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">Staging Dim_Produkt</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">33</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{300D7486-795C-4C4D-9AAF-A5C361A6D242}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters>
-                <SSIS:Parameter SSIS:Name="FullLoad">
-                  <SSIS:Properties>
-                    <SSIS:Property SSIS:Name="ID">{F71D2A10-ACBB-4B2C-80B5-07497F60CB16}</SSIS:Property>
-                    <SSIS:Property SSIS:Name="CreationName">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="Description">
-                    </SSIS:Property>
-                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">true</SSIS:Property>
-                    <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
-                  </SSIS:Properties>
-                </SSIS:Parameter>
-              </SSIS:Parameters>
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="Master Staging Dimension.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{9F066B4D-7B0A-4B0C-ABF7-77D9163CB122}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">Master Staging Dimension</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">41</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{26AF451F-1319-49F0-B4A3-D8D36504027A}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{39001A45-E359-4EDB-BCA2-E25DA4082B60}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -497,16 +402,84 @@
               </SSIS:Properties>
               <SSIS:Parameters />
             </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="Master Staging Fact.dtsx">
+            <SSIS:PackageMetaData SSIS:Name="DMSA Dim_Produkt.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{8FFC1519-56A7-4DC5-8A07-050738530BE0}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">Master Staging Fact</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{DCD72FDD-5352-4E2E-9ADF-1C542F016D73}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">DMSA Dim_Produkt</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">41</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{F286A9DC-3B52-445D-B897-21464D42A938}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="DMSA Fact_Ordre.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{8184D819-D287-495B-B73F-13D078F80E80}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">DMSA Fact_Ordre</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">39</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{57CBA463-BF83-4717-BEAE-B598BA59E2EC}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="Master DMSA Dimension.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{E1AA3D55-FF6F-4DF9-8D2D-1D9BDC891378}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">Master DMSA Dimension</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionBuild">42</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{896F755F-2BE2-4A97-8F25-259833FBEFC2}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{F9EE3D60-7BF2-4903-A3CE-36DE7581631E}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="Master DMSA Fact.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{A1783792-4C88-4EA9-A261-C8C82777DE71}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">Master DMSA Fact</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">44</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{955EF39F-6D4D-40B5-AED5-EC93E7FE9348}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="Utility InsertNullRecords.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{1DF15637-C32A-4128-B529-39E67CFDECCC}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">Utility InsertNullRecords</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">39</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{D613C36C-A5A1-431C-AAB6-586512ADA718}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -541,7 +514,7 @@
           <ConfigurationSetting>
             <Id>LastModifiedTime</Id>
             <Name>LastModifiedTime</Name>
-            <Value xsi:type="xsd:dateTime">2020-05-15T15:44:58.1149566Z</Value>
+            <Value xsi:type="xsd:dateTime">2020-05-16T09:25:25.2168993Z</Value>
           </ConfigurationSetting>
         </ParameterConfigurationValues>
       </Options>

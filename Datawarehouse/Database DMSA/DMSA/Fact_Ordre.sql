@@ -1,4 +1,4 @@
-﻿CREATE TABLE [Staging].[Fact_Ordre]
+﻿CREATE TABLE [DMSA].[Fact_Ordre]
 (   [Ekey_Kunde]               BIGINT                 NOT NULL,
 	[Order_Id]                 BIGINT                 NOT NULL,
 	[Eval_Set]                 NVARCHAR(50)           NULL,
@@ -19,8 +19,8 @@
 )
 GO 
 
-CREATE NONCLUSTERED INDEX IDX_Ekey_Dim_Kunde ON [Staging].[Fact_Ordre] ([Ekey_Kunde])
+CREATE NONCLUSTERED INDEX IDX_Ekey_Dim_Kunde ON [DMSA].[Fact_Ordre] ([Ekey_Kunde])
 GO
 
-CREATE NONCLUSTERED INDEX IDX_Ekey_Dim_Produkt ON [Staging].[Fact_Ordre] ([Ekey_Produkt])
+CREATE NONCLUSTERED INDEX IDX_Ekey_Dim_Produkt ON [DMSA].[Fact_Ordre] ([Ekey_Produkt])
 GO
