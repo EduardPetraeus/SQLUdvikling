@@ -11,8 +11,8 @@
   DTS:LocaleID="1030"
   DTS:ObjectName="Extract Order_Products__Prior"
   DTS:PackageType="5"
-  DTS:VersionBuild="32"
-  DTS:VersionGUID="{E685F535-3A08-4E0B-A7BF-E21BB53578A7}">
+  DTS:VersionBuild="33"
+  DTS:VersionGUID="{7533F57A-D072-42C6-A166-442342774DEC}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -95,7 +95,7 @@
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[Order_Products__Prior]"
       DTS:CreationName="FLATFILE"
-      DTS:DTSID="{EB69B264-FC7B-4283-8061-55FCE80CE368}"
+      DTS:DTSID="{A26F3BE4-968A-42E1-B71B-74DF2E0C5EDE}"
       DTS:ObjectName="Order_Products__Prior">
       <DTS:ObjectData>
         <DTS:ConnectionManager
@@ -106,43 +106,43 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="1252"
-          DTS:ConnectionString="C:\Users\cep\Documents\Data til Datavarehus\Order_products__prior.csv">
+          DTS:ConnectionString="C:\Users\cep\Documents\Data til Datavarehus\order_products__prior.csv">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x003B_"
+              DTS:ColumnDelimiter="_x002C_"
               DTS:MaximumWidth="50"
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="order_id"
-              DTS:DTSID="{35E468F0-D57C-48B9-8DB7-ACE4CC9BE06C}"
+              DTS:DTSID="{2D9AF569-D206-4E8C-B61C-38FF467BEE4D}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x003B_"
+              DTS:ColumnDelimiter="_x002C_"
               DTS:MaximumWidth="50"
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="product_id"
-              DTS:DTSID="{BA8DA590-ABA0-4FA7-8D66-E994BF3561F9}"
+              DTS:DTSID="{03875118-B115-413F-9F6C-D448696C605A}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x003B_"
+              DTS:ColumnDelimiter="_x002C_"
               DTS:MaximumWidth="50"
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="add_to_cart_order"
-              DTS:DTSID="{03CB8D13-EAFD-448B-AA7F-8ECBA4BDF812}"
+              DTS:DTSID="{AEE2B908-C76A-4C16-B7A5-DAA906D0A5B9}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:ColumnDelimiter="_x000A_"
               DTS:MaximumWidth="50"
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="reordered"
-              DTS:DTSID="{7F0ED4A3-074C-4C2B-A651-4016AEF67514}"
+              DTS:DTSID="{97044578-3BCA-47EF-8547-C7A699ADD323}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -2414,10 +2414,6 @@
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="177,42"
-          Id="Package\Extract Order_Products__Prior\Extract Temp_Order_Products__Prior\OLE DB Destination"
-          TopLeft="5.50000000000003,209.5" />
-        <NodeLayout
           Size="156,42"
           Id="Package\Extract Order_Products__Prior\Extract Temp_Order_Products__Prior\Flat File Source"
           TopLeft="16,5.5" />
@@ -2425,6 +2421,10 @@
           Size="158,42"
           Id="Package\Extract Order_Products__Prior\Extract Temp_Order_Products__Prior\Derived Column"
           TopLeft="15,107.5" />
+        <NodeLayout
+          Size="177,42"
+          Id="Package\Extract Order_Products__Prior\Extract Temp_Order_Products__Prior\OLE DB Destination"
+          TopLeft="5.50000000000003,209.5" />
         <EdgeLayout
           Id="Package\Extract Order_Products__Prior\Extract Temp_Order_Products__Prior.Paths[Flat File Source Output]"
           TopLeft="94,47.5">

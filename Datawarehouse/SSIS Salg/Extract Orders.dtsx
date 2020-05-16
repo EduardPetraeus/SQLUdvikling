@@ -11,8 +11,8 @@
   DTS:LocaleID="1030"
   DTS:ObjectName="Extract Orders"
   DTS:PackageType="5"
-  DTS:VersionBuild="33"
-  DTS:VersionGUID="{55787ABB-C91A-4B68-86EF-41FB8A6BD247}">
+  DTS:VersionBuild="35"
+  DTS:VersionGUID="{1DD30B26-D23E-4FBF-B71E-FFFB786A8E53}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -95,7 +95,7 @@
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[Orders]"
       DTS:CreationName="FLATFILE"
-      DTS:DTSID="{FF0BCBCE-0D18-4200-AA8A-0F583EE2E870}"
+      DTS:DTSID="{8407C838-E745-4F45-8017-494F7C10682E}"
       DTS:ObjectName="Orders">
       <DTS:ObjectData>
         <DTS:ConnectionManager
@@ -106,70 +106,70 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="1252"
-          DTS:ConnectionString="C:\Users\cep\Documents\Data til Datavarehus\Orders.csv">
+          DTS:ConnectionString="C:\Users\cep\Documents\Data til Datavarehus\orders.csv">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x003B_"
+              DTS:ColumnDelimiter="_x002C_"
               DTS:MaximumWidth="50"
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="order_id"
-              DTS:DTSID="{1A2304AC-162C-4434-8263-C44B47F51360}"
+              DTS:DTSID="{7013B7ED-EA8C-42B6-8391-7E0EF7177426}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x003B_"
+              DTS:ColumnDelimiter="_x002C_"
               DTS:MaximumWidth="50"
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="user_id"
-              DTS:DTSID="{5F19C8A4-E54E-4608-89B6-DD2D88D5ABBC}"
+              DTS:DTSID="{62151226-D89B-486D-871F-DE8EE29488E6}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x003B_"
+              DTS:ColumnDelimiter="_x002C_"
               DTS:MaximumWidth="50"
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="eval_set"
-              DTS:DTSID="{3189297A-E7E3-4A4B-86B6-E292D860D2F6}"
+              DTS:DTSID="{ABE2D184-FB1E-4783-9DD9-AB3F8105B2F9}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x003B_"
+              DTS:ColumnDelimiter="_x002C_"
               DTS:MaximumWidth="50"
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="order_number"
-              DTS:DTSID="{72BB2BC0-2FAC-47D1-9810-CA366B2AAFFC}"
+              DTS:DTSID="{52A2EA1B-7296-4C73-A890-B17A6190C59D}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x003B_"
+              DTS:ColumnDelimiter="_x002C_"
               DTS:MaximumWidth="50"
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="order_dow"
-              DTS:DTSID="{FF1E2D7C-ED1B-4035-901A-277169A8B5AB}"
+              DTS:DTSID="{9D0F8392-197D-42F3-B877-C379F0BAE7A9}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x003B_"
+              DTS:ColumnDelimiter="_x002C_"
               DTS:MaximumWidth="50"
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="order_hour_of_day"
-              DTS:DTSID="{9C5836C6-2E60-430A-BBFA-8EE3FAD8376A}"
+              DTS:DTSID="{37A6E2EE-8922-4CD4-861A-35E12739A3A6}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:ColumnDelimiter="_x000A_"
               DTS:MaximumWidth="50"
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="days_since_prior_order"
-              DTS:DTSID="{73B34CA9-A69D-4BD3-A57C-0746751036CB}"
+              DTS:DTSID="{AFC7859F-3602-4047-8B10-2EB35C14AF51}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -1513,6 +1513,10 @@
           Size="149,42"
           Id="Package\Extract Orders\Truncate table"
           TopLeft="303,107.5" />
+        <NodeLayout
+          Size="170,42"
+          Id="Package\Extract Orders\Update Orders med mellemrum til NULL"
+          TopLeft="84.5,311.5" />
         <EdgeLayout
           Id="Package\Extract Orders.PrecedenceConstraints[Constraint]"
           TopLeft="354,149.5">
@@ -1561,6 +1565,40 @@
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Extract Orders.PrecedenceConstraints[Constraint 2]"
+          TopLeft="142.5,353.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-29,60"
+              Start="0,0"
+              End="-29,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.3356643356643" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.3356643356643"
+                    Point2="0,24.3356643356643"
+                    Point3="-4,24.3356643356643" />
+                  <mssgle:LineSegment
+                    End="-25,24.3356643356643" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-25,24.3356643356643"
+                    Point2="-29,24.3356643356643"
+                    Point3="-29,28.3356643356643" />
+                  <mssgle:LineSegment
+                    End="-29,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1641,44 +1679,6 @@
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="170,42"
-          Id="Package\Extract Orders\Update Orders med mellemrum til NULL"
-          TopLeft="84.5,311.5" />
-        <EdgeLayout
-          Id="Package\Extract Orders.PrecedenceConstraints[Constraint 2]"
-          TopLeft="142.5,353.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-29,60"
-              Start="0,0"
-              End="-29,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,20.3356643356643" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,20.3356643356643"
-                    Point2="0,24.3356643356643"
-                    Point3="-4,24.3356643356643" />
-                  <mssgle:LineSegment
-                    End="-25,24.3356643356643" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-25,24.3356643356643"
-                    Point2="-29,24.3356643356643"
-                    Point3="-29,28.3356643356643" />
-                  <mssgle:LineSegment
-                    End="-29,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package\Extract Orders.PrecedenceConstraints[Constraint 5]"
           TopLeft="217.833333333333,251.5">
@@ -1752,7 +1752,7 @@
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="478,510"
+          PanelSize="478,511"
           Size="478,554"
           Id="Package\Extract Orders"
           TopLeft="159.5,107.5" />
@@ -1885,10 +1885,6 @@
           Id="Package\Extract Orders\Extract Orders\RC selected"
           TopLeft="27.5,107.5" />
         <NodeLayout
-          Size="158,42"
-          Id="Package\Extract Orders\Extract Orders\Derived Column"
-          TopLeft="15,209.5" />
-        <NodeLayout
           Size="137,42"
           Id="Package\Extract Orders\Extract Orders\RC inserted"
           TopLeft="23,311.5" />
@@ -1900,28 +1896,10 @@
           Size="156,42"
           Id="Package\Extract Orders\Extract Orders\Flat File Source"
           TopLeft="16,5.5" />
-        <EdgeLayout
-          Id="Package\Extract Orders\Extract Orders.Paths[Derived Column Output]"
-          TopLeft="92.75,251.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+        <NodeLayout
+          Size="158,42"
+          Id="Package\Extract Orders\Extract Orders\Derived Column"
+          TopLeft="15,209.5" />
         <EdgeLayout
           Id="Package\Extract Orders\Extract Orders.Paths[Row Count Output 11]"
           TopLeft="92.75,353.5">
@@ -1969,6 +1947,28 @@
         <EdgeLayout
           Id="Package\Extract Orders\Extract Orders.Paths[Flat File Source Output]"
           TopLeft="95.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Extract Orders\Extract Orders.Paths[Derived Column Output]"
+          TopLeft="92.75,251.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
