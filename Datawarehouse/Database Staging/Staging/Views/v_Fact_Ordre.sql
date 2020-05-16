@@ -11,11 +11,10 @@ SELECT SAO.[Order_Id] AS [Bkey_Dim_Kunde]
       ,SOP.[Add_To_Cart_Order]
       ,SOP.[Reordered]
       ,LAE.[StartTime] AS [Initial_Load_Time]
-  FROM [Salg].[Archive].[Orders] SAO
+  FROM [Salg].[Extract].[Orders] SAO
   LEFT JOIN [Staging].[Temp_Orders_Products] SOP
   ON SAO.[Order_Id] = SOP.[Order_Id]
 
   LEFT JOIN (SELECT MAX([StartTime]) AS [StartTime] FROM [LZDB].[Audit].[ExtractLog] 
   WHERE [TableName] = N'Orders' AND [Database] =N'Salg' and [Status] = N'Succeeded') LAE ON 1=1 
 
-  WHERE SAO.Meta_IsCurrent = 1 AND SAO.Meta_IsDeleted = 0
