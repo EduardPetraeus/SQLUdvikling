@@ -1,0 +1,724 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/11/2020 9:36:52 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="PC0QGDKR"
+  DTS:CreatorName="NCLAN\cep"
+  DTS:DTSID="{953CC1C1-2AD5-414F-9779-676F318220A0}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.94"
+  DTS:LocaleID="1030"
+  DTS:ObjectName="Process Cube Ordre"
+  DTS:PackageType="5"
+  DTS:VersionBuild="51"
+  DTS:VersionGUID="{2DED5AEF-7904-4CC6-B9C4-2439090273E6}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{87767885-DDAC-4C99-80B1-00A475D84709}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="CubeName">
+      <DTS:VariableValue
+        DTS:DataType="8">Ordre</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{F264C2F2-4A66-4A74-8120-5C6753726B5B}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="ExecutionId">
+      <DTS:VariableValue
+        DTS:DataType="20">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{A8B04E32-510B-4508-9442-8EE45733CE27}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="Starttime">
+      <DTS:VariableValue
+        DTS:DataType="7">1/1/9999</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Process Cube Ordre"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{FFCB1F54-372A-429C-A0FB-74CB5575736D}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Process Cube Ordre">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Process Cube Ordre\Analysis Services Processing Task"
+          DTS:CreationName="Microsoft.DTSProcessingTask"
+          DTS:Description="Analysis Services Processing Task"
+          DTS:DTSID="{BB8934E5-13AC-47FB-84DB-28A12D8A2AF1}"
+          DTS:ExecutableType="Microsoft.DTSProcessingTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Analysis Services Processing Task"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ASProcessingData
+              ConnectionName="MSOLAP Ordre"
+              ProcessingCommands="" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Process Cube Ordre\SQL ProcessCubeEnd Failed"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{789297fd-ae32-4e80-839c-6ff6e226f941}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL ProcessCubeEnd Failed"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{0F0C7406-5396-43EE-BD83-FE1D8F5C75FD}"
+              SQLTask:IsStoredProc="True"
+              SQLTask:SqlStatementSource="[Audit].[ProcessCubeEndFailed]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="ExecutionId"
+                SQLTask:DtsVariableName="User::ExecutionId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="12"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="Starttime"
+                SQLTask:DtsVariableName="User::Starttime"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="6"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Process Cube Ordre\SQL ProcessCubeEnd Succeeded"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{a7ce5371-c3cb-4f92-9cef-28b47496bf66}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL ProcessCubeEnd Succeeded"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{0F0C7406-5396-43EE-BD83-FE1D8F5C75FD}"
+              SQLTask:IsStoredProc="True"
+              SQLTask:SqlStatementSource="[Audit].[ProcessCubeEndSucceeded]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="ExecutionId"
+                SQLTask:DtsVariableName="User::ExecutionId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="12"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="CubeName"
+                SQLTask:DtsVariableName="User::CubeName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="16"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="Starttime"
+                SQLTask:DtsVariableName="User::Starttime"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="6"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Process Cube Ordre\SQL ProcessCubeEnd Succeeded 1"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:Disabled="True"
+          DTS:DTSID="{4ba8be17-317b-416e-844d-13d30e147bc5}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL ProcessCubeEnd Succeeded 1"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{0F0C7406-5396-43EE-BD83-FE1D8F5C75FD}"
+              SQLTask:IsStoredProc="True"
+              SQLTask:SqlStatementSource="[Audit].[ProcessCubeEndSucceeded]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="ExecutionId"
+                SQLTask:DtsVariableName="User::ExecutionId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="12"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="CubeName"
+                SQLTask:DtsVariableName="User::CubeName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="16"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="Starttime"
+                SQLTask:DtsVariableName="User::Starttime"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="6"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Process Cube Ordre\SQL ProcessCubeStart"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{AEECC89E-44E2-4149-B462-CB7C5910F5D9}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL ProcessCubeStart"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{0F0C7406-5396-43EE-BD83-FE1D8F5C75FD}"
+              SQLTask:IsStoredProc="True"
+              SQLTask:SqlStatementSource="[Audit].[ProcessCubeStart]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="ExecutionId"
+                SQLTask:DtsVariableName="User::ExecutionId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="12"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="CubeName"
+                SQLTask:DtsVariableName="User::CubeName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="16"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="Starttime"
+                SQLTask:DtsVariableName="User::Starttime"
+                SQLTask:ParameterDirection="Output"
+                SQLTask:DataType="6"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Process Cube Ordre.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{CF2CA05A-7F7B-4E19-B76E-F868D3E0E161}"
+          DTS:From="Package\Process Cube Ordre\SQL ProcessCubeStart"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Process Cube Ordre\Analysis Services Processing Task" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Process Cube Ordre.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{E6B9E10F-6318-41D8-93D9-4589DDC48E81}"
+          DTS:From="Package\Process Cube Ordre\Analysis Services Processing Task"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Process Cube Ordre\SQL ProcessCubeEnd Succeeded" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Process Cube Ordre.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{5E5D2578-13FB-4375-A228-7E85189CE561}"
+          DTS:From="Package\Process Cube Ordre\Analysis Services Processing Task"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\Process Cube Ordre\SQL ProcessCubeEnd Failed"
+          DTS:Value="1" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Process Cube Ordre.PrecedenceConstraints[Constraint 3]"
+          DTS:CreationName=""
+          DTS:DTSID="{BBFA337F-16D5-4C96-A37D-ABF134677FF7}"
+          DTS:From="Package\Process Cube Ordre\SQL ProcessCubeEnd Succeeded"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 3"
+          DTS:To="Package\Process Cube Ordre\SQL ProcessCubeEnd Succeeded 1" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL ExecutionEnd Failed"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{9D9D9093-526E-42E1-A892-B3BB6B974E95}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL ExecutionEnd Failed"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{0F0C7406-5396-43EE-BD83-FE1D8F5C75FD}"
+          SQLTask:SqlStatementSource="EXEC Audit.ExecutionEnd @Id, 'Failed'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="Id"
+            SQLTask:DtsVariableName="User::ExecutionId"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="12"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL ExecutionEnd Succeeded"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{5F69D63F-6340-4F3D-BFC0-A66F648AD2A1}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL ExecutionEnd Succeeded"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{0F0C7406-5396-43EE-BD83-FE1D8F5C75FD}"
+          SQLTask:IsStoredProc="True"
+          SQLTask:SqlStatementSource="Audit.ExecutionEnd" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="Id"
+            SQLTask:DtsVariableName="User::ExecutionId"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="12"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL ExecutionStart"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{A73F69CB-640A-4966-BFC6-C8D9FB139C5F}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL ExecutionStart"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{0F0C7406-5396-43EE-BD83-FE1D8F5C75FD}"
+          SQLTask:IsStoredProc="True"
+          SQLTask:SqlStatementSource="Audit.ExecutionStart" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="Id"
+            SQLTask:DtsVariableName="User::ExecutionId"
+            SQLTask:ParameterDirection="Output"
+            SQLTask:DataType="12"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="PackageID"
+            SQLTask:DtsVariableName="System::PackageID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="9"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="PackageName"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="16"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="Database"
+            SQLTask:DtsVariableName="$Project::Database"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="16"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="ServerExecutionID"
+            SQLTask:DtsVariableName="System::ServerExecutionID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="12"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{E52C4072-BD70-453D-B79C-A9CEA3CEFE76}"
+      DTS:From="Package\SQL ExecutionStart"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Process Cube Ordre" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{D52DC7C4-E169-4730-BAF0-C947738A3429}"
+      DTS:From="Package\Process Cube Ordre"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\SQL ExecutionEnd Succeeded" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{ED8331B2-9B94-4DDA-A085-8084737E336B}"
+      DTS:From="Package\Process Cube Ordre"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\SQL ExecutionEnd Failed"
+      DTS:Value="1" />
+  </DTS:PrecedenceConstraints>
+  <DTS:EventHandlers>
+    <DTS:EventHandler
+      DTS:refId="Package.EventHandlers[OnError]"
+      DTS:CreationName="OnError"
+      DTS:DTSID="{3CCF416B-612A-4695-8C86-332BB29A3221}"
+      DTS:EventID="0"
+      DTS:EventName="OnError"
+      DTS:LocaleID="-1">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:Description="The propagate property of the event"
+          DTS:DTSID="{00054196-63E3-4164-8553-9ED4D01D19EB}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="System"
+          DTS:ObjectName="Propagate">
+          <DTS:VariableValue
+            DTS:DataType="11">-1</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package.EventHandlers[OnError]\SQL ExecutionError"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{E9178F05-6B72-4B54-AF44-6C267FF95BE1}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL ExecutionError"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{0F0C7406-5396-43EE-BD83-FE1D8F5C75FD}"
+              SQLTask:IsStoredProc="True"
+              SQLTask:SqlStatementSource="Audit.ExecutionError" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="ExecutionID"
+                SQLTask:DtsVariableName="User::ExecutionId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="12"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="ErrorCode"
+                SQLTask:DtsVariableName="System::ErrorCode"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="11"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="ErrorDescription"
+                SQLTask:DtsVariableName="System::ErrorDescription"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="16"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="SourceName"
+                SQLTask:DtsVariableName="System::SourceName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="16"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="SourceDescription"
+                SQLTask:DtsVariableName="System::SourceDescription"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="16"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:EventHandler>
+  </DTS:EventHandlers>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="161,42"
+          Id="Package\Process Cube Ordre\SQL ProcessCubeEnd Failed"
+          TopLeft="267.5,209.5" />
+        <NodeLayout
+          Size="161,42"
+          Id="Package\Process Cube Ordre\SQL ProcessCubeEnd Succeeded"
+          TopLeft="45.5,209.5" />
+        <NodeLayout
+          Size="161,42"
+          Id="Package\Process Cube Ordre\SQL ProcessCubeStart"
+          TopLeft="267.5,5.5" />
+        <NodeLayout
+          Size="237,42"
+          Id="Package\Process Cube Ordre\Analysis Services Processing Task"
+          TopLeft="229.5,107.5" />
+        <EdgeLayout
+          Id="Package\Process Cube Ordre.PrecedenceConstraints[Constraint]"
+          TopLeft="348,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Process Cube Ordre.PrecedenceConstraints[Constraint 1]"
+          TopLeft="309.833333333333,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-183.833333333333,60"
+              Start="0,0"
+              End="-183.833333333333,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.2414082145851" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.2414082145851"
+                    Point2="0,24.2414082145851"
+                    Point3="-4,24.2414082145851" />
+                  <mssgle:LineSegment
+                    End="-179.833333333333,24.2414082145851" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-179.833333333333,24.2414082145851"
+                    Point2="-183.833333333333,24.2414082145851"
+                    Point3="-183.833333333333,28.2414082145851" />
+                  <mssgle:LineSegment
+                    End="-183.833333333333,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Process Cube Ordre.PrecedenceConstraints[Constraint 2]"
+          TopLeft="386.166666666667,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-38.1666666666666,60"
+              Start="0,0"
+              End="-38.1666666666666,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.2414082145851" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.2414082145851"
+                    Point2="0,24.2414082145851"
+                    Point3="-4,24.2414082145851" />
+                  <mssgle:LineSegment
+                    End="-34.1666666666666,24.2414082145851" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-34.1666666666666,24.2414082145851"
+                    Point2="-38.1666666666666,24.2414082145851"
+                    Point3="-38.1666666666666,28.2414082145851" />
+                  <mssgle:LineSegment
+                    End="-38.1666666666666,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-34.3246809895833,29.2414082145851,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="241,42"
+          Id="Package\Process Cube Ordre\SQL ProcessCubeEnd Succeeded 1"
+          TopLeft="5.50000000000006,311.5" />
+        <EdgeLayout
+          Id="Package\Process Cube Ordre.PrecedenceConstraints[Constraint 3]"
+          TopLeft="126,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="472,408"
+          Size="472,452"
+          Id="Package\Process Cube Ordre"
+          TopLeft="162.5,107.5" />
+        <NodeLayout
+          Size="205,42"
+          Id="Package\SQL ExecutionEnd Failed"
+          TopLeft="296,619.5" />
+        <NodeLayout
+          Size="230,42"
+          Id="Package\SQL ExecutionEnd Succeeded"
+          TopLeft="5.50000000000011,619.5" />
+        <NodeLayout
+          Size="176,42"
+          Id="Package\SQL ExecutionStart"
+          TopLeft="310.5,5.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="398.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="321.166666666667,559.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-200.666666666667,60"
+              Start="0,0"
+              End="-200.666666666667,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.1216216216216" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.1216216216216"
+                    Point2="0,24.1216216216216"
+                    Point3="-4,24.1216216216216" />
+                  <mssgle:LineSegment
+                    End="-196.666666666667,24.1216216216216" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-196.666666666667,24.1216216216216"
+                    Point2="-200.666666666667,24.1216216216216"
+                    Point3="-200.666666666667,28.1216216216216" />
+                  <mssgle:LineSegment
+                    End="-200.666666666667,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="475.833333333333,559.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-77.3333333333333,60"
+              Start="0,0"
+              End="-77.3333333333333,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.1216216216216" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.1216216216216"
+                    Point2="0,24.1216216216216"
+                    Point3="-4,24.1216216216216" />
+                  <mssgle:LineSegment
+                    End="-73.3333333333333,24.1216216216216" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-73.3333333333333,24.1216216216216"
+                    Point2="-77.3333333333333,24.1216216216216"
+                    Point3="-77.3333333333333,28.1216216216216" />
+                  <mssgle:LineSegment
+                    End="-77.3333333333333,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-53.9080143229166,29.1216216216216,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <DtsEventHandler
+    design-time-name="Package.EventHandlers[OnError]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="177,42"
+          Id="Package.EventHandlers[OnError]\SQL ExecutionError"
+          TopLeft="450,168" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
