@@ -11,8 +11,8 @@
   DTS:LocaleID="1030"
   DTS:ObjectName="Staging Fact Ordre"
   DTS:PackageType="5"
-  DTS:VersionBuild="44"
-  DTS:VersionGUID="{DE8BA93F-B337-498D-BDEB-617EB758172A}">
+  DTS:VersionBuild="45"
+  DTS:VersionGUID="{0D585BC3-EC48-4135-8199-C6BBA26EDDF8}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:PackageParameters>
@@ -986,6 +986,12 @@ where [refTable].[Product_Id] = ?</property>
                           cachedScale="1"
                           externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Days_Since_Prior_Order]"
                           lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Derived Column.Outputs[Derived Column Output].Columns[Derived Column Days_Since_Prior_Order]" />
+                        <inputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Meta_CreateJob]"
+                          cachedDataType="i8"
+                          cachedName="Meta_CreateJob"
+                          externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Meta_CreateJob]"
+                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Derived Column.Outputs[Derived Column Output].Columns[Meta_CreateJob]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -2603,10 +2609,6 @@ where [refTable].[Product_Id] = ?</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="138,42"
-          Id="Package\Staging Dim_Produkt\Staging Fact_Ordre\RC Inserted"
-          TopLeft="34.5000000000001,515.5" />
-        <NodeLayout
           Size="175,42"
           Id="Package\Staging Dim_Produkt\Staging Fact_Ordre\Lookup Dim_Kunde"
           TopLeft="18,209.5" />
@@ -2615,10 +2617,6 @@ where [refTable].[Product_Id] = ?</property>
           Id="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination"
           TopLeft="17.0000000000001,617.5" />
         <NodeLayout
-          Size="141,42"
-          Id="Package\Staging Dim_Produkt\Staging Fact_Ordre\RC Selected"
-          TopLeft="39,107.5" />
-        <NodeLayout
           Size="182,42"
           Id="Package\Staging Dim_Produkt\Staging Fact_Ordre\Lookup Dim_Produkt"
           TopLeft="14.5,311.5" />
@@ -2626,6 +2624,18 @@ where [refTable].[Product_Id] = ?</property>
           Size="157,42"
           Id="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source"
           TopLeft="27,5.5" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Staging Dim_Produkt\Staging Fact_Ordre\Derived Column"
+          TopLeft="30,424" />
+        <NodeLayout
+          Size="138,42"
+          Id="Package\Staging Dim_Produkt\Staging Fact_Ordre\RC Inserted"
+          TopLeft="34.5000000000001,515.5" />
+        <NodeLayout
+          Size="141,42"
+          Id="Package\Staging Dim_Produkt\Staging Fact_Ordre\RC Selected"
+          TopLeft="39,107.5" />
         <EdgeLayout
           Id="Package\Staging Dim_Produkt\Staging Fact_Ordre.Paths[Row Count Output 11]"
           TopLeft="104.5,557.5">
@@ -2693,34 +2703,6 @@ where [refTable].[Product_Id] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Staging Dim_Produkt\Staging Fact_Ordre.Paths[Lookup Match Output]"
-          TopLeft="105.5,251.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="154,42"
-          Id="Package\Staging Dim_Produkt\Staging Fact_Ordre\Derived Column"
-          TopLeft="30,424" />
-        <EdgeLayout
           Id="Package\Staging Dim_Produkt\Staging Fact_Ordre.Paths[Lookup Match Output1]"
           TopLeft="106.25,353.5">
           <EdgeLayout.Curve>
@@ -2741,6 +2723,30 @@ where [refTable].[Product_Id] = ?</property>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
               BoundingBox="-48.19138671875,25.6953125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Staging Dim_Produkt\Staging Fact_Ordre.Paths[Lookup Match Output]"
+          TopLeft="105.5,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -2775,7 +2781,7 @@ where [refTable].[Product_Id] = ?</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -2785,7 +2791,7 @@ where [refTable].[Product_Id] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2811,7 +2817,7 @@ where [refTable].[Product_Id] = ?</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -2821,7 +2827,7 @@ where [refTable].[Product_Id] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2875,19 +2881,6 @@ where [refTable].[Product_Id] = ?</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">View</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Destination">
     <Properties>
       <Property>
@@ -2897,6 +2890,19 @@ where [refTable].[Product_Id] = ?</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">View</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
