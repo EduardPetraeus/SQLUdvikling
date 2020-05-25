@@ -11,8 +11,8 @@
   DTS:LocaleID="1030"
   DTS:ObjectName="Staging Dim_Kunde"
   DTS:PackageType="5"
-  DTS:VersionBuild="33"
-  DTS:VersionGUID="{4CBE096B-CE54-4694-AD62-A129A671DD2C}">
+  DTS:VersionBuild="34"
+  DTS:VersionGUID="{9387B2C7-8C13-403D-921B-A661699F088F}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:PackageParameters>
@@ -459,7 +459,7 @@
                           lineageId="Package\Staging Dim_Kunde\Staging Dim_Kunde\Derived Column.Outputs[Derived Column Output].Columns[Meta_CreateJob]" />
                         <inputColumn
                           refId="Package\Staging Dim_Kunde\Staging Dim_Kunde\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Order_Id]"
-                          cachedDataType="i8"
+                          cachedDataType="i4"
                           cachedName="Order_Id"
                           externalMetadataColumnId="Package\Staging Dim_Kunde\Staging Dim_Kunde\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Order_Id]"
                           lineageId="Package\Staging Dim_Kunde\Staging Dim_Kunde\OLE DB Source.Outputs[OLE DB Source Output].Columns[Order_Id]" />
@@ -486,7 +486,7 @@
                           name="Meta_CreateJob" />
                         <externalMetadataColumn
                           refId="Package\Staging Dim_Kunde\Staging Dim_Kunde\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Order_Id]"
-                          dataType="i8"
+                          dataType="i4"
                           name="Order_Id" />
                         <externalMetadataColumn
                           refId="Package\Staging Dim_Kunde\Staging Dim_Kunde\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[User_Id]"
@@ -583,7 +583,7 @@
                       <outputColumns>
                         <outputColumn
                           refId="Package\Staging Dim_Kunde\Staging Dim_Kunde\OLE DB Source.Outputs[OLE DB Source Output].Columns[Order_Id]"
-                          dataType="i8"
+                          dataType="i4"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\Staging Dim_Kunde\Staging Dim_Kunde\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Order_Id]"
@@ -604,7 +604,7 @@
                         isUsed="True">
                         <externalMetadataColumn
                           refId="Package\Staging Dim_Kunde\Staging Dim_Kunde\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Order_Id]"
-                          dataType="i8"
+                          dataType="i4"
                           name="Order_Id" />
                         <externalMetadataColumn
                           refId="Package\Staging Dim_Kunde\Staging Dim_Kunde\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[User_Id]"
@@ -619,7 +619,7 @@
                       <outputColumns>
                         <outputColumn
                           refId="Package\Staging Dim_Kunde\Staging Dim_Kunde\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Order_Id]"
-                          dataType="i8"
+                          dataType="i4"
                           lineageId="Package\Staging Dim_Kunde\Staging Dim_Kunde\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Order_Id]"
                           name="Order_Id" />
                         <outputColumn
@@ -1353,69 +1353,25 @@
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="137,42"
-          Id="Package\Staging Dim_Kunde\Staging Dim_Kunde\RC inserted"
-          TopLeft="23,311.5" />
+          Size="158,42"
+          Id="Package\Staging Dim_Kunde\Staging Dim_Kunde\Derived Column"
+          TopLeft="15,209.5" />
         <NodeLayout
           Size="177,42"
           Id="Package\Staging Dim_Kunde\Staging Dim_Kunde\OLE DB Destination"
           TopLeft="5.50000000000004,413.5" />
         <NodeLayout
-          Size="157,42"
-          Id="Package\Staging Dim_Kunde\Staging Dim_Kunde\OLE DB Source"
-          TopLeft="25,14" />
-        <NodeLayout
           Size="139,42"
           Id="Package\Staging Dim_Kunde\Staging Dim_Kunde\RC selected"
           TopLeft="27.5,107.5" />
         <NodeLayout
-          Size="158,42"
-          Id="Package\Staging Dim_Kunde\Staging Dim_Kunde\Derived Column"
-          TopLeft="15,209.5" />
-        <EdgeLayout
-          Id="Package\Staging Dim_Kunde\Staging Dim_Kunde.Paths[OLE DB Source Output]"
-          TopLeft="100.25,56">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,51.5"
-              Start="0,0"
-              End="0,44">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,44" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Staging Dim_Kunde\Staging Dim_Kunde.Paths[Derived Column Output]"
-          TopLeft="92.75,251.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          Size="137,42"
+          Id="Package\Staging Dim_Kunde\Staging Dim_Kunde\RC inserted"
+          TopLeft="23,311.5" />
+        <NodeLayout
+          Size="157,42"
+          Id="Package\Staging Dim_Kunde\Staging Dim_Kunde\OLE DB Source"
+          TopLeft="25,14" />
         <EdgeLayout
           Id="Package\Staging Dim_Kunde\Staging Dim_Kunde.Paths[Row Count Output 11]"
           TopLeft="92.75,353.5">
@@ -1460,22 +1416,53 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Staging Dim_Kunde\Staging Dim_Kunde.Paths[OLE DB Source Output]"
+          TopLeft="100.25,56">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,51.5"
+              Start="0,0"
+              End="0,44">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,44" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Staging Dim_Kunde\Staging Dim_Kunde.Paths[Derived Column Output]"
+          TopLeft="92.75,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Staging Dim_Kunde\Staging Dim_Kunde\OLE DB Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">View</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Staging Dim_Kunde\Staging Dim_Kunde\OLE DB Destination">
     <Properties>
@@ -1486,6 +1473,19 @@
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Staging Dim_Kunde\Staging Dim_Kunde\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">View</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

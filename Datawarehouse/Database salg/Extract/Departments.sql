@@ -1,7 +1,7 @@
 ﻿CREATE TABLE [Extract].[Departments]
 (
-	[Department_Id]     INT                          NOT NULL,
-	[Department]        NVARCHAR(100)                NULL,
+	[Department_Id]     SMALLINT                     NOT NULL,
+	[Department]        NVARCHAR(30)                 NULL,
 
 	/* Metadata */
 	[Meta_Id]           BIGINT IDENTITY (1,1)        NOT NULL,

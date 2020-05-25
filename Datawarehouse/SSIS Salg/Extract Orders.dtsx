@@ -11,8 +11,8 @@
   DTS:LocaleID="1030"
   DTS:ObjectName="Extract Orders"
   DTS:PackageType="5"
-  DTS:VersionBuild="35"
-  DTS:VersionGUID="{1DD30B26-D23E-4FBF-B71E-FFFB786A8E53}">
+  DTS:VersionBuild="37"
+  DTS:VersionGUID="{173D1BCA-3BF3-4573-96FA-8884C363822B}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -335,7 +335,7 @@
                       <outputColumns>
                         <outputColumn
                           refId="Package\Extract Orders\Extract Orders\Derived Column.Outputs[Derived Column Output].Columns[Derived Column order_id]"
-                          dataType="i8"
+                          dataType="i4"
                           errorOrTruncationOperation="Computation"
                           errorRowDisposition="FailComponent"
                           lineageId="Package\Extract Orders\Extract Orders\Derived Column.Outputs[Derived Column Output].Columns[Derived Column order_id]"
@@ -346,13 +346,13 @@
                               containsID="true"
                               dataType="System.String"
                               description="Derived Column Expression"
-                              name="Expression">(DT_I8)#{Package\Extract Orders\Extract Orders\Flat File Source.Outputs[Flat File Source Output].Columns[order_id]}</property>
+                              name="Expression">(DT_I4)#{Package\Extract Orders\Extract Orders\Flat File Source.Outputs[Flat File Source Output].Columns[order_id]}</property>
                             <property
                               containsID="true"
                               dataType="System.String"
                               description="Derived Column Friendly Expression"
                               expressionType="Notify"
-                              name="FriendlyExpression">(DT_I8)order_id</property>
+                              name="FriendlyExpression">(DT_I4)order_id</property>
                           </properties>
                         </outputColumn>
                         <outputColumn
@@ -404,7 +404,7 @@
                           dataType="wstr"
                           errorOrTruncationOperation="Computation"
                           errorRowDisposition="FailComponent"
-                          length="50"
+                          length="20"
                           lineageId="Package\Extract Orders\Extract Orders\Derived Column.Outputs[Derived Column Output].Columns[Derived Column eval_set]"
                           name="Derived Column eval_set"
                           truncationRowDisposition="FailComponent">
@@ -413,18 +413,18 @@
                               containsID="true"
                               dataType="System.String"
                               description="Derived Column Expression"
-                              name="Expression">(DT_WSTR,50)#{Package\Extract Orders\Extract Orders\Flat File Source.Outputs[Flat File Source Output].Columns[eval_set]}</property>
+                              name="Expression">(DT_WSTR,20)#{Package\Extract Orders\Extract Orders\Flat File Source.Outputs[Flat File Source Output].Columns[eval_set]}</property>
                             <property
                               containsID="true"
                               dataType="System.String"
                               description="Derived Column Friendly Expression"
                               expressionType="Notify"
-                              name="FriendlyExpression">(DT_WSTR,50)eval_set</property>
+                              name="FriendlyExpression">(DT_WSTR,20)eval_set</property>
                           </properties>
                         </outputColumn>
                         <outputColumn
                           refId="Package\Extract Orders\Extract Orders\Derived Column.Outputs[Derived Column Output].Columns[Derived Column order_number]"
-                          dataType="i4"
+                          dataType="i2"
                           errorOrTruncationOperation="Computation"
                           errorRowDisposition="FailComponent"
                           lineageId="Package\Extract Orders\Extract Orders\Derived Column.Outputs[Derived Column Output].Columns[Derived Column order_number]"
@@ -435,18 +435,18 @@
                               containsID="true"
                               dataType="System.String"
                               description="Derived Column Expression"
-                              name="Expression">(DT_I4)#{Package\Extract Orders\Extract Orders\Flat File Source.Outputs[Flat File Source Output].Columns[order_number]}</property>
+                              name="Expression">(DT_I2)#{Package\Extract Orders\Extract Orders\Flat File Source.Outputs[Flat File Source Output].Columns[order_number]}</property>
                             <property
                               containsID="true"
                               dataType="System.String"
                               description="Derived Column Friendly Expression"
                               expressionType="Notify"
-                              name="FriendlyExpression">(DT_I4)order_number</property>
+                              name="FriendlyExpression">(DT_I2)order_number</property>
                           </properties>
                         </outputColumn>
                         <outputColumn
                           refId="Package\Extract Orders\Extract Orders\Derived Column.Outputs[Derived Column Output].Columns[Derived Column order_dow]"
-                          dataType="i4"
+                          dataType="i2"
                           errorOrTruncationOperation="Computation"
                           errorRowDisposition="FailComponent"
                           lineageId="Package\Extract Orders\Extract Orders\Derived Column.Outputs[Derived Column Output].Columns[Derived Column order_dow]"
@@ -457,18 +457,18 @@
                               containsID="true"
                               dataType="System.String"
                               description="Derived Column Expression"
-                              name="Expression">(DT_I4)#{Package\Extract Orders\Extract Orders\Flat File Source.Outputs[Flat File Source Output].Columns[order_dow]}</property>
+                              name="Expression">(DT_I2)#{Package\Extract Orders\Extract Orders\Flat File Source.Outputs[Flat File Source Output].Columns[order_dow]}</property>
                             <property
                               containsID="true"
                               dataType="System.String"
                               description="Derived Column Friendly Expression"
                               expressionType="Notify"
-                              name="FriendlyExpression">(DT_I4)order_dow</property>
+                              name="FriendlyExpression">(DT_I2)order_dow</property>
                           </properties>
                         </outputColumn>
                         <outputColumn
                           refId="Package\Extract Orders\Extract Orders\Derived Column.Outputs[Derived Column Output].Columns[Derived Column order_hour_of_day]"
-                          dataType="i4"
+                          dataType="i2"
                           errorOrTruncationOperation="Computation"
                           errorRowDisposition="FailComponent"
                           lineageId="Package\Extract Orders\Extract Orders\Derived Column.Outputs[Derived Column Output].Columns[Derived Column order_hour_of_day]"
@@ -479,13 +479,13 @@
                               containsID="true"
                               dataType="System.String"
                               description="Derived Column Expression"
-                              name="Expression">(DT_I4)#{Package\Extract Orders\Extract Orders\Flat File Source.Outputs[Flat File Source Output].Columns[order_hour_of_day]}</property>
+                              name="Expression">(DT_I2)#{Package\Extract Orders\Extract Orders\Flat File Source.Outputs[Flat File Source Output].Columns[order_hour_of_day]}</property>
                             <property
                               containsID="true"
                               dataType="System.String"
                               description="Derived Column Friendly Expression"
                               expressionType="Notify"
-                              name="FriendlyExpression">(DT_I4)order_hour_of_day</property>
+                              name="FriendlyExpression">(DT_I2)order_hour_of_day</property>
                           </properties>
                         </outputColumn>
                         <outputColumn
@@ -493,7 +493,7 @@
                           dataType="wstr"
                           errorOrTruncationOperation="Computation"
                           errorRowDisposition="FailComponent"
-                          length="50"
+                          length="20"
                           lineageId="Package\Extract Orders\Extract Orders\Derived Column.Outputs[Derived Column Output].Columns[Derived Column days_since_prior_order]"
                           name="Derived Column days_since_prior_order"
                           truncationRowDisposition="FailComponent">
@@ -502,13 +502,13 @@
                               containsID="true"
                               dataType="System.String"
                               description="Derived Column Expression"
-                              name="Expression">(DT_WSTR,50)#{Package\Extract Orders\Extract Orders\Flat File Source.Outputs[Flat File Source Output].Columns[days_since_prior_order]}</property>
+                              name="Expression">(DT_WSTR,20)#{Package\Extract Orders\Extract Orders\Flat File Source.Outputs[Flat File Source Output].Columns[days_since_prior_order]}</property>
                             <property
                               containsID="true"
                               dataType="System.String"
                               description="Derived Column Friendly Expression"
                               expressionType="Notify"
-                              name="FriendlyExpression">(DT_WSTR,50)days_since_prior_order</property>
+                              name="FriendlyExpression">(DT_WSTR,20)days_since_prior_order</property>
                           </properties>
                         </outputColumn>
                       </outputColumns>
@@ -880,7 +880,7 @@
                           lineageId="Package\Extract Orders\Extract Orders\Derived Column.Outputs[Derived Column Output].Columns[Meta_CreateJob]" />
                         <inputColumn
                           refId="Package\Extract Orders\Extract Orders\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Derived Column order_id]"
-                          cachedDataType="i8"
+                          cachedDataType="i4"
                           cachedName="Derived Column order_id"
                           externalMetadataColumnId="Package\Extract Orders\Extract Orders\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Order_Id]"
                           lineageId="Package\Extract Orders\Extract Orders\Derived Column.Outputs[Derived Column Output].Columns[Derived Column order_id]" />
@@ -893,32 +893,32 @@
                         <inputColumn
                           refId="Package\Extract Orders\Extract Orders\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Derived Column eval_set]"
                           cachedDataType="wstr"
-                          cachedLength="50"
+                          cachedLength="20"
                           cachedName="Derived Column eval_set"
                           externalMetadataColumnId="Package\Extract Orders\Extract Orders\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Eval_Set]"
                           lineageId="Package\Extract Orders\Extract Orders\Derived Column.Outputs[Derived Column Output].Columns[Derived Column eval_set]" />
                         <inputColumn
                           refId="Package\Extract Orders\Extract Orders\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Derived Column order_number]"
-                          cachedDataType="i4"
+                          cachedDataType="i2"
                           cachedName="Derived Column order_number"
                           externalMetadataColumnId="Package\Extract Orders\Extract Orders\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Order_Number]"
                           lineageId="Package\Extract Orders\Extract Orders\Derived Column.Outputs[Derived Column Output].Columns[Derived Column order_number]" />
                         <inputColumn
                           refId="Package\Extract Orders\Extract Orders\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Derived Column order_dow]"
-                          cachedDataType="i4"
+                          cachedDataType="i2"
                           cachedName="Derived Column order_dow"
                           externalMetadataColumnId="Package\Extract Orders\Extract Orders\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Order_Dow]"
                           lineageId="Package\Extract Orders\Extract Orders\Derived Column.Outputs[Derived Column Output].Columns[Derived Column order_dow]" />
                         <inputColumn
                           refId="Package\Extract Orders\Extract Orders\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Derived Column order_hour_of_day]"
-                          cachedDataType="i4"
+                          cachedDataType="i2"
                           cachedName="Derived Column order_hour_of_day"
                           externalMetadataColumnId="Package\Extract Orders\Extract Orders\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Order_Hour_Of_Day]"
                           lineageId="Package\Extract Orders\Extract Orders\Derived Column.Outputs[Derived Column Output].Columns[Derived Column order_hour_of_day]" />
                         <inputColumn
                           refId="Package\Extract Orders\Extract Orders\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Derived Column days_since_prior_order]"
                           cachedDataType="wstr"
-                          cachedLength="50"
+                          cachedLength="20"
                           cachedName="Derived Column days_since_prior_order"
                           externalMetadataColumnId="Package\Extract Orders\Extract Orders\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Days_Since_Prior_Order]"
                           lineageId="Package\Extract Orders\Extract Orders\Derived Column.Outputs[Derived Column Output].Columns[Derived Column days_since_prior_order]" />
@@ -939,7 +939,7 @@
                           name="Meta_CreateJob" />
                         <externalMetadataColumn
                           refId="Package\Extract Orders\Extract Orders\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Order_Id]"
-                          dataType="i8"
+                          dataType="i4"
                           name="Order_Id" />
                         <externalMetadataColumn
                           refId="Package\Extract Orders\Extract Orders\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[User_Id]"
@@ -948,24 +948,24 @@
                         <externalMetadataColumn
                           refId="Package\Extract Orders\Extract Orders\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Eval_Set]"
                           dataType="wstr"
-                          length="50"
+                          length="20"
                           name="Eval_Set" />
                         <externalMetadataColumn
                           refId="Package\Extract Orders\Extract Orders\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Order_Number]"
-                          dataType="i4"
+                          dataType="i2"
                           name="Order_Number" />
                         <externalMetadataColumn
                           refId="Package\Extract Orders\Extract Orders\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Order_Dow]"
-                          dataType="i4"
+                          dataType="i2"
                           name="Order_Dow" />
                         <externalMetadataColumn
                           refId="Package\Extract Orders\Extract Orders\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Order_Hour_Of_Day]"
-                          dataType="i4"
+                          dataType="i2"
                           name="Order_Hour_Of_Day" />
                         <externalMetadataColumn
                           refId="Package\Extract Orders\Extract Orders\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Days_Since_Prior_Order]"
                           dataType="wstr"
-                          length="50"
+                          length="20"
                           name="Days_Since_Prior_Order" />
                       </externalMetadataColumns>
                     </input>

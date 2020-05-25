@@ -1,10 +1,10 @@
 ﻿CREATE TABLE [Extract].[Order_Products__Prior]
 (   
-    [Id_Order_Products__Prior] BIGINT                NOT NULL,
+    [Id_Order_Products__Prior] INT                   NOT NULL,
 	[Order_Id]                 INT                   NOT NULL,
 	[Product_Id]               INT                   NOT NULL,
-	[Add_To_Cart_Order]        INT                   NOT NULL,
-	[Reordered]                INT                   NOT NULL,
+	[Add_To_Cart_Order]        SMALLINT              NOT NULL,
+	[Reordered]                SMALLINT              NOT NULL,
 
 
 	/* Metadata */

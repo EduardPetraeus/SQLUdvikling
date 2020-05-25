@@ -11,8 +11,8 @@
   DTS:LocaleID="1030"
   DTS:ObjectName="Staging Fact Ordre"
   DTS:PackageType="5"
-  DTS:VersionBuild="40"
-  DTS:VersionGUID="{3CF31827-194F-46DA-8FE3-6BCCBFC06FB2}">
+  DTS:VersionBuild="44"
+  DTS:VersionGUID="{DE8BA93F-B337-498D-BDEB-617EB758172A}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:PackageParameters>
@@ -320,29 +320,30 @@
                       name="Derived Column Input">
                       <inputColumns>
                         <inputColumn
-                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Derived Column.Inputs[Derived Column Input].Columns[Days_Since_Prior_Order]"
-                          cachedDataType="wstr"
-                          cachedLength="50"
-                          cachedName="Days_Since_Prior_Order"
-                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Days_Since_Prior_Order]" />
-                        <inputColumn
                           refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Derived Column.Inputs[Derived Column Input].Columns[Add_To_Cart_Order]"
-                          cachedDataType="i4"
+                          cachedDataType="i2"
                           cachedName="Add_To_Cart_Order"
                           lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Add_To_Cart_Order]" />
                         <inputColumn
                           refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Derived Column.Inputs[Derived Column Input].Columns[Reordered]"
-                          cachedDataType="i4"
+                          cachedDataType="i2"
                           cachedName="Reordered"
                           lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Reordered]" />
                         <inputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Derived Column.Inputs[Derived Column Input].Columns[Days_Since_Prior_Order]"
+                          cachedDataType="numeric"
+                          cachedName="Days_Since_Prior_Order"
+                          cachedPrecision="6"
+                          cachedScale="1"
+                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Days_Since_Prior_Order]" />
+                        <inputColumn
                           refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Derived Column.Inputs[Derived Column Input].Columns[Ekey_Kunde]"
-                          cachedDataType="i8"
+                          cachedDataType="i4"
                           cachedName="Ekey_Kunde"
                           lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Lookup Dim_Kunde.Outputs[Lookup Match Output].Columns[Ekey_Kunde]" />
                         <inputColumn
                           refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Derived Column.Inputs[Derived Column Input].Columns[Ekey_Produkt]"
-                          cachedDataType="i8"
+                          cachedDataType="i4"
                           cachedName="Ekey_Produkt"
                           lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Lookup Dim_Produkt.Outputs[Lookup Match Output].Columns[Ekey_Produkt]" />
                       </inputColumns>
@@ -381,7 +382,7 @@
                         </outputColumn>
                         <outputColumn
                           refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Derived Column.Outputs[Derived Column Output].Columns[Derived Column Ekey_Kunde]"
-                          dataType="i8"
+                          dataType="i4"
                           errorOrTruncationOperation="Computation"
                           errorRowDisposition="FailComponent"
                           lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Derived Column.Outputs[Derived Column Output].Columns[Derived Column Ekey_Kunde]"
@@ -403,7 +404,7 @@
                         </outputColumn>
                         <outputColumn
                           refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Derived Column.Outputs[Derived Column Output].Columns[Derived Column Ekey_Produkt]"
-                          dataType="i8"
+                          dataType="i4"
                           errorOrTruncationOperation="Computation"
                           errorRowDisposition="FailComponent"
                           lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Derived Column.Outputs[Derived Column Output].Columns[Derived Column Ekey_Produkt]"
@@ -425,12 +426,13 @@
                         </outputColumn>
                         <outputColumn
                           refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Derived Column.Outputs[Derived Column Output].Columns[Derived Column Days_Since_Prior_Order]"
-                          dataType="wstr"
+                          dataType="numeric"
                           errorOrTruncationOperation="Computation"
                           errorRowDisposition="FailComponent"
-                          length="102"
                           lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Derived Column.Outputs[Derived Column Output].Columns[Derived Column Days_Since_Prior_Order]"
                           name="Derived Column Days_Since_Prior_Order"
+                          precision="6"
+                          scale="1"
                           truncationRowDisposition="FailComponent">
                           <properties>
                             <property
@@ -448,7 +450,7 @@
                         </outputColumn>
                         <outputColumn
                           refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Derived Column.Outputs[Derived Column Output].Columns[Derived Column Add_To_Cart_Order]"
-                          dataType="i4"
+                          dataType="i2"
                           errorOrTruncationOperation="Computation"
                           errorRowDisposition="FailComponent"
                           lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Derived Column.Outputs[Derived Column Output].Columns[Derived Column Add_To_Cart_Order]"
@@ -470,7 +472,7 @@
                         </outputColumn>
                         <outputColumn
                           refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Derived Column.Outputs[Derived Column Output].Columns[Derived Column Reordered]"
-                          dataType="i4"
+                          dataType="i2"
                           errorOrTruncationOperation="Computation"
                           errorRowDisposition="FailComponent"
                           lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Derived Column.Outputs[Derived Column Output].Columns[Derived Column Reordered]"
@@ -574,12 +576,12 @@ where [refTable].[Order_Id] = ?</property>
                     <property
                       dataType="System.String"
                       description="Indicates whether to reference metadata in an XML format."
-                      name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Ekey_Kunde" dataType="DT_I8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Order_Id" dataType="DT_I8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                      name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Ekey_Kunde" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Order_Id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                     <property
                       containsID="true"
                       dataType="System.String"
                       description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                      name="ParameterMap">#{Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Bkey_Dim_Kunde]};</property>
+                      name="ParameterMap">#{Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Order_Id]};</property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -603,10 +605,10 @@ where [refTable].[Order_Id] = ?</property>
                       name="Lookup Input">
                       <inputColumns>
                         <inputColumn
-                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Lookup Dim_Kunde.Inputs[Lookup Input].Columns[Bkey_Dim_Kunde]"
-                          cachedDataType="i8"
-                          cachedName="Bkey_Dim_Kunde"
-                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Bkey_Dim_Kunde]">
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Lookup Dim_Kunde.Inputs[Lookup Input].Columns[Order_Id]"
+                          cachedDataType="i4"
+                          cachedName="Order_Id"
+                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Order_Id]">
                           <properties>
                             <property
                               dataType="System.String"
@@ -633,7 +635,7 @@ where [refTable].[Order_Id] = ?</property>
                       <outputColumns>
                         <outputColumn
                           refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Lookup Dim_Kunde.Outputs[Lookup Match Output].Columns[Ekey_Kunde]"
-                          dataType="i8"
+                          dataType="i4"
                           errorOrTruncationOperation="Copy Column"
                           lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Lookup Dim_Kunde.Outputs[Lookup Match Output].Columns[Ekey_Kunde]"
                           name="Ekey_Kunde"
@@ -736,7 +738,7 @@ where [refTable].[Product_Id] = ?</property>
                     <property
                       dataType="System.String"
                       description="Indicates whether to reference metadata in an XML format."
-                      name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Ekey_Produkt" dataType="DT_I8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Product_Id" dataType="DT_I8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                      name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Ekey_Produkt" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Product_Id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                     <property
                       containsID="true"
                       dataType="System.String"
@@ -766,7 +768,7 @@ where [refTable].[Product_Id] = ?</property>
                       <inputColumns>
                         <inputColumn
                           refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Lookup Dim_Produkt.Inputs[Lookup Input].Columns[Bkey_Dim_Produkt]"
-                          cachedDataType="i8"
+                          cachedDataType="i4"
                           cachedName="Bkey_Dim_Produkt"
                           lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Bkey_Dim_Produkt]">
                           <properties>
@@ -795,7 +797,7 @@ where [refTable].[Product_Id] = ?</property>
                       <outputColumns>
                         <outputColumn
                           refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Lookup Dim_Produkt.Outputs[Lookup Match Output].Columns[Ekey_Produkt]"
-                          dataType="i8"
+                          dataType="i4"
                           errorOrTruncationOperation="Copy Column"
                           lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Lookup Dim_Produkt.Outputs[Lookup Match Output].Columns[Ekey_Produkt]"
                           name="Ekey_Produkt"
@@ -915,39 +917,33 @@ where [refTable].[Product_Id] = ?</property>
                       name="OLE DB Destination Input">
                       <inputColumns>
                         <inputColumn
-                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Meta_CreateJob]"
-                          cachedDataType="i8"
-                          cachedName="Meta_CreateJob"
-                          externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Meta_CreateJob]"
-                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Derived Column.Outputs[Derived Column Output].Columns[Meta_CreateJob]" />
-                        <inputColumn
                           refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Order_Id]"
-                          cachedDataType="i8"
+                          cachedDataType="i4"
                           cachedName="Order_Id"
                           externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Order_Id]"
                           lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Order_Id]" />
                         <inputColumn
                           refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Eval_Set]"
                           cachedDataType="wstr"
-                          cachedLength="50"
+                          cachedLength="20"
                           cachedName="Eval_Set"
                           externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Eval_Set]"
                           lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Eval_Set]" />
                         <inputColumn
                           refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Order_Number]"
-                          cachedDataType="i4"
+                          cachedDataType="i2"
                           cachedName="Order_Number"
                           externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Order_Number]"
                           lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Order_Number]" />
                         <inputColumn
                           refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Order_Dow]"
-                          cachedDataType="i4"
+                          cachedDataType="i2"
                           cachedName="Order_Dow"
                           externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Order_Dow]"
                           lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Order_Dow]" />
                         <inputColumn
                           refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Order_Hour_Of_Day]"
-                          cachedDataType="i4"
+                          cachedDataType="i2"
                           cachedName="Order_Hour_Of_Day"
                           externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Order_Hour_Of_Day]"
                           lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Order_Hour_Of_Day]" />
@@ -960,35 +956,36 @@ where [refTable].[Product_Id] = ?</property>
                           lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Initial_Load_Time]" />
                         <inputColumn
                           refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Derived Column Reordered]"
-                          cachedDataType="i4"
+                          cachedDataType="i2"
                           cachedName="Derived Column Reordered"
                           externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Reordered]"
                           lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Derived Column.Outputs[Derived Column Output].Columns[Derived Column Reordered]" />
                         <inputColumn
-                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Derived Column Days_Since_Prior_Order]"
-                          cachedDataType="wstr"
-                          cachedLength="102"
-                          cachedName="Derived Column Days_Since_Prior_Order"
-                          externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Days_Since_Prior_Order]"
-                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Derived Column.Outputs[Derived Column Output].Columns[Derived Column Days_Since_Prior_Order]" />
-                        <inputColumn
                           refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Derived Column Add_To_Cart_Order]"
-                          cachedDataType="i4"
+                          cachedDataType="i2"
                           cachedName="Derived Column Add_To_Cart_Order"
                           externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Add_To_Cart_Order]"
                           lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Derived Column.Outputs[Derived Column Output].Columns[Derived Column Add_To_Cart_Order]" />
                         <inputColumn
                           refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Derived Column Ekey_Kunde]"
-                          cachedDataType="i8"
+                          cachedDataType="i4"
                           cachedName="Derived Column Ekey_Kunde"
                           externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Ekey_Kunde]"
                           lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Derived Column.Outputs[Derived Column Output].Columns[Derived Column Ekey_Kunde]" />
                         <inputColumn
                           refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Derived Column Ekey_Produkt]"
-                          cachedDataType="i8"
+                          cachedDataType="i4"
                           cachedName="Derived Column Ekey_Produkt"
                           externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Ekey_Produkt]"
                           lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Derived Column.Outputs[Derived Column Output].Columns[Derived Column Ekey_Produkt]" />
+                        <inputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Derived Column Days_Since_Prior_Order]"
+                          cachedDataType="numeric"
+                          cachedName="Derived Column Days_Since_Prior_Order"
+                          cachedPrecision="6"
+                          cachedScale="1"
+                          externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Days_Since_Prior_Order]"
+                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Derived Column.Outputs[Derived Column Output].Columns[Derived Column Days_Since_Prior_Order]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -1002,38 +999,39 @@ where [refTable].[Product_Id] = ?</property>
                           name="Meta_CreateJob" />
                         <externalMetadataColumn
                           refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Order_Id]"
-                          dataType="i8"
+                          dataType="i4"
                           name="Order_Id" />
                         <externalMetadataColumn
                           refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Add_To_Cart_Order]"
-                          dataType="i4"
+                          dataType="i2"
                           name="Add_To_Cart_Order" />
                         <externalMetadataColumn
                           refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Reordered]"
-                          dataType="i4"
+                          dataType="i2"
                           name="Reordered" />
                         <externalMetadataColumn
                           refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Eval_Set]"
                           dataType="wstr"
-                          length="50"
+                          length="20"
                           name="Eval_Set" />
                         <externalMetadataColumn
                           refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Order_Number]"
-                          dataType="i4"
+                          dataType="i2"
                           name="Order_Number" />
                         <externalMetadataColumn
                           refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Order_Dow]"
-                          dataType="i4"
+                          dataType="i2"
                           name="Order_Dow" />
                         <externalMetadataColumn
                           refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Order_Hour_Of_Day]"
-                          dataType="i4"
+                          dataType="i2"
                           name="Order_Hour_Of_Day" />
                         <externalMetadataColumn
                           refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Days_Since_Prior_Order]"
-                          dataType="wstr"
-                          length="50"
-                          name="Days_Since_Prior_Order" />
+                          dataType="numeric"
+                          name="Days_Since_Prior_Order"
+                          precision="6"
+                          scale="1" />
                         <externalMetadataColumn
                           refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Initial_Load_Time]"
                           dataType="dbTimeStamp2"
@@ -1045,11 +1043,11 @@ where [refTable].[Product_Id] = ?</property>
                           name="Meta_Id" />
                         <externalMetadataColumn
                           refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Ekey_Kunde]"
-                          dataType="i8"
+                          dataType="i4"
                           name="Ekey_Kunde" />
                         <externalMetadataColumn
                           refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Ekey_Produkt]"
-                          dataType="i8"
+                          dataType="i4"
                           name="Ekey_Produkt" />
                       </externalMetadataColumns>
                     </input>
@@ -1153,7 +1151,7 @@ where [refTable].[Product_Id] = ?</property>
                       <outputColumns>
                         <outputColumn
                           refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Order_Id]"
-                          dataType="i8"
+                          dataType="i4"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Order_Id]"
@@ -1162,7 +1160,7 @@ where [refTable].[Product_Id] = ?</property>
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
                           refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Add_To_Cart_Order]"
-                          dataType="i4"
+                          dataType="i2"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Add_To_Cart_Order]"
@@ -1171,7 +1169,7 @@ where [refTable].[Product_Id] = ?</property>
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
                           refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Reordered]"
-                          dataType="i4"
+                          dataType="i2"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Reordered]"
@@ -1180,7 +1178,7 @@ where [refTable].[Product_Id] = ?</property>
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
                           refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Bkey_Dim_Kunde]"
-                          dataType="i8"
+                          dataType="i4"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Bkey_Dim_Kunde]"
@@ -1193,13 +1191,13 @@ where [refTable].[Product_Id] = ?</property>
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Eval_Set]"
-                          length="50"
+                          length="20"
                           lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Eval_Set]"
                           name="Eval_Set"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
                           refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Order_Number]"
-                          dataType="i4"
+                          dataType="i2"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Order_Number]"
@@ -1208,7 +1206,7 @@ where [refTable].[Product_Id] = ?</property>
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
                           refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Order_Dow]"
-                          dataType="i4"
+                          dataType="i2"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Order_Dow]"
@@ -1217,7 +1215,7 @@ where [refTable].[Product_Id] = ?</property>
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
                           refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Order_Hour_Of_Day]"
-                          dataType="i4"
+                          dataType="i2"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Order_Hour_Of_Day]"
@@ -1226,17 +1224,18 @@ where [refTable].[Product_Id] = ?</property>
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
                           refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Days_Since_Prior_Order]"
-                          dataType="wstr"
+                          dataType="numeric"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Days_Since_Prior_Order]"
-                          length="50"
                           lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Days_Since_Prior_Order]"
                           name="Days_Since_Prior_Order"
+                          precision="6"
+                          scale="1"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
                           refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Bkey_Dim_Produkt]"
-                          dataType="i8"
+                          dataType="i4"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Bkey_Dim_Produkt]"
@@ -1258,45 +1257,46 @@ where [refTable].[Product_Id] = ?</property>
                         isUsed="True">
                         <externalMetadataColumn
                           refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Order_Id]"
-                          dataType="i8"
+                          dataType="i4"
                           name="Order_Id" />
                         <externalMetadataColumn
                           refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Add_To_Cart_Order]"
-                          dataType="i4"
+                          dataType="i2"
                           name="Add_To_Cart_Order" />
                         <externalMetadataColumn
                           refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Reordered]"
-                          dataType="i4"
+                          dataType="i2"
                           name="Reordered" />
                         <externalMetadataColumn
                           refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Bkey_Dim_Kunde]"
-                          dataType="i8"
+                          dataType="i4"
                           name="Bkey_Dim_Kunde" />
                         <externalMetadataColumn
                           refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Eval_Set]"
                           dataType="wstr"
-                          length="50"
+                          length="20"
                           name="Eval_Set" />
                         <externalMetadataColumn
                           refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Order_Number]"
-                          dataType="i4"
+                          dataType="i2"
                           name="Order_Number" />
                         <externalMetadataColumn
                           refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Order_Dow]"
-                          dataType="i4"
+                          dataType="i2"
                           name="Order_Dow" />
                         <externalMetadataColumn
                           refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Order_Hour_Of_Day]"
-                          dataType="i4"
+                          dataType="i2"
                           name="Order_Hour_Of_Day" />
                         <externalMetadataColumn
                           refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Days_Since_Prior_Order]"
-                          dataType="wstr"
-                          length="50"
-                          name="Days_Since_Prior_Order" />
+                          dataType="numeric"
+                          name="Days_Since_Prior_Order"
+                          precision="6"
+                          scale="1" />
                         <externalMetadataColumn
                           refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Bkey_Dim_Produkt]"
-                          dataType="i8"
+                          dataType="i4"
                           name="Bkey_Dim_Produkt" />
                         <externalMetadataColumn
                           refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Initial_Load_Time]"
@@ -1312,54 +1312,55 @@ where [refTable].[Product_Id] = ?</property>
                       <outputColumns>
                         <outputColumn
                           refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Bkey_Dim_Kunde]"
-                          dataType="i8"
+                          dataType="i4"
                           lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Bkey_Dim_Kunde]"
                           name="Bkey_Dim_Kunde" />
                         <outputColumn
                           refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Order_Id]"
-                          dataType="i8"
+                          dataType="i4"
                           lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Order_Id]"
                           name="Order_Id" />
                         <outputColumn
                           refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Eval_Set]"
                           dataType="wstr"
-                          length="50"
+                          length="20"
                           lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Eval_Set]"
                           name="Eval_Set" />
                         <outputColumn
                           refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Order_Number]"
-                          dataType="i4"
+                          dataType="i2"
                           lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Order_Number]"
                           name="Order_Number" />
                         <outputColumn
                           refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Order_Dow]"
-                          dataType="i4"
+                          dataType="i2"
                           lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Order_Dow]"
                           name="Order_Dow" />
                         <outputColumn
                           refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Order_Hour_Of_Day]"
-                          dataType="i4"
+                          dataType="i2"
                           lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Order_Hour_Of_Day]"
                           name="Order_Hour_Of_Day" />
                         <outputColumn
                           refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Days_Since_Prior_Order]"
-                          dataType="wstr"
-                          length="50"
+                          dataType="numeric"
                           lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Days_Since_Prior_Order]"
-                          name="Days_Since_Prior_Order" />
+                          name="Days_Since_Prior_Order"
+                          precision="6"
+                          scale="1" />
                         <outputColumn
                           refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Bkey_Dim_Produkt]"
-                          dataType="i8"
+                          dataType="i4"
                           lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Bkey_Dim_Produkt]"
                           name="Bkey_Dim_Produkt" />
                         <outputColumn
                           refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Add_To_Cart_Order]"
-                          dataType="i4"
+                          dataType="i2"
                           lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Add_To_Cart_Order]"
                           name="Add_To_Cart_Order" />
                         <outputColumn
                           refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Reordered]"
-                          dataType="i4"
+                          dataType="i2"
                           lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Reordered]"
                           name="Reordered" />
                         <outputColumn
@@ -1494,79 +1495,6 @@ where [refTable].[Product_Id] = ?</property>
               version="1">
               <components>
                 <component
-                  refId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\Derived Column"
-                  componentClassID="Microsoft.DerivedColumn"
-                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
-                  name="Derived Column"
-                  usesDispositions="true">
-                  <inputs>
-                    <input
-                      refId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\Derived Column.Inputs[Derived Column Input]"
-                      description="Input to the Derived Column Transformation"
-                      name="Derived Column Input">
-                      <externalMetadataColumns />
-                    </input>
-                  </inputs>
-                  <outputs>
-                    <output
-                      refId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\Derived Column.Outputs[Derived Column Output]"
-                      description="Default Output of the Derived Column Transformation"
-                      exclusionGroup="1"
-                      name="Derived Column Output"
-                      synchronousInputId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\Derived Column.Inputs[Derived Column Input]">
-                      <outputColumns>
-                        <outputColumn
-                          refId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\Derived Column.Outputs[Derived Column Output].Columns[Meta_CreateJob]"
-                          dataType="i8"
-                          errorOrTruncationOperation="Computation"
-                          errorRowDisposition="FailComponent"
-                          lineageId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\Derived Column.Outputs[Derived Column Output].Columns[Meta_CreateJob]"
-                          name="Meta_CreateJob"
-                          truncationRowDisposition="FailComponent">
-                          <properties>
-                            <property
-                              containsID="true"
-                              dataType="System.String"
-                              description="Derived Column Expression"
-                              name="Expression">@[User::StagingId]</property>
-                            <property
-                              containsID="true"
-                              dataType="System.String"
-                              description="Derived Column Friendly Expression"
-                              expressionType="Notify"
-                              name="FriendlyExpression">@[User::StagingId]</property>
-                          </properties>
-                        </outputColumn>
-                      </outputColumns>
-                      <externalMetadataColumns />
-                    </output>
-                    <output
-                      refId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\Derived Column.Outputs[Derived Column Error Output]"
-                      description="Error Output of the Derived Column Transformation"
-                      exclusionGroup="1"
-                      isErrorOut="true"
-                      name="Derived Column Error Output"
-                      synchronousInputId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\Derived Column.Inputs[Derived Column Input]">
-                      <outputColumns>
-                        <outputColumn
-                          refId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
-                          dataType="i4"
-                          lineageId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
-                          name="ErrorCode"
-                          specialFlags="1" />
-                        <outputColumn
-                          refId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
-                          dataType="i4"
-                          lineageId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
-                          name="ErrorColumn"
-                          specialFlags="2" />
-                      </outputColumns>
-                      <externalMetadataColumns />
-                    </output>
-                  </outputs>
-                </component>
-                <component
                   refId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Destination"
                   componentClassID="Microsoft.OLEDBDestination"
                   contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
@@ -1639,14 +1567,8 @@ where [refTable].[Product_Id] = ?</property>
                       name="OLE DB Destination Input">
                       <inputColumns>
                         <inputColumn
-                          refId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Meta_CreateJob]"
-                          cachedDataType="i8"
-                          cachedName="Meta_CreateJob"
-                          externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Meta_CreateJob]"
-                          lineageId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\Derived Column.Outputs[Derived Column Output].Columns[Meta_CreateJob]" />
-                        <inputColumn
                           refId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Product_Id]"
-                          cachedDataType="i8"
+                          cachedDataType="i4"
                           cachedName="Product_Id"
                           externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Product_Id]"
                           lineageId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Source.Outputs[OLE DB Source Output].Columns[Product_Id]" />
@@ -1658,13 +1580,13 @@ where [refTable].[Product_Id] = ?</property>
                           lineageId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Source.Outputs[OLE DB Source Output].Columns[Order_Id]" />
                         <inputColumn
                           refId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Add_To_Cart_Order]"
-                          cachedDataType="i4"
+                          cachedDataType="i2"
                           cachedName="Add_To_Cart_Order"
                           externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Add_To_Cart_Order]"
                           lineageId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Source.Outputs[OLE DB Source Output].Columns[Add_To_Cart_Order]" />
                         <inputColumn
                           refId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Reordered]"
-                          cachedDataType="i4"
+                          cachedDataType="i2"
                           cachedName="Reordered"
                           externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Reordered]"
                           lineageId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Source.Outputs[OLE DB Source Output].Columns[Reordered]" />
@@ -1672,20 +1594,12 @@ where [refTable].[Product_Id] = ?</property>
                       <externalMetadataColumns
                         isUsed="True">
                         <externalMetadataColumn
-                          refId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Meta_CreateTime]"
-                          dataType="dbTimeStamp"
-                          name="Meta_CreateTime" />
-                        <externalMetadataColumn
-                          refId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Meta_CreateJob]"
-                          dataType="i8"
-                          name="Meta_CreateJob" />
-                        <externalMetadataColumn
                           refId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Product_Id]"
                           dataType="i4"
                           name="Product_Id" />
                         <externalMetadataColumn
                           refId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Id_Order_Products]"
-                          dataType="i8"
+                          dataType="i4"
                           name="Id_Order_Products" />
                         <externalMetadataColumn
                           refId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Order_Id]"
@@ -1693,11 +1607,11 @@ where [refTable].[Product_Id] = ?</property>
                           name="Order_Id" />
                         <externalMetadataColumn
                           refId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Add_To_Cart_Order]"
-                          dataType="i4"
+                          dataType="i2"
                           name="Add_To_Cart_Order" />
                         <externalMetadataColumn
                           refId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Reordered]"
-                          dataType="i4"
+                          dataType="i2"
                           name="Reordered" />
                       </externalMetadataColumns>
                     </input>
@@ -1790,7 +1704,7 @@ where [refTable].[Product_Id] = ?</property>
                       <outputColumns>
                         <outputColumn
                           refId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Source.Outputs[OLE DB Source Output].Columns[Product_Id]"
-                          dataType="i8"
+                          dataType="i4"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Product_Id]"
@@ -1808,7 +1722,7 @@ where [refTable].[Product_Id] = ?</property>
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
                           refId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Source.Outputs[OLE DB Source Output].Columns[Add_To_Cart_Order]"
-                          dataType="i4"
+                          dataType="i2"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Add_To_Cart_Order]"
@@ -1817,7 +1731,7 @@ where [refTable].[Product_Id] = ?</property>
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
                           refId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Source.Outputs[OLE DB Source Output].Columns[Reordered]"
-                          dataType="i4"
+                          dataType="i2"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Reordered]"
@@ -1837,11 +1751,11 @@ where [refTable].[Product_Id] = ?</property>
                           name="Order_Id" />
                         <externalMetadataColumn
                           refId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Add_To_Cart_Order]"
-                          dataType="i4"
+                          dataType="i2"
                           name="Add_To_Cart_Order" />
                         <externalMetadataColumn
                           refId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Reordered]"
-                          dataType="i4"
+                          dataType="i2"
                           name="Reordered" />
                       </externalMetadataColumns>
                     </output>
@@ -1862,12 +1776,12 @@ where [refTable].[Product_Id] = ?</property>
                           name="Product_Id" />
                         <outputColumn
                           refId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Add_To_Cart_Order]"
-                          dataType="i4"
+                          dataType="i2"
                           lineageId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Add_To_Cart_Order]"
                           name="Add_To_Cart_Order" />
                         <outputColumn
                           refId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Reordered]"
-                          dataType="i4"
+                          dataType="i2"
                           lineageId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Reordered]"
                           name="Reordered" />
                         <outputColumn
@@ -1890,13 +1804,8 @@ where [refTable].[Product_Id] = ?</property>
               </components>
               <paths>
                 <path
-                  refId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products.Paths[Derived Column Output]"
-                  endId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Destination.Inputs[OLE DB Destination Input]"
-                  name="Derived Column Output"
-                  startId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\Derived Column.Outputs[Derived Column Output]" />
-                <path
                   refId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products.Paths[OLE DB Source Output]"
-                  endId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\Derived Column.Inputs[Derived Column Input]"
+                  endId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Destination.Inputs[OLE DB Destination Input]"
                   name="OLE DB Source Output"
                   startId="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Source.Outputs[OLE DB Source Output]" />
               </paths>
@@ -2696,34 +2605,30 @@ where [refTable].[Product_Id] = ?</property>
         <NodeLayout
           Size="138,42"
           Id="Package\Staging Dim_Produkt\Staging Fact_Ordre\RC Inserted"
-          TopLeft="25.5000000000001,515.5" />
+          TopLeft="34.5000000000001,515.5" />
         <NodeLayout
           Size="175,42"
           Id="Package\Staging Dim_Produkt\Staging Fact_Ordre\Lookup Dim_Kunde"
-          TopLeft="9.00000000000003,209.5" />
+          TopLeft="18,209.5" />
         <NodeLayout
           Size="177,42"
           Id="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination"
-          TopLeft="8.00000000000007,617.5" />
+          TopLeft="17.0000000000001,617.5" />
         <NodeLayout
           Size="141,42"
           Id="Package\Staging Dim_Produkt\Staging Fact_Ordre\RC Selected"
-          TopLeft="30,107.5" />
+          TopLeft="39,107.5" />
         <NodeLayout
           Size="182,42"
           Id="Package\Staging Dim_Produkt\Staging Fact_Ordre\Lookup Dim_Produkt"
-          TopLeft="5.50000000000004,311.5" />
-        <NodeLayout
-          Size="158,42"
-          Id="Package\Staging Dim_Produkt\Staging Fact_Ordre\Derived Column"
-          TopLeft="17.5000000000001,413.5" />
+          TopLeft="14.5,311.5" />
         <NodeLayout
           Size="157,42"
           Id="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source"
-          TopLeft="18,5.5" />
+          TopLeft="27,5.5" />
         <EdgeLayout
           Id="Package\Staging Dim_Produkt\Staging Fact_Ordre.Paths[Row Count Output 11]"
-          TopLeft="95.5000000000001,557.5">
+          TopLeft="104.5,557.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2745,7 +2650,7 @@ where [refTable].[Product_Id] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Staging Dim_Produkt\Staging Fact_Ordre.Paths[Row Count Output 1]"
-          TopLeft="98.5,149.5">
+          TopLeft="107.5,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2767,7 +2672,7 @@ where [refTable].[Product_Id] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Staging Dim_Produkt\Staging Fact_Ordre.Paths[OLE DB Source Output]"
-          TopLeft="98.5,47.5">
+          TopLeft="107.5,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2788,8 +2693,8 @@ where [refTable].[Product_Id] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Staging Dim_Produkt\Staging Fact_Ordre.Paths[Lookup Match Output1]"
-          TopLeft="96.5000000000001,353.5">
+          Id="Package\Staging Dim_Produkt\Staging Fact_Ordre.Paths[Lookup Match Output]"
+          TopLeft="105.5,251.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2811,44 +2716,48 @@ where [refTable].[Product_Id] = ?</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Staging Dim_Produkt\Staging Fact_Ordre\Derived Column"
+          TopLeft="30,424" />
         <EdgeLayout
-          Id="Package\Staging Dim_Produkt\Staging Fact_Ordre.Paths[Lookup Match Output]"
-          TopLeft="96.5,251.5">
+          Id="Package\Staging Dim_Produkt\Staging Fact_Ordre.Paths[Lookup Match Output1]"
+          TopLeft="106.25,353.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60"
+              EndConnector="0,70.5"
               Start="0,0"
-              End="0,52.5">
+              End="0,63">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5" />
+                    End="0,63" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
+              BoundingBox="-48.19138671875,25.6953125,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Staging Dim_Produkt\Staging Fact_Ordre.Paths[Derived Column Output]"
-          TopLeft="95.5000000000001,455.5">
+          TopLeft="105.25,466">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60"
+              EndConnector="0,49.5"
               Start="0,0"
-              End="0,52.5">
+              End="0,42">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5" />
+                    End="0,42" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2931,22 +2840,18 @@ where [refTable].[Product_Id] = ?</property>
     design-time-name="Package\Staging Dim_Produkt\Staging Temp_Orders_Products">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="157,42"
           Id="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Source"
-          TopLeft="15.5,5.5" />
+          TopLeft="12.5,5.5" />
         <NodeLayout
-          Size="177,42"
+          Size="171,42"
           Id="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Destination"
-          TopLeft="5.50000000000003,209.5" />
-        <NodeLayout
-          Size="158,42"
-          Id="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\Derived Column"
-          TopLeft="15,107.5" />
+          TopLeft="5.50000000000001,107.5" />
         <EdgeLayout
           Id="Package\Staging Dim_Produkt\Staging Temp_Orders_Products.Paths[OLE DB Source Output]"
-          TopLeft="94,47.5">
+          TopLeft="91,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2963,33 +2868,7 @@ where [refTable].[Product_Id] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Staging Dim_Produkt\Staging Temp_Orders_Products.Paths[Derived Column Output]"
-          TopLeft="94,149.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

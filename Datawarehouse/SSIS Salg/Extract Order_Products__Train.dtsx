@@ -11,8 +11,8 @@
   DTS:LocaleID="1030"
   DTS:ObjectName="Extract Order_Products__Train"
   DTS:PackageType="5"
-  DTS:VersionBuild="35"
-  DTS:VersionGUID="{5EE7750C-DE93-48D0-992E-3DE72F4C6833}">
+  DTS:VersionBuild="36"
+  DTS:VersionGUID="{E7D209AA-CBAE-4749-90E5-B0E7C9CC5AE5}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -441,7 +441,7 @@
                           lineageId="Package\Extract Order_Products__Train\Extract Order_Products__Train\Derived Column.Outputs[Derived Column Output].Columns[Meta_CreateJob]" />
                         <inputColumn
                           refId="Package\Extract Order_Products__Train\Extract Order_Products__Train\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Id_Order_Products__Train]"
-                          cachedDataType="i8"
+                          cachedDataType="i4"
                           cachedName="Id_Order_Products__Train"
                           externalMetadataColumnId="Package\Extract Order_Products__Train\Extract Order_Products__Train\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Id_Order_Products__Train]"
                           lineageId="Package\Extract Order_Products__Train\Extract Order_Products__Train\OLE DB Source.Outputs[OLE DB Source Output].Columns[Id_Order_Products__Train]" />
@@ -459,13 +459,13 @@
                           lineageId="Package\Extract Order_Products__Train\Extract Order_Products__Train\OLE DB Source.Outputs[OLE DB Source Output].Columns[Product_Id_Train]" />
                         <inputColumn
                           refId="Package\Extract Order_Products__Train\Extract Order_Products__Train\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Add_To_Cart_Order_Train]"
-                          cachedDataType="i4"
+                          cachedDataType="i2"
                           cachedName="Add_To_Cart_Order_Train"
                           externalMetadataColumnId="Package\Extract Order_Products__Train\Extract Order_Products__Train\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Add_To_Cart_Order_Train]"
                           lineageId="Package\Extract Order_Products__Train\Extract Order_Products__Train\OLE DB Source.Outputs[OLE DB Source Output].Columns[Add_To_Cart_Order_Train]" />
                         <inputColumn
                           refId="Package\Extract Order_Products__Train\Extract Order_Products__Train\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Reordered_Train]"
-                          cachedDataType="i4"
+                          cachedDataType="i2"
                           cachedName="Reordered_Train"
                           externalMetadataColumnId="Package\Extract Order_Products__Train\Extract Order_Products__Train\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Reordered_Train]"
                           lineageId="Package\Extract Order_Products__Train\Extract Order_Products__Train\OLE DB Source.Outputs[OLE DB Source Output].Columns[Reordered_Train]" />
@@ -486,7 +486,7 @@
                           name="Meta_CreateJob" />
                         <externalMetadataColumn
                           refId="Package\Extract Order_Products__Train\Extract Order_Products__Train\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Id_Order_Products__Train]"
-                          dataType="i8"
+                          dataType="i4"
                           name="Id_Order_Products__Train" />
                         <externalMetadataColumn
                           refId="Package\Extract Order_Products__Train\Extract Order_Products__Train\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Order_Id_Train]"
@@ -498,11 +498,11 @@
                           name="Product_Id_Train" />
                         <externalMetadataColumn
                           refId="Package\Extract Order_Products__Train\Extract Order_Products__Train\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Add_To_Cart_Order_Train]"
-                          dataType="i4"
+                          dataType="i2"
                           name="Add_To_Cart_Order_Train" />
                         <externalMetadataColumn
                           refId="Package\Extract Order_Products__Train\Extract Order_Products__Train\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Reordered_Train]"
-                          dataType="i4"
+                          dataType="i2"
                           name="Reordered_Train" />
                       </externalMetadataColumns>
                     </input>
@@ -595,7 +595,7 @@
                       <outputColumns>
                         <outputColumn
                           refId="Package\Extract Order_Products__Train\Extract Order_Products__Train\OLE DB Source.Outputs[OLE DB Source Output].Columns[Id_Order_Products__Train]"
-                          dataType="i8"
+                          dataType="i4"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\Extract Order_Products__Train\Extract Order_Products__Train\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Id_Order_Products__Train]"
@@ -622,7 +622,7 @@
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
                           refId="Package\Extract Order_Products__Train\Extract Order_Products__Train\OLE DB Source.Outputs[OLE DB Source Output].Columns[Add_To_Cart_Order_Train]"
-                          dataType="i4"
+                          dataType="i2"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\Extract Order_Products__Train\Extract Order_Products__Train\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Add_To_Cart_Order_Train]"
@@ -631,7 +631,7 @@
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
                           refId="Package\Extract Order_Products__Train\Extract Order_Products__Train\OLE DB Source.Outputs[OLE DB Source Output].Columns[Reordered_Train]"
-                          dataType="i4"
+                          dataType="i2"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\Extract Order_Products__Train\Extract Order_Products__Train\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Reordered_Train]"
@@ -643,7 +643,7 @@
                         isUsed="True">
                         <externalMetadataColumn
                           refId="Package\Extract Order_Products__Train\Extract Order_Products__Train\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Id_Order_Products__Train]"
-                          dataType="i8"
+                          dataType="i4"
                           name="Id_Order_Products__Train" />
                         <externalMetadataColumn
                           refId="Package\Extract Order_Products__Train\Extract Order_Products__Train\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Order_Id_Train]"
@@ -655,11 +655,11 @@
                           name="Product_Id_Train" />
                         <externalMetadataColumn
                           refId="Package\Extract Order_Products__Train\Extract Order_Products__Train\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Add_To_Cart_Order_Train]"
-                          dataType="i4"
+                          dataType="i2"
                           name="Add_To_Cart_Order_Train" />
                         <externalMetadataColumn
                           refId="Package\Extract Order_Products__Train\Extract Order_Products__Train\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Reordered_Train]"
-                          dataType="i4"
+                          dataType="i2"
                           name="Reordered_Train" />
                       </externalMetadataColumns>
                     </output>
@@ -670,7 +670,7 @@
                       <outputColumns>
                         <outputColumn
                           refId="Package\Extract Order_Products__Train\Extract Order_Products__Train\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Id_Order_Products__Train]"
-                          dataType="i8"
+                          dataType="i4"
                           lineageId="Package\Extract Order_Products__Train\Extract Order_Products__Train\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Id_Order_Products__Train]"
                           name="Id_Order_Products__Train" />
                         <outputColumn
@@ -685,12 +685,12 @@
                           name="Product_Id_Train" />
                         <outputColumn
                           refId="Package\Extract Order_Products__Train\Extract Order_Products__Train\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Add_To_Cart_Order_Train]"
-                          dataType="i4"
+                          dataType="i2"
                           lineageId="Package\Extract Order_Products__Train\Extract Order_Products__Train\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Add_To_Cart_Order_Train]"
                           name="Add_To_Cart_Order_Train" />
                         <outputColumn
                           refId="Package\Extract Order_Products__Train\Extract Order_Products__Train\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Reordered_Train]"
-                          dataType="i4"
+                          dataType="i2"
                           lineageId="Package\Extract Order_Products__Train\Extract Order_Products__Train\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Reordered_Train]"
                           name="Reordered_Train" />
                         <outputColumn
@@ -907,7 +907,7 @@
                         </outputColumn>
                         <outputColumn
                           refId="Package\Extract Order_Products__Train\Extract Temp_Order_Products__Train\Derived Column.Outputs[Derived Column Output].Columns[Derived Column add_to_cart_order]"
-                          dataType="i4"
+                          dataType="i2"
                           errorOrTruncationOperation="Computation"
                           errorRowDisposition="FailComponent"
                           lineageId="Package\Extract Order_Products__Train\Extract Temp_Order_Products__Train\Derived Column.Outputs[Derived Column Output].Columns[Derived Column add_to_cart_order]"
@@ -918,18 +918,18 @@
                               containsID="true"
                               dataType="System.String"
                               description="Derived Column Expression"
-                              name="Expression">(DT_I4)#{Package\Extract Order_Products__Train\Extract Temp_Order_Products__Train\Flat File Source.Outputs[Flat File Source Output].Columns[add_to_cart_order]}</property>
+                              name="Expression">(DT_I2)#{Package\Extract Order_Products__Train\Extract Temp_Order_Products__Train\Flat File Source.Outputs[Flat File Source Output].Columns[add_to_cart_order]}</property>
                             <property
                               containsID="true"
                               dataType="System.String"
                               description="Derived Column Friendly Expression"
                               expressionType="Notify"
-                              name="FriendlyExpression">(DT_I4)add_to_cart_order</property>
+                              name="FriendlyExpression">(DT_I2)add_to_cart_order</property>
                           </properties>
                         </outputColumn>
                         <outputColumn
                           refId="Package\Extract Order_Products__Train\Extract Temp_Order_Products__Train\Derived Column.Outputs[Derived Column Output].Columns[Derived Column reordered]"
-                          dataType="i4"
+                          dataType="i2"
                           errorOrTruncationOperation="Computation"
                           errorRowDisposition="FailComponent"
                           lineageId="Package\Extract Order_Products__Train\Extract Temp_Order_Products__Train\Derived Column.Outputs[Derived Column Output].Columns[Derived Column reordered]"
@@ -940,13 +940,13 @@
                               containsID="true"
                               dataType="System.String"
                               description="Derived Column Expression"
-                              name="Expression">(DT_I4)#{Package\Extract Order_Products__Train\Extract Temp_Order_Products__Train\Flat File Source.Outputs[Flat File Source Output].Columns[reordered]}</property>
+                              name="Expression">(DT_I2)#{Package\Extract Order_Products__Train\Extract Temp_Order_Products__Train\Flat File Source.Outputs[Flat File Source Output].Columns[reordered]}</property>
                             <property
                               containsID="true"
                               dataType="System.String"
                               description="Derived Column Friendly Expression"
                               expressionType="Notify"
-                              name="FriendlyExpression">(DT_I4)reordered</property>
+                              name="FriendlyExpression">(DT_I2)reordered</property>
                           </properties>
                         </outputColumn>
                       </outputColumns>
@@ -1240,13 +1240,13 @@
                           lineageId="Package\Extract Order_Products__Train\Extract Temp_Order_Products__Train\Derived Column.Outputs[Derived Column Output].Columns[Derived Column product_id]" />
                         <inputColumn
                           refId="Package\Extract Order_Products__Train\Extract Temp_Order_Products__Train\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Derived Column add_to_cart_order]"
-                          cachedDataType="i4"
+                          cachedDataType="i2"
                           cachedName="Derived Column add_to_cart_order"
                           externalMetadataColumnId="Package\Extract Order_Products__Train\Extract Temp_Order_Products__Train\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Add_To_Cart_Order_Train]"
                           lineageId="Package\Extract Order_Products__Train\Extract Temp_Order_Products__Train\Derived Column.Outputs[Derived Column Output].Columns[Derived Column add_to_cart_order]" />
                         <inputColumn
                           refId="Package\Extract Order_Products__Train\Extract Temp_Order_Products__Train\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Derived Column reordered]"
-                          cachedDataType="i4"
+                          cachedDataType="i2"
                           cachedName="Derived Column reordered"
                           externalMetadataColumnId="Package\Extract Order_Products__Train\Extract Temp_Order_Products__Train\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Reordered_Train]"
                           lineageId="Package\Extract Order_Products__Train\Extract Temp_Order_Products__Train\Derived Column.Outputs[Derived Column Output].Columns[Derived Column reordered]" />
@@ -1255,7 +1255,7 @@
                         isUsed="True">
                         <externalMetadataColumn
                           refId="Package\Extract Order_Products__Train\Extract Temp_Order_Products__Train\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Id_Order_Products__Train]"
-                          dataType="i8"
+                          dataType="i4"
                           name="Id_Order_Products__Train" />
                         <externalMetadataColumn
                           refId="Package\Extract Order_Products__Train\Extract Temp_Order_Products__Train\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Order_Id_Train]"
@@ -1267,11 +1267,11 @@
                           name="Product_Id_Train" />
                         <externalMetadataColumn
                           refId="Package\Extract Order_Products__Train\Extract Temp_Order_Products__Train\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Add_To_Cart_Order_Train]"
-                          dataType="i4"
+                          dataType="i2"
                           name="Add_To_Cart_Order_Train" />
                         <externalMetadataColumn
                           refId="Package\Extract Order_Products__Train\Extract Temp_Order_Products__Train\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Reordered_Train]"
-                          dataType="i4"
+                          dataType="i2"
                           name="Reordered_Train" />
                       </externalMetadataColumns>
                     </input>

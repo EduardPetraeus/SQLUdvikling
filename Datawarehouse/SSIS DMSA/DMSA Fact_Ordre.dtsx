@@ -11,8 +11,8 @@
   DTS:LocaleID="1030"
   DTS:ObjectName="DMSA Fact_Ordre"
   DTS:PackageType="5"
-  DTS:VersionBuild="40"
-  DTS:VersionGUID="{C52C352F-D4AF-4686-BE12-1E1BCE52ADD8}">
+  DTS:VersionBuild="42"
+  DTS:VersionGUID="{C381D63F-F238-41AB-B38D-487DFC90F56A}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -240,51 +240,52 @@
                           lineageId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\Derived Column.Outputs[Derived Column Output].Columns[Meta_CreateJob]" />
                         <inputColumn
                           refId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Order_Id]"
-                          cachedDataType="i8"
+                          cachedDataType="i4"
                           cachedName="Order_Id"
                           externalMetadataColumnId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Order_Id]"
                           lineageId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Order_Id]" />
                         <inputColumn
                           refId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Eval_Set]"
                           cachedDataType="wstr"
-                          cachedLength="50"
+                          cachedLength="20"
                           cachedName="Eval_Set"
                           externalMetadataColumnId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Eval_Set]"
                           lineageId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Eval_Set]" />
                         <inputColumn
                           refId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Order_Number]"
-                          cachedDataType="i4"
+                          cachedDataType="i2"
                           cachedName="Order_Number"
                           externalMetadataColumnId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Order_Number]"
                           lineageId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Order_Number]" />
                         <inputColumn
                           refId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Order_Dow]"
-                          cachedDataType="i4"
+                          cachedDataType="i2"
                           cachedName="Order_Dow"
                           externalMetadataColumnId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Order_Dow]"
                           lineageId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Order_Dow]" />
                         <inputColumn
                           refId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Order_Hour_Of_Day]"
-                          cachedDataType="i4"
+                          cachedDataType="i2"
                           cachedName="Order_Hour_Of_Day"
                           externalMetadataColumnId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Order_Hour_Of_Day]"
                           lineageId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Order_Hour_Of_Day]" />
                         <inputColumn
                           refId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Days_Since_Prior_Order]"
-                          cachedDataType="wstr"
-                          cachedLength="50"
+                          cachedDataType="numeric"
                           cachedName="Days_Since_Prior_Order"
+                          cachedPrecision="6"
+                          cachedScale="1"
                           externalMetadataColumnId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Days_Since_Prior_Order]"
                           lineageId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Days_Since_Prior_Order]" />
                         <inputColumn
                           refId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Add_To_Cart_Order]"
-                          cachedDataType="i4"
+                          cachedDataType="i2"
                           cachedName="Add_To_Cart_Order"
                           externalMetadataColumnId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Add_To_Cart_Order]"
                           lineageId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Add_To_Cart_Order]" />
                         <inputColumn
                           refId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Reordered]"
-                          cachedDataType="i4"
+                          cachedDataType="i2"
                           cachedName="Reordered"
                           externalMetadataColumnId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Reordered]"
                           lineageId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Reordered]" />
@@ -297,13 +298,13 @@
                           lineageId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Initial_Load_Time]" />
                         <inputColumn
                           refId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Ekey_Kunde]"
-                          cachedDataType="i8"
+                          cachedDataType="i4"
                           cachedName="Ekey_Kunde"
                           externalMetadataColumnId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Ekey_Kunde]"
                           lineageId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Ekey_Kunde]" />
                         <inputColumn
                           refId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Ekey_Produkt]"
-                          cachedDataType="i8"
+                          cachedDataType="i4"
                           cachedName="Ekey_Produkt"
                           externalMetadataColumnId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Ekey_Produkt]"
                           lineageId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Ekey_Produkt]" />
@@ -319,42 +320,39 @@
                           dataType="i8"
                           name="Meta_CreateJob" />
                         <externalMetadataColumn
-                          refId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Meta_Id]"
-                          dataType="i8"
-                          name="Meta_Id" />
-                        <externalMetadataColumn
                           refId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Order_Id]"
-                          dataType="i8"
+                          dataType="i4"
                           name="Order_Id" />
                         <externalMetadataColumn
                           refId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Eval_Set]"
                           dataType="wstr"
-                          length="50"
+                          length="20"
                           name="Eval_Set" />
                         <externalMetadataColumn
                           refId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Order_Number]"
-                          dataType="i4"
+                          dataType="i2"
                           name="Order_Number" />
                         <externalMetadataColumn
                           refId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Order_Dow]"
-                          dataType="i4"
+                          dataType="i2"
                           name="Order_Dow" />
                         <externalMetadataColumn
                           refId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Order_Hour_Of_Day]"
-                          dataType="i4"
+                          dataType="i2"
                           name="Order_Hour_Of_Day" />
                         <externalMetadataColumn
                           refId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Days_Since_Prior_Order]"
-                          dataType="wstr"
-                          length="50"
-                          name="Days_Since_Prior_Order" />
+                          dataType="numeric"
+                          name="Days_Since_Prior_Order"
+                          precision="6"
+                          scale="1" />
                         <externalMetadataColumn
                           refId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Add_To_Cart_Order]"
-                          dataType="i4"
+                          dataType="i2"
                           name="Add_To_Cart_Order" />
                         <externalMetadataColumn
                           refId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Reordered]"
-                          dataType="i4"
+                          dataType="i2"
                           name="Reordered" />
                         <externalMetadataColumn
                           refId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Initial_Load_Time]"
@@ -363,11 +361,11 @@
                           scale="7" />
                         <externalMetadataColumn
                           refId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Ekey_Kunde]"
-                          dataType="i8"
+                          dataType="i4"
                           name="Ekey_Kunde" />
                         <externalMetadataColumn
                           refId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Ekey_Produkt]"
-                          dataType="i8"
+                          dataType="i4"
                           name="Ekey_Produkt" />
                       </externalMetadataColumns>
                     </input>
@@ -472,7 +470,7 @@
                       <outputColumns>
                         <outputColumn
                           refId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Order_Id]"
-                          dataType="i8"
+                          dataType="i4"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Order_Id]"
@@ -485,13 +483,13 @@
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Eval_Set]"
-                          length="50"
+                          length="20"
                           lineageId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Eval_Set]"
                           name="Eval_Set"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
                           refId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Order_Number]"
-                          dataType="i4"
+                          dataType="i2"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Order_Number]"
@@ -500,7 +498,7 @@
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
                           refId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Order_Dow]"
-                          dataType="i4"
+                          dataType="i2"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Order_Dow]"
@@ -509,7 +507,7 @@
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
                           refId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Order_Hour_Of_Day]"
-                          dataType="i4"
+                          dataType="i2"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Order_Hour_Of_Day]"
@@ -518,17 +516,18 @@
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
                           refId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Days_Since_Prior_Order]"
-                          dataType="wstr"
+                          dataType="numeric"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Days_Since_Prior_Order]"
-                          length="50"
                           lineageId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Days_Since_Prior_Order]"
                           name="Days_Since_Prior_Order"
+                          precision="6"
+                          scale="1"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
                           refId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Add_To_Cart_Order]"
-                          dataType="i4"
+                          dataType="i2"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Add_To_Cart_Order]"
@@ -537,7 +536,7 @@
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
                           refId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Reordered]"
-                          dataType="i4"
+                          dataType="i2"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Reordered]"
@@ -556,7 +555,7 @@
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
                           refId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Ekey_Kunde]"
-                          dataType="i8"
+                          dataType="i4"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Ekey_Kunde]"
@@ -565,7 +564,7 @@
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
                           refId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Ekey_Produkt]"
-                          dataType="i8"
+                          dataType="i4"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Ekey_Produkt]"
@@ -577,37 +576,38 @@
                         isUsed="True">
                         <externalMetadataColumn
                           refId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Order_Id]"
-                          dataType="i8"
+                          dataType="i4"
                           name="Order_Id" />
                         <externalMetadataColumn
                           refId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Eval_Set]"
                           dataType="wstr"
-                          length="50"
+                          length="20"
                           name="Eval_Set" />
                         <externalMetadataColumn
                           refId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Order_Number]"
-                          dataType="i4"
+                          dataType="i2"
                           name="Order_Number" />
                         <externalMetadataColumn
                           refId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Order_Dow]"
-                          dataType="i4"
+                          dataType="i2"
                           name="Order_Dow" />
                         <externalMetadataColumn
                           refId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Order_Hour_Of_Day]"
-                          dataType="i4"
+                          dataType="i2"
                           name="Order_Hour_Of_Day" />
                         <externalMetadataColumn
                           refId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Days_Since_Prior_Order]"
-                          dataType="wstr"
-                          length="50"
-                          name="Days_Since_Prior_Order" />
+                          dataType="numeric"
+                          name="Days_Since_Prior_Order"
+                          precision="6"
+                          scale="1" />
                         <externalMetadataColumn
                           refId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Add_To_Cart_Order]"
-                          dataType="i4"
+                          dataType="i2"
                           name="Add_To_Cart_Order" />
                         <externalMetadataColumn
                           refId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Reordered]"
-                          dataType="i4"
+                          dataType="i2"
                           name="Reordered" />
                         <externalMetadataColumn
                           refId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Initial_Load_Time]"
@@ -616,11 +616,11 @@
                           scale="7" />
                         <externalMetadataColumn
                           refId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Ekey_Kunde]"
-                          dataType="i8"
+                          dataType="i4"
                           name="Ekey_Kunde" />
                         <externalMetadataColumn
                           refId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Ekey_Produkt]"
-                          dataType="i8"
+                          dataType="i4"
                           name="Ekey_Produkt" />
                       </externalMetadataColumns>
                     </output>
@@ -631,54 +631,55 @@
                       <outputColumns>
                         <outputColumn
                           refId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Ekey_Kunde]"
-                          dataType="i8"
+                          dataType="i4"
                           lineageId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Ekey_Kunde]"
                           name="Ekey_Kunde" />
                         <outputColumn
                           refId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Order_Id]"
-                          dataType="i8"
+                          dataType="i4"
                           lineageId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Order_Id]"
                           name="Order_Id" />
                         <outputColumn
                           refId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Eval_Set]"
                           dataType="wstr"
-                          length="50"
+                          length="20"
                           lineageId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Eval_Set]"
                           name="Eval_Set" />
                         <outputColumn
                           refId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Order_Number]"
-                          dataType="i4"
+                          dataType="i2"
                           lineageId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Order_Number]"
                           name="Order_Number" />
                         <outputColumn
                           refId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Order_Dow]"
-                          dataType="i4"
+                          dataType="i2"
                           lineageId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Order_Dow]"
                           name="Order_Dow" />
                         <outputColumn
                           refId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Order_Hour_Of_Day]"
-                          dataType="i4"
+                          dataType="i2"
                           lineageId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Order_Hour_Of_Day]"
                           name="Order_Hour_Of_Day" />
                         <outputColumn
                           refId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Days_Since_Prior_Order]"
-                          dataType="wstr"
-                          length="50"
+                          dataType="numeric"
                           lineageId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Days_Since_Prior_Order]"
-                          name="Days_Since_Prior_Order" />
+                          name="Days_Since_Prior_Order"
+                          precision="6"
+                          scale="1" />
                         <outputColumn
                           refId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Ekey_Produkt]"
-                          dataType="i8"
+                          dataType="i4"
                           lineageId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Ekey_Produkt]"
                           name="Ekey_Produkt" />
                         <outputColumn
                           refId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Add_To_Cart_Order]"
-                          dataType="i4"
+                          dataType="i2"
                           lineageId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Add_To_Cart_Order]"
                           name="Add_To_Cart_Order" />
                         <outputColumn
                           refId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Reordered]"
-                          dataType="i4"
+                          dataType="i2"
                           lineageId="Package\DMSA Fact_Ordre\DMSA Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Reordered]"
                           name="Reordered" />
                         <outputColumn

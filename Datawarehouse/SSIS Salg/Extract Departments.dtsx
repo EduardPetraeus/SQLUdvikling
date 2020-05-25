@@ -11,8 +11,8 @@
   DTS:LocaleID="1030"
   DTS:ObjectName="Extract Departments"
   DTS:PackageType="5"
-  DTS:VersionBuild="26"
-  DTS:VersionGUID="{6CEE1C93-DBFB-4976-877B-1735B2BEDF72}">
+  DTS:VersionBuild="27"
+  DTS:VersionGUID="{E2AC40A6-651D-4165-9FD3-ECCAFB289905}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -217,7 +217,7 @@
                       <outputColumns>
                         <outputColumn
                           refId="Package\Extract Departments\Extract Departments\Derived Column.Outputs[Derived Column Output].Columns[Derived Column department_id]"
-                          dataType="i4"
+                          dataType="i2"
                           errorOrTruncationOperation="Computation"
                           errorRowDisposition="FailComponent"
                           lineageId="Package\Extract Departments\Extract Departments\Derived Column.Outputs[Derived Column Output].Columns[Derived Column department_id]"
@@ -228,13 +228,13 @@
                               containsID="true"
                               dataType="System.String"
                               description="Derived Column Expression"
-                              name="Expression">(DT_I4)#{Package\Extract Departments\Extract Departments\Flat File Source.Outputs[Flat File Source Output].Columns[department_id]}</property>
+                              name="Expression">(DT_I2)#{Package\Extract Departments\Extract Departments\Flat File Source.Outputs[Flat File Source Output].Columns[department_id]}</property>
                             <property
                               containsID="true"
                               dataType="System.String"
                               description="Derived Column Friendly Expression"
                               expressionType="Notify"
-                              name="FriendlyExpression">(DT_I4)department_id</property>
+                              name="FriendlyExpression">(DT_I2)department_id</property>
                           </properties>
                         </outputColumn>
                         <outputColumn
@@ -242,7 +242,7 @@
                           dataType="wstr"
                           errorOrTruncationOperation="Computation"
                           errorRowDisposition="FailComponent"
-                          length="100"
+                          length="30"
                           lineageId="Package\Extract Departments\Extract Departments\Derived Column.Outputs[Derived Column Output].Columns[Derived Column Department]"
                           name="Derived Column Department"
                           truncationRowDisposition="FailComponent">
@@ -251,13 +251,13 @@
                               containsID="true"
                               dataType="System.String"
                               description="Derived Column Expression"
-                              name="Expression">(DT_WSTR,100)#{Package\Extract Departments\Extract Departments\Flat File Source.Outputs[Flat File Source Output].Columns[Department]}</property>
+                              name="Expression">(DT_WSTR,30)#{Package\Extract Departments\Extract Departments\Flat File Source.Outputs[Flat File Source Output].Columns[Department]}</property>
                             <property
                               containsID="true"
                               dataType="System.String"
                               description="Derived Column Friendly Expression"
                               expressionType="Notify"
-                              name="FriendlyExpression">(DT_WSTR,100)Department</property>
+                              name="FriendlyExpression">(DT_WSTR,30)Department</property>
                           </properties>
                         </outputColumn>
                         <outputColumn
@@ -511,14 +511,14 @@
                           lineageId="Package\Extract Departments\Extract Departments\Derived Column.Outputs[Derived Column Output].Columns[Meta_CreateJob]" />
                         <inputColumn
                           refId="Package\Extract Departments\Extract Departments\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Derived Column department_id]"
-                          cachedDataType="i4"
+                          cachedDataType="i2"
                           cachedName="Derived Column department_id"
                           externalMetadataColumnId="Package\Extract Departments\Extract Departments\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Department_Id]"
                           lineageId="Package\Extract Departments\Extract Departments\Derived Column.Outputs[Derived Column Output].Columns[Derived Column department_id]" />
                         <inputColumn
                           refId="Package\Extract Departments\Extract Departments\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Derived Column Department]"
                           cachedDataType="wstr"
-                          cachedLength="100"
+                          cachedLength="30"
                           cachedName="Derived Column Department"
                           externalMetadataColumnId="Package\Extract Departments\Extract Departments\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Department]"
                           lineageId="Package\Extract Departments\Extract Departments\Derived Column.Outputs[Derived Column Output].Columns[Derived Column Department]" />
@@ -539,12 +539,12 @@
                           name="Meta_CreateJob" />
                         <externalMetadataColumn
                           refId="Package\Extract Departments\Extract Departments\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Department_Id]"
-                          dataType="i4"
+                          dataType="i2"
                           name="Department_Id" />
                         <externalMetadataColumn
                           refId="Package\Extract Departments\Extract Departments\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Department]"
                           dataType="wstr"
-                          length="100"
+                          length="30"
                           name="Department" />
                       </externalMetadataColumns>
                     </input>

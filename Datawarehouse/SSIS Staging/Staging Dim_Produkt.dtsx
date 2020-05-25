@@ -11,8 +11,8 @@
   DTS:LocaleID="1030"
   DTS:ObjectName="Staging Dim_Produkt"
   DTS:PackageType="5"
-  DTS:VersionBuild="33"
-  DTS:VersionGUID="{300D7486-795C-4C4D-9AAF-A5C361A6D242}">
+  DTS:VersionBuild="34"
+  DTS:VersionGUID="{E73C92D0-5849-462F-891D-0D840B54A798}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:PackageParameters>
@@ -459,7 +459,7 @@
                           lineageId="Package\Staging Dim_Produkt\Staging Dim_Produkt\Derived Column.Outputs[Derived Column Output].Columns[Meta_CreateJob]" />
                         <inputColumn
                           refId="Package\Staging Dim_Produkt\Staging Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Product_Id]"
-                          cachedDataType="i8"
+                          cachedDataType="i4"
                           cachedName="Product_Id"
                           externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Product_Id]"
                           lineageId="Package\Staging Dim_Produkt\Staging Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].Columns[Product_Id]" />
@@ -467,21 +467,21 @@
                           refId="Package\Staging Dim_Produkt\Staging Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Product_Name]"
                           cachedCodepage="1252"
                           cachedDataType="str"
-                          cachedLength="2000"
+                          cachedLength="100"
                           cachedName="Product_Name"
                           externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Product_Name]"
                           lineageId="Package\Staging Dim_Produkt\Staging Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].Columns[Product_Name]" />
                         <inputColumn
                           refId="Package\Staging Dim_Produkt\Staging Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Department]"
                           cachedDataType="wstr"
-                          cachedLength="100"
+                          cachedLength="30"
                           cachedName="Department"
                           externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Department]"
                           lineageId="Package\Staging Dim_Produkt\Staging Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].Columns[Department]" />
                         <inputColumn
                           refId="Package\Staging Dim_Produkt\Staging Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Aisle]"
                           cachedDataType="wstr"
-                          cachedLength="100"
+                          cachedLength="50"
                           cachedName="Aisle"
                           externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Aisle]"
                           lineageId="Package\Staging Dim_Produkt\Staging Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].Columns[Aisle]" />
@@ -503,22 +503,22 @@
                         <externalMetadataColumn
                           refId="Package\Staging Dim_Produkt\Staging Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Department]"
                           dataType="wstr"
-                          length="100"
+                          length="30"
                           name="Department" />
                         <externalMetadataColumn
                           refId="Package\Staging Dim_Produkt\Staging Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Product_Id]"
-                          dataType="i8"
+                          dataType="i4"
                           name="Product_Id" />
                         <externalMetadataColumn
                           refId="Package\Staging Dim_Produkt\Staging Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Product_Name]"
                           codePage="1252"
                           dataType="str"
-                          length="2000"
+                          length="100"
                           name="Product_Name" />
                         <externalMetadataColumn
                           refId="Package\Staging Dim_Produkt\Staging Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Aisle]"
                           dataType="wstr"
-                          length="100"
+                          length="50"
                           name="Aisle" />
                       </externalMetadataColumns>
                     </input>
@@ -611,7 +611,7 @@
                       <outputColumns>
                         <outputColumn
                           refId="Package\Staging Dim_Produkt\Staging Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].Columns[Product_Id]"
-                          dataType="i8"
+                          dataType="i4"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Product_Id]"
@@ -625,7 +625,7 @@
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Product_Name]"
-                          length="2000"
+                          length="100"
                           lineageId="Package\Staging Dim_Produkt\Staging Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].Columns[Product_Name]"
                           name="Product_Name"
                           truncationRowDisposition="FailComponent" />
@@ -635,7 +635,7 @@
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Department]"
-                          length="100"
+                          length="30"
                           lineageId="Package\Staging Dim_Produkt\Staging Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].Columns[Department]"
                           name="Department"
                           truncationRowDisposition="FailComponent" />
@@ -645,7 +645,7 @@
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Aisle]"
-                          length="100"
+                          length="50"
                           lineageId="Package\Staging Dim_Produkt\Staging Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].Columns[Aisle]"
                           name="Aisle"
                           truncationRowDisposition="FailComponent" />
@@ -654,23 +654,23 @@
                         isUsed="True">
                         <externalMetadataColumn
                           refId="Package\Staging Dim_Produkt\Staging Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Product_Id]"
-                          dataType="i8"
+                          dataType="i4"
                           name="Product_Id" />
                         <externalMetadataColumn
                           refId="Package\Staging Dim_Produkt\Staging Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Product_Name]"
                           codePage="1252"
                           dataType="str"
-                          length="2000"
+                          length="100"
                           name="Product_Name" />
                         <externalMetadataColumn
                           refId="Package\Staging Dim_Produkt\Staging Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Department]"
                           dataType="wstr"
-                          length="100"
+                          length="30"
                           name="Department" />
                         <externalMetadataColumn
                           refId="Package\Staging Dim_Produkt\Staging Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Aisle]"
                           dataType="wstr"
-                          length="100"
+                          length="50"
                           name="Aisle" />
                       </externalMetadataColumns>
                     </output>
@@ -681,26 +681,26 @@
                       <outputColumns>
                         <outputColumn
                           refId="Package\Staging Dim_Produkt\Staging Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Product_Id]"
-                          dataType="i8"
+                          dataType="i4"
                           lineageId="Package\Staging Dim_Produkt\Staging Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Product_Id]"
                           name="Product_Id" />
                         <outputColumn
                           refId="Package\Staging Dim_Produkt\Staging Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Product_Name]"
                           codePage="1252"
                           dataType="str"
-                          length="2000"
+                          length="100"
                           lineageId="Package\Staging Dim_Produkt\Staging Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Product_Name]"
                           name="Product_Name" />
                         <outputColumn
                           refId="Package\Staging Dim_Produkt\Staging Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Department]"
                           dataType="wstr"
-                          length="100"
+                          length="30"
                           lineageId="Package\Staging Dim_Produkt\Staging Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Department]"
                           name="Department" />
                         <outputColumn
                           refId="Package\Staging Dim_Produkt\Staging Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Aisle]"
                           dataType="wstr"
-                          length="100"
+                          length="50"
                           lineageId="Package\Staging Dim_Produkt\Staging Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Aisle]"
                           name="Aisle" />
                         <outputColumn
@@ -1417,14 +1417,6 @@
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="139,42"
-          Id="Package\Staging Dim_Produkt\Staging Dim_Produkt\RC selected"
-          TopLeft="27.5,107.5" />
-        <NodeLayout
-          Size="158,42"
-          Id="Package\Staging Dim_Produkt\Staging Dim_Produkt\Derived Column"
-          TopLeft="15,209.5" />
-        <NodeLayout
           Size="137,42"
           Id="Package\Staging Dim_Produkt\Staging Dim_Produkt\RC inserted"
           TopLeft="23,311.5" />
@@ -1432,6 +1424,40 @@
           Size="177,42"
           Id="Package\Staging Dim_Produkt\Staging Dim_Produkt\OLE DB Destination"
           TopLeft="5.50000000000004,413.5" />
+        <NodeLayout
+          Size="157,42"
+          Id="Package\Staging Dim_Produkt\Staging Dim_Produkt\OLE DB Source"
+          TopLeft="25,14" />
+        <NodeLayout
+          Size="139,42"
+          Id="Package\Staging Dim_Produkt\Staging Dim_Produkt\RC selected"
+          TopLeft="27.5,107.5" />
+        <NodeLayout
+          Size="158,42"
+          Id="Package\Staging Dim_Produkt\Staging Dim_Produkt\Derived Column"
+          TopLeft="15,209.5" />
+        <EdgeLayout
+          Id="Package\Staging Dim_Produkt\Staging Dim_Produkt.Paths[OLE DB Source Output]"
+          TopLeft="100.25,56">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,51.5"
+              Start="0,0"
+              End="0,44">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,44" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Staging Dim_Produkt\Staging Dim_Produkt.Paths[Derived Column Output]"
           TopLeft="92.75,251.5">
@@ -1490,32 +1516,6 @@
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="157,42"
-          Id="Package\Staging Dim_Produkt\Staging Dim_Produkt\OLE DB Source"
-          TopLeft="25,14" />
-        <EdgeLayout
-          Id="Package\Staging Dim_Produkt\Staging Dim_Produkt.Paths[OLE DB Source Output]"
-          TopLeft="100.25,56">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,51.5"
-              Start="0,0"
-              End="0,44">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,44" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

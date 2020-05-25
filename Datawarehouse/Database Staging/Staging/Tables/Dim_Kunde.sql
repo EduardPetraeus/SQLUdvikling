@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [Staging].[Dim_Kunde]
 (
-	[Order_Id]                 BIGINT                 NOT NULL,
+	[Order_Id]                 INT                    NOT NULL,
 	[User_Id]                  INT                    NULL,
 
 	/* Metadata */

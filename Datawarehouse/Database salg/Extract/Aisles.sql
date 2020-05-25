@@ -1,7 +1,7 @@
 ﻿CREATE TABLE [Extract].[Aisles]
 (
-	[Aisle_Id]          INT                          NOT NULL,
-	[Aisle]             NVARCHAR(100)                NULL,
+	[Aisle_Id]          SMALLINT                     NOT NULL,
+	[Aisle]             NVARCHAR(50)                 NULL,
 
 	/* Metadata */
 	[Meta_Id]           BIGINT IDENTITY (1,1)        NOT NULL,

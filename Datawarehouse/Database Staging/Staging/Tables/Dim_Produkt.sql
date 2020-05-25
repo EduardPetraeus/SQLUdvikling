@@ -1,9 +1,9 @@
 ﻿CREATE TABLE [Staging].[Dim_Produkt]
 (
-	[Product_Id]        BIGINT         NOT NULL,
-	[Product_Name]      VARCHAR(2000)  NULL,
-	[Department]        NVARCHAR(100)  NULL,
-	[Aisle]             NVARCHAR(100)  NULL,
+	[Product_Id]        INT           NOT NULL,
+	[Product_Name]      VARCHAR(100)  NULL,
+	[Department]        NVARCHAR(30)  NULL,
+	[Aisle]             NVARCHAR(50)  NULL,
 
 	/* Metadata */
 	[Meta_Id]           BIGINT IDENTITY (1,1)        NOT NULL,

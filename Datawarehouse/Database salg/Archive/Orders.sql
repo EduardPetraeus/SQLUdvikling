@@ -1,12 +1,12 @@
 ﻿CREATE TABLE [Archive].[Orders]
 (
-    [Order_Id]                 BIGINT                 NOT NULL,
+    [Order_Id]                 INT                    NOT NULL,
 	[User_Id]                  INT                    NULL,
-	[Eval_Set]                 NVARCHAR(50)           NULL,
-	[Order_Number]             INT                    NULL,
-	[Order_Dow]                INT                    NULL,
-	[Order_Hour_Of_Day]        INT                    NULL,
-	[Days_Since_Prior_Order]   NVARCHAR(50)           NULL,
+	[Eval_Set]                 NVARCHAR(20)           NULL,
+	[Order_Number]             SMALLINT               NULL,
+	[Order_Dow]                SMALLINT               NULL,
+	[Order_Hour_Of_Day]        SMALLINT               NULL,
+	[Days_Since_Prior_Order]   NVARCHAR(20)           NULL,
 
 	/* Metadata */               
     [Meta_Id]                    BIGINT       NOT NULL IDENTITY (1, 1),

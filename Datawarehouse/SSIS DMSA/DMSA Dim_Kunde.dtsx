@@ -11,8 +11,8 @@
   DTS:LocaleID="1030"
   DTS:ObjectName="DMSA Dim_Kunde"
   DTS:PackageType="5"
-  DTS:VersionBuild="41"
-  DTS:VersionGUID="{972DCE2C-2FE0-404D-8542-E2138FE485F1}">
+  DTS:VersionBuild="42"
+  DTS:VersionGUID="{1F777461-548D-4B1E-A900-FD63A2134352}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -246,13 +246,13 @@
                           lineageId="Package\DMSA Dim_Kunde\DMSA Dim_Kunde\OLE DB Source.Outputs[OLE DB Source Output].Columns[User_Id]" />
                         <inputColumn
                           refId="Package\DMSA Dim_Kunde\DMSA Dim_Kunde\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Order_Id]"
-                          cachedDataType="i8"
+                          cachedDataType="i4"
                           cachedName="Order_Id"
                           externalMetadataColumnId="Package\DMSA Dim_Kunde\DMSA Dim_Kunde\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Order_Id]"
                           lineageId="Package\DMSA Dim_Kunde\DMSA Dim_Kunde\OLE DB Source.Outputs[OLE DB Source Output].Columns[Order_Id]" />
                         <inputColumn
                           refId="Package\DMSA Dim_Kunde\DMSA Dim_Kunde\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Ekey_Kunde]"
-                          cachedDataType="i8"
+                          cachedDataType="i4"
                           cachedName="Ekey_Kunde"
                           externalMetadataColumnId="Package\DMSA Dim_Kunde\DMSA Dim_Kunde\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Ekey_Kunde]"
                           lineageId="Package\DMSA Dim_Kunde\DMSA Dim_Kunde\OLE DB Source.Outputs[OLE DB Source Output].Columns[Ekey_Kunde]" />
@@ -273,11 +273,11 @@
                           name="User_Id" />
                         <externalMetadataColumn
                           refId="Package\DMSA Dim_Kunde\DMSA Dim_Kunde\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Order_Id]"
-                          dataType="i8"
+                          dataType="i4"
                           name="Order_Id" />
                         <externalMetadataColumn
                           refId="Package\DMSA Dim_Kunde\DMSA Dim_Kunde\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Ekey_Kunde]"
-                          dataType="i8"
+                          dataType="i4"
                           name="Ekey_Kunde" />
                       </externalMetadataColumns>
                     </input>
@@ -385,7 +385,7 @@
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
                           refId="Package\DMSA Dim_Kunde\DMSA Dim_Kunde\OLE DB Source.Outputs[OLE DB Source Output].Columns[Order_Id]"
-                          dataType="i8"
+                          dataType="i4"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\DMSA Dim_Kunde\DMSA Dim_Kunde\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Order_Id]"
@@ -394,7 +394,7 @@
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
                           refId="Package\DMSA Dim_Kunde\DMSA Dim_Kunde\OLE DB Source.Outputs[OLE DB Source Output].Columns[Ekey_Kunde]"
-                          dataType="i8"
+                          dataType="i4"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
                           externalMetadataColumnId="Package\DMSA Dim_Kunde\DMSA Dim_Kunde\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Ekey_Kunde]"
@@ -410,11 +410,11 @@
                           name="User_Id" />
                         <externalMetadataColumn
                           refId="Package\DMSA Dim_Kunde\DMSA Dim_Kunde\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Order_Id]"
-                          dataType="i8"
+                          dataType="i4"
                           name="Order_Id" />
                         <externalMetadataColumn
                           refId="Package\DMSA Dim_Kunde\DMSA Dim_Kunde\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Ekey_Kunde]"
-                          dataType="i8"
+                          dataType="i4"
                           name="Ekey_Kunde" />
                       </externalMetadataColumns>
                     </output>
@@ -425,12 +425,12 @@
                       <outputColumns>
                         <outputColumn
                           refId="Package\DMSA Dim_Kunde\DMSA Dim_Kunde\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Ekey_Kunde]"
-                          dataType="i8"
+                          dataType="i4"
                           lineageId="Package\DMSA Dim_Kunde\DMSA Dim_Kunde\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Ekey_Kunde]"
                           name="Ekey_Kunde" />
                         <outputColumn
                           refId="Package\DMSA Dim_Kunde\DMSA Dim_Kunde\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Order_Id]"
-                          dataType="i8"
+                          dataType="i4"
                           lineageId="Package\DMSA Dim_Kunde\DMSA Dim_Kunde\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Order_Id]"
                           name="Order_Id" />
                         <outputColumn

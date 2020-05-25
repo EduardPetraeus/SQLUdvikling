@@ -1,7 +1,7 @@
 ﻿CREATE TABLE [Map].[Dim_Kunde]
 (   
-    [Ekey_Kunde]          BIGINT         NOT NULL IDENTITY (1,1),
-	[Order_Id]            BIGINT         NOT NULL,
+    [Ekey_Kunde]          INT            NOT NULL IDENTITY (1,1),
+	[Order_Id]            INT            NOT NULL,
 
     /* Metadata */
 	[Meta_IsDeleted]		BIT			   NOT NULL,

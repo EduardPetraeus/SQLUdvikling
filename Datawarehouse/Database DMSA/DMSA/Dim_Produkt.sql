@@ -1,10 +1,10 @@
 ﻿CREATE TABLE [DMSA].[Dim_Produkt]
 (
-	[Ekey_Produkt]      BIGINT         NOT NULL,
-	[Product_Id]        BIGINT         NOT NULL,
-	[Product_Name]      VARCHAR(2000)  NULL,
-	[Department]        NVARCHAR(100)  NULL,
-	[Aisle]             NVARCHAR(100)  NULL,
+	[Ekey_Produkt]      INT           NOT NULL,
+	[Product_Id]        INT           NOT NULL,
+	[Product_Name]      VARCHAR(100)  NULL,
+	[Department]        NVARCHAR(30)  NULL,
+	[Aisle]             NVARCHAR(50)  NULL,
 
 	/* Metadata */
 	[Meta_CreateTime]   DATETIME DEFAULT GETDATE()   NOT NULL,

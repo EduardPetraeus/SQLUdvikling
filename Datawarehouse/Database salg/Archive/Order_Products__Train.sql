@@ -1,10 +1,10 @@
 ﻿CREATE TABLE [Archive].[Order_Products__Train]
 (
-    [Id_Order_Products__Train]   BIGINT       NOT NULL,
+    [Id_Order_Products__Train]   INT          NOT NULL,
 	[Order_Id_Train]             INT          NOT NULL,
 	[Product_Id_Train]           INT          NOT NULL,
-	[Add_To_Cart_Order_Train]    INT          NOT NULL,
-	[Reordered_Train]            INT          NOT NULL,
+	[Add_To_Cart_Order_Train]    SMALLINT     NOT NULL,
+	[Reordered_Train]            SMALLINT     NOT NULL,
                                  
 	/* Metadata */               
     [Meta_Id]                    BIGINT       NOT NULL IDENTITY (1, 1),

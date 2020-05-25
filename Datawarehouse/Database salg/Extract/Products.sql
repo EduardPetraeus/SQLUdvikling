@@ -1,9 +1,9 @@
 ﻿CREATE TABLE [Extract].[Products]
 (   
-    [Product_Id]               BIGINT                 NOT NULL,
-	[Product_Name]             VARCHAR(2000)          NULL,
-	[Aisle_Id]                 NVARCHAR(50)           NULL,
-	[Department_Id]            NVARCHAR(50)           NULL,
+    [Product_Id]               INT                   NOT NULL,
+	[Product_Name]             VARCHAR(100)          NULL,
+	[Aisle_Id]                 NVARCHAR(20)          NULL,
+	[Department_Id]            NVARCHAR(20)          NULL,
 
 	/* Metadata */
 	[Meta_Id]           BIGINT   IDENTITY (1,1)      NOT NULL,

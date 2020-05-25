@@ -11,8 +11,8 @@
   DTS:LocaleID="1030"
   DTS:ObjectName="Extract Products"
   DTS:PackageType="5"
-  DTS:VersionBuild="54"
-  DTS:VersionGUID="{A4392CFA-54CC-44CD-A650-9B39DFBE5292}">
+  DTS:VersionBuild="56"
+  DTS:VersionGUID="{F4F68299-7B95-4ECE-B6D1-B63219B917F3}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -372,7 +372,7 @@
                       <outputColumns>
                         <outputColumn
                           refId="Package\Extract Products\Extract Products\Derived Column.Outputs[Derived Column Output].Columns[Derived Column product_id]"
-                          dataType="i8"
+                          dataType="i4"
                           errorOrTruncationOperation="Computation"
                           errorRowDisposition="FailComponent"
                           lineageId="Package\Extract Products\Extract Products\Derived Column.Outputs[Derived Column Output].Columns[Derived Column product_id]"
@@ -383,13 +383,13 @@
                               containsID="true"
                               dataType="System.String"
                               description="Derived Column Expression"
-                              name="Expression">(DT_I8)#{Package\Extract Products\Extract Products\Flat File Source.Outputs[Flat File Source Output].Columns[product_id]}</property>
+                              name="Expression">(DT_I4)#{Package\Extract Products\Extract Products\Flat File Source.Outputs[Flat File Source Output].Columns[product_id]}</property>
                             <property
                               containsID="true"
                               dataType="System.String"
                               description="Derived Column Friendly Expression"
                               expressionType="Notify"
-                              name="FriendlyExpression">(DT_I8)product_id</property>
+                              name="FriendlyExpression">(DT_I4)product_id</property>
                           </properties>
                         </outputColumn>
                         <outputColumn
@@ -419,7 +419,7 @@
                           dataType="wstr"
                           errorOrTruncationOperation="Computation"
                           errorRowDisposition="FailComponent"
-                          length="50"
+                          length="20"
                           lineageId="Package\Extract Products\Extract Products\Derived Column.Outputs[Derived Column Output].Columns[Derived Column aisle_id]"
                           name="Derived Column aisle_id"
                           truncationRowDisposition="FailComponent">
@@ -428,13 +428,13 @@
                               containsID="true"
                               dataType="System.String"
                               description="Derived Column Expression"
-                              name="Expression">(DT_WSTR,50)#{Package\Extract Products\Extract Products\Flat File Source.Outputs[Flat File Source Output].Columns[aisle_id]}</property>
+                              name="Expression">(DT_WSTR,20)#{Package\Extract Products\Extract Products\Flat File Source.Outputs[Flat File Source Output].Columns[aisle_id]}</property>
                             <property
                               containsID="true"
                               dataType="System.String"
                               description="Derived Column Friendly Expression"
                               expressionType="Notify"
-                              name="FriendlyExpression">(DT_WSTR,50)aisle_id</property>
+                              name="FriendlyExpression">(DT_WSTR,20)aisle_id</property>
                           </properties>
                         </outputColumn>
                         <outputColumn
@@ -442,7 +442,7 @@
                           dataType="wstr"
                           errorOrTruncationOperation="Computation"
                           errorRowDisposition="FailComponent"
-                          length="50"
+                          length="20"
                           lineageId="Package\Extract Products\Extract Products\Derived Column.Outputs[Derived Column Output].Columns[Derived Column department_id]"
                           name="Derived Column department_id"
                           truncationRowDisposition="FailComponent">
@@ -451,13 +451,13 @@
                               containsID="true"
                               dataType="System.String"
                               description="Derived Column Expression"
-                              name="Expression">(DT_WSTR,50)#{Package\Extract Products\Extract Products\Flat File Source.Outputs[Flat File Source Output].Columns[department_id]}</property>
+                              name="Expression">(DT_WSTR,20)#{Package\Extract Products\Extract Products\Flat File Source.Outputs[Flat File Source Output].Columns[department_id]}</property>
                             <property
                               containsID="true"
                               dataType="System.String"
                               description="Derived Column Friendly Expression"
                               expressionType="Notify"
-                              name="FriendlyExpression">(DT_WSTR,50)department_id</property>
+                              name="FriendlyExpression">(DT_WSTR,20)department_id</property>
                           </properties>
                         </outputColumn>
                       </outputColumns>
@@ -773,21 +773,21 @@
                           lineageId="Package\Extract Products\Extract Products\Derived Column.Outputs[Derived Column Output].Columns[Meta_CreateJob]" />
                         <inputColumn
                           refId="Package\Extract Products\Extract Products\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Derived Column product_id]"
-                          cachedDataType="i8"
+                          cachedDataType="i4"
                           cachedName="Derived Column product_id"
                           externalMetadataColumnId="Package\Extract Products\Extract Products\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Product_Id]"
                           lineageId="Package\Extract Products\Extract Products\Derived Column.Outputs[Derived Column Output].Columns[Derived Column product_id]" />
                         <inputColumn
                           refId="Package\Extract Products\Extract Products\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Derived Column aisle_id]"
                           cachedDataType="wstr"
-                          cachedLength="50"
+                          cachedLength="20"
                           cachedName="Derived Column aisle_id"
                           externalMetadataColumnId="Package\Extract Products\Extract Products\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Aisle_Id]"
                           lineageId="Package\Extract Products\Extract Products\Derived Column.Outputs[Derived Column Output].Columns[Derived Column aisle_id]" />
                         <inputColumn
                           refId="Package\Extract Products\Extract Products\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Derived Column department_id]"
                           cachedDataType="wstr"
-                          cachedLength="50"
+                          cachedLength="20"
                           cachedName="Derived Column department_id"
                           externalMetadataColumnId="Package\Extract Products\Extract Products\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Department_Id]"
                           lineageId="Package\Extract Products\Extract Products\Derived Column.Outputs[Derived Column Output].Columns[Derived Column department_id]" />
@@ -816,23 +816,23 @@
                           name="Meta_CreateJob" />
                         <externalMetadataColumn
                           refId="Package\Extract Products\Extract Products\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Product_Id]"
-                          dataType="i8"
+                          dataType="i4"
                           name="Product_Id" />
                         <externalMetadataColumn
                           refId="Package\Extract Products\Extract Products\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Product_Name]"
                           codePage="1252"
                           dataType="str"
-                          length="2000"
+                          length="100"
                           name="Product_Name" />
                         <externalMetadataColumn
                           refId="Package\Extract Products\Extract Products\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Aisle_Id]"
                           dataType="wstr"
-                          length="50"
+                          length="20"
                           name="Aisle_Id" />
                         <externalMetadataColumn
                           refId="Package\Extract Products\Extract Products\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Department_Id]"
                           dataType="wstr"
-                          length="50"
+                          length="20"
                           name="Department_Id" />
                       </externalMetadataColumns>
                     </input>
@@ -1159,7 +1159,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="SQL ExecutionEnd Failed"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -1183,7 +1183,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="SQL ExecutionEnd Succeeded"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData

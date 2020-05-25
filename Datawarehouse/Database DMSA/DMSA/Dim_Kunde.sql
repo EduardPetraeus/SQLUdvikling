@@ -1,7 +1,7 @@
 ﻿CREATE TABLE [DMSA].[Dim_Kunde]
 (
-	[Ekey_Kunde]        BIGINT                       NOT NULL,
-	[Order_Id]          BIGINT                       NOT NULL,
+	[Ekey_Kunde]        INT                          NOT NULL,
+	[Order_Id]          INT                          NOT NULL,
 	[User_Id]           INT                          NULL,
 
 	/* Metadata */
