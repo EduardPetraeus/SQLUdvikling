@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">PC0QGDKR</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAlP6nPMG2QU6PRcSLgzoq2QAAAAACAAAAAAADZgAAwAAAABAAAACL2GlPCJOaZ/TnO8ruu6PJAAAAAASAAACgAAAAEAAAAPBXwNzBpq1Cej3r6/mE/gaIAAAA9zqyiJ0h9LAnzIjWLuPr1tdToddUJkkGt/fkULpjcP3vIEJAbX42OoKZv4yXb4hLjqLLxig7ON59+NqxJrQpHtT6uyDir11hdy3sV5C1szYw2nO508AIK1ynDirARl9vLvqNKhun9caWkYexWYSvpainueeCUBL4klGMOJHNaBlVB4hZFEXiXhQAAABGcZcuDu0aBMu/NrSy4k6uoUZ5Ig==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAlP6nPMG2QU6PRcSLgzoq2QAAAAACAAAAAAADZgAAwAAAABAAAAAvCFgO/QahrXjOubYlEjRMAAAAAASAAACgAAAAEAAAACtmhbr0yuSbECXWSqnsfnCIAAAA3JjnbdiqrY8PgdWrW4vjdArTS+tfLw0xRMjWl1MHu/VuKnJFcSG9gw8DJFqCaq4iywMWQrROjg2OeM6uV96nqj2RI95M6oHU8DEIkxH+t9v/UpUp4e5S+v+ADdSXeEYO1CLUVYvkoWR21grnbta/CPUJwrEh3hIJPtQb++Un7NIiN5jT51QYyBQAAADY/NhV6G2Mbi0QsBT3bceR712XFw==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -396,7 +396,7 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">Initial Catalog=SSAS Ordre;Provider=MSOLAP.8;Impersonation Level=Impersonate;Location=PC0QGDKR\MDSSQLSERVER;</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">Initial Catalog=SSAS Ordre;Provider=MSOLAP.8;Integrated Security=SSPI;Impersonation Level=Impersonate;Location=PC0QGDKR\MDSSQLSERVER;</SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
@@ -582,10 +582,10 @@
                 <SSIS:Property SSIS:Name="Name">Process Cube Ordre</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">46</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">51</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{93FC90AE-683F-4A27-BC0C-018D5FD6AB5E}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{2DED5AEF-7904-4CC6-B9C4-2439090273E6}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
