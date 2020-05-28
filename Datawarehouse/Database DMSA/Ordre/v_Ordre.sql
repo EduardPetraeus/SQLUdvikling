@@ -17,7 +17,8 @@
       ,FORMAT(DATEADD(hh,[Order_Hour_Of_Day],'00:00'),'hh:mm')  AS [Tidspunkt for bestilling]
       ,[Days_Since_Prior_Order] AS [Dage siden sidste bestilling]
       ,[Ekey_Produkt]
-      ,[Add_To_Cart_Order] AS [Antal produkter i en given ordre]
+      ,[Add_To_Cart_Order] AS [Rækkefølge varer er tilføjet til kurven]
+      ,MAX([Add_To_Cart_Order]) OVER(PARTITION BY [Order_Id],[Order_Number]) AS [Antal produkter i en given ordre]
       ,CASE WHEN [Reordered] = 1 THEN 'Ja' WHEN [Reordered] = 0 THEN 'Nej' ELSE 'Ukendt' END AS [Genbestilt (Ja /Nej)]
       ,[Initial_Load_Time] AS [Række indlæst i Datavarehus]
 
