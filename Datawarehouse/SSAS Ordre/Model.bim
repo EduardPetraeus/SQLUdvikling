@@ -19,91 +19,35 @@
     ],
     "tables": [
       {
-        "name": "Ordre",
+        "name": "Kunde",
         "columns": [
           {
             "name": "Ekey_Kunde",
             "dataType": "int64",
             "isHidden": true,
             "sourceColumn": "Ekey_Kunde",
-            "sourceProviderType": "BigInt"
+            "sourceProviderType": "Integer"
           },
           {
             "name": "Ordre Id",
             "dataType": "int64",
             "sourceColumn": "Ordre Id",
-            "sourceProviderType": "BigInt"
-          },
-          {
-            "name": "Evaluerings sæt",
-            "dataType": "string",
-            "sourceColumn": "Evaluerings sæt",
-            "sourceProviderType": "WChar"
-          },
-          {
-            "name": "Ordre nummer",
-            "dataType": "int64",
-            "sourceColumn": "Ordre nummer",
             "sourceProviderType": "Integer"
           },
           {
-            "name": "Dag for bestilling",
-            "dataType": "string",
-            "sourceColumn": "Dag for bestilling",
-            "sourceProviderType": "Char"
-          },
-          {
-            "name": "Ugedag for bestilling",
+            "name": "Kunde Id",
             "dataType": "int64",
-            "sourceColumn": "Ugedag for bestilling",
+            "sourceColumn": "Kunde Id",
             "sourceProviderType": "Integer"
-          },
-          {
-            "name": "Tidspunkt for bestilling",
-            "dataType": "string",
-            "sourceColumn": "Tidspunkt for bestilling",
-            "sourceProviderType": "WChar"
-          },
-          {
-            "name": "Dage siden sidste bestilling",
-            "dataType": "string",
-            "sourceColumn": "Dage siden sidste bestilling",
-            "sourceProviderType": "WChar"
-          },
-          {
-            "name": "Ekey_Produkt",
-            "dataType": "int64",
-            "isHidden": true,
-            "sourceColumn": "Ekey_Produkt",
-            "sourceProviderType": "BigInt"
-          },
-          {
-            "name": "Antal produkter i en given ordre",
-            "dataType": "int64",
-            "sourceColumn": "Antal produkter i en given ordre",
-            "sourceProviderType": "Integer"
-          },
-          {
-            "name": "Genbestilt (Ja /Nej)",
-            "dataType": "string",
-            "sourceColumn": "Genbestilt (Ja /Nej)",
-            "sourceProviderType": "Char"
-          },
-          {
-            "name": "Række indlæst i Datavarehus",
-            "dataType": "dateTime",
-            "sourceColumn": "Række indlæst i Datavarehus",
-            "formatString": "General Date",
-            "sourceProviderType": "DBTimeStamp"
           }
         ],
         "partitions": [
           {
-            "name": "Ordre",
+            "name": "Kunde",
             "dataView": "full",
             "source": {
               "type": "query",
-              "query": " SELECT [Ordre].[v_Ordre].* FROM [Ordre].[v_Ordre] ",
+              "query": " SELECT [Ordre].[v_Kunde].* FROM [Ordre].[v_Kunde] ",
               "dataSource": "DMSA"
             }
           }
@@ -111,11 +55,11 @@
         "annotations": [
           {
             "name": "_TM_ExtProp_QueryDefinition",
-            "value": " SELECT [Ordre].[v_Ordre].* FROM [Ordre].[v_Ordre] "
+            "value": " SELECT [Ordre].[v_Kunde].* FROM [Ordre].[v_Kunde] "
           },
           {
             "name": "_TM_ExtProp_DbTableName",
-            "value": "v_Ordre"
+            "value": "v_Kunde"
           },
           {
             "name": "_TM_ExtProp_DbSchemaName",
@@ -131,13 +75,13 @@
             "dataType": "int64",
             "isHidden": true,
             "sourceColumn": "Ekey_Produkt",
-            "sourceProviderType": "BigInt"
+            "sourceProviderType": "Integer"
           },
           {
             "name": "Produkt Id",
             "dataType": "int64",
             "sourceColumn": "Produkt Id",
-            "sourceProviderType": "BigInt"
+            "sourceProviderType": "Integer"
           },
           {
             "name": "Produkt navn",
@@ -185,47 +129,126 @@
         ]
       },
       {
-        "name": "Kunde",
+        "name": "Ordre",
         "columns": [
           {
             "name": "Ekey_Kunde",
             "dataType": "int64",
             "isHidden": true,
             "sourceColumn": "Ekey_Kunde",
-            "sourceProviderType": "BigInt"
+            "sourceProviderType": "Integer"
           },
           {
             "name": "Ordre Id",
             "dataType": "int64",
             "sourceColumn": "Ordre Id",
-            "sourceProviderType": "BigInt"
+            "sourceProviderType": "Integer"
           },
           {
-            "name": "Kunde Id",
+            "name": "Evaluerings sæt",
+            "dataType": "string",
+            "sourceColumn": "Evaluerings sæt",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "Ordre nummer",
             "dataType": "int64",
-            "sourceColumn": "Kunde Id",
+            "sourceColumn": "Ordre nummer",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "Dag for bestilling",
+            "dataType": "string",
+            "sourceColumn": "Dag for bestilling",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Ugedag for bestilling",
+            "dataType": "int64",
+            "sourceColumn": "Ugedag for bestilling",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "Tidspunkt for bestilling",
+            "dataType": "int64",
+            "sourceColumn": "Tidspunkt for bestilling",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "Dage siden sidste bestilling",
+            "dataType": "double",
+            "sourceColumn": "Dage siden sidste bestilling",
+            "sourceProviderType": "Numeric"
+          },
+          {
+            "name": "Ekey_Produkt",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "Ekey_Produkt",
             "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Rækkefølge varer er tilføjet til kurven",
+            "dataType": "int64",
+            "sourceColumn": "Rækkefølge varer er tilføjet til kurven",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "Antal produkter i en given ordre",
+            "dataType": "int64",
+            "sourceColumn": "Antal produkter i en given ordre",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "Genbestilt (Ja /Nej)",
+            "dataType": "string",
+            "sourceColumn": "Genbestilt (Ja /Nej)",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Række indlæst i Datavarehus",
+            "dataType": "dateTime",
+            "sourceColumn": "Række indlæst i Datavarehus",
+            "formatString": "General Date",
+            "sourceProviderType": "DBTimeStamp"
           }
         ],
         "partitions": [
           {
-            "name": "Kunde",
+            "name": "Ordre",
             "dataView": "full",
             "source": {
               "type": "query",
-              "query": " SELECT [Ordre].[v_Kunde].* FROM [Ordre].[v_Kunde] ",
+              "query": " SELECT [Ordre].[v_Ordre].* FROM [Ordre].[v_Ordre] ",
               "dataSource": "DMSA"
             }
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "Hierarchy1",
+            "levels": [
+              {
+                "name": "Dag for bestilling",
+                "ordinal": 0,
+                "column": "Dag for bestilling"
+              },
+              {
+                "name": "Tidspunkt for bestilling",
+                "ordinal": 1,
+                "column": "Tidspunkt for bestilling"
+              }
+            ]
           }
         ],
         "annotations": [
           {
             "name": "_TM_ExtProp_QueryDefinition",
-            "value": " SELECT [Ordre].[v_Kunde].* FROM [Ordre].[v_Kunde] "
+            "value": " SELECT [Ordre].[v_Ordre].* FROM [Ordre].[v_Ordre] "
           },
           {
             "name": "_TM_ExtProp_DbTableName",
-            "value": "v_Kunde"
+            "value": "v_Ordre"
           },
           {
             "name": "_TM_ExtProp_DbSchemaName",
@@ -236,18 +259,18 @@
     ],
     "relationships": [
       {
-        "name": "10cfb00d-fb39-4aa1-a745-8781f932ab2b",
-        "fromTable": "Ordre",
-        "fromColumn": "Ekey_Produkt",
-        "toTable": "Produkt",
-        "toColumn": "Ekey_Produkt"
-      },
-      {
-        "name": "7c0eb8fe-de21-462a-a2f9-7f6093928538",
+        "name": "4479df92-642d-438b-b6b1-803cbb33cc38",
         "fromTable": "Ordre",
         "fromColumn": "Ekey_Kunde",
         "toTable": "Kunde",
         "toColumn": "Ekey_Kunde"
+      },
+      {
+        "name": "7e82688a-9dd9-471a-8552-6218a3f8b755",
+        "fromTable": "Ordre",
+        "fromColumn": "Ekey_Produkt",
+        "toTable": "Produkt",
+        "toColumn": "Ekey_Produkt"
       }
     ],
     "annotations": [

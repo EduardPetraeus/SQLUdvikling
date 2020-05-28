@@ -11,8 +11,8 @@
   DTS:LocaleID="1030"
   DTS:ObjectName="Process Cube Ordre"
   DTS:PackageType="5"
-  DTS:VersionBuild="51"
-  DTS:VersionGUID="{2DED5AEF-7904-4CC6-B9C4-2439090273E6}">
+  DTS:VersionBuild="53"
+  DTS:VersionGUID="{5BF11725-02F7-4495-9357-0876210004A0}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -59,6 +59,7 @@
           DTS:refId="Package\Process Cube Ordre\Analysis Services Processing Task"
           DTS:CreationName="Microsoft.DTSProcessingTask"
           DTS:Description="Analysis Services Processing Task"
+          DTS:Disabled="True"
           DTS:DTSID="{BB8934E5-13AC-47FB-84DB-28A12D8A2AF1}"
           DTS:ExecutableType="Microsoft.DTSProcessingTask"
           DTS:LocaleID="-1"
@@ -259,7 +260,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="SQL ExecutionEnd Failed"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -283,7 +284,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="SQL ExecutionEnd Succeeded"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -461,6 +462,10 @@
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
+          Size="237,42"
+          Id="Package\Process Cube Ordre\Analysis Services Processing Task"
+          TopLeft="229.5,107.5" />
+        <NodeLayout
           Size="161,42"
           Id="Package\Process Cube Ordre\SQL ProcessCubeEnd Failed"
           TopLeft="267.5,209.5" />
@@ -469,13 +474,13 @@
           Id="Package\Process Cube Ordre\SQL ProcessCubeEnd Succeeded"
           TopLeft="45.5,209.5" />
         <NodeLayout
+          Size="241,42"
+          Id="Package\Process Cube Ordre\SQL ProcessCubeEnd Succeeded 1"
+          TopLeft="5.50000000000006,311.5" />
+        <NodeLayout
           Size="161,42"
           Id="Package\Process Cube Ordre\SQL ProcessCubeStart"
           TopLeft="267.5,5.5" />
-        <NodeLayout
-          Size="237,42"
-          Id="Package\Process Cube Ordre\Analysis Services Processing Task"
-          TopLeft="229.5,107.5" />
         <EdgeLayout
           Id="Package\Process Cube Ordre.PrecedenceConstraints[Constraint]"
           TopLeft="348,47.5">
@@ -568,10 +573,6 @@
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="241,42"
-          Id="Package\Process Cube Ordre\SQL ProcessCubeEnd Succeeded 1"
-          TopLeft="5.50000000000006,311.5" />
         <EdgeLayout
           Id="Package\Process Cube Ordre.PrecedenceConstraints[Constraint 3]"
           TopLeft="126,251.5">
@@ -597,7 +598,7 @@
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="472,408"
+          PanelSize="472,409"
           Size="472,452"
           Id="Package\Process Cube Ordre"
           TopLeft="162.5,107.5" />

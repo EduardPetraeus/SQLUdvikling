@@ -14,7 +14,8 @@
         END
            AS [Dag for bestilling]
       ,[Order_Dow] AS [Ugedag for bestilling]
-      ,FORMAT(DATEADD(hh,[Order_Hour_Of_Day],'00:00'),'hh:mm')  AS [Tidspunkt for bestilling]
+      --,FORMAT(DATEADD(hh,[Order_Hour_Of_Day],'00:00'),'hh:mm')  
+      ,[Order_Hour_Of_Day] AS [Tidspunkt for bestilling]
       ,[Days_Since_Prior_Order] AS [Dage siden sidste bestilling]
       ,[Ekey_Produkt]
       ,[Add_To_Cart_Order] AS [Rækkefølge varer er tilføjet til kurven]
