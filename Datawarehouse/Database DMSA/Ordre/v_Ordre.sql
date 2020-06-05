@@ -5,7 +5,7 @@ SELECT
       ,[Order_Id] AS [Ordre Id]
       ,[Eval_Set] AS [Evaluerings sæt]
       ,[Order_Number] AS [Ordre nummer]
-	 -- ,CONVERT(varchar, CONCAT('2020/'+'2/', +[Dag for bestilling])) as [Dato for bestilling]
+	  --,CONVERT(varchar, CONCAT('2020/2/', +[Dag for bestilling])) as [Dato for bestilling]
 	  ,CASE   WHEN [Dag for bestilling] = 1 THEN   'Lørdag' 
               WHEN [Dag for bestilling] = 2 THEN   'Søndag'   
               WHEN [Dag for bestilling] = 3 THEN   'Mandag'   
