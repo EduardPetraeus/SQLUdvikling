@@ -67,6 +67,9 @@
     <Folder Include="Utility" />
     <Folder Include="Utility\Functions" />
     <Folder Include="Utility\Stored Procedures" />
+    <Folder Include="Meta" />
+    <Folder Include="Distribution" />
+    <Folder Include="Distribution\Stored Procedure" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Security\Audit.sql" />
@@ -95,6 +98,10 @@
     <Build Include="Audit\Stored Procedures\StagingEnd.sql" />
     <Build Include="Audit\Stored Procedures\StagingStart.sql" />
     <Build Include="Archive\Stored Procedures\sp_UpdateTables.sql" />
+    <Build Include="Security\Meta.sql" />
+    <Build Include="Security\Distribution.sql" />
+    <Build Include="Meta\LastSuccessfullLoad.sql" />
+    <Build Include="Distribution\Stored Procedure\UpdateDistribution.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="LZDB.dev.publish.xml" />

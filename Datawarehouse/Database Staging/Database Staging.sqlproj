@@ -65,6 +65,8 @@
     <Folder Include="Map" />
     <Folder Include="Map\Tables" />
     <Folder Include="Map\Stored Procedures" />
+    <Folder Include="Load" />
+    <Folder Include="Distribution" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Staging.dev.publish.xml" />
@@ -83,6 +85,11 @@
     <Build Include="Staging\Tables\Temp_Orders_Products.sql" />
     <Build Include="Staging\Views\v_Fact_Ordre.sql" />
     <Build Include="Staging\Tables\Fact_Ordre.sql" />
+    <Build Include="Security\Load.sql" />
+    <Build Include="Security\Distribution.sql" />
+    <Build Include="Load\Produkt.sql" />
+    <Build Include="Distribution\Produkt.sql" />
+    <Build Include="Staging\Views\v_Produkt.sql" />
   </ItemGroup>
   <ItemGroup>
     <SqlCmdVariable Include="LZDB">

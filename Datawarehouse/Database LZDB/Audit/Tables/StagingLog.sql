@@ -10,6 +10,7 @@
     [IsFullLoad]       BIT            NULL,
     [RecordsSelected]  INT            NULL,
     [RecordsInserted]  INT            NULL,
+    [RecordsUpdated]   INT DEFAULT 0  NULL,
     [RecordsFailed]    INT            NULL,
 	[RecordsDiscarded] INT			  NULL
     CONSTRAINT [PK_StagingLog] PRIMARY KEY CLUSTERED ([Id] ASC),

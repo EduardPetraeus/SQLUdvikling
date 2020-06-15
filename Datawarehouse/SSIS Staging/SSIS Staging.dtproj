@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">PC0QGDKR</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAlP6nPMG2QU6PRcSLgzoq2QAAAAACAAAAAAADZgAAwAAAABAAAADfFB0k8+1MCuVuY/5izeieAAAAAASAAACgAAAAEAAAALaK2T4dtTWuyJuRm4eCbWKIAAAAekRl222RIdFHysJZ8dUVcx48k1NwgMVnkpl/FYUwBzppjuN/4BNVpg1RZmmB9tiFkQWINHggQO5w0chvBQ+qtXGy3m48V6sHK+vJgtKUjvtEiRXsk1chlKb3Chk0YT+r10a29+gkr23MENG4pZeBRDTvOOE8hX1Q9RQHCKhpLBhBQotoDsAmHBQAAABrtmsmkV6cBDyREgbcXRbwJ0lUdg==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAlP6nPMG2QU6PRcSLgzoq2QAAAAACAAAAAAADZgAAwAAAABAAAADABDtL9T7nWAddAgqX7GiRAAAAAASAAACgAAAAEAAAAEgJl6utEsNRRiRoQ+Nny16IAAAAg59EoGto0wwDeYtIolni0sZW3RykdX/mG/Rm3fyxgMkfuy+8z5fk7QqJNeTjk/v3t4ZFpOeUYpHR88gSHpA/GMV2wpV0P/cgub2h2VCWFWz1rY4b11HapG84n6XyqRJdWTKqbs5ZS0LGuKylVpPTcp3hJrRfqiWK8DLPszEZUlK96Zpd7vsnURQAAABgKva+0CnDJBOB0OmUe6ey8jkUhQ==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -35,6 +35,8 @@
           <SSIS:Package SSIS:Name="Staging Dim_Produkt.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="Master Staging Dimension.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="Master Staging Fact.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="Load Produkt.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="Distribution Produkt.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="ADO.NET LZDB.conmgr" />
@@ -513,6 +515,98 @@
                 <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
               </SSIS:Properties>
               <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="Load Produkt.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{EC20A88A-326D-4220-B2E6-6EFF180D625E}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">Load Produkt</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">38</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{996CD476-19E1-44E4-BDFB-2A75C013A7AE}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters>
+                <SSIS:Parameter SSIS:Name="FullLoad">
+                  <SSIS:Properties>
+                    <SSIS:Property SSIS:Name="ID">{F8FE5ECA-3088-43FC-8728-664D59B808D5}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="CreationName">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="Description">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">true</SSIS:Property>
+                    <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+                  </SSIS:Properties>
+                </SSIS:Parameter>
+                <SSIS:Parameter SSIS:Name="Schema">
+                  <SSIS:Properties>
+                    <SSIS:Property SSIS:Name="ID">{0C228F12-E7EA-41FE-9F10-F5B5DC400F5E}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="CreationName">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="Description">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">Load</SSIS:Property>
+                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+                  </SSIS:Properties>
+                </SSIS:Parameter>
+              </SSIS:Parameters>
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="Distribution Produkt.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{7A4C0D6D-7C25-4841-A7DA-824409AB5F53}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">Distribution Produkt</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">39</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{E4D90055-34A4-42D3-8E47-8D05FE1531A3}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters>
+                <SSIS:Parameter SSIS:Name="FullLoad">
+                  <SSIS:Properties>
+                    <SSIS:Property SSIS:Name="ID">{1A1ABF08-BD36-4E51-806E-CB5C934BB452}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="CreationName">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="Description">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">true</SSIS:Property>
+                    <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+                  </SSIS:Properties>
+                </SSIS:Parameter>
+                <SSIS:Parameter SSIS:Name="Schema">
+                  <SSIS:Properties>
+                    <SSIS:Property SSIS:Name="ID">{E295A473-50C7-4CDD-9C9F-47FCB389066D}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="CreationName">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="Description">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">Distribution</SSIS:Property>
+                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+                  </SSIS:Properties>
+                </SSIS:Parameter>
+              </SSIS:Parameters>
             </SSIS:PackageMetaData>
           </SSIS:PackageInfo>
         </SSIS:DeploymentInfo>
