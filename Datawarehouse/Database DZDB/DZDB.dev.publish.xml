@@ -9,4 +9,9 @@
     <BlockOnPossibleDataLoss>True</BlockOnPossibleDataLoss>
     <CreateNewDatabase>False</CreateNewDatabase>
   </PropertyGroup>
+  <ItemGroup>
+    <SqlCmdVariable Include="DMSA">
+      <Value>DMSA</Value>
+    </SqlCmdVariable>
+  </ItemGroup>
 </Project>

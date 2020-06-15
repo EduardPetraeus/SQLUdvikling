@@ -72,7 +72,7 @@
     <Build Include="Audit\Tables\DMSALog.sql" />
     <Build Include="Audit\Tables\ExecutionErrorLog.sql" />
     <Build Include="Audit\Tables\Executionlog.sql" />
-    <Build Include="Audit\Stored Procedures\CountRows_Tidsregistrering.sql" />
+    <Build Include="Audit\Stored Procedures\CountRows_Ordre.sql" />
     <Build Include="Audit\Stored Procedures\DMSAEnd.sql" />
     <Build Include="Audit\Stored Procedures\DMSAStart.sql" />
     <Build Include="Audit\Stored Procedures\ExecutionEnd.sql" />
@@ -81,5 +81,20 @@
     <Build Include="Audit\Stored Procedures\ProcessCubeEndFailed.sql" />
     <Build Include="Audit\Stored Procedures\ProcessCubeEndSucceeded.sql" />
     <Build Include="Audit\Stored Procedures\ProcessCubeStart.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Database DMSA\Database DMSA.sqlproj">
+      <Name>Database DMSA</Name>
+      <Project>{091ff890-186c-43ac-9954-a55d4c52f902}</Project>
+      <Private>True</Private>
+      <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
+      <DatabaseVariableLiteralValue>DMSA</DatabaseVariableLiteralValue>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <SqlCmdVariable Include="DMSA">
+      <DefaultValue>DMSA</DefaultValue>
+      <Value>$(SqlCmdVar__1)</Value>
+    </SqlCmdVariable>
   </ItemGroup>
 </Project>
