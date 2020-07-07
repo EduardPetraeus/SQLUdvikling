@@ -168,13 +168,14 @@ WHERE NOT EXISTS (
 		FROM <SourceTablename> AS AA
 		WHERE AA.<NaturalKey> = SA.<NaturalKey>
 		)
-		
+AND SA.[Meta_DeleteTime] IS NULL
+
 
  DECLARE @RecordsUpdated2 BIGINT 
 	 	SET @RecordsUpdated2 = (
 			SELECT @@ROWCOUNT
 			)
-AND SA.[Meta_DeleteTime] IS NULL
+
 
 
 ----------------------------------------------------
