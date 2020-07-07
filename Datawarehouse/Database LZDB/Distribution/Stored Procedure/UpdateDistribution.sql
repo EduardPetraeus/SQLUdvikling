@@ -81,6 +81,12 @@ SET XACT_ABORT ON
 BEGIN TRY
 	BEGIN TRANSACTION
 
+	DECLARE @RecordsSelected BIGINT
+			SET @RecordsSelected = (
+			SELECT COUNT(*) FROM <SourceTablename>
+			)
+
+
 ----------------------------------------------------
 -- Delta Update
 ----------------------------------------------------
@@ -100,7 +106,8 @@ BEGIN TRY
 		AND LSL.DestinationTableName = ''<Tablename>''
 
 	WHERE AA.<NaturalKey> = <DestTablename>.<NaturalKey>
-	AND AA.Source_UpdateJob > LSL.LastSuccessfullJobId
+	AND (AA.Source_UpdateJob > LSL.LastSuccessfullJobId
+	OR <DestTablename>.[Meta_DeleteTime] IS NOT NULL)
 
 
     DECLARE @RecordsUpdated1 BIGINT 
@@ -138,8 +145,8 @@ BEGIN TRY
 			WHERE AA.<NaturalKey> = SA.<NaturalKey>
 			)
 			
-			DECLARE @RecordsSelected BIGINT
-			SET @RecordsSelected = (
+			DECLARE @RecordsInserted BIGINT
+			SET @RecordsInserted = (
 			SELECT @@ROWCOUNT
 			)
 
@@ -167,7 +174,7 @@ WHERE NOT EXISTS (
 	 	SET @RecordsUpdated2 = (
 			SELECT @@ROWCOUNT
 			)
-
+AND SA.[Meta_DeleteTime] IS NULL
 
 
 ----------------------------------------------------
@@ -202,7 +209,7 @@ WHEN NOT MATCHED BY TARGET THEN
 
 	UPDATE [LZDB].[Audit].StagingLog
 	SET  [RecordsSelected] = @RecordsSelected
-		,[RecordsInserted] = @RecordsSelected
+		,[RecordsInserted] = @RecordsInserted
 		,[RecordsUpdated] = @RecordsUpdated
 		,[RecordsFailed] = <RecordsFailed>
 		,[RecordsDiscarded] = <RecordsDiscarded>
