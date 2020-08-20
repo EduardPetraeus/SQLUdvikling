@@ -13,9 +13,6 @@ DECLARE @DestTablename NVARCHAR(100) = '[' + @Database + ']' + '.' + '[' + @Dest
 DECLARE @SourceTablename NVARCHAR(100) = '[' + @Database + ']' + '.' + '[' + @SourceSchema + ']' + '.' + '[' + @Tablename + ']'
 
 
-
-
-
         ----------------------------------------------------
         -- Get the natural keys from Distribution primary key
         ----------------------------------------------------
@@ -25,15 +22,22 @@ DECLARE @SourceTablename NVARCHAR(100) = '[' + @Database + ']' + '.' + '[' + @So
         EXECUTE Utility.GetKeyColumns @Database = @Database, @Schema = @DestSchema, @Table = @TableName
 
         DECLARE @NaturalKeyList NVARCHAR(max) = ''
+		DECLARE @NaturalKeyExtList NVARCHAR(max) = ''
+		DECLARE @NaturalKeyWhereList NVARCHAR(max) = ''
 
         SELECT
-
-			@NaturalKeyList = @NaturalKeyList + ', ' + colname
+			@NaturalKeyList = @NaturalKeyList + ', ' + colname,
+			@NaturalKeyExtList = @NaturalKeyExtList + ', ' + colname + '= AA.' + colname,
+			@NaturalKeyWhereList = @NaturalKeyWhereList  + ' AND ' + @DestTablename+ '.' + colname + '= AA.' + colname
         FROM @NaturalKeys
 
         SET @NaturalKeyList = SUBSTRING(@NaturalKeyList, 3, LEN(@NaturalKeyList))
+		SET @NaturalKeyExtList = SUBSTRING(@NaturalKeyExtList, 3, LEN(@NaturalKeyExtList))
+		SET @NaturalKeyWhereList = SUBSTRING(@NaturalKeyWhereList, 5, LEN(@NaturalKeyWhereList))
 
 		--PRINT @NaturalKeyList
+		--PRINT @NaturalKeyExtList
+		--PRINT @NaturalKeyWhereList
 
         ----------------------------------------------------
         -- Get the NON natural keys from Distribution
@@ -47,6 +51,7 @@ DECLARE @SourceTablename NVARCHAR(100) = '[' + @Database + ']' + '.' + '[' + @So
         DECLARE @ColumnList NVARCHAR(max) = '' 
 		DECLARE @ColumnExtList NVARCHAR(max) = ''
 
+		
         SELECT
 		@ColumnList = @ColumnList + ', ' + colname,
 		@ColumnExtList = @ColumnExtList + ', ' + colname + '= AA.' + colname
@@ -61,10 +66,10 @@ DECLARE @SourceTablename NVARCHAR(100) = '[' + @Database + ']' + '.' + '[' + @So
 			'[Meta_DeleteJob]')
 
 
-		SET @ColumnList = SUBSTRING(@ColumnList, 3, LEN(@ColumnList))
-		SET @ColumnExtList = SUBSTRING(@ColumnExtList, 3, LEN(@ColumnExtList))
-		 
-
+		--SET @ColumnList = SUBSTRING(@ColumnList, 3, LEN(@ColumnList))
+		--SET @ColumnExtList = SUBSTRING(@ColumnExtList, 3, LEN(@ColumnExtList)) 
+		-- Disse er udkommenteret, da vi ikke vil have fjernet kommaet foran den første kolonne
+		
 		 --PRINT @ColumnList
 		 --PRINT @ColumnExtList
 		
@@ -93,8 +98,8 @@ BEGIN TRY
 
 	UPDATE <DestTablename>
 	SET    
-       <NaturalKey> = AA.<NaturalKey>
-      ,<ColumnExtList>
+       <NaturalKeyExtList>
+       <ColumnExtList>
       ,[Meta_UpdateTime]                          = GETDATE()
       ,[Meta_UpdateJob]	                          = <StagingId>
 	  ,[Meta_DeleteTime]                          = NULL
@@ -105,7 +110,7 @@ BEGIN TRY
 		ON AA.[Source_TableName] = LSL.SourceTableName
 		AND LSL.DestinationTableName = ''<Tablename>''
 
-	WHERE AA.<NaturalKey> = <DestTablename>.<NaturalKey>
+	WHERE <NaturalKeyWhereList>
 	AND (AA.Source_UpdateJob > LSL.LastSuccessfullJobId
 	OR <DestTablename>.[Meta_DeleteTime] IS NOT NULL)
 
@@ -120,8 +125,8 @@ BEGIN TRY
 ----------------------------------------------------
 
 		INSERT INTO <DestTablename> (
-				<NaturalKey>
-                ,<ColumnList>
+				 <NaturalKey>
+                 <ColumnList>
 				,[Meta_CreateTime]
 				,[Meta_CreateJob]
 				,[Meta_UpdateTime]
@@ -131,7 +136,7 @@ BEGIN TRY
 		)
 			SELECT
 				 <NaturalKey>
-                ,<ColumnList>
+                 <ColumnList>
 				,GETDATE()
 				,<StagingId>
 				,NULL
@@ -141,8 +146,8 @@ BEGIN TRY
             FROM <SourceTablename> AS AA
 			WHERE NOT EXISTS (
 			SELECT 1
-			FROM <DestTablename> AS SA
-			WHERE AA.<NaturalKey> = SA.<NaturalKey>
+			FROM <DestTablename>
+			WHERE <NaturalKeyWhereList>
 			)
 			
 			DECLARE @RecordsInserted BIGINT
@@ -162,13 +167,13 @@ SET
        [Meta_DeleteTime] = GETDATE()
       ,[Meta_DeleteJob] = <StagingId>
 
-FROM <DestTablename> SA
+FROM <DestTablename> 
 WHERE NOT EXISTS (
 		SELECT 1
 		FROM <SourceTablename> AS AA
-		WHERE AA.<NaturalKey> = SA.<NaturalKey>
+		WHERE <NaturalKeyWhereList>
 		)
-AND SA.[Meta_DeleteTime] IS NULL
+AND <DestTablename>.[Meta_DeleteTime] IS NULL
 
 
  DECLARE @RecordsUpdated2 BIGINT 
@@ -250,6 +255,8 @@ END CATCH
 		SET @SQL = REPLACE(@SQL,'<SourceTablename>', @SourceTablename);
 		SET @SQL = REPLACE(@SQL,'<Tablename>', @Tablename);
 		SET @SQL = REPLACE(@SQL,'<NaturalKey>', @NaturalKeyList);
+		SET @SQL = REPLACE(@SQL,'<NaturalKeyExtList>', @NaturalKeyExtList);
+		SET @SQL = REPLACE(@SQL,'<NaturalKeyWhereList>', @NaturalKeyWhereList);
 		SET @SQL = REPLACE(@SQL,'<ColumnList>', @ColumnList);
 		SET @SQL = REPLACE(@SQL,'<ColumnExtList>', @ColumnExtList);
 		SET @SQL = REPLACE(@SQL,'<RecordsFailed>', @RecordsFailed);
