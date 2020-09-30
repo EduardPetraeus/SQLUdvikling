@@ -50,11 +50,13 @@ DECLARE @SourceTablename NVARCHAR(100) = '[' + @Database + ']' + '.' + '[' + @So
 
         DECLARE @ColumnList NVARCHAR(max) = '' 
 		DECLARE @ColumnExtList NVARCHAR(max) = ''
+		DECLARE @ColumnExtListForUpdate NVARCHAR(max) = ''
 
 		
         SELECT
 		@ColumnList = @ColumnList + ', ' + colname,
-		@ColumnExtList = @ColumnExtList + ', ' + colname + '= AA.' + colname
+		@ColumnExtList = @ColumnExtList + ', ' + colname + '= AA.' + colname,
+		@ColumnExtListForUpdate = @ColumnExtListForUpdate + 'OR ' + '(' + @DestTablename+ '.' + colname + '<> AA.' + colname + 'OR' + '( ' + @DestTablename+ '.' + colname + 'IS NULL AND AA.' + colname + 'IS NOT NULL'+ ')' + 'OR' + '(' + @DestTablename+ '.' + colname + 'IS NOT NULL AND AA.' + colname + 'IS NULL'+ ')'+ ')'
         FROM @Columns
 		WHERE colname NOT IN(
 			'[Meta_Id]',
@@ -65,13 +67,15 @@ DECLARE @SourceTablename NVARCHAR(100) = '[' + @Database + ']' + '.' + '[' + @So
 			'[Meta_DeleteTime]',
 			'[Meta_DeleteJob]')
 
-
+        IF LEN(@ColumnExtListForUpdate) > 1 SET @ColumnExtListForUpdate = ' OR ('+ SUBSTRING(@ColumnExtListForUpdate, 3, LEN(@ColumnExtListForUpdate))+ ')' 
+		--SET @ColumnExtListForUpdate = SUBSTRING(@ColumnExtListForUpdate, 3, LEN(@ColumnExtListForUpdate)) 
 		--SET @ColumnList = SUBSTRING(@ColumnList, 3, LEN(@ColumnList))
 		--SET @ColumnExtList = SUBSTRING(@ColumnExtList, 3, LEN(@ColumnExtList)) 
 		-- Disse er udkommenteret, da vi ikke vil have fjernet kommaet foran den første kolonne
 		
 		 --PRINT @ColumnList
 		 --PRINT @ColumnExtList
+		 --PRINT @ColumnExtListForUpdate
 		
 		DECLARE @SQL NVARCHAR(max)
 
@@ -111,8 +115,13 @@ BEGIN TRY
 		AND LSL.DestinationTableName = ''<Tablename>''
 
 	WHERE <NaturalKeyWhereList>
-	AND (AA.Source_UpdateJob > LSL.LastSuccessfullJobId
-	OR <DestTablename>.[Meta_DeleteTime] IS NOT NULL)
+	AND ( 
+	      AA.Source_UpdateJob > LSL.LastSuccessfullJobId 
+
+	      <ColumnExtListForUpdate>  
+
+		OR <DestTablename>.[Meta_DeleteTime] IS NOT NULL
+		)
 
 
     DECLARE @RecordsUpdated1 BIGINT 
@@ -259,6 +268,7 @@ END CATCH
 		SET @SQL = REPLACE(@SQL,'<NaturalKeyWhereList>', @NaturalKeyWhereList);
 		SET @SQL = REPLACE(@SQL,'<ColumnList>', @ColumnList);
 		SET @SQL = REPLACE(@SQL,'<ColumnExtList>', @ColumnExtList);
+		SET @SQL = REPLACE(@SQL,'<ColumnExtListForUpdate>', @ColumnExtListForUpdate);
 		SET @SQL = REPLACE(@SQL,'<RecordsFailed>', @RecordsFailed);
 		SET @SQL = REPLACE(@SQL,'<RecordsDiscarded>', @RecordsDiscarded);
 		SET @SQL = REPLACE(@SQL,'<StagingId>', @StagingId);
