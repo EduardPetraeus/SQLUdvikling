@@ -4,7 +4,6 @@
 AS
 
 DECLARE @RecordsFailed INT = 0
-DECLARE @RecordsDiscarded INT = 0
 
 DECLARE @Database NVARCHAR(100) = 'Staging'
 DECLARE @SourceSchema NVARCHAR(100) = 'Load'
@@ -192,12 +191,15 @@ AND <DestTablename>.[Meta_DeleteTime] IS NULL
 
 
 
-----------------------------------------------------
--- Set Recordsopdated ud fra Delta Update + Delta Delete
-----------------------------------------------------
+------------------------------------------------------------------------------------
+-- Set Recordsopdated ud fra Delta Update + Delta Delete samt RecordsDiscarded
+------------------------------------------------------------------------------------
 
 DECLARE @RecordsUpdated BIGINT
 SET @RecordsUpdated = @RecordsUpdated1 + @RecordsUpdated2 
+
+DECLARE @RecordsDiscarded BIGINT 
+SET @RecordsDiscarded  = @RecordsSelected - @RecordsInserted - @RecordsUpdated
 
 ----------------------------------------------------
 -- Opdater Styringstabel
@@ -227,7 +229,7 @@ WHEN NOT MATCHED BY TARGET THEN
 		,[RecordsInserted] = @RecordsInserted
 		,[RecordsUpdated] = @RecordsUpdated
 		,[RecordsFailed] = <RecordsFailed>
-		,[RecordsDiscarded] = <RecordsDiscarded>
+		,[RecordsDiscarded] = @RecordsDiscarded 
 		,[Status] = ''Succeeded''
         ,[EndTime] = GETDATE()
 	WHERE [Id] = <StagingId>
@@ -270,7 +272,6 @@ END CATCH
 		SET @SQL = REPLACE(@SQL,'<ColumnExtList>', @ColumnExtList);
 		SET @SQL = REPLACE(@SQL,'<ColumnExtListForUpdate>', @ColumnExtListForUpdate);
 		SET @SQL = REPLACE(@SQL,'<RecordsFailed>', @RecordsFailed);
-		SET @SQL = REPLACE(@SQL,'<RecordsDiscarded>', @RecordsDiscarded);
 		SET @SQL = REPLACE(@SQL,'<StagingId>', @StagingId);
 
 		--PRINT @SQL
