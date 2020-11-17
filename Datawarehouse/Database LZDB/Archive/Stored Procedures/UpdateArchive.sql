@@ -296,7 +296,7 @@ BEGIN
         SET @DiscardedRows = @SelectedRows - @InsertedRows - @UpdatedRows
 
         /*** Mark missing rows as deleted, if there is a full load in extract ***/
-		IF EXISTS (SELECT 1 FROM [<Database>].Extract.<TableName>) AND @SyncCompletedExtractId IS NOT NULL
+		IF EXISTS (SELECT TOP 1 1 FROM [<Database>].Extract.<TableName>) AND @SyncCompletedExtractId IS NOT NULL
         BEGIN
             UPDATE arc WITH (TABLOCKX)
             SET arc.Meta_IsCurrent = 1,

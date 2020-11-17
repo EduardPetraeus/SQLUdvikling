@@ -168,7 +168,7 @@ BEGIN TRY
 -- Delta Delete
 ----------------------------------------------------
 
-IF EXISTS (SELECT 1 FROM <SourceTablename>)
+IF EXISTS (SELECT TOP 1 1 FROM <SourceTablename>)
 
 UPDATE <DestTablename> 
 SET 
