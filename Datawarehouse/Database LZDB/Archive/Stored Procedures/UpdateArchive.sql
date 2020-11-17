@@ -296,7 +296,7 @@ BEGIN
         SET @DiscardedRows = @SelectedRows - @InsertedRows - @UpdatedRows
 
         /*** Mark missing rows as deleted, if there is a full load in extract ***/
-		IF EXISTS (SELECT TOP 1 1 FROM [<Database>].Extract.<TableName>) AND @SyncCompletedExtractId IS NOT NULL
+		IF EXISTS (SELECT TOP 1 1 FROM [<Database>].Extract.<TableName>) AND @SyncCompletedExtractId IS NOT NULL AND <IsFullLoad> = 1
         BEGIN
             UPDATE arc WITH (TABLOCKX)
             SET arc.Meta_IsCurrent = 1,
@@ -345,6 +345,7 @@ BEGIN
         '
 
         SET @SQL = REPLACE(@SQL,'<TableName>', @TableName);
+        SET @SQL = REPLACE(@SQL,'<IsFullLoad>', @IsFullLoad);
         SET @SQL = REPLACE(@SQL,'<NaturalKeyJoin>', @NaturalKeyJoin);
         SET @SQL = REPLACE(@SQL,'<NaturalKeyList>', @NaturalKeyList);
         SET @SQL = REPLACE(@SQL,'<NaturalKeyExtList>', @NaturalKeyExtList);
