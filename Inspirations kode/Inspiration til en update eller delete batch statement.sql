@@ -1,3 +1,5 @@
+-- Inspirations kode til opdatering eller sletning af mange rækker
+
 USE [Staging]
 GO
 
