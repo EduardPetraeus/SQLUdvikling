@@ -9,8 +9,14 @@ AS
 BEGIN
     SET NOCOUNT ON
 
-    INSERT INTO [Audit].[StagingLog]([Database], [TableName], [Schema], [ExecutionId], [StartTime], [EndTime], [Status], [IsFullLoad])
-    VALUES (@Database, @TableName, @Schema, @ExecutionId, GETDATE(), GETDATE(), 'Started', @IsFullLoad);
+	DECLARE @StagingCurrentId table (Inserted_Id BIGINT);
 
-    SELECT @StagingId = SCOPE_IDENTITY()
+    INSERT INTO [Audit].[StagingLog]([Database], [TableName], [Schema], [ExecutionId], [StartTime], [EndTime], [Status], [IsFullLoad])
+    
+	OUTPUT INSERTED.Id INTO @StagingCurrentId
+
+	VALUES (@Database, @TableName, @Schema, @ExecutionId, GETDATE(), GETDATE(), 'Started', @IsFullLoad);
+
+    SELECT @StagingId = Inserted_Id from @StagingCurrentId 
+
 END

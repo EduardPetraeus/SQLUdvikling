@@ -8,9 +8,12 @@
 AS
 BEGIN
     SET NOCOUNT ON
+	DECLARE @ExtractCurrentId table (Inserted_Id BIGINT);
 
     INSERT INTO Audit.ExtractLog ([Database], [TableName], [Schema], [ExecutionId], [StartTime], [EndTime], [Status], [IsFullLoad])
-    VALUES (@Database, @TableName, @Schema, @ExecutionId, GETDATE(), GETDATE(), 'Started', @IsFullLoad);
+    OUTPUT INSERTED.Id INTO @ExtractCurrentId
+	
+	VALUES (@Database, @TableName, @Schema, @ExecutionId, GETDATE(), GETDATE(), 'Started', @IsFullLoad);
 
-    SELECT @ExtractId = SCOPE_IDENTITY()
+    SELECT @ExtractId = Inserted_Id from @ExtractCurrentId 
 END

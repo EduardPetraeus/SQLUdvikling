@@ -9,8 +9,7 @@
 AS
 BEGIN
     SET NOCOUNT ON
-
-    BEGIN TRY
+	DECLARE @ExecutionCurrentId table (Inserted_Id BIGINT);
 
         -------------------------------------------------------
         -- Get data from parent job
@@ -35,16 +34,11 @@ BEGIN
         -- Insert data
         -------------------------------------------------------
         INSERT INTO Audit.ExecutionLog ( [PackageID], [PackageName], [ServerExecutionID], [StartTime], [EndTime], [Status], [UserName], [HostName], [Database])
-        VALUES ( @PackageId, @PackageName, @ServerExecutionID, GETDATE(), GETDATE(), @Status, SYSTEM_USER, HOST_NAME(), @Database);
+        
+		OUTPUT INSERTED.Id INTO @ExecutionCurrentId
+		
+		VALUES ( @PackageId, @PackageName, @ServerExecutionID, GETDATE(), GETDATE(), @Status, SYSTEM_USER, HOST_NAME(), @Database);
 
-        SELECT @Id = SCOPE_IDENTITY()
+        SELECT @Id = Inserted_Id from @ExecutionCurrentId 
 	
-	END TRY
-
-	BEGIN CATCH
-
-		THROW
-
-	END CATCH
-
 END

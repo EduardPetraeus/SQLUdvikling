@@ -8,9 +8,16 @@
 AS
 BEGIN
     SET NOCOUNT ON
+	DECLARE @DMSACurrentId table (Inserted_Id BIGINT);
+
 
     INSERT INTO [Audit].[DMSALog] ([Database], [TableName], [Schema], [ExecutionId], [StartTime], [EndTime], [Status])
-    VALUES (@Database, @TableName, @Schema, @ExecutionId, GETDATE(), GETDATE(), 'Started');
+    
+	OUTPUT INSERTED.Id INTO @DMSACurrentId
+	
+	VALUES (@Database, @TableName, @Schema, @ExecutionId, GETDATE(), GETDATE(), 'Started');
 
-    SELECT @DMSAId = SCOPE_IDENTITY()
+    SELECT @DMSAId = Inserted_Id from @DMSACurrentId 
 END
+
+

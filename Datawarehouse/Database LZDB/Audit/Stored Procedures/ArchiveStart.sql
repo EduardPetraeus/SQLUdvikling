@@ -8,9 +8,13 @@
 AS
 BEGIN
     SET NOCOUNT ON
+	DECLARE @ArchiveCurrentId table (Inserted_Id BIGINT);
 
     INSERT INTO Audit.ArchiveLog ([Database], [TableName], [Schema], [ExecutionId], [StartTime], [EndTime], [IsFullLoad], [Status])
+
+	OUTPUT INSERTED.Id INTO @ArchiveCurrentId
+
     VALUES (@Database, @TableName, @Schema,@ExecutionId, GETDATE(), GETDATE(), @IsFullLoad,'Started');
 
-    SELECT @ArchiveId = SCOPE_IDENTITY()	
+	SELECT @ArchiveId = Inserted_Id from @ArchiveCurrentId	
 END

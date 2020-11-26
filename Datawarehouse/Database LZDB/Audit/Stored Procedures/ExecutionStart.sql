@@ -10,22 +10,17 @@ AS
 BEGIN
     SET NOCOUNT ON
 
-    BEGIN TRY
-
+	DECLARE @ExecutionCurrentId table (Inserted_Id BIGINT);
         -------------------------------------------------------
         -- Insert data
         -------------------------------------------------------
         INSERT INTO Audit.ExecutionLog ([PackageID], [PackageName], [ServerExecutionID], [StartTime], [EndTime], [Status], [UserName], [HostName], [Database])
-        VALUES (@PackageId, @PackageName, @ServerExecutionID, GETDATE(), GETDATE(), @Status, SYSTEM_USER, HOST_NAME(), @Database);
+           
+         OUTPUT INSERTED.Id INTO @ExecutionCurrentId
 
-        SELECT @Id = SCOPE_IDENTITY()
-	
-	END TRY
+		VALUES (@PackageId, @PackageName, @ServerExecutionID, GETDATE(), GETDATE(), @Status, SYSTEM_USER, HOST_NAME(), @Database);
 
-	BEGIN CATCH
+		SELECT @Id = Inserted_Id from @ExecutionCurrentId 
 
-		THROW
-
-	END CATCH
 
 END
