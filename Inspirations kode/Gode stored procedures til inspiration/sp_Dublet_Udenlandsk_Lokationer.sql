@@ -95,9 +95,7 @@ OR [Distribution].[Dublet_Udenlandsk_Lokationer].[Meta_DeleteTime] IS NOT NULL )
 
 
 --	 Delta Delete 
-IF NOT EXISTS (SELECT 1 FROM [Load].[ATIS_Dublet_Udenlandsk_Lokationer])
-SELECT 'Empty'
-ELSE
+IF EXISTS (SELECT TOP 1 1 FROM [Load].[ATIS_Dublet_Udenlandsk_Lokationer])
 UPDATE [Distribution].[Dublet_Udenlandsk_Lokationer] 
 SET 
        [Meta_DeleteTime]                           = GETDATE()
@@ -117,9 +115,7 @@ WHERE NOT EXISTS (
 
 SET @RecordsUpdated = @RecordsUpdated1 + @RecordsUpdated2 
 
-  IF NOT EXISTS (SELECT 1 FROM [Load].[ATIS_Dublet_Udenlandsk_Lokationer])
-SELECT 'Empty'
-ELSE
+IF EXISTS (SELECT TOP 1 1 FROM [Load].[ATIS_Dublet_Udenlandsk_Lokationer])
 UPDATE [RZDB].[Meta].[LastSuccesfullLoad] 
 SET LastSuccesfullJobId = (SELECT MAX(Source_UpdateJob) FROM [Load].[ATIS_Dublet_Udenlandsk_Lokationer]) 
 
@@ -140,5 +136,8 @@ AND  SourceTableName = 'ATIS_Dublet_Udenlandsk_Lokationer'
 END TRY
 
 BEGIN CATCH
-	ROLLBACK TRANSACTION RAISEERROR
-END CATCH
+	IF @@TRANCOUNT > 0
+		ROLLBACK TRANSACTION;
+
+	THROW;
+END CATCH;
