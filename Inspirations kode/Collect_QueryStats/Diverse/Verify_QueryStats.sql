@@ -1,0 +1,40 @@
+/****** Script for SelectTopNRows command from SSMS  ******/
+SELECT TOP (1000) [TimeSampled]
+      ,[RuntimeSec]
+      ,[session_id]
+      ,[blocking_session_id]
+      ,[open_transaction_count]
+      ,[request_start_time]
+      ,[DatabaseName]
+      ,[LogicalReadsPages]
+      ,[LogicalReadsGB]
+      ,[CpuMs]
+      ,[TotalElapsedTimeMs]
+      ,[WaitTimeMs]
+      ,[wait_type]
+      ,[wait_resource]
+      ,[statement_text]
+      ,[full_statement_text]
+      ,[login_time]
+      ,[program_name]
+      ,[login_name]
+      ,[client_net_address]
+      ,[host_process_id]
+      ,[host_name]
+      ,[IsolationLevel]
+      ,[plan_handle]
+      ,[query_plan]
+      ,[RequestedMB]
+      ,[GrantedMB]
+      ,[MemoryGrantRequestTime]
+      ,[MemoryGrantGrantedTime]
+      ,[TempDBUsageMB_TempTables]
+      ,[TempDBUsageMB_SortJoinEtc]
+      ,[LogUsedMB]
+  FROM [dba].[dbo].[QueryStats]
+  WHERE [wait_type] IN ('ASYNC_IO_COMPLETION', 'ASYNC_NETWORK_IO', 'LCK_M_SCH_M')
+  OR [wait_type] LIKE 'PAGEIOLATCH_%'
+  ORDER BY [TimeSampled] DESC
+
+
+  --DSA_DREAM_fmt_visit_EDW_DreamVisitation
