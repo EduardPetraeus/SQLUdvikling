@@ -101,6 +101,8 @@
     <Build Include="Security\Distribution.sql" />
     <Build Include="Meta\LastSuccessfullLoad.sql" />
     <Build Include="Distribution\Stored Procedure\UpdateDistribution.sql" />
+    <Build Include="Utility\Functions\GetNumericValue_Int.sql" />
+    <Build Include="Utility\Functions\GetTextValue.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="LZDB.dev.publish.xml" />
