@@ -9,6 +9,7 @@
     [EndTime]          DATETIME2 (7)  NULL,
     [RecordsSelected]  INT            NULL,
     [RecordsInserted]  INT            NULL,
+    [RecordsUpdated]   INT DEFAULT 0  NULL,
     [RecordsFailed]    INT            NULL,
     [RecordsDiscarded] INT            NULL
 

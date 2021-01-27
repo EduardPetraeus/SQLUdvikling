@@ -63,6 +63,7 @@
     <Folder Include="Utility" />
     <Folder Include="Utility\Utility" />
     <Folder Include="Ordre" />
+    <Folder Include="Load" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DMSA.dev.publish.xml" />
@@ -83,5 +84,7 @@
     <Build Include="Ordre\v_Ordre.sql" />
     <Build Include="Ordre\v_Kunde.sql" />
     <Build Include="Ordre\v_Produkt.sql" />
+    <Build Include="Security\Load.sql" />
+    <Build Include="Load\Dim_Produkt.sql" />
   </ItemGroup>
 </Project>

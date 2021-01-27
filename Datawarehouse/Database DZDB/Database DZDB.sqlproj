@@ -62,6 +62,11 @@
     <Folder Include="Audit" />
     <Folder Include="Audit\Tables" />
     <Folder Include="Audit\Stored Procedures" />
+    <Folder Include="DMSA" />
+    <Folder Include="DMSA\Stored Procedure" />
+    <Folder Include="Utility" />
+    <Folder Include="Utility\Functions" />
+    <Folder Include="Utility\Stored Procedures" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DZDB.dev.publish.xml" />
@@ -81,6 +86,17 @@
     <Build Include="Audit\Stored Procedures\ProcessCubeEndFailed.sql" />
     <Build Include="Audit\Stored Procedures\ProcessCubeEndSucceeded.sql" />
     <Build Include="Audit\Stored Procedures\ProcessCubeStart.sql" />
+    <Build Include="DMSA\Stored Procedure\UpdateDMSA.sql" />
+    <Build Include="Security\DMSA.sql" />
+    <Build Include="Security\Utility.sql" />
+    <Build Include="Utility\Functions\BeginningOfUniverse.sql" />
+    <Build Include="Utility\Functions\EndOfUniverse.sql" />
+    <Build Include="Utility\Functions\GetNumericValue_Int.sql" />
+    <Build Include="Utility\Functions\GetObjectId.sql" />
+    <Build Include="Utility\Functions\GetTextValue.sql" />
+    <Build Include="Utility\Stored Procedures\GetKeyColumns.sql" />
+    <Build Include="Utility\Stored Procedures\GetNonKeyColumns.sql" />
+    <Build Include="Utility\Stored Procedures\PrintLargeString.sql" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Database DMSA\Database DMSA.sqlproj">

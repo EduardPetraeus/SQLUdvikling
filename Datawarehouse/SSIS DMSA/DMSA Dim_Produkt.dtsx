@@ -11,8 +11,8 @@
   DTS:LocaleID="1030"
   DTS:ObjectName="DMSA Dim_Produkt"
   DTS:PackageType="5"
-  DTS:VersionBuild="46"
-  DTS:VersionGUID="{DBFDBAEC-E9CA-4210-9380-DE93F8EE8603}">
+  DTS:VersionBuild="57"
+  DTS:VersionGUID="{BBA83FA7-3A08-4E00-AFE1-CE1CC288746A}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -74,13 +74,13 @@
       <DTS:Variables />
       <DTS:Executables>
         <DTS:Executable
-          DTS:refId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt"
+          DTS:refId="Package\DMSA Dim_Produkt\Load Dim_Produkt"
           DTS:CreationName="Microsoft.Pipeline"
           DTS:Description="Data Flow Task"
           DTS:DTSID="{2BADD995-CC85-4FB9-BBD9-C795CD4C4F50}"
           DTS:ExecutableType="Microsoft.Pipeline"
           DTS:LocaleID="-1"
-          DTS:ObjectName="DMSA Dim_Produkt"
+          DTS:ObjectName="Load Dim_Produkt"
           DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
           <DTS:Variables />
           <DTS:ObjectData>
@@ -88,7 +88,7 @@
               version="1">
               <components>
                 <component
-                  refId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\Derived Column"
+                  refId="Package\DMSA Dim_Produkt\Load Dim_Produkt\Derived Column"
                   componentClassID="Microsoft.DerivedColumn"
                   contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
                   description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
@@ -96,40 +96,40 @@
                   usesDispositions="true">
                   <inputs>
                     <input
-                      refId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\Derived Column.Inputs[Derived Column Input]"
+                      refId="Package\DMSA Dim_Produkt\Load Dim_Produkt\Derived Column.Inputs[Derived Column Input]"
                       description="Input to the Derived Column Transformation"
                       name="Derived Column Input">
                       <inputColumns>
                         <inputColumn
-                          refId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\Derived Column.Inputs[Derived Column Input].Columns[Department]"
+                          refId="Package\DMSA Dim_Produkt\Load Dim_Produkt\Derived Column.Inputs[Derived Column Input].Columns[Department]"
                           cachedDataType="wstr"
                           cachedLength="30"
                           cachedName="Department"
-                          lineageId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].Columns[Department]" />
+                          lineageId="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].Columns[Department]" />
                         <inputColumn
-                          refId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\Derived Column.Inputs[Derived Column Input].Columns[Aisle]"
+                          refId="Package\DMSA Dim_Produkt\Load Dim_Produkt\Derived Column.Inputs[Derived Column Input].Columns[Aisle]"
                           cachedDataType="wstr"
                           cachedLength="50"
                           cachedName="Aisle"
-                          lineageId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].Columns[Aisle]" />
+                          lineageId="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].Columns[Aisle]" />
                       </inputColumns>
                       <externalMetadataColumns />
                     </input>
                   </inputs>
                   <outputs>
                     <output
-                      refId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\Derived Column.Outputs[Derived Column Output]"
+                      refId="Package\DMSA Dim_Produkt\Load Dim_Produkt\Derived Column.Outputs[Derived Column Output]"
                       description="Default Output of the Derived Column Transformation"
                       exclusionGroup="1"
                       name="Derived Column Output"
-                      synchronousInputId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\Derived Column.Inputs[Derived Column Input]">
+                      synchronousInputId="Package\DMSA Dim_Produkt\Load Dim_Produkt\Derived Column.Inputs[Derived Column Input]">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\Derived Column.Outputs[Derived Column Output].Columns[Meta_CreateJob]"
+                          refId="Package\DMSA Dim_Produkt\Load Dim_Produkt\Derived Column.Outputs[Derived Column Output].Columns[Meta_CreateJob]"
                           dataType="i8"
                           errorOrTruncationOperation="Computation"
                           errorRowDisposition="FailComponent"
-                          lineageId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\Derived Column.Outputs[Derived Column Output].Columns[Meta_CreateJob]"
+                          lineageId="Package\DMSA Dim_Produkt\Load Dim_Produkt\Derived Column.Outputs[Derived Column Output].Columns[Meta_CreateJob]"
                           name="Meta_CreateJob"
                           truncationRowDisposition="FailComponent">
                           <properties>
@@ -147,12 +147,12 @@
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\Derived Column.Outputs[Derived Column Output].Columns[Derived Column Department]"
+                          refId="Package\DMSA Dim_Produkt\Load Dim_Produkt\Derived Column.Outputs[Derived Column Output].Columns[Derived Column Department]"
                           dataType="wstr"
                           errorOrTruncationOperation="Computation"
                           errorRowDisposition="FailComponent"
                           length="30"
-                          lineageId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\Derived Column.Outputs[Derived Column Output].Columns[Derived Column Department]"
+                          lineageId="Package\DMSA Dim_Produkt\Load Dim_Produkt\Derived Column.Outputs[Derived Column Output].Columns[Derived Column Department]"
                           name="Derived Column Department"
                           truncationRowDisposition="FailComponent">
                           <properties>
@@ -160,7 +160,7 @@
                               containsID="true"
                               dataType="System.String"
                               description="Derived Column Expression"
-                              name="Expression">(DT_WSTR,30)[REPLACENULL](#{Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].Columns[Department]},"Ukendt")</property>
+                              name="Expression">(DT_WSTR,30)[REPLACENULL](#{Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].Columns[Department]},"Ukendt")</property>
                             <property
                               containsID="true"
                               dataType="System.String"
@@ -170,12 +170,12 @@
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\Derived Column.Outputs[Derived Column Output].Columns[Derived Column Aisle]"
+                          refId="Package\DMSA Dim_Produkt\Load Dim_Produkt\Derived Column.Outputs[Derived Column Output].Columns[Derived Column Aisle]"
                           dataType="wstr"
                           errorOrTruncationOperation="Computation"
                           errorRowDisposition="FailComponent"
                           length="50"
-                          lineageId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\Derived Column.Outputs[Derived Column Output].Columns[Derived Column Aisle]"
+                          lineageId="Package\DMSA Dim_Produkt\Load Dim_Produkt\Derived Column.Outputs[Derived Column Output].Columns[Derived Column Aisle]"
                           name="Derived Column Aisle"
                           truncationRowDisposition="FailComponent">
                           <properties>
@@ -183,7 +183,7 @@
                               containsID="true"
                               dataType="System.String"
                               description="Derived Column Expression"
-                              name="Expression">(DT_WSTR,50)[REPLACENULL](#{Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].Columns[Aisle]},"Ukendt")</property>
+                              name="Expression">(DT_WSTR,50)[REPLACENULL](#{Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].Columns[Aisle]},"Ukendt")</property>
                             <property
                               containsID="true"
                               dataType="System.String"
@@ -196,23 +196,23 @@
                       <externalMetadataColumns />
                     </output>
                     <output
-                      refId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\Derived Column.Outputs[Derived Column Error Output]"
+                      refId="Package\DMSA Dim_Produkt\Load Dim_Produkt\Derived Column.Outputs[Derived Column Error Output]"
                       description="Error Output of the Derived Column Transformation"
                       exclusionGroup="1"
                       isErrorOut="true"
                       name="Derived Column Error Output"
-                      synchronousInputId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\Derived Column.Inputs[Derived Column Input]">
+                      synchronousInputId="Package\DMSA Dim_Produkt\Load Dim_Produkt\Derived Column.Inputs[Derived Column Input]">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          refId="Package\DMSA Dim_Produkt\Load Dim_Produkt\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
                           dataType="i4"
-                          lineageId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          lineageId="Package\DMSA Dim_Produkt\Load Dim_Produkt\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
                           name="ErrorCode"
                           specialFlags="1" />
                         <outputColumn
-                          refId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          refId="Package\DMSA Dim_Produkt\Load Dim_Produkt\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                           dataType="i4"
-                          lineageId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          lineageId="Package\DMSA Dim_Produkt\Load Dim_Produkt\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                           name="ErrorColumn"
                           specialFlags="2" />
                       </outputColumns>
@@ -221,7 +221,7 @@
                   </outputs>
                 </component>
                 <component
-                  refId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Destination"
+                  refId="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Destination"
                   componentClassID="Microsoft.OLEDBDestination"
                   contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
                   description="OLE DB Destination"
@@ -236,7 +236,7 @@
                     <property
                       dataType="System.String"
                       description="Specifies the name of the database object used to open a rowset."
-                      name="OpenRowset">[DMSA].[Dim_Produkt]</property>
+                      name="OpenRowset">[Load].[Dim_Produkt]</property>
                     <property
                       dataType="System.String"
                       description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -278,7 +278,7 @@
                   </properties>
                   <connections>
                     <connection
-                      refId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Destination.Connections[OleDbConnection]"
+                      refId="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Destination.Connections[OleDbConnection]"
                       connectionManagerID="{F5C1CDE6-F86D-47FA-8AA6-4A8DB6466950}:external"
                       connectionManagerRefId="Project.ConnectionManagers[OLEDB DMSA]"
                       description="The OLE DB runtime connection used to access the database."
@@ -286,85 +286,85 @@
                   </connections>
                   <inputs>
                     <input
-                      refId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                      refId="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input]"
                       errorOrTruncationOperation="Insert"
                       errorRowDisposition="FailComponent"
                       hasSideEffects="true"
                       name="OLE DB Destination Input">
                       <inputColumns>
                         <inputColumn
-                          refId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Meta_CreateJob]"
+                          refId="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Meta_CreateJob]"
                           cachedDataType="i8"
                           cachedName="Meta_CreateJob"
-                          externalMetadataColumnId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Meta_CreateJob]"
-                          lineageId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\Derived Column.Outputs[Derived Column Output].Columns[Meta_CreateJob]" />
+                          externalMetadataColumnId="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Meta_CreateJob]"
+                          lineageId="Package\DMSA Dim_Produkt\Load Dim_Produkt\Derived Column.Outputs[Derived Column Output].Columns[Meta_CreateJob]" />
                         <inputColumn
-                          refId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Product_Name]"
+                          refId="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Product_Name]"
                           cachedCodepage="1252"
                           cachedDataType="str"
                           cachedLength="100"
                           cachedName="Product_Name"
-                          externalMetadataColumnId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Product_Name]"
-                          lineageId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].Columns[Product_Name]" />
+                          externalMetadataColumnId="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Product_Name]"
+                          lineageId="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].Columns[Product_Name]" />
                         <inputColumn
-                          refId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Product_Id]"
+                          refId="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Product_Id]"
                           cachedDataType="i4"
                           cachedName="Product_Id"
-                          externalMetadataColumnId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Product_Id]"
-                          lineageId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].Columns[Product_Id]" />
+                          externalMetadataColumnId="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Product_Id]"
+                          lineageId="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].Columns[Product_Id]" />
                         <inputColumn
-                          refId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Ekey_Produkt]"
+                          refId="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Ekey_Produkt]"
                           cachedDataType="i4"
                           cachedName="Ekey_Produkt"
-                          externalMetadataColumnId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Ekey_Produkt]"
-                          lineageId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].Columns[Ekey_Produkt]" />
+                          externalMetadataColumnId="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Ekey_Produkt]"
+                          lineageId="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].Columns[Ekey_Produkt]" />
                         <inputColumn
-                          refId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Derived Column Department]"
+                          refId="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Derived Column Department]"
                           cachedDataType="wstr"
                           cachedLength="30"
                           cachedName="Derived Column Department"
-                          externalMetadataColumnId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Department]"
-                          lineageId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\Derived Column.Outputs[Derived Column Output].Columns[Derived Column Department]" />
+                          externalMetadataColumnId="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Department]"
+                          lineageId="Package\DMSA Dim_Produkt\Load Dim_Produkt\Derived Column.Outputs[Derived Column Output].Columns[Derived Column Department]" />
                         <inputColumn
-                          refId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Derived Column Aisle]"
+                          refId="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Derived Column Aisle]"
                           cachedDataType="wstr"
                           cachedLength="50"
                           cachedName="Derived Column Aisle"
-                          externalMetadataColumnId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Aisle]"
-                          lineageId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\Derived Column.Outputs[Derived Column Output].Columns[Derived Column Aisle]" />
+                          externalMetadataColumnId="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Aisle]"
+                          lineageId="Package\DMSA Dim_Produkt\Load Dim_Produkt\Derived Column.Outputs[Derived Column Output].Columns[Derived Column Aisle]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
                         <externalMetadataColumn
-                          refId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Meta_CreateTime]"
+                          refId="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Meta_CreateTime]"
                           dataType="dbTimeStamp"
                           name="Meta_CreateTime" />
                         <externalMetadataColumn
-                          refId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Meta_CreateJob]"
+                          refId="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Meta_CreateJob]"
                           dataType="i8"
                           name="Meta_CreateJob" />
                         <externalMetadataColumn
-                          refId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Product_Name]"
+                          refId="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Product_Name]"
                           codePage="1252"
                           dataType="str"
                           length="100"
                           name="Product_Name" />
                         <externalMetadataColumn
-                          refId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Department]"
+                          refId="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Department]"
                           dataType="wstr"
                           length="30"
                           name="Department" />
                         <externalMetadataColumn
-                          refId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Aisle]"
+                          refId="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Aisle]"
                           dataType="wstr"
                           length="50"
                           name="Aisle" />
                         <externalMetadataColumn
-                          refId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Product_Id]"
+                          refId="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Product_Id]"
                           dataType="i4"
                           name="Product_Id" />
                         <externalMetadataColumn
-                          refId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Ekey_Produkt]"
+                          refId="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Ekey_Produkt]"
                           dataType="i4"
                           name="Ekey_Produkt" />
                       </externalMetadataColumns>
@@ -372,22 +372,22 @@
                   </inputs>
                   <outputs>
                     <output
-                      refId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                      refId="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
                       exclusionGroup="1"
                       isErrorOut="true"
                       name="OLE DB Destination Error Output"
-                      synchronousInputId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                      synchronousInputId="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input]">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          refId="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                           dataType="i4"
-                          lineageId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          lineageId="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                           name="ErrorCode"
                           specialFlags="1" />
                         <outputColumn
-                          refId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          refId="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                           dataType="i4"
-                          lineageId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          lineageId="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                           name="ErrorColumn"
                           specialFlags="2" />
                       </outputColumns>
@@ -396,7 +396,7 @@
                   </outputs>
                 </component>
                 <component
-                  refId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Source"
+                  refId="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Source"
                   componentClassID="Microsoft.OLEDBSource"
                   contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
                   description="OLE DB Source"
@@ -452,7 +452,7 @@
                   </properties>
                   <connections>
                     <connection
-                      refId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Source.Connections[OleDbConnection]"
+                      refId="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Source.Connections[OleDbConnection]"
                       connectionManagerID="{BE2D85CB-B110-4CF2-BEA6-80DF97861CC3}:external"
                       connectionManagerRefId="Project.ConnectionManagers[OLEDDB Staging]"
                       description="The OLE DB runtime connection used to access the database."
@@ -460,131 +460,131 @@
                   </connections>
                   <outputs>
                     <output
-                      refId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output]"
+                      refId="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output]"
                       name="OLE DB Source Output">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].Columns[Product_Name]"
+                          refId="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].Columns[Product_Name]"
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Product_Name]"
+                          externalMetadataColumnId="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Product_Name]"
                           length="100"
-                          lineageId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].Columns[Product_Name]"
+                          lineageId="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].Columns[Product_Name]"
                           name="Product_Name"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
-                          refId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].Columns[Department]"
+                          refId="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].Columns[Department]"
                           dataType="wstr"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Department]"
+                          externalMetadataColumnId="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Department]"
                           length="30"
-                          lineageId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].Columns[Department]"
+                          lineageId="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].Columns[Department]"
                           name="Department"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
-                          refId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].Columns[Aisle]"
+                          refId="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].Columns[Aisle]"
                           dataType="wstr"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Aisle]"
+                          externalMetadataColumnId="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Aisle]"
                           length="50"
-                          lineageId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].Columns[Aisle]"
+                          lineageId="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].Columns[Aisle]"
                           name="Aisle"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
-                          refId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].Columns[Product_Id]"
+                          refId="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].Columns[Product_Id]"
                           dataType="i4"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Product_Id]"
-                          lineageId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].Columns[Product_Id]"
+                          externalMetadataColumnId="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Product_Id]"
+                          lineageId="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].Columns[Product_Id]"
                           name="Product_Id"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
-                          refId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].Columns[Ekey_Produkt]"
+                          refId="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].Columns[Ekey_Produkt]"
                           dataType="i4"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Ekey_Produkt]"
-                          lineageId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].Columns[Ekey_Produkt]"
+                          externalMetadataColumnId="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Ekey_Produkt]"
+                          lineageId="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].Columns[Ekey_Produkt]"
                           name="Ekey_Produkt"
                           truncationRowDisposition="FailComponent" />
                       </outputColumns>
                       <externalMetadataColumns
                         isUsed="True">
                         <externalMetadataColumn
-                          refId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Product_Name]"
+                          refId="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Product_Name]"
                           codePage="1252"
                           dataType="str"
                           length="100"
                           name="Product_Name" />
                         <externalMetadataColumn
-                          refId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Department]"
+                          refId="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Department]"
                           dataType="wstr"
                           length="30"
                           name="Department" />
                         <externalMetadataColumn
-                          refId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Aisle]"
+                          refId="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Aisle]"
                           dataType="wstr"
                           length="50"
                           name="Aisle" />
                         <externalMetadataColumn
-                          refId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Product_Id]"
+                          refId="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Product_Id]"
                           dataType="i4"
                           name="Product_Id" />
                         <externalMetadataColumn
-                          refId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Ekey_Produkt]"
+                          refId="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Ekey_Produkt]"
                           dataType="i4"
                           name="Ekey_Produkt" />
                       </externalMetadataColumns>
                     </output>
                     <output
-                      refId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                      refId="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Error Output]"
                       isErrorOut="true"
                       name="OLE DB Source Error Output">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Ekey_Produkt]"
+                          refId="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Ekey_Produkt]"
                           dataType="i4"
-                          lineageId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Ekey_Produkt]"
+                          lineageId="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Ekey_Produkt]"
                           name="Ekey_Produkt" />
                         <outputColumn
-                          refId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Product_Id]"
+                          refId="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Product_Id]"
                           dataType="i4"
-                          lineageId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Product_Id]"
+                          lineageId="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Product_Id]"
                           name="Product_Id" />
                         <outputColumn
-                          refId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Product_Name]"
+                          refId="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Product_Name]"
                           codePage="1252"
                           dataType="str"
                           length="100"
-                          lineageId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Product_Name]"
+                          lineageId="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Product_Name]"
                           name="Product_Name" />
                         <outputColumn
-                          refId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Department]"
+                          refId="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Department]"
                           dataType="wstr"
                           length="30"
-                          lineageId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Department]"
+                          lineageId="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Department]"
                           name="Department" />
                         <outputColumn
-                          refId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Aisle]"
+                          refId="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Aisle]"
                           dataType="wstr"
                           length="50"
-                          lineageId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Aisle]"
+                          lineageId="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Aisle]"
                           name="Aisle" />
                         <outputColumn
-                          refId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          refId="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                           dataType="i4"
-                          lineageId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          lineageId="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                           name="ErrorCode"
                           specialFlags="1" />
                         <outputColumn
-                          refId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          refId="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                           dataType="i4"
-                          lineageId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          lineageId="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                           name="ErrorColumn"
                           specialFlags="2" />
                       </outputColumns>
@@ -593,7 +593,7 @@
                   </outputs>
                 </component>
                 <component
-                  refId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\RC Inserted"
+                  refId="Package\DMSA Dim_Produkt\Load Dim_Produkt\RC Inserted"
                   componentClassID="Microsoft.RowCount"
                   contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
                   description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
@@ -606,7 +606,7 @@
                   </properties>
                   <inputs>
                     <input
-                      refId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\RC Inserted.Inputs[Row Count Input 1]"
+                      refId="Package\DMSA Dim_Produkt\Load Dim_Produkt\RC Inserted.Inputs[Row Count Input 1]"
                       hasSideEffects="true"
                       name="Row Count Input 1">
                       <externalMetadataColumns />
@@ -614,15 +614,15 @@
                   </inputs>
                   <outputs>
                     <output
-                      refId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\RC Inserted.Outputs[Row Count Output 1]"
+                      refId="Package\DMSA Dim_Produkt\Load Dim_Produkt\RC Inserted.Outputs[Row Count Output 1]"
                       name="Row Count Output 1"
-                      synchronousInputId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\RC Inserted.Inputs[Row Count Input 1]">
+                      synchronousInputId="Package\DMSA Dim_Produkt\Load Dim_Produkt\RC Inserted.Inputs[Row Count Input 1]">
                       <externalMetadataColumns />
                     </output>
                   </outputs>
                 </component>
                 <component
-                  refId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\RC Selected"
+                  refId="Package\DMSA Dim_Produkt\Load Dim_Produkt\RC Selected"
                   componentClassID="Microsoft.RowCount"
                   contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
                   description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
@@ -635,7 +635,7 @@
                   </properties>
                   <inputs>
                     <input
-                      refId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\RC Selected.Inputs[Row Count Input 1]"
+                      refId="Package\DMSA Dim_Produkt\Load Dim_Produkt\RC Selected.Inputs[Row Count Input 1]"
                       hasSideEffects="true"
                       name="Row Count Input 1">
                       <externalMetadataColumns />
@@ -643,9 +643,9 @@
                   </inputs>
                   <outputs>
                     <output
-                      refId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\RC Selected.Outputs[Row Count Output 1]"
+                      refId="Package\DMSA Dim_Produkt\Load Dim_Produkt\RC Selected.Outputs[Row Count Output 1]"
                       name="Row Count Output 1"
-                      synchronousInputId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\RC Selected.Inputs[Row Count Input 1]">
+                      synchronousInputId="Package\DMSA Dim_Produkt\Load Dim_Produkt\RC Selected.Inputs[Row Count Input 1]">
                       <externalMetadataColumns />
                     </output>
                   </outputs>
@@ -653,25 +653,25 @@
               </components>
               <paths>
                 <path
-                  refId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt.Paths[Derived Column Output]"
-                  endId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\RC Inserted.Inputs[Row Count Input 1]"
+                  refId="Package\DMSA Dim_Produkt\Load Dim_Produkt.Paths[Derived Column Output]"
+                  endId="Package\DMSA Dim_Produkt\Load Dim_Produkt\RC Inserted.Inputs[Row Count Input 1]"
                   name="Derived Column Output"
-                  startId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\Derived Column.Outputs[Derived Column Output]" />
+                  startId="Package\DMSA Dim_Produkt\Load Dim_Produkt\Derived Column.Outputs[Derived Column Output]" />
                 <path
-                  refId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt.Paths[OLE DB Source Output]"
-                  endId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\RC Selected.Inputs[Row Count Input 1]"
+                  refId="Package\DMSA Dim_Produkt\Load Dim_Produkt.Paths[OLE DB Source Output]"
+                  endId="Package\DMSA Dim_Produkt\Load Dim_Produkt\RC Selected.Inputs[Row Count Input 1]"
                   name="OLE DB Source Output"
-                  startId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output]" />
+                  startId="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output]" />
                 <path
-                  refId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt.Paths[Row Count Output 1]"
-                  endId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\Derived Column.Inputs[Derived Column Input]"
+                  refId="Package\DMSA Dim_Produkt\Load Dim_Produkt.Paths[Row Count Output 1]"
+                  endId="Package\DMSA Dim_Produkt\Load Dim_Produkt\Derived Column.Inputs[Derived Column Input]"
                   name="Row Count Output 1"
-                  startId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\RC Selected.Outputs[Row Count Output 1]" />
+                  startId="Package\DMSA Dim_Produkt\Load Dim_Produkt\RC Selected.Outputs[Row Count Output 1]" />
                 <path
-                  refId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt.Paths[Row Count Output 11]"
-                  endId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  refId="Package\DMSA Dim_Produkt\Load Dim_Produkt.Paths[Row Count Output 11]"
+                  endId="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input]"
                   name="Row Count Output 1"
-                  startId="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\RC Inserted.Outputs[Row Count Output 1]" />
+                  startId="Package\DMSA Dim_Produkt\Load Dim_Produkt\RC Inserted.Outputs[Row Count Output 1]" />
               </paths>
             </pipeline>
           </DTS:ObjectData>
@@ -694,43 +694,6 @@
               <SQLTask:ParameterBinding
                 SQLTask:ParameterName="DMSAId"
                 SQLTask:DtsVariableName="User::DMSAId"
-                SQLTask:ParameterDirection="Input"
-                SQLTask:DataType="12"
-                SQLTask:ParameterSize="-1" />
-            </SQLTask:SqlTaskData>
-          </DTS:ObjectData>
-        </DTS:Executable>
-        <DTS:Executable
-          DTS:refId="Package\DMSA Dim_Produkt\SQL DMSAEnd Succeeded"
-          DTS:CreationName="Microsoft.ExecuteSQLTask"
-          DTS:Description="Execute SQL Task"
-          DTS:DTSID="{17785BB3-4EF9-404C-AF09-BA7DA8B1E834}"
-          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-          DTS:LocaleID="-1"
-          DTS:ObjectName="SQL DMSAEnd Succeeded"
-          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
-          <DTS:Variables />
-          <DTS:ObjectData>
-            <SQLTask:SqlTaskData
-              SQLTask:Connection="{0F0C7406-5396-43EE-BD83-FE1D8F5C75FD}"
-              SQLTask:IsStoredProc="True"
-              SQLTask:SqlStatementSource="Audit.DMSAEnd" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
-              <SQLTask:ParameterBinding
-                SQLTask:ParameterName="DMSAId"
-                SQLTask:DtsVariableName="User::DMSAId"
-                SQLTask:ParameterDirection="Input"
-                SQLTask:DataType="12"
-                SQLTask:ParameterSize="-1" />
-              <SQLTask:ParameterBinding
-                SQLTask:ParameterName="RecordsSelected"
-                SQLTask:DtsVariableName="User::RecordsSelected"
-                SQLTask:ParameterDirection="Input"
-                SQLTask:DataType="12"
-                SQLTask:ParameterSize="-1" />
-              <SQLTask:ParameterBinding
-                SQLTask:ParameterName="RecordsInserted"
-                SQLTask:DtsVariableName="User::RecordsInserted"
                 SQLTask:ParameterDirection="Input"
                 SQLTask:DataType="12"
                 SQLTask:ParameterSize="-1" />
@@ -787,20 +750,57 @@
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
-          DTS:refId="Package\DMSA Dim_Produkt\Truncate table DMSA Dim_Produkt"
+          DTS:refId="Package\DMSA Dim_Produkt\Start UpdateDMSA"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{8f9bf8e1-35c0-4e55-b70b-6fb2c581bd28}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Start UpdateDMSA"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{0F0C7406-5396-43EE-BD83-FE1D8F5C75FD}"
+              SQLTask:IsStoredProc="True"
+              SQLTask:SqlStatementSource="[DMSA].[UpdateDMSA]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="DMSAId"
+                SQLTask:DtsVariableName="User::DMSAId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="12"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="TableName"
+                SQLTask:DtsVariableName="User::TableName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="16"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="Database"
+                SQLTask:DtsVariableName="$Project::Database"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="16"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\DMSA Dim_Produkt\Truncate table Load Dim_Produkt"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
           DTS:DTSID="{B6638F4E-2648-4BA6-BB36-926E4CB982C9}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
-          DTS:ObjectName="Truncate table DMSA Dim_Produkt"
+          DTS:ObjectName="Truncate table Load Dim_Produkt"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
           DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{F5C1CDE6-F86D-47FA-8AA6-4A8DB6466950}"
-              SQLTask:SqlStatementSource="truncate table DMSA.Dim_Produkt" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              SQLTask:SqlStatementSource="truncate table Load.Dim_Produkt" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
       </DTS:Executables>
@@ -809,10 +809,10 @@
           DTS:refId="Package\DMSA Dim_Produkt.PrecedenceConstraints[Constraint]"
           DTS:CreationName=""
           DTS:DTSID="{01E57720-94BF-4729-85CB-72ADD344BE2B}"
-          DTS:From="Package\DMSA Dim_Produkt\Truncate table DMSA Dim_Produkt"
+          DTS:From="Package\DMSA Dim_Produkt\Truncate table Load Dim_Produkt"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint"
-          DTS:To="Package\DMSA Dim_Produkt\DMSA Dim_Produkt" />
+          DTS:To="Package\DMSA Dim_Produkt\Load Dim_Produkt" />
         <DTS:PrecedenceConstraint
           DTS:refId="Package\DMSA Dim_Produkt.PrecedenceConstraints[Constraint 1]"
           DTS:CreationName=""
@@ -820,20 +820,20 @@
           DTS:From="Package\DMSA Dim_Produkt\SQL DMSAStart"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 1"
-          DTS:To="Package\DMSA Dim_Produkt\Truncate table DMSA Dim_Produkt" />
+          DTS:To="Package\DMSA Dim_Produkt\Truncate table Load Dim_Produkt" />
         <DTS:PrecedenceConstraint
           DTS:refId="Package\DMSA Dim_Produkt.PrecedenceConstraints[Constraint 2]"
           DTS:CreationName=""
-          DTS:DTSID="{D03A75A8-34B1-4E2F-9C8A-8056B43DD7D0}"
-          DTS:From="Package\DMSA Dim_Produkt\DMSA Dim_Produkt"
+          DTS:DTSID="{4C9FA949-630E-46BD-976B-606A41FBEC7F}"
+          DTS:From="Package\DMSA Dim_Produkt\Load Dim_Produkt"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 2"
-          DTS:To="Package\DMSA Dim_Produkt\SQL DMSAEnd Succeeded" />
+          DTS:To="Package\DMSA Dim_Produkt\Start UpdateDMSA" />
         <DTS:PrecedenceConstraint
           DTS:refId="Package\DMSA Dim_Produkt.PrecedenceConstraints[Constraint 3]"
           DTS:CreationName=""
           DTS:DTSID="{1CE2D098-667C-440B-A179-1F44805EA72F}"
-          DTS:From="Package\DMSA Dim_Produkt\DMSA Dim_Produkt"
+          DTS:From="Package\DMSA Dim_Produkt\Load Dim_Produkt"
           DTS:ObjectName="Constraint 3"
           DTS:To="Package\DMSA Dim_Produkt\SQL DMSAEnd Failed"
           DTS:Value="1" />
@@ -841,8 +841,16 @@
           DTS:refId="Package\DMSA Dim_Produkt.PrecedenceConstraints[Constraint 4]"
           DTS:CreationName=""
           DTS:DTSID="{4411C09B-AD93-441A-B2E5-F764729C5CBB}"
-          DTS:From="Package\DMSA Dim_Produkt\Truncate table DMSA Dim_Produkt"
+          DTS:From="Package\DMSA Dim_Produkt\Truncate table Load Dim_Produkt"
           DTS:ObjectName="Constraint 4"
+          DTS:To="Package\DMSA Dim_Produkt\SQL DMSAEnd Failed"
+          DTS:Value="1" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\DMSA Dim_Produkt.PrecedenceConstraints[Constraint 6]"
+          DTS:CreationName=""
+          DTS:DTSID="{ED0E7498-6487-4CF4-B6CB-DB9390373AC1}"
+          DTS:From="Package\DMSA Dim_Produkt\Start UpdateDMSA"
+          DTS:ObjectName="Constraint 6"
           DTS:To="Package\DMSA Dim_Produkt\SQL DMSAEnd Failed"
           DTS:Value="1" />
       </DTS:PrecedenceConstraints>
@@ -1058,24 +1066,20 @@
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="177,42"
-          Id="Package\DMSA Dim_Produkt\DMSA Dim_Produkt"
-          TopLeft="145,209.5" />
+          Size="166,42"
+          Id="Package\DMSA Dim_Produkt\Load Dim_Produkt"
+          TopLeft="177.5,207.5" />
         <NodeLayout
           Size="191,42"
           Id="Package\DMSA Dim_Produkt\SQL DMSAEnd Failed"
-          TopLeft="282,311.5" />
-        <NodeLayout
-          Size="216,42"
-          Id="Package\DMSA Dim_Produkt\SQL DMSAEnd Succeeded"
-          TopLeft="5.50000000000006,311.5" />
+          TopLeft="282,413.5" />
         <NodeLayout
           Size="161,42"
           Id="Package\DMSA Dim_Produkt\SQL DMSAStart"
           TopLeft="297,5.5" />
         <NodeLayout
           Size="244,42"
-          Id="Package\DMSA Dim_Produkt\Truncate table DMSA Dim_Produkt"
+          Id="Package\DMSA Dim_Produkt\Truncate table Load Dim_Produkt"
           TopLeft="255.5,107.5" />
         <EdgeLayout
           Id="Package\DMSA Dim_Produkt.PrecedenceConstraints[Constraint]"
@@ -1083,26 +1087,26 @@
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-104.666666666667,60"
+              EndConnector="-77.6666666666666,58"
               Start="0,0"
-              End="-104.666666666667,52.5">
+              End="-77.6666666666666,50.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,20.2345276872964" />
+                    End="0,19.4267100977199" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,20.2345276872964"
-                    Point2="0,24.2345276872964"
-                    Point3="-4,24.2345276872964" />
+                    Point1="0,19.4267100977199"
+                    Point2="0,23.4267100977199"
+                    Point3="-4,23.4267100977199" />
                   <mssgle:LineSegment
-                    End="-100.666666666667,24.2345276872964" />
+                    End="-73.6666666666666,23.4267100977199" />
                   <mssgle:CubicBezierSegment
-                    Point1="-100.666666666667,24.2345276872964"
-                    Point2="-104.666666666667,24.2345276872964"
-                    Point3="-104.666666666667,28.2345276872964" />
+                    Point1="-73.6666666666666,23.4267100977199"
+                    Point2="-77.6666666666666,23.4267100977199"
+                    Point3="-77.6666666666666,27.4267100977199" />
                   <mssgle:LineSegment
-                    End="-104.666666666667,52.5" />
+                    End="-77.6666666666666,50.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1134,31 +1138,95 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DMSA Dim_Produkt.PrecedenceConstraints[Constraint 2]"
-          TopLeft="205.333333333333,251.5">
+          Id="Package\DMSA Dim_Produkt.PrecedenceConstraints[Constraint 3]"
+          TopLeft="286.833333333333,249.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-91.8333333333333,60"
+              EndConnector="90.6666666666667,164"
               Start="0,0"
-              End="-91.8333333333333,52.5">
+              End="90.6666666666667,156.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,20.3225083986562" />
+                    End="0,62.5393794749403" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,20.3225083986562"
-                    Point2="0,24.3225083986562"
-                    Point3="-4,24.3225083986562" />
+                    Point1="0,62.5393794749403"
+                    Point2="0,66.5393794749403"
+                    Point3="4,66.5393794749403" />
                   <mssgle:LineSegment
-                    End="-87.8333333333333,24.3225083986562" />
+                    End="86.6666666666667,66.5393794749403" />
                   <mssgle:CubicBezierSegment
-                    Point1="-87.8333333333333,24.3225083986562"
-                    Point2="-91.8333333333333,24.3225083986562"
-                    Point3="-91.8333333333333,28.3225083986562" />
+                    Point1="86.6666666666667,66.5393794749403"
+                    Point2="90.6666666666667,66.5393794749403"
+                    Point3="90.6666666666667,70.5393794749403" />
                   <mssgle:LineSegment
-                    End="-91.8333333333333,52.5" />
+                    End="90.6666666666667,156.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="30.0919856770834,71.5393794749403,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DMSA Dim_Produkt.PrecedenceConstraints[Constraint 4]"
+          TopLeft="420.041666666667,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,264"
+              Start="0,0"
+              End="0,256.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,256.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-84.0330143229166,154.252873426031,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="166,42"
+          Id="Package\DMSA Dim_Produkt\Start UpdateDMSA"
+          TopLeft="51,319.5" />
+        <EdgeLayout
+          Id="Package\DMSA Dim_Produkt.PrecedenceConstraints[Constraint 2]"
+          TopLeft="234.166666666667,249.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-100.166666666667,70"
+              Start="0,0"
+              End="-100.166666666667,62.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.4009546539379" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.4009546539379"
+                    Point2="0,28.4009546539379"
+                    Point3="-4,28.4009546539379" />
+                  <mssgle:LineSegment
+                    End="-96.1666666666666,28.4009546539379" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-96.1666666666666,28.4009546539379"
+                    Point2="-100.166666666667,28.4009546539379"
+                    Point3="-100.166666666667,32.4009546539379" />
+                  <mssgle:LineSegment
+                    End="-100.166666666667,62.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1168,92 +1236,56 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DMSA Dim_Produkt.PrecedenceConstraints[Constraint 3]"
-          TopLeft="261.666666666667,251.5">
+          Id="Package\DMSA Dim_Produkt.PrecedenceConstraints[Constraint 6]"
+          TopLeft="134,361.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="85.3333333333334,60"
+              EndConnector="197.75,52"
               Start="0,0"
-              End="85.3333333333334,52.5">
+              End="197.75,44.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,26.0243175172973" />
+                    End="0,30.1893287435456" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,26.0243175172973"
-                    Point2="0,30.0243175172973"
-                    Point3="4,30.0243175172973" />
+                    Point1="0,30.1893287435456"
+                    Point2="0,34.1893287435456"
+                    Point3="4,34.1893287435456" />
                   <mssgle:LineSegment
-                    End="81.3333333333334,30.0243175172973" />
+                    End="193.75,34.1893287435456" />
                   <mssgle:CubicBezierSegment
-                    Point1="81.3333333333334,30.0243175172973"
-                    Point2="85.3333333333334,30.0243175172973"
-                    Point3="85.3333333333334,34.0243175172973" />
+                    Point1="193.75,34.1893287435456"
+                    Point2="197.75,34.1893287435456"
+                    Point3="197.75,38.1893287435456" />
                   <mssgle:LineSegment
-                    End="85.3333333333334,52.5" />
+                    End="197.75,44.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="27.4253190104167,35.0243175172973,30.4826953125,9.7490234375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DMSA Dim_Produkt.PrecedenceConstraints[Constraint 4]"
-          TopLeft="416.833333333333,149.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-8.83333333333326,162"
-              Start="0,0"
-              End="-8.83333333333326,154.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,76.8191431099128" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,76.8191431099128"
-                    Point2="0,80.8191431099128"
-                    Point3="-4,80.8191431099128" />
-                  <mssgle:LineSegment
-                    End="-4.83333333333326,80.8191431099128" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-4.83333333333326,80.8191431099128"
-                    Point2="-8.83333333333326,80.8191431099128"
-                    Point3="-8.83333333333326,84.8191431099128" />
-                  <mssgle:LineSegment
-                    End="-8.83333333333326,154.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-19.6580143229166,85.8191431099128,30.4826953125,9.7490234375"
+              BoundingBox="83.63365234375,39.1893287435456,30.4826953125,9.7490234375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="505,409"
-          Size="505,452"
+          PanelSize="505,511"
+          Size="505,554"
           Id="Package\DMSA Dim_Produkt"
           TopLeft="146,107.5" />
         <NodeLayout
           Size="205,42"
           Id="Package\SQL ExecutionEnd Failed"
-          TopLeft="296,619.5" />
+          TopLeft="296,721.5" />
         <NodeLayout
           Size="230,42"
           Id="Package\SQL ExecutionEnd Succeeded"
-          TopLeft="5.50000000000011,619.5" />
+          TopLeft="5.50000000000011,721.5" />
         <NodeLayout
           Size="176,42"
           Id="Package\SQL ExecutionStart"
@@ -1282,7 +1314,7 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="315.666666666667,559.5">
+          TopLeft="315.666666666667,661.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1316,7 +1348,7 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="481.333333333333,559.5">
+          TopLeft="481.333333333333,661.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1346,7 +1378,7 @@
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-56.6580143229167,29.1136991709435,30.4826953125,9.7490234375"
+              BoundingBox="-56.6580143229166,29.1136991709435,30.4826953125,9.7490234375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -1366,32 +1398,32 @@
     </LayoutInfo>
   </DtsEventHandler>
   <TaskHost
-    design-time-name="Package\DMSA Dim_Produkt\DMSA Dim_Produkt">
+    design-time-name="Package\DMSA Dim_Produkt\Load Dim_Produkt">
     <LayoutInfo>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="157,42"
-          Id="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Source"
+          Id="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Source"
           TopLeft="15.5,5.5" />
         <NodeLayout
           Size="141,42"
-          Id="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\RC Selected"
+          Id="Package\DMSA Dim_Produkt\Load Dim_Produkt\RC Selected"
           TopLeft="23.5,107.5" />
         <NodeLayout
           Size="138,42"
-          Id="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\RC Inserted"
+          Id="Package\DMSA Dim_Produkt\Load Dim_Produkt\RC Inserted"
           TopLeft="25,311.5" />
         <NodeLayout
           Size="158,42"
-          Id="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\Derived Column"
+          Id="Package\DMSA Dim_Produkt\Load Dim_Produkt\Derived Column"
           TopLeft="15,209.5" />
         <NodeLayout
           Size="177,42"
-          Id="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Destination"
+          Id="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Destination"
           TopLeft="5.50000000000004,413.5" />
         <EdgeLayout
-          Id="Package\DMSA Dim_Produkt\DMSA Dim_Produkt.Paths[Row Count Output 11]"
+          Id="Package\DMSA Dim_Produkt\Load Dim_Produkt.Paths[Row Count Output 11]"
           TopLeft="94,353.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -1413,7 +1445,7 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DMSA Dim_Produkt\DMSA Dim_Produkt.Paths[Row Count Output 1]"
+          Id="Package\DMSA Dim_Produkt\Load Dim_Produkt.Paths[Row Count Output 1]"
           TopLeft="94,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -1435,7 +1467,7 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DMSA Dim_Produkt\DMSA Dim_Produkt.Paths[OLE DB Source Output]"
+          Id="Package\DMSA Dim_Produkt\Load Dim_Produkt.Paths[OLE DB Source Output]"
           TopLeft="94,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -1457,7 +1489,7 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DMSA Dim_Produkt\DMSA Dim_Produkt.Paths[Derived Column Output]"
+          Id="Package\DMSA Dim_Produkt\Load Dim_Produkt.Paths[Derived Column Output]"
           TopLeft="94,251.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -1482,7 +1514,7 @@
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Destination">
+    design-time-name="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Destination">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -1495,7 +1527,7 @@
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\DMSA Dim_Produkt\DMSA Dim_Produkt\OLE DB Source">
+    design-time-name="Package\DMSA Dim_Produkt\Load Dim_Produkt\OLE DB Source">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

@@ -1,4 +1,4 @@
-﻿CREATE TABLE [DMSA].[Dim_Produkt]
+﻿CREATE TABLE [Load].[Dim_Produkt]
 (
 	[Ekey_Produkt]      INT           NOT NULL,
 	[Product_Id]        INT           NOT NULL,
@@ -7,12 +7,9 @@
 	[Aisle]             NVARCHAR(50)  NULL,
 
 	/* Metadata */
-	[Meta_CreateTime]   DATETIME      NOT NULL,
-	[Meta_CreateJob]	BIGINT		  NOT NULL,
-	[Meta_UpdateTime]   DATETIME   	  NULL,
-	[Meta_UpdateJob]    BIGINT	   	  NULL,
-	[Meta_DeleteTime]   DATETIME   	  NULL,
-	[Meta_DeleteJob]    BIGINT	   	  NULL
+	[Meta_CreateTime]   DATETIME DEFAULT GETDATE()   NOT NULL,
+	[Meta_CreateJob]	BIGINT		                 NOT NULL
+
 CONSTRAINT PK_Ekey_Dim_Produkt PRIMARY KEY CLUSTERED ([Ekey_Produkt])
 );
 GO

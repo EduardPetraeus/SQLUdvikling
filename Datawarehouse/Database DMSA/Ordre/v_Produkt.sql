@@ -6,3 +6,4 @@ SELECT [Ekey_Produkt]
       ,[Department] AS [Afdeling]
       ,[Aisle] AS [Gang]
   FROM [DMSA].[Dim_Produkt]
+  WHERE Meta_DeleteTime IS NULL

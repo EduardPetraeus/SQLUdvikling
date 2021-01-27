@@ -1,13 +1,13 @@
-﻿CREATE PROCEDURE [Distribution].[UpdateDistribution]
-     @StagingId BIGINT
-	,@Tablename  NVARCHAR (100)
+﻿CREATE PROCEDURE [DMSA].[UpdateDMSA]
+     @DMSAId    BIGINT
+	,@Tablename NVARCHAR (100)
+	,@Database  NVARCHAR (100)
 AS
 
 DECLARE @RecordsFailed INT = 0
 
-DECLARE @Database NVARCHAR(100) = 'Staging'
 DECLARE @SourceSchema NVARCHAR(100) = 'Load'
-DECLARE @DestSchema NVARCHAR(100) = 'Distribution'
+DECLARE @DestSchema NVARCHAR(100) = 'DMSA'
 DECLARE @DestTablename NVARCHAR(100) = '[' + @Database + ']' + '.' + '[' + @DestSchema + ']' + '.' + '[' + @Tablename + ']'
 DECLARE @SourceTablename NVARCHAR(100) = '[' + @Database + ']' + '.' + '[' + @SourceSchema + ']' + '.' + '[' + @Tablename + ']'
 
@@ -58,7 +58,7 @@ DECLARE @SourceTablename NVARCHAR(100) = '[' + @Database + ']' + '.' + '[' + @So
 		@ColumnExtListForUpdate = @ColumnExtListForUpdate + 'OR ' + '(' + @DestTablename+ '.' + colname + '<> AA.' + colname + 'OR' + '( ' + @DestTablename+ '.' + colname + 'IS NULL AND AA.' + colname + 'IS NOT NULL'+ ')' + 'OR' + '(' + @DestTablename+ '.' + colname + 'IS NOT NULL AND AA.' + colname + 'IS NULL'+ ')'+ ')'
         FROM @Columns
 		WHERE colname NOT IN(
-			'[Meta_Id]',
+			--'[Meta_Id]',
 			'[Meta_CreateTime]',
 			'[Meta_CreateJob]',
 			'[Meta_UpdateTime]',
@@ -66,7 +66,7 @@ DECLARE @SourceTablename NVARCHAR(100) = '[' + @Database + ']' + '.' + '[' + @So
 			'[Meta_DeleteTime]',
 			'[Meta_DeleteJob]')
 
-        IF LEN(@ColumnExtListForUpdate) > 1 SET @ColumnExtListForUpdate = ' OR ('+ SUBSTRING(@ColumnExtListForUpdate, 3, LEN(@ColumnExtListForUpdate))+ ')' 
+        IF LEN(@ColumnExtListForUpdate) > 1 SET @ColumnExtListForUpdate = ' ('+ SUBSTRING(@ColumnExtListForUpdate, 3, LEN(@ColumnExtListForUpdate))+ ')' 
 		--SET @ColumnExtListForUpdate = SUBSTRING(@ColumnExtListForUpdate, 3, LEN(@ColumnExtListForUpdate)) 
 		--SET @ColumnList = SUBSTRING(@ColumnList, 3, LEN(@ColumnList))
 		--SET @ColumnExtList = SUBSTRING(@ColumnExtList, 3, LEN(@ColumnExtList)) 
@@ -105,22 +105,13 @@ BEGIN TRY
        <NaturalKeyExtList>
        <ColumnExtList>
       ,[Meta_UpdateTime]                          = GETDATE()
-      ,[Meta_UpdateJob]	                          = <StagingId>
+      ,[Meta_UpdateJob]	                          = <DMSAId>
 	  ,[Meta_DeleteTime]                          = NULL
 	  ,[Meta_DeleteJob]							  = NULL		
 	FROM <SourceTablename> AS AA
-
-	LEFT JOIN LZDB.Meta.LastSuccessfullLoad LSL
-		ON AA.[Source_TableName] = LSL.SourceTableName
-		AND LSL.DestinationTableName = ''<Tablename>''
-
 	WHERE <NaturalKeyWhereList>
 	AND ( 
-	      AA.Source_UpdateJob > LSL.LastSuccessfullJobId 
-
 	      <ColumnExtListForUpdate>  
-
-		
 		)
 
 
@@ -147,7 +138,7 @@ BEGIN TRY
 				 <NaturalKey>
                  <ColumnList>
 				,GETDATE()
-				,<StagingId>
+				,<DMSAId>
 				,NULL
 				,NULL
 				,NULL
@@ -174,7 +165,7 @@ IF EXISTS (SELECT TOP 1 1 FROM <SourceTablename>)
 UPDATE <DestTablename> 
 SET 
        [Meta_DeleteTime] = GETDATE()
-      ,[Meta_DeleteJob] = <StagingId>
+      ,[Meta_DeleteJob] = <DMSAId>
 
 FROM <DestTablename> 
 WHERE NOT EXISTS (
@@ -218,30 +209,12 @@ SET @RecordsUpdated = @RecordsUpdated1 + @RecordsUpdated2
 DECLARE @RecordsDiscarded BIGINT 
 SET @RecordsDiscarded  = @RecordsSelected - @RecordsInserted - @RecordsUpdated
 
-----------------------------------------------------
--- Opdater Styringstabel
-----------------------------------------------------
-
- MERGE INTO [LZDB].[Meta].[LastSuccessfullLoad] as lsl
- USING (
-    SELECT Source_TableName, MAX(Source_UpdateJob) AS maxUpdateJob 
-    FROM <SourceTablename>
-    GROUP BY Source_TableName
-    ) as src 
-    ON (lsl.SourceTableName = src.Source_TableName 
-    AND lsl.DestinationTableName = ''<Tablename>'')
-WHEN MATCHED THEN
-    UPDATE SET lsl.LastSuccessfullJobId = src.maxUpdateJob
-WHEN NOT MATCHED BY TARGET THEN
-    INSERT (DestinationTableName, SourceTableName, LastSuccessfullJobId) 
-    VALUES (''<Tablename>'', src.Source_TableName, src.maxUpdateJob)
-;
 
 ----------------------------------------------------
 -- Opdater Log-tabel
 ----------------------------------------------------
 
-	UPDATE [LZDB].[Audit].StagingLog
+	UPDATE [DZDB].[Audit].DMSALog
 	SET  [RecordsSelected] = @RecordsSelected
 		,[RecordsInserted] = @RecordsInserted
 		,[RecordsUpdated] = @RecordsUpdated
@@ -249,7 +222,7 @@ WHEN NOT MATCHED BY TARGET THEN
 		,[RecordsDiscarded] = @RecordsDiscarded 
 		,[Status] = ''Succeeded''
         ,[EndTime] = GETDATE()
-	WHERE [Id] = <StagingId>
+	WHERE [Id] = <DMSAId>
 	
 ----------------------------------------------------
 -- Slut fejlhåndtering og transaktion
@@ -289,7 +262,7 @@ END CATCH
 		SET @SQL = REPLACE(@SQL,'<ColumnExtList>', @ColumnExtList);
 		SET @SQL = REPLACE(@SQL,'<ColumnExtListForUpdate>', @ColumnExtListForUpdate);
 		SET @SQL = REPLACE(@SQL,'<RecordsFailed>', @RecordsFailed);
-		SET @SQL = REPLACE(@SQL,'<StagingId>', @StagingId);
+		SET @SQL = REPLACE(@SQL,'<DMSAId>', @DMSAId);
 
 		--PRINT @SQL
 
