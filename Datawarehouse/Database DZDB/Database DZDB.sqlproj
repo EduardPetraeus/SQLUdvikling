@@ -67,6 +67,9 @@
     <Folder Include="Utility" />
     <Folder Include="Utility\Functions" />
     <Folder Include="Utility\Stored Procedures" />
+    <Folder Include="Meta" />
+    <Folder Include="Meta\Tables" />
+    <Folder Include="Meta\Stored procedures" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DZDB.dev.publish.xml" />
@@ -97,6 +100,9 @@
     <Build Include="Utility\Stored Procedures\GetKeyColumns.sql" />
     <Build Include="Utility\Stored Procedures\GetNonKeyColumns.sql" />
     <Build Include="Utility\Stored Procedures\PrintLargeString.sql" />
+    <Build Include="Security\Meta.sql" />
+    <Build Include="Meta\Tables\LastSuccessfullLoad.sql" />
+    <Build Include="Meta\Stored procedures\Update_LastSuccessfullLoad.sql" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Database DMSA\Database DMSA.sqlproj">

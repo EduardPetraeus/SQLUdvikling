@@ -2,6 +2,7 @@
      @DMSAId    BIGINT
 	,@Tablename NVARCHAR (100)
 	,@Database  NVARCHAR (100)
+	,@IsFullLoad BIT 
 AS
 
 DECLARE @RecordsFailed INT = 0
@@ -160,7 +161,7 @@ BEGIN TRY
 -- Delta Delete
 ----------------------------------------------------
 
-IF EXISTS (SELECT TOP 1 1 FROM <SourceTablename>)
+IF EXISTS (SELECT TOP 1 1 FROM <SourceTablename>) AND <IsFullLoad> = 1
 
 UPDATE <DestTablename> 
 SET 
@@ -221,6 +222,7 @@ SET @RecordsDiscarded  = @RecordsSelected - @RecordsInserted - @RecordsUpdated
 		,[RecordsFailed] = <RecordsFailed>
 		,[RecordsDiscarded] = @RecordsDiscarded 
 		,[Status] = ''Succeeded''
+		,[IsFullLoad] = <IsFullLoad>
         ,[EndTime] = GETDATE()
 	WHERE [Id] = <DMSAId>
 	
@@ -263,6 +265,9 @@ END CATCH
 		SET @SQL = REPLACE(@SQL,'<ColumnExtListForUpdate>', @ColumnExtListForUpdate);
 		SET @SQL = REPLACE(@SQL,'<RecordsFailed>', @RecordsFailed);
 		SET @SQL = REPLACE(@SQL,'<DMSAId>', @DMSAId);
+		SET @SQL = REPLACE(@SQL,'<IsFullLoad>', @IsFullLoad);
+
+		
 
 		--PRINT @SQL
 

@@ -4,6 +4,7 @@
     [TableName]        NVARCHAR (100) NOT NULL,
 	[Schema]		   NVARCHAR (255) NULL,
     [ExecutionId]      BIGINT         NULL,
+    [IsFullLoad]       BIT DEFAULT 1  NULL,
     [Status]           NVARCHAR (20)  NULL,
     [StartTime]        DATETIME2 (7)  NULL,
     [EndTime]          DATETIME2 (7)  NULL,

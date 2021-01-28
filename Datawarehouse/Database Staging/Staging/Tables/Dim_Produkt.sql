@@ -8,7 +8,11 @@
 	/* Metadata */
 	[Meta_Id]           BIGINT IDENTITY (1,1)        NOT NULL,
 	[Meta_CreateTime]   DATETIME DEFAULT GETDATE()   NOT NULL,
-	[Meta_CreateJob]	BIGINT		                 NOT NULL
+	[Meta_CreateJob]	BIGINT		                 NOT NULL,
+	[Meta_UpdateTime]   DATETIME   	                 NULL,
+	[Meta_UpdateJob]    BIGINT	   	                 NULL,
+	[Meta_DeleteTime]   DATETIME   	                 NULL,
+	[Meta_DeleteJob]    BIGINT	   	                 NULL
 
 CONSTRAINT PK_Staging_Dim_Produkt_Id PRIMARY KEY CLUSTERED ([Product_Id])
 );
