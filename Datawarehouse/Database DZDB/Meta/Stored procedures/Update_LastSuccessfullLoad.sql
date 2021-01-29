@@ -18,10 +18,11 @@ SET @SQL = '
     ON (lsl.SourceTableName = src.Source_TableName 
     AND lsl.DestinationTableName = ''<p_DestinationTableName>'')
 WHEN MATCHED THEN
-    UPDATE SET lsl.LastSuccessfullJobId = src.maxUpdateJob
+    UPDATE SET lsl.LastSuccessfullJobId = src.maxUpdateJob,
+               lsl.DateModified         = GETDATE()
 WHEN NOT MATCHED BY TARGET THEN
-    INSERT (DestinationTableName, SourceTableName, LastSuccessfullJobId) 
-    VALUES (''<p_DestinationTableName>'', src.Source_TableName, src.maxUpdateJob);
+    INSERT (DestinationTableName, SourceTableName, LastSuccessfullJobId, DateCreated) 
+    VALUES (''<p_DestinationTableName>'', src.Source_TableName, src.maxUpdateJob, GETDATE());
 '
 
 
