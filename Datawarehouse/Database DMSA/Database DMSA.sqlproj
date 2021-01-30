@@ -64,15 +64,14 @@
     <Folder Include="Utility\Utility" />
     <Folder Include="Ordre" />
     <Folder Include="Load" />
+    <Folder Include="DMSA\Tables" />
+    <Folder Include="DMSA\Stored procedures" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DMSA.dev.publish.xml" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Security\DMSA.sql" />
-    <Build Include="DMSA\Dim_Kunde.sql" />
-    <Build Include="DMSA\Dim_Produkt.sql" />
-    <Build Include="DMSA\Fact_Ordre.sql" />
     <Build Include="Security\Utility.sql" />
     <Build Include="Utility\Utility\usp_CallCountRows.sql" />
     <Build Include="Utility\Utility\usp_CountAllRows.sql" />
@@ -87,6 +86,12 @@
     <Build Include="Security\Load.sql" />
     <Build Include="Load\Dim_Produkt.sql" />
     <Build Include="Load\Dim_Produkt_Delta_Load.sql" />
-    <Build Include="DMSA\Dim_Produkt_Delta_Load.sql" />
+    <Build Include="DMSA\Tables\Dim_Kunde.sql" />
+    <Build Include="DMSA\Tables\Dim_Produkt.sql" />
+    <Build Include="DMSA\Tables\Dim_Produkt_Delta_Load.sql" />
+    <Build Include="DMSA\Tables\Fact_Ordre.sql" />
+    <Build Include="DMSA\Stored procedures\SwitchFact.sql" />
+    <Build Include="DMSA\Stored procedures\UpdateFact.sql" />
+    <Build Include="Load\Fact_Ordre.sql" />
   </ItemGroup>
 </Project>

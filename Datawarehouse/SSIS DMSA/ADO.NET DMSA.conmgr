@@ -1,0 +1,10 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="ADO NET DMSA"
+  DTS:DTSID="{E5E14666-AF2C-4CA1-B276-7003A891D597}"
+  DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=.;Initial Catalog=DMSA;Integrated Security=True;Application Name=SSIS-SSIS DMSA-{E5E14666-AF2C-4CA1-B276-7003A891D597}LocalHost.DMSA1;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>
