@@ -1,0 +1,1455 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/9/2015 3:09:55 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="T440SW7SIBR"
+  DTS:CreatorName="NCLAN\sibr"
+  DTS:DTSID="{0F9EA53A-8239-4737-8BF9-C1FFC71AAB46}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="12.0.2430.0"
+  DTS:LocaleID="1030"
+  DTS:ObjectName="Load_Dimensions_Product_T1"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="0"
+  DTS:VersionBuild="186"
+  DTS:VersionGUID="{E17C2170-CF1A-49E7-B77C-6FA863D854DA}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Flat File Geography]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{638967ED-EB5F-46BE-842A-06D7C71D5A25}"
+      DTS:ObjectName="Flat File Geography">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1030"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\Users\CON_2934_24\Source\Repos\feature.pacman.dwh\Falck_DW_IS\SourcelessSource\GeographicalData.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:DataType="72"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Region"
+              DTS:DTSID="{809361AC-3098-405A-B42B-D7AFC0196446}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:DataType="72"
+              DTS:TextQualified="True"
+              DTS:ObjectName="MunicipalityNumber"
+              DTS:DTSID="{11A9A53B-9F23-4F2C-87D0-5FF3551E2149}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:DataType="72"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Municipality"
+              DTS:DTSID="{3CCB658A-3DCC-4F2D-B34F-260245A65B24}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:DataType="72"
+              DTS:TextQualified="True"
+              DTS:ObjectName="City"
+              DTS:DTSID="{599BA144-66D2-417D-974F-DCF458E21006}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:DataType="72"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Continent"
+              DTS:DTSID="{02FC4166-EB98-4BF3-B9AE-EA99AD3A50D2}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:DataType="72"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Area"
+              DTS:DTSID="{FB794AA9-35F6-48ED-A484-66BF0860308F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:DataType="72"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CountryName"
+              DTS:DTSID="{554A166F-F58B-4ED5-8304-D6670F059E3F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:DataType="72"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CountryCode"
+              DTS:DTSID="{27824B4C-62F6-46C8-BD14-7E1761DFAE42}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:DataType="72"
+              DTS:TextQualified="True"
+              DTS:ObjectName="PostalCode"
+              DTS:DTSID="{ED9E7F6F-5459-4059-AD21-8150BD7FF9D8}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000A_"
+              DTS:DataType="72"
+              DTS:TextQualified="True"
+              DTS:ObjectName="RegionNumber"
+              DTS:DTSID="{9D951DFC-F4D6-4313-A92C-8478A8BDA6CD}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{C77BC448-05E8-42DA-84F1-67D3885E619A}"
+      DTS:ObjectName="DimensionName">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">Product</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{B14A2C55-B86B-4327-B323-7D4ECDC8113E}"
+      DTS:ObjectName="DstSchema">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">Dimension</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{924D98E7-3066-4F52-BE4A-3EC956D9D83A}"
+      DTS:ObjectName="DstTable">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">Product</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="11"
+      DTS:DTSID="{367FA42B-BA35-41FE-A6C1-AFEAB88E7527}"
+      DTS:ObjectName="FullLoad">
+      <DTS:Property
+        DTS:DataType="11"
+        DTS:Name="ParameterValue">0</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="20"
+      DTS:DTSID="{7DFF73AB-EFD9-4837-A1AC-DE5B6B9EBA73}"
+      DTS:ObjectName="JobParentId">
+      <DTS:Property
+        DTS:DataType="20"
+        DTS:Name="ParameterValue">-1</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{C7477425-DDC2-4C4B-97F9-B652F1853F15}"
+      DTS:ObjectName="SrcSchema">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">Extract</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{1B1C4C3C-8B9C-411A-B8D2-B2C7206D455A}"
+      DTS:ObjectName="SrcTable">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">AdventureWorks2014_Purchasing_Product</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{7C24901F-7A28-4504-8DE7-A9C0E24C8142}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="JobId">
+      <DTS:VariableValue
+        DTS:DataType="20">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{86461EF9-E413-43C2-AB1F-7B99BB1BCE28}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RecordsDeleted">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{5DA1D08D-292C-4CD9-AE9C-2AC3FBA1310B}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RecordsFailed">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{8356022B-633D-44C2-B65D-F6314FC6AE17}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RecordsInserted">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{4902C0A7-0777-46A9-864A-7914274CE43E}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RecordsSelected">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{6A3D25FA-1FA1-4E39-8814-ADD2EC4833BC}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RecordsUnchanged">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{AD0D1EB0-E9F8-40F5-8AC9-EB3D66B894E6}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RecordsUpdated">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\SQL Task failed"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{EC0AF3CA-D20E-481C-AD03-DAC8B3FBF880}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL Task failed"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{353EB879-16F7-4BEB-ABBA-D6AB4FD3D8D8}"
+          SQLTask:SqlStatementSource="EXEC Audit.BatchEnd @JobId, 'Failed'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="JobId"
+            SQLTask:DtsVariableName="User::JobId"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="12"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL Task start"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{C056B997-8532-4110-8C43-89C0869FD060}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL Task start"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{353EB879-16F7-4BEB-ABBA-D6AB4FD3D8D8}"
+          SQLTask:IsStoredProc="True"
+          SQLTask:SqlStatementSource="Audit.BatchStart" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="PackageId"
+            SQLTask:DtsVariableName="System::PackageID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="16"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="PackageName"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="16"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="ParentId"
+            SQLTask:DtsVariableName="$Package::JobParentId"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="12"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="Id"
+            SQLTask:DtsVariableName="User::JobId"
+            SQLTask:ParameterDirection="Output"
+            SQLTask:DataType="12"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="SrcSchema"
+            SQLTask:DtsVariableName="$Package::SrcSchema"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="16"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="SrcTable"
+            SQLTask:DtsVariableName="$Package::SrcTable"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="16"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="DstSchema"
+            SQLTask:DtsVariableName="$Package::DstSchema"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="16"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="DstTable"
+            SQLTask:DtsVariableName="$Package::DstTable"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="16"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL Task succeeded"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{5C71D473-7EA8-4E0D-891D-BF4DD81C8CF1}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL Task succeeded"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{353EB879-16F7-4BEB-ABBA-D6AB4FD3D8D8}"
+          SQLTask:IsStoredProc="True"
+          SQLTask:SqlStatementSource="[Audit].[BatchEnd]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="RecordsSelected"
+            SQLTask:DtsVariableName="User::RecordsSelected"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="12"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="Id"
+            SQLTask:DtsVariableName="User::JobId"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="12"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="RecordsInserted"
+            SQLTask:DtsVariableName="User::RecordsInserted"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="11"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="RecordsDeleted"
+            SQLTask:DtsVariableName="User::RecordsDeleted"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="11"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="RecordsFailed"
+            SQLTask:DtsVariableName="User::RecordsFailed"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="11"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="RecordsUnchanged"
+            SQLTask:DtsVariableName="User::RecordsUnchanged"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="11"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="RecordsUpdated"
+            SQLTask:DtsVariableName="User::RecordsUpdated"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="11"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Transaction RepeatableRead"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{56F7DBC4-8470-48C1-9B0A-385D549ED213}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:ISOLevel="65536"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Transaction RepeatableRead">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{2B7B89F4-5333-4231-A124-7D4E5921E5FF}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:ISOLevel="65536"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="DFT Dimension Vendor from Extract"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\DER Housekeeping"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="DER Housekeeping"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\DER Housekeeping.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\DER Housekeeping.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\DER Housekeeping.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\DER Housekeeping.Outputs[Derived Column Output].Columns[Meta_CreateJob]"
+                          dataType="i8"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\DER Housekeeping.Outputs[Derived Column Output].Columns[Meta_CreateJob]"
+                          name="Meta_CreateJob"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">@[User::JobId]</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">@[User::JobId]</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\DER Housekeeping.Outputs[Derived Column Output].Columns[Meta_CreateTime]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\DER Housekeeping.Outputs[Derived Column Output].Columns[Meta_CreateTime]"
+                          name="Meta_CreateTime"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">[GETDATE]()</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">GETDATE()</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\DER Housekeeping.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\DER Housekeeping.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\DER Housekeeping.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\DER Housekeeping.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\DER Housekeeping.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\DER Housekeeping.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\DST Staging Dim_Vendor"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="DST Staging Dim_Vendor"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[Staging].[Dim_Product]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\DST Staging Dim_Vendor.Connections[OleDbConnection]"
+                      connectionManagerID="{14D596EE-F33B-41EC-805B-60BE3FFE3546}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[Falck_EDW]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\DST Staging Dim_Vendor.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\DST Staging Dim_Vendor.Inputs[OLE DB Destination Input].Columns[Meta_CreateJob]"
+                          cachedDataType="i8"
+                          cachedName="Meta_CreateJob"
+                          externalMetadataColumnId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\DST Staging Dim_Vendor.Inputs[OLE DB Destination Input].ExternalColumns[Meta_CreateJob]"
+                          lineageId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\DER Housekeeping.Outputs[Derived Column Output].Columns[Meta_CreateJob]" />
+                        <inputColumn
+                          refId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\DST Staging Dim_Vendor.Inputs[OLE DB Destination Input].Columns[Meta_CreateTime]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="Meta_CreateTime"
+                          externalMetadataColumnId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\DST Staging Dim_Vendor.Inputs[OLE DB Destination Input].ExternalColumns[Meta_CreateTime]"
+                          lineageId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\DER Housekeeping.Outputs[Derived Column Output].Columns[Meta_CreateTime]" />
+                        <inputColumn
+                          refId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\DST Staging Dim_Vendor.Inputs[OLE DB Destination Input].Columns[Name]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Name"
+                          externalMetadataColumnId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\DST Staging Dim_Vendor.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                          lineageId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\SRC Extract Vendor.Outputs[OLE DB Source Output].Columns[Name]" />
+                        <inputColumn
+                          refId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\DST Staging Dim_Vendor.Inputs[OLE DB Destination Input].Columns[ProductID]"
+                          cachedDataType="i4"
+                          cachedName="ProductID"
+                          externalMetadataColumnId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\DST Staging Dim_Vendor.Inputs[OLE DB Destination Input].ExternalColumns[ProductID]"
+                          lineageId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\SRC Extract Vendor.Outputs[OLE DB Source Output].Columns[ProductID]" />
+                        <inputColumn
+                          refId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\DST Staging Dim_Vendor.Inputs[OLE DB Destination Input].Columns[ProductNumber]"
+                          cachedDataType="wstr"
+                          cachedLength="25"
+                          cachedName="ProductNumber"
+                          externalMetadataColumnId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\DST Staging Dim_Vendor.Inputs[OLE DB Destination Input].ExternalColumns[ProductNumber]"
+                          lineageId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\SRC Extract Vendor.Outputs[OLE DB Source Output].Columns[ProductNumber]" />
+                        <inputColumn
+                          refId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\DST Staging Dim_Vendor.Inputs[OLE DB Destination Input].Columns[Meta_CreateTime1]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="Meta_CreateTime"
+                          externalMetadataColumnId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\DST Staging Dim_Vendor.Inputs[OLE DB Destination Input].ExternalColumns[Meta_ValidFrom]"
+                          lineageId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\SRC Extract Vendor.Outputs[OLE DB Source Output].Columns[Meta_CreateTime]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\DST Staging Dim_Vendor.Inputs[OLE DB Destination Input].ExternalColumns[Meta_CreateJob]"
+                          dataType="i8"
+                          name="Meta_CreateJob" />
+                        <externalMetadataColumn
+                          refId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\DST Staging Dim_Vendor.Inputs[OLE DB Destination Input].ExternalColumns[Meta_CreateTime]"
+                          dataType="dbTimeStamp"
+                          name="Meta_CreateTime" />
+                        <externalMetadataColumn
+                          refId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\DST Staging Dim_Vendor.Inputs[OLE DB Destination Input].ExternalColumns[Meta_ValidFrom]"
+                          dataType="dbTimeStamp"
+                          name="Meta_ValidFrom" />
+                        <externalMetadataColumn
+                          refId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\DST Staging Dim_Vendor.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                          dataType="wstr"
+                          length="50"
+                          name="Name" />
+                        <externalMetadataColumn
+                          refId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\DST Staging Dim_Vendor.Inputs[OLE DB Destination Input].ExternalColumns[ProductID]"
+                          dataType="i4"
+                          name="ProductID" />
+                        <externalMetadataColumn
+                          refId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\DST Staging Dim_Vendor.Inputs[OLE DB Destination Input].ExternalColumns[ProductNumber]"
+                          dataType="wstr"
+                          length="390"
+                          name="ProductNumber" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\DST Staging Dim_Vendor.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\DST Staging Dim_Vendor.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\DST Staging Dim_Vendor.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\DST Staging Dim_Vendor.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\DST Staging Dim_Vendor.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\DST Staging Dim_Vendor.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\RC Inserted"
+                  componentClassID="Microsoft.RowCount"
+                  contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+                  name="RC Inserted">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable to hold the row count."
+                      name="VariableName">User::RecordsInserted</property>
+                  </properties>
+                  <inputs>
+                    <input
+                      refId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\RC Inserted.Inputs[Row Count Input 1]"
+                      hasSideEffects="true"
+                      name="Row Count Input 1">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\RC Inserted.Outputs[Row Count Output 1]"
+                      name="Row Count Output 1"
+                      synchronousInputId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\RC Inserted.Inputs[Row Count Input 1]">
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\RC Selected"
+                  componentClassID="Microsoft.RowCount"
+                  contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+                  name="RC Selected">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable to hold the row count."
+                      name="VariableName">User::RecordsSelected</property>
+                  </properties>
+                  <inputs>
+                    <input
+                      refId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\RC Selected.Inputs[Row Count Input 1]"
+                      hasSideEffects="true"
+                      name="Row Count Input 1">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\RC Selected.Outputs[Row Count Output 1]"
+                      name="Row Count Output 1"
+                      synchronousInputId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\RC Selected.Inputs[Row Count Input 1]">
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\SRC Extract Vendor"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="SRC Extract Vendor"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[Staging].[Dim_Geography]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [ProductID]
+      ,[Name]
+      ,[ProductNumber]
+,Meta_CreateTime
+  FROM [Extract].[AdventureWorks2014_Purchasing_Product]</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\SRC Extract Vendor.Connections[OleDbConnection]"
+                      connectionManagerID="{14D596EE-F33B-41EC-805B-60BE3FFE3546}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[Falck_EDW]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\SRC Extract Vendor.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\SRC Extract Vendor.Outputs[OLE DB Source Output].Columns[Name]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\SRC Extract Vendor.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                          length="50"
+                          lineageId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\SRC Extract Vendor.Outputs[OLE DB Source Output].Columns[Name]"
+                          name="Name"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\SRC Extract Vendor.Outputs[OLE DB Source Output].Columns[ProductID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\SRC Extract Vendor.Outputs[OLE DB Source Output].ExternalColumns[ProductID]"
+                          lineageId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\SRC Extract Vendor.Outputs[OLE DB Source Output].Columns[ProductID]"
+                          name="ProductID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\SRC Extract Vendor.Outputs[OLE DB Source Output].Columns[ProductNumber]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\SRC Extract Vendor.Outputs[OLE DB Source Output].ExternalColumns[ProductNumber]"
+                          length="25"
+                          lineageId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\SRC Extract Vendor.Outputs[OLE DB Source Output].Columns[ProductNumber]"
+                          name="ProductNumber"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\SRC Extract Vendor.Outputs[OLE DB Source Output].Columns[Meta_CreateTime]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\SRC Extract Vendor.Outputs[OLE DB Source Output].ExternalColumns[Meta_CreateTime]"
+                          lineageId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\SRC Extract Vendor.Outputs[OLE DB Source Output].Columns[Meta_CreateTime]"
+                          name="Meta_CreateTime"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\SRC Extract Vendor.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                          dataType="wstr"
+                          length="50"
+                          name="Name" />
+                        <externalMetadataColumn
+                          refId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\SRC Extract Vendor.Outputs[OLE DB Source Output].ExternalColumns[ProductID]"
+                          dataType="i4"
+                          name="ProductID" />
+                        <externalMetadataColumn
+                          refId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\SRC Extract Vendor.Outputs[OLE DB Source Output].ExternalColumns[ProductNumber]"
+                          dataType="wstr"
+                          length="25"
+                          name="ProductNumber" />
+                        <externalMetadataColumn
+                          refId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\SRC Extract Vendor.Outputs[OLE DB Source Output].ExternalColumns[Meta_CreateTime]"
+                          dataType="dbTimeStamp"
+                          name="Meta_CreateTime" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\SRC Extract Vendor.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\SRC Extract Vendor.Outputs[OLE DB Source Error Output].Columns[ProductID]"
+                          dataType="i4"
+                          lineageId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\SRC Extract Vendor.Outputs[OLE DB Source Error Output].Columns[ProductID]"
+                          name="ProductID" />
+                        <outputColumn
+                          refId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\SRC Extract Vendor.Outputs[OLE DB Source Error Output].Columns[Name]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\SRC Extract Vendor.Outputs[OLE DB Source Error Output].Columns[Name]"
+                          name="Name" />
+                        <outputColumn
+                          refId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\SRC Extract Vendor.Outputs[OLE DB Source Error Output].Columns[ProductNumber]"
+                          dataType="wstr"
+                          length="25"
+                          lineageId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\SRC Extract Vendor.Outputs[OLE DB Source Error Output].Columns[ProductNumber]"
+                          name="ProductNumber" />
+                        <outputColumn
+                          refId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\SRC Extract Vendor.Outputs[OLE DB Source Error Output].Columns[Meta_CreateTime]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\SRC Extract Vendor.Outputs[OLE DB Source Error Output].Columns[Meta_CreateTime]"
+                          name="Meta_CreateTime" />
+                        <outputColumn
+                          refId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\SRC Extract Vendor.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\SRC Extract Vendor.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\SRC Extract Vendor.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\SRC Extract Vendor.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract.Paths[Derived Column Output]"
+                  endId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\RC Inserted.Inputs[Row Count Input 1]"
+                  name="Derived Column Output"
+                  startId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\DER Housekeeping.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract.Paths[OLE DB Source Output]"
+                  endId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\RC Selected.Inputs[Row Count Input 1]"
+                  name="OLE DB Source Output"
+                  startId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\SRC Extract Vendor.Outputs[OLE DB Source Output]" />
+                <path
+                  refId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract.Paths[Row Count Output 1]"
+                  endId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\DST Staging Dim_Vendor.Inputs[OLE DB Destination Input]"
+                  name="Row Count Output 1"
+                  startId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\RC Inserted.Outputs[Row Count Output 1]" />
+                <path
+                  refId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract.Paths[Row Count Output 11]"
+                  endId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\DER Housekeeping.Inputs[Derived Column Input]"
+                  name="Row Count Output 1"
+                  startId="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\RC Selected.Outputs[Row Count Output 1]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Transaction RepeatableRead\SQL Insert default unknown"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{992E0678-52C8-469B-8968-BD228FF356CC}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL Insert default unknown"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{353EB879-16F7-4BEB-ABBA-D6AB4FD3D8D8}"
+              SQLTask:SqlStatementSource="EXEC Dimensions.InsertNullRecord @JobId, 'Product_T1'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="JobId"
+                SQLTask:DtsVariableName="User::JobId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="12"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Transaction RepeatableRead\SQL Truncate Staging Dim_Vendor"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{4F6CEE29-CE17-4520-8227-DEE913B21142}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL Truncate Staging Dim_Vendor"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{14D596EE-F33B-41EC-805B-60BE3FFE3546}"
+              SQLTask:SqlStatementSource="TRUNCATE TABLE Staging.Dim_Product" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Transaction RepeatableRead\SQL Update Dimension"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{DEF5FFB8-EA75-4208-BF61-C541A1CC8472}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL Update Dimension"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{353EB879-16F7-4BEB-ABBA-D6AB4FD3D8D8}"
+              SQLTask:IsStoredProc="True"
+              SQLTask:SqlStatementSource="Dimensions.UpdateDimensionT1" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="DimensionName"
+                SQLTask:DtsVariableName="$Package::DimensionName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="16"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="ParentJobId"
+                SQLTask:DtsVariableName="User::JobId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="12"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="FullLoad"
+                SQLTask:DtsVariableName="$Package::FullLoad"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Transaction RepeatableRead.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{0376EDB0-9A1E-4C98-ACFA-2D9D1530AFF3}"
+          DTS:From="Package\Transaction RepeatableRead\SQL Truncate Staging Dim_Vendor"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Transaction RepeatableRead\SQL Insert default unknown" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Transaction RepeatableRead.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{BC47147A-9BE1-41F8-8243-A36CDC394007}"
+          DTS:From="Package\Transaction RepeatableRead\SQL Insert default unknown"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Transaction RepeatableRead.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{141D058E-804C-474F-9308-8494390831EC}"
+          DTS:From="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\Transaction RepeatableRead\SQL Update Dimension" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{982A5BEF-BA0C-43D0-9F8F-DBB64DD982D5}"
+      DTS:From="Package\SQL Task start"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Transaction RepeatableRead" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{E0285ABA-17A3-4184-ACEB-3AD4AC00C279}"
+      DTS:From="Package\Transaction RepeatableRead"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\SQL Task succeeded" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{3FD22976-70A0-4FB3-B51D-2DCF44BFD77E}"
+      DTS:From="Package\Transaction RepeatableRead"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\SQL Task failed"
+      DTS:Value="1" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql12">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph" xmlns:mssge="clr-namespace:Microsoft.SqlServer.Graph.Extended;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <NodeLayout
+          Size="154,42"
+          Id="Package\SQL Task failed"
+          TopLeft="244.5,623.5" />
+        <NodeLayout
+          Size="150,42"
+          Id="Package\SQL Task start"
+          TopLeft="246.5,5.5" />
+        <NodeLayout
+          Size="178,42"
+          Id="Package\SQL Task succeeded"
+          TopLeft="5.50000000000006,623.5" />
+        <NodeLayout
+          Size="251,42"
+          Id="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract"
+          TopLeft="5.50000000000003,209.5" />
+        <NodeLayout
+          Size="213,42"
+          Id="Package\Transaction RepeatableRead\SQL Insert default unknown"
+          TopLeft="25.5,107.5" />
+        <NodeLayout
+          Size="245,42"
+          Id="Package\Transaction RepeatableRead\SQL Truncate Staging Dim_Vendor"
+          TopLeft="8.5,5.5" />
+        <NodeLayout
+          Size="189,42"
+          Id="Package\Transaction RepeatableRead\SQL Update Dimension"
+          TopLeft="37.5000000000001,311.5" />
+        <EdgeLayout
+          Id="Package\Transaction RepeatableRead.PrecedenceConstraints[Constraint]"
+          TopLeft="131.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transaction RepeatableRead.PrecedenceConstraints[Constraint 1]"
+          TopLeft="131.5,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transaction RepeatableRead.PrecedenceConstraints[Constraint 2]"
+          TopLeft="131.5,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text=""
+          ParentId="Package\Transaction RepeatableRead"
+          FontInfo="{x:Null}"
+          Size="36,42"
+          Id="9cc478ec-4a96-4948-930f-6771754fe48f"
+          TopLeft="287,311.5" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="328,409"
+          Size="328,452"
+          Id="Package\Transaction RepeatableRead"
+          TopLeft="157.5,107.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="321.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="268.166666666667,559.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="-173.666666666667,64.0000000000001"
+              Start="0,0"
+              End="-173.666666666667,56.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.7864077669903" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21.7864077669903"
+                    Point2="0,25.7864077669903"
+                    Point3="-4,25.7864077669903" />
+                  <mssgle:LineSegment
+                    End="-169.666666666667,25.7864077669903" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-169.666666666667,25.7864077669903"
+                    Point2="-173.666666666667,25.7864077669903"
+                    Point3="-173.666666666667,29.7864077669903" />
+                  <mssgle:LineSegment
+                    End="-173.666666666667,56.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="374.833333333333,559.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="-53.3333333333333,64"
+              Start="0,0"
+              End="-53.3333333333333,56.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.7864077669903" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21.7864077669903"
+                    Point2="0,25.7864077669903"
+                    Point3="-4,25.7864077669903" />
+                  <mssgle:LineSegment
+                    End="-49.3333333333333,25.7864077669903" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-49.3333333333333,25.7864077669903"
+                    Point2="-53.3333333333333,25.7864077669903"
+                    Point3="-53.3333333333333,29.7864077669903" />
+                  <mssgle:LineSegment
+                    End="-53.3333333333333,56.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-41.9080143229167,30.7864077669903,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="Load product Vendor"
+          ParentId="Package"
+          Size="218,50"
+          Id="b410d23f-522b-4e5e-a454-b0bb232e2efd"
+          TopLeft="460,622.5">
+          <AnnotationLayout.FontInfo>
+            <mssge:FontInfo
+              Family="Tahoma"
+              Size="20.25"
+              Color="#FF000000">
+              <mssge:FontInfo.TextDecorations>
+                <av:TextDecorationCollection />
+              </mssge:FontInfo.TextDecorations>
+            </mssge:FontInfo>
+          </AnnotationLayout.FontInfo>
+        </AnnotationLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="137,42"
+          Id="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\RC Selected"
+          TopLeft="37,107.5" />
+        <NodeLayout
+          Size="200,42"
+          Id="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\DST Staging Dim_Vendor"
+          TopLeft="5.50000000000004,413.5" />
+        <NodeLayout
+          Size="173,42"
+          Id="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\SRC Extract Vendor"
+          TopLeft="19,5.5" />
+        <NodeLayout
+          Size="137,42"
+          Id="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\RC Inserted"
+          TopLeft="37,311.5" />
+        <NodeLayout
+          Size="170,42"
+          Id="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\DER Housekeeping"
+          TopLeft="20.5,209.5" />
+        <EdgeLayout
+          Id="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract.Paths[OLE DB Source Output]"
+          TopLeft="105.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract.Paths[Derived Column Output]"
+          TopLeft="105.5,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract.Paths[Row Count Output 11]"
+          TopLeft="105.5,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract.Paths[Row Count Output 1]"
+          TopLeft="105.5,353.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\SRC Extract Vendor">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Transaction RepeatableRead\DFT Dimension Vendor from Extract\DST Staging Dim_Vendor">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

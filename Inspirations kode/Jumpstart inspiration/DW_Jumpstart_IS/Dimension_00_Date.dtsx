@@ -1,0 +1,2099 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/9/2015 3:09:55 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="T440SW7SIBR"
+  DTS:CreatorName="NCLAN\sibr"
+  DTS:DTSID="{9CBA4E11-3259-4A2F-9B32-2A6356EC3ED7}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="13.0.2165.0"
+  DTS:LocaleID="1030"
+  DTS:ObjectName="Dimension_00_Date"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="0"
+  DTS:VersionBuild="302"
+  DTS:VersionGUID="{2D3DD160-4157-4339-930D-044E53A59BFF}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{EE7B85D2-D84C-4D17-AE82-F64DC6B89F5E}"
+      DTS:ObjectName="DimensionName">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">Date</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="11"
+      DTS:DTSID="{93372F4A-8FDF-4353-B428-DAE817D8FE05}"
+      DTS:ObjectName="FullLoad">
+      <DTS:Property
+        DTS:DataType="11"
+        DTS:Name="ParameterValue">-1</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="20"
+      DTS:DTSID="{E43AC028-7383-446D-BB5B-E32B817654AA}"
+      DTS:ObjectName="ParentExecutionId">
+      <DTS:Property
+        DTS:DataType="20"
+        DTS:Name="ParameterValue">-1</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{737B2A61-F231-4258-98C9-2DD2CB9B944A}"
+      DTS:ObjectName="Source">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">Utility.Calendar</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{84154A34-ACFC-4C57-979A-B1B3D5E54735}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="ExecutionId">
+      <DTS:VariableValue
+        DTS:DataType="20">-1</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{E47D9953-2114-4EF1-93CE-3D12C38BA6B9}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ExecutionStatus">
+      <DTS:VariableValue
+        DTS:DataType="8">Succeeded</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{FA1CE2EA-92CB-4025-B596-64297185E132}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="IsLoaded">
+      <DTS:VariableValue
+        DTS:DataType="11">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{438F3443-4A5F-4E96-8FC4-D4F49E3B701A}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[$Package::DimensionName]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="TableName">
+      <DTS:VariableValue
+        DTS:DataType="8">Date</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{9D1AC2CF-82C1-4252-A8CD-4A2CE7B99DA5}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;Dimension&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="TableSchemaName">
+      <DTS:VariableValue
+        DTS:DataType="8">Dimension</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\SEQC All"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{621440A5-CCD9-4806-BFDF-BB1BED7D8F27}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:ISOLevel="65536"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SEQC All">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\SEQC All\DFT Dimension Date"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{E00BF05B-6547-48D0-8799-F192F276311C}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="DFT Dimension Date"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{59E78E25-E392-41E7-9C76-7B9786D05F5A}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="User"
+              DTS:ObjectName="DataTransferId">
+              <DTS:VariableValue
+                DTS:DataType="20">-1</DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{9AE9108D-3894-4D32-891B-505F09E95F93}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="User"
+              DTS:ObjectName="RecordsFailed">
+              <DTS:VariableValue
+                DTS:DataType="3">0</DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{2AA3F1A7-DC08-4DEA-9662-9E6108F75236}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="User"
+              DTS:ObjectName="RecordsInserted">
+              <DTS:VariableValue
+                DTS:DataType="3">0</DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{6A7E2DDD-E89E-4A50-91EE-DB6B2DC6F362}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="User"
+              DTS:ObjectName="RecordsSelected">
+              <DTS:VariableValue
+                DTS:DataType="3">0</DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{8EBBD81B-BA20-4216-B85C-3CEBB3540F79}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="TaskStatus">
+              <DTS:VariableValue
+                DTS:DataType="8">Succeeded</DTS:VariableValue>
+            </DTS:Variable>
+          </DTS:Variables>
+          <DTS:EventHandlers>
+            <DTS:EventHandler
+              DTS:refId="Package\SEQC All\DFT Dimension Date.EventHandlers[OnPostExecute]"
+              DTS:CreationName="OnPostExecute"
+              DTS:DTSID="{50C43E28-68E3-4F00-89E6-6A248ACF5BCC}"
+              DTS:EventID="0"
+              DTS:EventName="OnPostExecute"
+              DTS:LocaleID="-1">
+              <DTS:Variables>
+                <DTS:Variable
+                  DTS:CreationName=""
+                  DTS:Description="The propagate property of the event"
+                  DTS:DTSID="{7E5CB9D7-3F17-4FF1-BE52-5DBEA012DAA4}"
+                  DTS:IncludeInDebugDump="6789"
+                  DTS:Namespace="System"
+                  DTS:ObjectName="Propagate">
+                  <DTS:VariableValue
+                    DTS:DataType="11">-1</DTS:VariableValue>
+                </DTS:Variable>
+              </DTS:Variables>
+              <DTS:Executables>
+                <DTS:Executable
+                  DTS:refId="Package\SEQC All\DFT Dimension Date.EventHandlers[OnPostExecute]\SQL Audit DataTransferEnd"
+                  DTS:CreationName="Microsoft.ExecuteSQLTask"
+                  DTS:Description="Execute SQL Task"
+                  DTS:DTSID="{6abe5d70-efa0-4408-8456-6e473b7b83c1}"
+                  DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+                  DTS:LocaleID="-1"
+                  DTS:ObjectName="SQL Audit DataTransferEnd"
+                  DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+                  <DTS:Variables />
+                  <DTS:ObjectData>
+                    <SQLTask:SqlTaskData
+                      SQLTask:Connection="{353EB879-16F7-4BEB-ABBA-D6AB4FD3D8D8}"
+                      SQLTask:IsStoredProc="True"
+                      SQLTask:SqlStatementSource="Audit.DataTransferEnd" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+                      <SQLTask:ParameterBinding
+                        SQLTask:ParameterName="DataTransferId"
+                        SQLTask:DtsVariableName="User::DataTransferId"
+                        SQLTask:ParameterDirection="Input"
+                        SQLTask:DataType="12"
+                        SQLTask:ParameterSize="-1" />
+                      <SQLTask:ParameterBinding
+                        SQLTask:ParameterName="RecordsSelected"
+                        SQLTask:DtsVariableName="User::RecordsSelected"
+                        SQLTask:ParameterDirection="Input"
+                        SQLTask:DataType="11"
+                        SQLTask:ParameterSize="-1" />
+                      <SQLTask:ParameterBinding
+                        SQLTask:ParameterName="RecordsInserted"
+                        SQLTask:DtsVariableName="User::RecordsInserted"
+                        SQLTask:ParameterDirection="Input"
+                        SQLTask:DataType="11"
+                        SQLTask:ParameterSize="-1" />
+                      <SQLTask:ParameterBinding
+                        SQLTask:ParameterName="RecordsFailed"
+                        SQLTask:DtsVariableName="User::RecordsFailed"
+                        SQLTask:ParameterDirection="Input"
+                        SQLTask:DataType="11"
+                        SQLTask:ParameterSize="-1" />
+                      <SQLTask:ParameterBinding
+                        SQLTask:ParameterName="Status"
+                        SQLTask:DtsVariableName="User::TaskStatus"
+                        SQLTask:ParameterDirection="Input"
+                        SQLTask:DataType="16"
+                        SQLTask:ParameterSize="-1" />
+                    </SQLTask:SqlTaskData>
+                  </DTS:ObjectData>
+                </DTS:Executable>
+              </DTS:Executables>
+            </DTS:EventHandler>
+            <DTS:EventHandler
+              DTS:refId="Package\SEQC All\DFT Dimension Date.EventHandlers[OnPreExecute]"
+              DTS:CreationName="OnPreExecute"
+              DTS:DTSID="{48DD3B6A-509E-41B6-B514-B365373D812F}"
+              DTS:EventID="0"
+              DTS:EventName="OnPreExecute"
+              DTS:LocaleID="-1">
+              <DTS:Variables>
+                <DTS:Variable
+                  DTS:CreationName=""
+                  DTS:Description="The propagate property of the event"
+                  DTS:DTSID="{B0DA97AF-89F3-44CE-97C0-AF8CDB6C259A}"
+                  DTS:IncludeInDebugDump="6789"
+                  DTS:Namespace="System"
+                  DTS:ObjectName="Propagate">
+                  <DTS:VariableValue
+                    DTS:DataType="11">-1</DTS:VariableValue>
+                </DTS:Variable>
+              </DTS:Variables>
+              <DTS:Executables>
+                <DTS:Executable
+                  DTS:refId="Package\SEQC All\DFT Dimension Date.EventHandlers[OnPreExecute]\SQL Audit DataTransferStart"
+                  DTS:CreationName="Microsoft.ExecuteSQLTask"
+                  DTS:Description="Execute SQL Task"
+                  DTS:DTSID="{9ca331d5-2fbe-4ab4-a7d8-f1436c9175fe}"
+                  DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+                  DTS:LocaleID="-1"
+                  DTS:ObjectName="SQL Audit DataTransferStart"
+                  DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+                  <DTS:Variables />
+                  <DTS:ObjectData>
+                    <SQLTask:SqlTaskData
+                      SQLTask:Connection="{353EB879-16F7-4BEB-ABBA-D6AB4FD3D8D8}"
+                      SQLTask:IsStoredProc="True"
+                      SQLTask:SqlStatementSource="Audit.DataTransferStart" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+                      <SQLTask:ParameterBinding
+                        SQLTask:ParameterName="ExecutionId"
+                        SQLTask:DtsVariableName="User::ExecutionId"
+                        SQLTask:ParameterDirection="Input"
+                        SQLTask:DataType="12"
+                        SQLTask:ParameterSize="-1" />
+                      <SQLTask:ParameterBinding
+                        SQLTask:ParameterName="DataTransferId"
+                        SQLTask:DtsVariableName="User::DataTransferId"
+                        SQLTask:ParameterDirection="Output"
+                        SQLTask:DataType="12"
+                        SQLTask:ParameterSize="-1" />
+                      <SQLTask:ParameterBinding
+                        SQLTask:ParameterName="TableName"
+                        SQLTask:DtsVariableName="User::TableName"
+                        SQLTask:ParameterDirection="Input"
+                        SQLTask:DataType="16"
+                        SQLTask:ParameterSize="-1" />
+                      <SQLTask:ParameterBinding
+                        SQLTask:ParameterName="SchemaName"
+                        SQLTask:DtsVariableName="User::TableSchemaName"
+                        SQLTask:ParameterDirection="Input"
+                        SQLTask:DataType="16"
+                        SQLTask:ParameterSize="-1" />
+                      <SQLTask:ParameterBinding
+                        SQLTask:ParameterName="TaskID"
+                        SQLTask:DtsVariableName="System::SourceID"
+                        SQLTask:ParameterDirection="Input"
+                        SQLTask:DataType="16"
+                        SQLTask:ParameterSize="-1" />
+                      <SQLTask:ParameterBinding
+                        SQLTask:ParameterName="TaskName"
+                        SQLTask:DtsVariableName="System::SourceName"
+                        SQLTask:ParameterDirection="Input"
+                        SQLTask:DataType="16"
+                        SQLTask:ParameterSize="-1" />
+                      <SQLTask:ParameterBinding
+                        SQLTask:ParameterName="Source"
+                        SQLTask:DtsVariableName="$Package::Source"
+                        SQLTask:ParameterDirection="Input"
+                        SQLTask:DataType="16"
+                        SQLTask:ParameterSize="-1" />
+                    </SQLTask:SqlTaskData>
+                  </DTS:ObjectData>
+                </DTS:Executable>
+              </DTS:Executables>
+            </DTS:EventHandler>
+            <DTS:EventHandler
+              DTS:refId="Package\SEQC All\DFT Dimension Date.EventHandlers[OnTaskFailed]"
+              DTS:CreationName="OnTaskFailed"
+              DTS:DTSID="{BE6450D5-216D-472E-99D8-5DF88555F500}"
+              DTS:EventID="0"
+              DTS:EventName="OnTaskFailed"
+              DTS:LocaleID="-1">
+              <DTS:Variables>
+                <DTS:Variable
+                  DTS:CreationName=""
+                  DTS:Description="The propagate property of the event"
+                  DTS:DTSID="{022A59D5-6856-49A7-ADAD-8F1ABF601CFA}"
+                  DTS:IncludeInDebugDump="6789"
+                  DTS:Namespace="System"
+                  DTS:ObjectName="Propagate">
+                  <DTS:VariableValue
+                    DTS:DataType="11">-1</DTS:VariableValue>
+                </DTS:Variable>
+              </DTS:Variables>
+              <DTS:Executables>
+                <DTS:Executable
+                  DTS:refId="Package\SEQC All\DFT Dimension Date.EventHandlers[OnTaskFailed]\EXP Set TaskStatus to Failed"
+                  DTS:CreationName="Microsoft.ExpressionTask"
+                  DTS:Description="Expression Task"
+                  DTS:DTSID="{476b49b6-0ff0-47f1-8a10-b56420aaeb3b}"
+                  DTS:ExecutableType="Microsoft.ExpressionTask"
+                  DTS:LocaleID="-1"
+                  DTS:ObjectName="EXP Set TaskStatus to Failed"
+                  DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+                  <DTS:Variables />
+                  <DTS:ObjectData>
+                    <ExpressionTask
+                      Expression="@[User::TaskStatus] = &quot;Failed&quot;" />
+                  </DTS:ObjectData>
+                </DTS:Executable>
+              </DTS:Executables>
+            </DTS:EventHandler>
+          </DTS:EventHandlers>
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\SEQC All\DFT Dimension Date\DER Append metadata"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="DER Append metadata"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\SEQC All\DFT Dimension Date\DER Append metadata.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\DER Append metadata.Inputs[Derived Column Input].Columns[IsWeekend]"
+                          cachedDataType="i4"
+                          cachedName="IsWeekend"
+                          lineageId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].Columns[IsWeekend]" />
+                        <inputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\DER Append metadata.Inputs[Derived Column Input].Columns[IsHoliday_DK]"
+                          cachedDataType="i4"
+                          cachedName="IsHoliday_DK"
+                          lineageId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].Columns[IsHoliday_DK]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SEQC All\DFT Dimension Date\DER Append metadata.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\SEQC All\DFT Dimension Date\DER Append metadata.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\DER Append metadata.Outputs[Derived Column Output].Columns[Meta_CreateTime]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\SEQC All\DFT Dimension Date\DER Append metadata.Outputs[Derived Column Output].Columns[Meta_CreateTime]"
+                          name="Meta_CreateTime"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">[GETDATE]()</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">GETDATE()</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\DER Append metadata.Outputs[Derived Column Output].Columns[Meta_CreateJob]"
+                          dataType="i8"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\SEQC All\DFT Dimension Date\DER Append metadata.Outputs[Derived Column Output].Columns[Meta_CreateJob]"
+                          name="Meta_CreateJob"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">@[User::DataTransferId]</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">@[User::DataTransferId]</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\DER Append metadata.Outputs[Derived Column Output].Columns[IsWorkday]"
+                          dataType="bool"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\SEQC All\DFT Dimension Date\DER Append metadata.Outputs[Derived Column Output].Columns[IsWorkday]"
+                          name="IsWorkday"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">#{Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].Columns[IsWeekend]} == 0 &amp;&amp; #{Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].Columns[IsHoliday_DK]} == 0</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">IsWeekend == 0 &amp;&amp; IsHoliday_DK == 0</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\SEQC All\DFT Dimension Date\DER Append metadata.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\SEQC All\DFT Dimension Date\DER Append metadata.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\DER Append metadata.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SEQC All\DFT Dimension Date\DER Append metadata.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\DER Append metadata.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SEQC All\DFT Dimension Date\DER Append metadata.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SEQC All\DFT Dimension Date\DST Dimension Date"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="DST Dimension Date"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[Dimension].[Date]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\SEQC All\DFT Dimension Date\DST Dimension Date.Connections[OleDbConnection]"
+                      connectionManagerID="{14D596EE-F33B-41EC-805B-60BE3FFE3546}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[DW OLEDB]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\SEQC All\DFT Dimension Date\DST Dimension Date.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="RedirectRow"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\DST Dimension Date.Inputs[OLE DB Destination Input].Columns[Date]"
+                          cachedDataType="dbDate"
+                          cachedName="Date"
+                          externalMetadataColumnId="Package\SEQC All\DFT Dimension Date\DST Dimension Date.Inputs[OLE DB Destination Input].ExternalColumns[Date]"
+                          lineageId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].Columns[Date]" />
+                        <inputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\DST Dimension Date.Inputs[OLE DB Destination Input].Columns[Meta_CreateTime]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="Meta_CreateTime"
+                          externalMetadataColumnId="Package\SEQC All\DFT Dimension Date\DST Dimension Date.Inputs[OLE DB Destination Input].ExternalColumns[Meta_CreateTime]"
+                          lineageId="Package\SEQC All\DFT Dimension Date\DER Append metadata.Outputs[Derived Column Output].Columns[Meta_CreateTime]" />
+                        <inputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\DST Dimension Date.Inputs[OLE DB Destination Input].Columns[Meta_CreateJob]"
+                          cachedDataType="i8"
+                          cachedName="Meta_CreateJob"
+                          externalMetadataColumnId="Package\SEQC All\DFT Dimension Date\DST Dimension Date.Inputs[OLE DB Destination Input].ExternalColumns[Meta_CreateJob]"
+                          lineageId="Package\SEQC All\DFT Dimension Date\DER Append metadata.Outputs[Derived Column Output].Columns[Meta_CreateJob]" />
+                        <inputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\DST Dimension Date.Inputs[OLE DB Destination Input].Columns[YearKey]"
+                          cachedDataType="i8"
+                          cachedName="YearKey"
+                          externalMetadataColumnId="Package\SEQC All\DFT Dimension Date\DST Dimension Date.Inputs[OLE DB Destination Input].ExternalColumns[YearKey]"
+                          lineageId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].Columns[YearKey]" />
+                        <inputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\DST Dimension Date.Inputs[OLE DB Destination Input].Columns[Year]"
+                          cachedDataType="wstr"
+                          cachedLength="9"
+                          cachedName="Year"
+                          externalMetadataColumnId="Package\SEQC All\DFT Dimension Date\DST Dimension Date.Inputs[OLE DB Destination Input].ExternalColumns[Year]"
+                          lineageId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].Columns[Year]" />
+                        <inputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\DST Dimension Date.Inputs[OLE DB Destination Input].Columns[Quarter]"
+                          cachedDataType="wstr"
+                          cachedLength="10"
+                          cachedName="Quarter"
+                          externalMetadataColumnId="Package\SEQC All\DFT Dimension Date\DST Dimension Date.Inputs[OLE DB Destination Input].ExternalColumns[Quarter]"
+                          lineageId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].Columns[Quarter]" />
+                        <inputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\DST Dimension Date.Inputs[OLE DB Destination Input].Columns[QuarterKey]"
+                          cachedDataType="i8"
+                          cachedName="QuarterKey"
+                          externalMetadataColumnId="Package\SEQC All\DFT Dimension Date\DST Dimension Date.Inputs[OLE DB Destination Input].ExternalColumns[QuarterKey]"
+                          lineageId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].Columns[QuarterKey]" />
+                        <inputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\DST Dimension Date.Inputs[OLE DB Destination Input].Columns[MonthKey]"
+                          cachedDataType="i8"
+                          cachedName="MonthKey"
+                          externalMetadataColumnId="Package\SEQC All\DFT Dimension Date\DST Dimension Date.Inputs[OLE DB Destination Input].ExternalColumns[MonthKey]"
+                          lineageId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].Columns[MonthKey]" />
+                        <inputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\DST Dimension Date.Inputs[OLE DB Destination Input].Columns[Month]"
+                          cachedDataType="wstr"
+                          cachedLength="9"
+                          cachedName="Month"
+                          externalMetadataColumnId="Package\SEQC All\DFT Dimension Date\DST Dimension Date.Inputs[OLE DB Destination Input].ExternalColumns[Month]"
+                          lineageId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].Columns[Month]" />
+                        <inputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\DST Dimension Date.Inputs[OLE DB Destination Input].Columns[WeekKey]"
+                          cachedDataType="i8"
+                          cachedName="WeekKey"
+                          externalMetadataColumnId="Package\SEQC All\DFT Dimension Date\DST Dimension Date.Inputs[OLE DB Destination Input].ExternalColumns[WeekKey]"
+                          lineageId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].Columns[WeekKey]" />
+                        <inputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\DST Dimension Date.Inputs[OLE DB Destination Input].Columns[Week]"
+                          cachedDataType="wstr"
+                          cachedLength="7"
+                          cachedName="Week"
+                          externalMetadataColumnId="Package\SEQC All\DFT Dimension Date\DST Dimension Date.Inputs[OLE DB Destination Input].ExternalColumns[Week]"
+                          lineageId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].Columns[Week]" />
+                        <inputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\DST Dimension Date.Inputs[OLE DB Destination Input].Columns[WeekdayKey]"
+                          cachedDataType="i8"
+                          cachedName="WeekdayKey"
+                          externalMetadataColumnId="Package\SEQC All\DFT Dimension Date\DST Dimension Date.Inputs[OLE DB Destination Input].ExternalColumns[WeekdayKey]"
+                          lineageId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].Columns[WeekdayKey]" />
+                        <inputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\DST Dimension Date.Inputs[OLE DB Destination Input].Columns[Weekday]"
+                          cachedDataType="wstr"
+                          cachedLength="9"
+                          cachedName="Weekday"
+                          externalMetadataColumnId="Package\SEQC All\DFT Dimension Date\DST Dimension Date.Inputs[OLE DB Destination Input].ExternalColumns[Weekday]"
+                          lineageId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].Columns[Weekday]" />
+                        <inputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\DST Dimension Date.Inputs[OLE DB Destination Input].Columns[DayInYearKey]"
+                          cachedDataType="i8"
+                          cachedName="DayInYearKey"
+                          externalMetadataColumnId="Package\SEQC All\DFT Dimension Date\DST Dimension Date.Inputs[OLE DB Destination Input].ExternalColumns[DayOfYear]"
+                          lineageId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].Columns[DayInYearKey]" />
+                        <inputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\DST Dimension Date.Inputs[OLE DB Destination Input].Columns[DayInMonthKey]"
+                          cachedDataType="i8"
+                          cachedName="DayInMonthKey"
+                          externalMetadataColumnId="Package\SEQC All\DFT Dimension Date\DST Dimension Date.Inputs[OLE DB Destination Input].ExternalColumns[DayOfMonth]"
+                          lineageId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].Columns[DayInMonthKey]" />
+                        <inputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\DST Dimension Date.Inputs[OLE DB Destination Input].Columns[IsWorkday]"
+                          cachedDataType="bool"
+                          cachedName="IsWorkday"
+                          externalMetadataColumnId="Package\SEQC All\DFT Dimension Date\DST Dimension Date.Inputs[OLE DB Destination Input].ExternalColumns[IsWorkday]"
+                          lineageId="Package\SEQC All\DFT Dimension Date\DER Append metadata.Outputs[Derived Column Output].Columns[IsWorkday]" />
+                        <inputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\DST Dimension Date.Inputs[OLE DB Destination Input].Columns[IsHoliday_DK]"
+                          cachedDataType="i4"
+                          cachedName="IsHoliday_DK"
+                          externalMetadataColumnId="Package\SEQC All\DFT Dimension Date\DST Dimension Date.Inputs[OLE DB Destination Input].ExternalColumns[IsPublicHoliday]"
+                          lineageId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].Columns[IsHoliday_DK]" />
+                        <inputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\DST Dimension Date.Inputs[OLE DB Destination Input].Columns[DateKey]"
+                          cachedDataType="i8"
+                          cachedName="DateKey"
+                          externalMetadataColumnId="Package\SEQC All\DFT Dimension Date\DST Dimension Date.Inputs[OLE DB Destination Input].ExternalColumns[EKey_Date]"
+                          lineageId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].Columns[DateKey]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Dimension Date\DST Dimension Date.Inputs[OLE DB Destination Input].ExternalColumns[Date]"
+                          dataType="dbDate"
+                          name="Date" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Dimension Date\DST Dimension Date.Inputs[OLE DB Destination Input].ExternalColumns[YearKey]"
+                          dataType="i4"
+                          name="YearKey" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Dimension Date\DST Dimension Date.Inputs[OLE DB Destination Input].ExternalColumns[Year]"
+                          dataType="wstr"
+                          length="9"
+                          name="Year" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Dimension Date\DST Dimension Date.Inputs[OLE DB Destination Input].ExternalColumns[QuarterKey]"
+                          dataType="i4"
+                          name="QuarterKey" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Dimension Date\DST Dimension Date.Inputs[OLE DB Destination Input].ExternalColumns[Quarter]"
+                          dataType="wstr"
+                          length="10"
+                          name="Quarter" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Dimension Date\DST Dimension Date.Inputs[OLE DB Destination Input].ExternalColumns[MonthKey]"
+                          dataType="i4"
+                          name="MonthKey" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Dimension Date\DST Dimension Date.Inputs[OLE DB Destination Input].ExternalColumns[Month]"
+                          dataType="wstr"
+                          length="9"
+                          name="Month" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Dimension Date\DST Dimension Date.Inputs[OLE DB Destination Input].ExternalColumns[WeekKey]"
+                          dataType="i4"
+                          name="WeekKey" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Dimension Date\DST Dimension Date.Inputs[OLE DB Destination Input].ExternalColumns[Week]"
+                          dataType="wstr"
+                          length="7"
+                          name="Week" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Dimension Date\DST Dimension Date.Inputs[OLE DB Destination Input].ExternalColumns[WeekdayKey]"
+                          dataType="i4"
+                          name="WeekdayKey" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Dimension Date\DST Dimension Date.Inputs[OLE DB Destination Input].ExternalColumns[Weekday]"
+                          dataType="wstr"
+                          length="9"
+                          name="Weekday" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Dimension Date\DST Dimension Date.Inputs[OLE DB Destination Input].ExternalColumns[DayOfYear]"
+                          dataType="i4"
+                          name="DayOfYear" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Dimension Date\DST Dimension Date.Inputs[OLE DB Destination Input].ExternalColumns[DayOfMonth]"
+                          dataType="i4"
+                          name="DayOfMonth" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Dimension Date\DST Dimension Date.Inputs[OLE DB Destination Input].ExternalColumns[IsWorkday]"
+                          dataType="bool"
+                          name="IsWorkday" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Dimension Date\DST Dimension Date.Inputs[OLE DB Destination Input].ExternalColumns[IsPublicHoliday]"
+                          dataType="bool"
+                          name="IsPublicHoliday" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Dimension Date\DST Dimension Date.Inputs[OLE DB Destination Input].ExternalColumns[IsDayWithIce]"
+                          dataType="bool"
+                          name="IsDayWithIce" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Dimension Date\DST Dimension Date.Inputs[OLE DB Destination Input].ExternalColumns[EKey_Date]"
+                          dataType="i8"
+                          name="EKey_Date" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Dimension Date\DST Dimension Date.Inputs[OLE DB Destination Input].ExternalColumns[Meta_CreateTime]"
+                          dataType="dbTimeStamp"
+                          name="Meta_CreateTime" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Dimension Date\DST Dimension Date.Inputs[OLE DB Destination Input].ExternalColumns[Meta_CreateJob]"
+                          dataType="i8"
+                          name="Meta_CreateJob" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SEQC All\DFT Dimension Date\DST Dimension Date.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\SEQC All\DFT Dimension Date\DST Dimension Date.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\DST Dimension Date.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SEQC All\DFT Dimension Date\DST Dimension Date.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\DST Dimension Date.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SEQC All\DFT Dimension Date\DST Dimension Date.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SEQC All\DFT Dimension Date\RC Failed"
+                  componentClassID="Microsoft.RowCount"
+                  contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+                  name="RC Failed">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable to hold the row count."
+                      name="VariableName">User::RecordsFailed</property>
+                  </properties>
+                  <inputs>
+                    <input
+                      refId="Package\SEQC All\DFT Dimension Date\RC Failed.Inputs[Row Count Input 1]"
+                      hasSideEffects="true"
+                      name="Row Count Input 1">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SEQC All\DFT Dimension Date\RC Failed.Outputs[Row Count Output 1]"
+                      name="Row Count Output 1"
+                      synchronousInputId="Package\SEQC All\DFT Dimension Date\RC Failed.Inputs[Row Count Input 1]">
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SEQC All\DFT Dimension Date\RC Inserted"
+                  componentClassID="Microsoft.RowCount"
+                  contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+                  name="RC Inserted">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable to hold the row count."
+                      name="VariableName">User::RecordsInserted</property>
+                  </properties>
+                  <inputs>
+                    <input
+                      refId="Package\SEQC All\DFT Dimension Date\RC Inserted.Inputs[Row Count Input 1]"
+                      hasSideEffects="true"
+                      name="Row Count Input 1">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SEQC All\DFT Dimension Date\RC Inserted.Outputs[Row Count Output 1]"
+                      name="Row Count Output 1"
+                      synchronousInputId="Package\SEQC All\DFT Dimension Date\RC Inserted.Inputs[Row Count Input 1]">
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SEQC All\DFT Dimension Date\RC Selected"
+                  componentClassID="Microsoft.RowCount"
+                  contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+                  name="RC Selected">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable to hold the row count."
+                      name="VariableName">User::RecordsSelected</property>
+                  </properties>
+                  <inputs>
+                    <input
+                      refId="Package\SEQC All\DFT Dimension Date\RC Selected.Inputs[Row Count Input 1]"
+                      hasSideEffects="true"
+                      name="Row Count Input 1">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SEQC All\DFT Dimension Date\RC Selected.Outputs[Row Count Output 1]"
+                      name="Row Count Output 1"
+                      synchronousInputId="Package\SEQC All\DFT Dimension Date\RC Selected.Inputs[Row Count Input 1]">
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="SRC Staging Calendar"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[Utility].[Calendar_UK]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Connections[OleDbConnection]"
+                      connectionManagerID="{14D596EE-F33B-41EC-805B-60BE3FFE3546}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[DW OLEDB]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].Columns[DateKey]"
+                          dataType="i8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].ExternalColumns[DateKey]"
+                          lineageId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].Columns[DateKey]"
+                          name="DateKey"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].Columns[Date]"
+                          dataType="dbDate"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].ExternalColumns[Date]"
+                          lineageId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].Columns[Date]"
+                          name="Date"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].Columns[YearKey]"
+                          dataType="i8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].ExternalColumns[YearKey]"
+                          lineageId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].Columns[YearKey]"
+                          name="YearKey"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].Columns[Year]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].ExternalColumns[Year]"
+                          length="9"
+                          lineageId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].Columns[Year]"
+                          name="Year"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].Columns[YearByWeekKey]"
+                          dataType="i8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].ExternalColumns[YearByWeekKey]"
+                          lineageId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].Columns[YearByWeekKey]"
+                          name="YearByWeekKey"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].Columns[YearByWeek]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].ExternalColumns[YearByWeek]"
+                          length="9"
+                          lineageId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].Columns[YearByWeek]"
+                          name="YearByWeek"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].Columns[QuarterKey]"
+                          dataType="i8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].ExternalColumns[QuarterKey]"
+                          lineageId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].Columns[QuarterKey]"
+                          name="QuarterKey"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].Columns[Quarter]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].ExternalColumns[Quarter]"
+                          length="10"
+                          lineageId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].Columns[Quarter]"
+                          name="Quarter"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].Columns[QuarterByWeekKey]"
+                          dataType="i8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].ExternalColumns[QuarterByWeekKey]"
+                          lineageId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].Columns[QuarterByWeekKey]"
+                          name="QuarterByWeekKey"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].Columns[QuarterByWeek]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].ExternalColumns[QuarterByWeek]"
+                          length="10"
+                          lineageId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].Columns[QuarterByWeek]"
+                          name="QuarterByWeek"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].Columns[MonthKey]"
+                          dataType="i8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].ExternalColumns[MonthKey]"
+                          lineageId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].Columns[MonthKey]"
+                          name="MonthKey"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].Columns[Month]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].ExternalColumns[Month]"
+                          length="9"
+                          lineageId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].Columns[Month]"
+                          name="Month"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].Columns[WeekKey]"
+                          dataType="i8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].ExternalColumns[WeekKey]"
+                          lineageId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].Columns[WeekKey]"
+                          name="WeekKey"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].Columns[Week]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].ExternalColumns[Week]"
+                          length="7"
+                          lineageId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].Columns[Week]"
+                          name="Week"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].Columns[WeekdayKey]"
+                          dataType="i8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].ExternalColumns[WeekdayKey]"
+                          lineageId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].Columns[WeekdayKey]"
+                          name="WeekdayKey"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].Columns[Weekday]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].ExternalColumns[Weekday]"
+                          length="9"
+                          lineageId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].Columns[Weekday]"
+                          name="Weekday"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].Columns[DayInYearKey]"
+                          dataType="i8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].ExternalColumns[DayInYearKey]"
+                          lineageId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].Columns[DayInYearKey]"
+                          name="DayInYearKey"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].Columns[DayInMonthKey]"
+                          dataType="i8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].ExternalColumns[DayInMonthKey]"
+                          lineageId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].Columns[DayInMonthKey]"
+                          name="DayInMonthKey"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].Columns[LeapYearKey]"
+                          dataType="bool"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].ExternalColumns[LeapYearKey]"
+                          lineageId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].Columns[LeapYearKey]"
+                          name="LeapYearKey"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].Columns[IsWeekend]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].ExternalColumns[IsWeekend]"
+                          lineageId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].Columns[IsWeekend]"
+                          name="IsWeekend"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].Columns[DaysFromPalmSunday]"
+                          dataType="i8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].ExternalColumns[DaysFromPalmSunday]"
+                          lineageId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].Columns[DaysFromPalmSunday]"
+                          name="DaysFromPalmSunday"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].Columns[IsHoliday_DK]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].ExternalColumns[IsHoliday_DK]"
+                          lineageId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].Columns[IsHoliday_DK]"
+                          name="IsHoliday_DK"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].Columns[LastDayInMonthKey]"
+                          dataType="bool"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].ExternalColumns[LastDayInMonthKey]"
+                          lineageId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].Columns[LastDayInMonthKey]"
+                          name="LastDayInMonthKey"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].ExternalColumns[DateKey]"
+                          dataType="i8"
+                          name="DateKey" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].ExternalColumns[Date]"
+                          dataType="dbDate"
+                          name="Date" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].ExternalColumns[YearKey]"
+                          dataType="i8"
+                          name="YearKey" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].ExternalColumns[Year]"
+                          dataType="wstr"
+                          length="9"
+                          name="Year" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].ExternalColumns[YearByWeekKey]"
+                          dataType="i8"
+                          name="YearByWeekKey" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].ExternalColumns[YearByWeek]"
+                          dataType="wstr"
+                          length="9"
+                          name="YearByWeek" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].ExternalColumns[QuarterKey]"
+                          dataType="i8"
+                          name="QuarterKey" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].ExternalColumns[Quarter]"
+                          dataType="wstr"
+                          length="10"
+                          name="Quarter" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].ExternalColumns[QuarterByWeekKey]"
+                          dataType="i8"
+                          name="QuarterByWeekKey" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].ExternalColumns[QuarterByWeek]"
+                          dataType="wstr"
+                          length="10"
+                          name="QuarterByWeek" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].ExternalColumns[MonthKey]"
+                          dataType="i8"
+                          name="MonthKey" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].ExternalColumns[Month]"
+                          dataType="wstr"
+                          length="9"
+                          name="Month" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].ExternalColumns[WeekKey]"
+                          dataType="i8"
+                          name="WeekKey" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].ExternalColumns[Week]"
+                          dataType="wstr"
+                          length="7"
+                          name="Week" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].ExternalColumns[WeekdayKey]"
+                          dataType="i8"
+                          name="WeekdayKey" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].ExternalColumns[Weekday]"
+                          dataType="wstr"
+                          length="9"
+                          name="Weekday" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].ExternalColumns[DayInYearKey]"
+                          dataType="i8"
+                          name="DayInYearKey" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].ExternalColumns[DayInMonthKey]"
+                          dataType="i8"
+                          name="DayInMonthKey" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].ExternalColumns[LeapYearKey]"
+                          dataType="bool"
+                          name="LeapYearKey" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].ExternalColumns[IsWeekend]"
+                          dataType="i4"
+                          name="IsWeekend" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].ExternalColumns[DaysFromPalmSunday]"
+                          dataType="i8"
+                          name="DaysFromPalmSunday" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].ExternalColumns[IsHoliday_DK]"
+                          dataType="i4"
+                          name="IsHoliday_DK" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output].ExternalColumns[LastDayInMonthKey]"
+                          dataType="bool"
+                          name="LastDayInMonthKey" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Error Output].Columns[DateKey]"
+                          dataType="i8"
+                          lineageId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Error Output].Columns[DateKey]"
+                          name="DateKey" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Error Output].Columns[Date]"
+                          dataType="dbDate"
+                          lineageId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Error Output].Columns[Date]"
+                          name="Date" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Error Output].Columns[YearKey]"
+                          dataType="i8"
+                          lineageId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Error Output].Columns[YearKey]"
+                          name="YearKey" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Error Output].Columns[Year]"
+                          dataType="wstr"
+                          length="9"
+                          lineageId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Error Output].Columns[Year]"
+                          name="Year" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Error Output].Columns[YearByWeekKey]"
+                          dataType="i8"
+                          lineageId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Error Output].Columns[YearByWeekKey]"
+                          name="YearByWeekKey" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Error Output].Columns[YearByWeek]"
+                          dataType="wstr"
+                          length="9"
+                          lineageId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Error Output].Columns[YearByWeek]"
+                          name="YearByWeek" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Error Output].Columns[QuarterKey]"
+                          dataType="i8"
+                          lineageId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Error Output].Columns[QuarterKey]"
+                          name="QuarterKey" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Error Output].Columns[Quarter]"
+                          dataType="wstr"
+                          length="10"
+                          lineageId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Error Output].Columns[Quarter]"
+                          name="Quarter" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Error Output].Columns[QuarterByWeekKey]"
+                          dataType="i8"
+                          lineageId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Error Output].Columns[QuarterByWeekKey]"
+                          name="QuarterByWeekKey" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Error Output].Columns[QuarterByWeek]"
+                          dataType="wstr"
+                          length="10"
+                          lineageId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Error Output].Columns[QuarterByWeek]"
+                          name="QuarterByWeek" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Error Output].Columns[MonthKey]"
+                          dataType="i8"
+                          lineageId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Error Output].Columns[MonthKey]"
+                          name="MonthKey" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Error Output].Columns[Month]"
+                          dataType="wstr"
+                          length="9"
+                          lineageId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Error Output].Columns[Month]"
+                          name="Month" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Error Output].Columns[WeekKey]"
+                          dataType="i8"
+                          lineageId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Error Output].Columns[WeekKey]"
+                          name="WeekKey" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Error Output].Columns[Week]"
+                          dataType="wstr"
+                          length="7"
+                          lineageId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Error Output].Columns[Week]"
+                          name="Week" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Error Output].Columns[WeekdayKey]"
+                          dataType="i8"
+                          lineageId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Error Output].Columns[WeekdayKey]"
+                          name="WeekdayKey" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Error Output].Columns[Weekday]"
+                          dataType="wstr"
+                          length="9"
+                          lineageId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Error Output].Columns[Weekday]"
+                          name="Weekday" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Error Output].Columns[DayInYearKey]"
+                          dataType="i8"
+                          lineageId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Error Output].Columns[DayInYearKey]"
+                          name="DayInYearKey" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Error Output].Columns[DayInMonthKey]"
+                          dataType="i8"
+                          lineageId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Error Output].Columns[DayInMonthKey]"
+                          name="DayInMonthKey" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Error Output].Columns[LastDayInMonthKey]"
+                          dataType="bool"
+                          lineageId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Error Output].Columns[LastDayInMonthKey]"
+                          name="LastDayInMonthKey" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Error Output].Columns[LeapYearKey]"
+                          dataType="bool"
+                          lineageId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Error Output].Columns[LeapYearKey]"
+                          name="LeapYearKey" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Error Output].Columns[IsWeekend]"
+                          dataType="i4"
+                          lineageId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Error Output].Columns[IsWeekend]"
+                          name="IsWeekend" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Error Output].Columns[IsHoliday_DK]"
+                          dataType="i4"
+                          lineageId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Error Output].Columns[IsHoliday_DK]"
+                          name="IsHoliday_DK" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Error Output].Columns[DaysFromPalmSunday]"
+                          dataType="i8"
+                          lineageId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Error Output].Columns[DaysFromPalmSunday]"
+                          name="DaysFromPalmSunday" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\SEQC All\DFT Dimension Date.Paths[Derived Column Output]"
+                  endId="Package\SEQC All\DFT Dimension Date\RC Inserted.Inputs[Row Count Input 1]"
+                  name="Derived Column Output"
+                  startId="Package\SEQC All\DFT Dimension Date\DER Append metadata.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\SEQC All\DFT Dimension Date.Paths[OLE DB Destination Error Output]"
+                  endId="Package\SEQC All\DFT Dimension Date\RC Failed.Inputs[Row Count Input 1]"
+                  name="OLE DB Destination Error Output"
+                  startId="Package\SEQC All\DFT Dimension Date\DST Dimension Date.Outputs[OLE DB Destination Error Output]" />
+                <path
+                  refId="Package\SEQC All\DFT Dimension Date.Paths[OLE DB Source Output]"
+                  endId="Package\SEQC All\DFT Dimension Date\RC Selected.Inputs[Row Count Input 1]"
+                  name="OLE DB Source Output"
+                  startId="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar.Outputs[OLE DB Source Output]" />
+                <path
+                  refId="Package\SEQC All\DFT Dimension Date.Paths[Row Count Output 1]"
+                  endId="Package\SEQC All\DFT Dimension Date\DER Append metadata.Inputs[Derived Column Input]"
+                  name="Row Count Output 1"
+                  startId="Package\SEQC All\DFT Dimension Date\RC Selected.Outputs[Row Count Output 1]" />
+                <path
+                  refId="Package\SEQC All\DFT Dimension Date.Paths[Row Count Output 11]"
+                  endId="Package\SEQC All\DFT Dimension Date\DST Dimension Date.Inputs[OLE DB Destination Input]"
+                  name="Row Count Output 1"
+                  startId="Package\SEQC All\DFT Dimension Date\RC Inserted.Outputs[Row Count Output 1]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQC All\SQL Decide on Isloaded"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{3F0EE168-A357-4AB2-85BB-BD078514981B}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL Decide on Isloaded"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{353EB879-16F7-4BEB-ABBA-D6AB4FD3D8D8}"
+              SQLTask:SqlStatementSource="SELECT @IsLoaded = CASE WHEN EXISTS(SELECT TOP 1 1 FROM Dimension.Date) THEN 1 ELSE 0 END" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="IsLoaded"
+                SQLTask:DtsVariableName="User::IsLoaded"
+                SQLTask:ParameterDirection="Output"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQC All\SQL Insert null record"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{8A7F9438-204C-499F-A7D7-E8CB2A4D4F46}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL Insert null record"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{353EB879-16F7-4BEB-ABBA-D6AB4FD3D8D8}"
+              SQLTask:SqlStatementSource="EXEC Dimension.InsertNullRecord @JobId, 'Date'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="JobId"
+                SQLTask:DtsVariableName="User::ExecutionId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="12"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQC All\SQL Truncate Dimension"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{C479C059-E99E-4729-B6F3-C195EDE2A684}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL Truncate Dimension"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{353EB879-16F7-4BEB-ABBA-D6AB4FD3D8D8}"
+              SQLTask:SqlStatementSource="TRUNCATE TABLE Dimension.Date" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQC All.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{8BC12EA5-8ACF-4A2C-9F60-D0E1D9B4EB40}"
+          DTS:EvalOp="1"
+          DTS:Expression="!@[User::IsLoaded] || @[$Package::FullLoad]"
+          DTS:From="Package\SEQC All\SQL Decide on Isloaded"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\SEQC All\SQL Truncate Dimension" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQC All.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{9C6E6BA4-1433-4A04-8503-491B0F44F269}"
+          DTS:From="Package\SEQC All\SQL Insert null record"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\SEQC All\DFT Dimension Date" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQC All.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{2359A505-AFE8-4589-BAF1-A30932D6C5BF}"
+          DTS:From="Package\SEQC All\SQL Truncate Dimension"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\SEQC All\SQL Insert null record" />
+      </DTS:PrecedenceConstraints>
+      <DTS:EventHandlers>
+        <DTS:EventHandler
+          DTS:refId="Package\SEQC All.EventHandlers[OnTaskFailed]"
+          DTS:CreationName="OnTaskFailed"
+          DTS:DTSID="{CC940BDE-B939-4507-994C-895EDEC05CDF}"
+          DTS:EventID="244"
+          DTS:EventName="OnTaskFailed"
+          DTS:LocaleID="-1">
+          <DTS:Variables>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:Description="The propagate property of the event"
+              DTS:DTSID="{85DAF841-B180-46D5-9C1C-2BE91ADE71BB}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="System"
+              DTS:ObjectName="Propagate">
+              <DTS:VariableValue
+                DTS:DataType="11">-1</DTS:VariableValue>
+            </DTS:Variable>
+          </DTS:Variables>
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\SEQC All.EventHandlers[OnTaskFailed]\EXP Set ExecutionStatus to Failed"
+              DTS:CreationName="Microsoft.ExpressionTask"
+              DTS:Description="Expression Task"
+              DTS:DTSID="{e26aa17c-d42b-48c2-b310-a411e949b267}"
+              DTS:ExecutableType="Microsoft.ExpressionTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="EXP Set ExecutionStatus to Failed"
+              DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <ExpressionTask
+                  Expression="@[User::ExecutionStatus]  = &quot;Failed&quot;" />
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+        </DTS:EventHandler>
+      </DTS:EventHandlers>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL ExecutionEnd"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{1516e4c8-a403-4b3f-9835-2c59fdcbef3d}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL ExecutionEnd"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{353EB879-16F7-4BEB-ABBA-D6AB4FD3D8D8}"
+          SQLTask:IsStoredProc="True"
+          SQLTask:SqlStatementSource="Audit.ExecutionEnd" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="Id"
+            SQLTask:DtsVariableName="User::ExecutionId"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="12"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="Status"
+            SQLTask:DtsVariableName="User::ExecutionStatus"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="16"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL ExecutionStart"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{b7f7a950-833d-4fcb-af48-734dc3b249f4}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL ExecutionStart"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{353EB879-16F7-4BEB-ABBA-D6AB4FD3D8D8}"
+          SQLTask:IsStoredProc="True"
+          SQLTask:SqlStatementSource="Audit.ExecutionStart" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="PackageID"
+            SQLTask:DtsVariableName="System::PackageID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="9"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="PackageName"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="16"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="ParentId"
+            SQLTask:DtsVariableName="$Package::ParentExecutionId"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="12"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="Id"
+            SQLTask:DtsVariableName="User::ExecutionId"
+            SQLTask:ParameterDirection="Output"
+            SQLTask:DataType="12"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="ServerExecutionID"
+            SQLTask:DtsVariableName="System::ServerExecutionID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="12"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{B12D9E2D-F1DC-42CC-805D-E954BF9CE1CB}"
+      DTS:From="Package\SQL ExecutionStart"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\SEQC All" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{25E7150D-C1A3-4759-B9D7-2965F84836F9}"
+      DTS:From="Package\SEQC All"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\SQL ExecutionEnd"
+      DTS:Value="2" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql12">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph" xmlns:mssge="clr-namespace:Microsoft.SqlServer.Graph.Extended;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <NodeLayout
+          Size="178,42"
+          Id="Package\SEQC All\DFT Dimension Date"
+          TopLeft="158,274.5" />
+        <NodeLayout
+          Size="193,42"
+          Id="Package\SEQC All\SQL Decide on Isloaded"
+          TopLeft="147.5,20.5" />
+        <NodeLayout
+          Size="184,42"
+          Id="Package\SEQC All\SQL Insert null record"
+          TopLeft="153,189.833333333333" />
+        <EdgeLayout
+          Id="Package\SEQC All.PrecedenceConstraints[Constraint 1]"
+          TopLeft="246,231.833333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,42.6666666666667"
+              Start="0,0"
+              End="0,35.1666666666667">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.1666666666667" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="197,42"
+          Id="Package\SEQC All\SQL Truncate Dimension"
+          TopLeft="146,105.166666666667" />
+        <EdgeLayout
+          Id="Package\SEQC All.PrecedenceConstraints[Constraint]"
+          TopLeft="244.25,62.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,42.6666666666667"
+              Start="0,0"
+              End="0,35.1666666666667">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.1666666666667" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,9.58333333333333,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQC All.PrecedenceConstraints[Constraint 2]"
+          TopLeft="244.75,147.166666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,42.6666666666667"
+              Start="0,0"
+              End="0,35.1666666666667">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.1666666666667" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="512,345"
+          Size="512,388"
+          Id="Package\SEQC All"
+          TopLeft="74.0000000000001,128.5" />
+        <NodeLayout
+          Size="166,42"
+          Id="Package\SQL ExecutionEnd"
+          TopLeft="458,28.5" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\SQL ExecutionStart"
+          TopLeft="232,24.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="317.5,66.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="-71.4999999999999,62"
+              Start="0,0"
+              End="-71.4999999999999,54.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.0841121495327" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,33.0841121495327"
+                    Point2="0,37.0841121495327"
+                    Point3="-4,37.0841121495327" />
+                  <mssgle:LineSegment
+                    End="-67.4999999999999,37.0841121495327" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-67.4999999999999,37.0841121495327"
+                    Point2="-71.4999999999999,37.0841121495327"
+                    Point3="-71.4999999999999,41.0841121495327" />
+                  <mssgle:LineSegment
+                    End="-71.4999999999999,54.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="414,128.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="127,-58"
+              Start="0,0"
+              End="127,-50.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-19.3084112149533" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-19.3084112149533"
+                    Point2="0,-23.3084112149533"
+                    Point3="4,-23.3084112149533" />
+                  <mssgle:LineSegment
+                    End="123,-23.3084112149533" />
+                  <mssgle:CubicBezierSegment
+                    Point1="123,-23.3084112149533"
+                    Point2="127,-23.3084112149533"
+                    Point3="127,-27.3084112149533" />
+                  <mssgle:LineSegment
+                    End="127,-50.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="38.1955468749999,-18.3084112149533,50.60890625,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="Dimension Date"
+          ParentId="Package"
+          Size="172,50"
+          Id="cd5c6011-cc61-4cab-b8e9-04e028828a5e"
+          TopLeft="63.5,74.5">
+          <AnnotationLayout.FontInfo>
+            <mssge:FontInfo
+              Family="Tahoma"
+              Size="20.25"
+              Color="#FF000000">
+              <mssge:FontInfo.TextDecorations>
+                <av:TextDecorationCollection />
+              </mssge:FontInfo.TextDecorations>
+            </mssge:FontInfo>
+          </AnnotationLayout.FontInfo>
+        </AnnotationLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <DtsEventHandler
+    design-time-name="Package\SEQC All.EventHandlers[OnTaskFailed]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="239,42"
+          Id="Package\SEQC All.EventHandlers[OnTaskFailed]\EXP Set ExecutionStatus to Failed"
+          TopLeft="60,60" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+  <TaskHost
+    design-time-name="Package\SEQC All\DFT Dimension Date">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="137,42"
+          Id="Package\SEQC All\DFT Dimension Date\RC Selected"
+          TopLeft="31,107.5" />
+        <NodeLayout
+          Size="137,42"
+          Id="Package\SEQC All\DFT Dimension Date\RC Inserted"
+          TopLeft="31,311.5" />
+        <NodeLayout
+          Size="125,42"
+          Id="Package\SEQC All\DFT Dimension Date\RC Failed"
+          TopLeft="37.0000000000001,515.5" />
+        <NodeLayout
+          Size="188,42"
+          Id="Package\SEQC All\DFT Dimension Date\DER Append metadata"
+          TopLeft="5.50000000000003,209.5" />
+        <NodeLayout
+          Size="178,42"
+          Id="Package\SEQC All\DFT Dimension Date\DST Dimension Date"
+          TopLeft="10.5000000000001,413.5" />
+        <NodeLayout
+          Size="183,42"
+          Id="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar"
+          TopLeft="8,5.5" />
+        <EdgeLayout
+          Id="Package\SEQC All\DFT Dimension Date.Paths[Derived Column Output]"
+          TopLeft="99.5,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQC All\DFT Dimension Date.Paths[Row Count Output 11]"
+          TopLeft="99.5000000000001,353.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQC All\DFT Dimension Date.Paths[Row Count Output 1]"
+          TopLeft="99.5,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQC All\DFT Dimension Date.Paths[OLE DB Source Output]"
+          TopLeft="99.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQC All\DFT Dimension Date.Paths[OLE DB Destination Error Output]"
+          TopLeft="99.5000000000001,455.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-73.20890625,20.533203125,146.4178125,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <DtsEventHandler
+    design-time-name="Package\SEQC All\DFT Dimension Date.EventHandlers[OnTaskFailed]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="216,42"
+          Id="Package\SEQC All\DFT Dimension Date.EventHandlers[OnTaskFailed]\EXP Set TaskStatus to Failed"
+          TopLeft="60,60" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+  <DtsEventHandler
+    design-time-name="Package\SEQC All\DFT Dimension Date.EventHandlers[OnPreExecute]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="214,42"
+          Id="Package\SEQC All\DFT Dimension Date.EventHandlers[OnPreExecute]\SQL Audit DataTransferStart"
+          TopLeft="60,60" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+  <DtsEventHandler
+    design-time-name="Package\SEQC All\DFT Dimension Date.EventHandlers[OnPostExecute]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="210,42"
+          Id="Package\SEQC All\DFT Dimension Date.EventHandlers[OnPostExecute]\SQL Audit DataTransferEnd"
+          TopLeft="60,60" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+  <PipelineComponentMetadata
+    design-time-name="Package\SEQC All\DFT Dimension Date\DST Dimension Date">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\SEQC All\DFT Dimension Date\SRC Staging Calendar">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

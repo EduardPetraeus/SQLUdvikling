@@ -1,0 +1,1653 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/9/2015 3:09:55 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="T440SW7SIBR"
+  DTS:CreatorName="NCLAN\sibr"
+  DTS:DTSID="{1613D4BE-2173-4C33-9BA4-CB58AFB31840}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="12.0.5000.0"
+  DTS:LocaleID="1030"
+  DTS:ObjectName="Extract_AdWorks2014_PurchaseOrderHeader"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="0"
+  DTS:VersionBuild="239"
+  DTS:VersionGUID="{47F1C55E-47C2-421F-BB72-F7300FAC459E}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="11"
+      DTS:DTSID="{8B80B3EC-0F3C-4CCC-91B3-210538382ACD}"
+      DTS:ObjectName="IsFullLoad">
+      <DTS:Property
+        DTS:DataType="11"
+        DTS:Name="ParameterValue">0</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="20"
+      DTS:DTSID="{93BAD65E-EB84-4AAD-901B-DEE6DAF4CDEF}"
+      DTS:ObjectName="ParentExecutionId">
+      <DTS:Property
+        DTS:DataType="20"
+        DTS:Name="ParameterValue">-1</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{96CE1582-7896-4B61-84F4-1F86381AAB7D}"
+      DTS:ObjectName="TableName">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">AdventureWorks2014_Purchasing_PurchaseOrderHeader</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{1AE3ACFB-9046-4D31-BE7D-B80595DADB87}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="DeltaLoadTime">
+      <DTS:VariableValue
+        DTS:DataType="8">20110101</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{BD10D2C8-0EBE-43FC-A385-1CA773806034}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="ExecutionId">
+      <DTS:VariableValue
+        DTS:DataType="20">-1</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{D89C3C3E-1548-46AE-A507-15E0ABDD10DA}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="ExtractId">
+      <DTS:VariableValue
+        DTS:DataType="20">-1</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{04F6C367-46C0-48D2-ADA2-80A65655BB0C}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RecordsDiscarded">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{678D0739-5359-4A21-B6B6-89BAE6CAC507}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RecordsFailed">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{ABD9ECEB-3303-4592-904E-4E91EB18F4A5}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RecordsInserted">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{91486CF3-57C8-4C54-9544-CA73568C41E9}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RecordsSelected">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{4450AD76-9188-4940-B5CC-88F536EAC4F4}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;select @deltaloadtime = convert(nvarchar(8), max(StartTime), 112) from Audit.ExtractLog where TableName = '&quot;+ @[$Package::TableName] +&quot;' and Status = 'Succeeded'&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="SQL_DeltaLoadTime">
+      <DTS:VariableValue
+        DTS:DataType="8">select @deltaloadtime = convert(nvarchar(8), max(StartTime), 112) from Audit.ExtractLog where TableName = 'AdventureWorks2014_Purchasing_PurchaseOrderHeader' and Status = 'Succeeded'</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{BA2E1AFB-C045-4B4E-AE13-88E49FEEE569}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;SELECT        PurchaseOrderID, RevisionNumber, Status, EmployeeID, VendorID, ShipMethodID, OrderDate, ShipDate, SubTotal, TaxAmt, Freight, TotalDue, ModifiedDate&#xA;FROM            Purchasing.PurchaseOrderHeader&#xA;WHERE ModifiedDate &gt; convert(datetime, '&quot;+ REPLACENULL( @[$Package::IsFullLoad] ? &quot;18000101&quot; : @[User::DeltaLoadTime] , &quot;18000101&quot;) +&quot;', 112)&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="SQL_Select">
+      <DTS:VariableValue
+        DTS:DataType="8">SELECT        PurchaseOrderID, RevisionNumber, Status, EmployeeID, VendorID, ShipMethodID, OrderDate, ShipDate, SubTotal, TaxAmt, Freight, TotalDue, ModifiedDate
+FROM            Purchasing.PurchaseOrderHeader
+WHERE ModifiedDate &gt; convert(datetime, '20110101', 112)</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\SEQC All"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{57BE1C27-7465-4931-B853-C6510DD1A445}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:ISOLevel="65536"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SEQC All">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\SEQC All\DFT Source to Extract"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{6CD1CF06-62B8-4D2F-81C9-627EF4A26639}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="DFT Source to Extract"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\SEQC All\DFT Source to Extract\Append metadata"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="Append metadata"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\SEQC All\DFT Source to Extract\Append metadata.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SEQC All\DFT Source to Extract\Append metadata.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\SEQC All\DFT Source to Extract\Append metadata.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Source to Extract\Append metadata.Outputs[Derived Column Output].Columns[Meta_CreateJob]"
+                          dataType="i8"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\SEQC All\DFT Source to Extract\Append metadata.Outputs[Derived Column Output].Columns[Meta_CreateJob]"
+                          name="Meta_CreateJob"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">@[User::ExtractId]</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">@[User::ExtractId]</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Source to Extract\Append metadata.Outputs[Derived Column Output].Columns[Meta_CreateTime]"
+                          dataType="date"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\SEQC All\DFT Source to Extract\Append metadata.Outputs[Derived Column Output].Columns[Meta_CreateTime]"
+                          name="Meta_CreateTime"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">@[System::ContainerStartTime]</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">@[System::ContainerStartTime]</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\SEQC All\DFT Source to Extract\Append metadata.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\SEQC All\DFT Source to Extract\Append metadata.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Source to Extract\Append metadata.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SEQC All\DFT Source to Extract\Append metadata.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Source to Extract\Append metadata.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SEQC All\DFT Source to Extract\Append metadata.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SEQC All\DFT Source to Extract\OLE_DST Extract"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLE_DST Extract"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[Extract].[AdventureWorks2014_Purchasing_PurchaseOrderHeader]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\SEQC All\DFT Source to Extract\OLE_DST Extract.Connections[OleDbConnection]"
+                      connectionManagerID="{3B41C6CC-BFEF-4A52-8E29-52A92550F7B5}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[Archive OLEDB]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\SEQC All\DFT Source to Extract\OLE_DST Extract.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_DST Extract.Inputs[OLE DB Destination Input].Columns[ModifiedDate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="ModifiedDate"
+                          externalMetadataColumnId="Package\SEQC All\DFT Source to Extract\OLE_DST Extract.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedDate]"
+                          lineageId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Output].Columns[ModifiedDate]" />
+                        <inputColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_DST Extract.Inputs[OLE DB Destination Input].Columns[Meta_CreateJob]"
+                          cachedDataType="i8"
+                          cachedName="Meta_CreateJob"
+                          externalMetadataColumnId="Package\SEQC All\DFT Source to Extract\OLE_DST Extract.Inputs[OLE DB Destination Input].ExternalColumns[Meta_CreateJob]"
+                          lineageId="Package\SEQC All\DFT Source to Extract\Append metadata.Outputs[Derived Column Output].Columns[Meta_CreateJob]" />
+                        <inputColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_DST Extract.Inputs[OLE DB Destination Input].Columns[Meta_CreateTime]"
+                          cachedDataType="date"
+                          cachedName="Meta_CreateTime"
+                          externalMetadataColumnId="Package\SEQC All\DFT Source to Extract\OLE_DST Extract.Inputs[OLE DB Destination Input].ExternalColumns[Meta_CreateTime]"
+                          lineageId="Package\SEQC All\DFT Source to Extract\Append metadata.Outputs[Derived Column Output].Columns[Meta_CreateTime]" />
+                        <inputColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_DST Extract.Inputs[OLE DB Destination Input].Columns[PurchaseOrderID]"
+                          cachedDataType="i4"
+                          cachedName="PurchaseOrderID"
+                          externalMetadataColumnId="Package\SEQC All\DFT Source to Extract\OLE_DST Extract.Inputs[OLE DB Destination Input].ExternalColumns[PurchaseOrderID]"
+                          lineageId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Output].Columns[PurchaseOrderID]" />
+                        <inputColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_DST Extract.Inputs[OLE DB Destination Input].Columns[RevisionNumber]"
+                          cachedDataType="ui1"
+                          cachedName="RevisionNumber"
+                          externalMetadataColumnId="Package\SEQC All\DFT Source to Extract\OLE_DST Extract.Inputs[OLE DB Destination Input].ExternalColumns[RevisionNumber]"
+                          lineageId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Output].Columns[RevisionNumber]" />
+                        <inputColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_DST Extract.Inputs[OLE DB Destination Input].Columns[Status]"
+                          cachedDataType="ui1"
+                          cachedName="Status"
+                          externalMetadataColumnId="Package\SEQC All\DFT Source to Extract\OLE_DST Extract.Inputs[OLE DB Destination Input].ExternalColumns[Status]"
+                          lineageId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Output].Columns[Status]" />
+                        <inputColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_DST Extract.Inputs[OLE DB Destination Input].Columns[EmployeeID]"
+                          cachedDataType="i4"
+                          cachedName="EmployeeID"
+                          externalMetadataColumnId="Package\SEQC All\DFT Source to Extract\OLE_DST Extract.Inputs[OLE DB Destination Input].ExternalColumns[EmployeeID]"
+                          lineageId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Output].Columns[EmployeeID]" />
+                        <inputColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_DST Extract.Inputs[OLE DB Destination Input].Columns[VendorID]"
+                          cachedDataType="i4"
+                          cachedName="VendorID"
+                          externalMetadataColumnId="Package\SEQC All\DFT Source to Extract\OLE_DST Extract.Inputs[OLE DB Destination Input].ExternalColumns[VendorID]"
+                          lineageId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Output].Columns[VendorID]" />
+                        <inputColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_DST Extract.Inputs[OLE DB Destination Input].Columns[ShipMethodID]"
+                          cachedDataType="i4"
+                          cachedName="ShipMethodID"
+                          externalMetadataColumnId="Package\SEQC All\DFT Source to Extract\OLE_DST Extract.Inputs[OLE DB Destination Input].ExternalColumns[ShipMethodID]"
+                          lineageId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Output].Columns[ShipMethodID]" />
+                        <inputColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_DST Extract.Inputs[OLE DB Destination Input].Columns[OrderDate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="OrderDate"
+                          externalMetadataColumnId="Package\SEQC All\DFT Source to Extract\OLE_DST Extract.Inputs[OLE DB Destination Input].ExternalColumns[OrderDate]"
+                          lineageId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Output].Columns[OrderDate]" />
+                        <inputColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_DST Extract.Inputs[OLE DB Destination Input].Columns[ShipDate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="ShipDate"
+                          externalMetadataColumnId="Package\SEQC All\DFT Source to Extract\OLE_DST Extract.Inputs[OLE DB Destination Input].ExternalColumns[ShipDate]"
+                          lineageId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Output].Columns[ShipDate]" />
+                        <inputColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_DST Extract.Inputs[OLE DB Destination Input].Columns[SubTotal]"
+                          cachedDataType="cy"
+                          cachedName="SubTotal"
+                          externalMetadataColumnId="Package\SEQC All\DFT Source to Extract\OLE_DST Extract.Inputs[OLE DB Destination Input].ExternalColumns[SubTotal]"
+                          lineageId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Output].Columns[SubTotal]" />
+                        <inputColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_DST Extract.Inputs[OLE DB Destination Input].Columns[TaxAmt]"
+                          cachedDataType="cy"
+                          cachedName="TaxAmt"
+                          externalMetadataColumnId="Package\SEQC All\DFT Source to Extract\OLE_DST Extract.Inputs[OLE DB Destination Input].ExternalColumns[TaxAmt]"
+                          lineageId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Output].Columns[TaxAmt]" />
+                        <inputColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_DST Extract.Inputs[OLE DB Destination Input].Columns[Freight]"
+                          cachedDataType="cy"
+                          cachedName="Freight"
+                          externalMetadataColumnId="Package\SEQC All\DFT Source to Extract\OLE_DST Extract.Inputs[OLE DB Destination Input].ExternalColumns[Freight]"
+                          lineageId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Output].Columns[Freight]" />
+                        <inputColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_DST Extract.Inputs[OLE DB Destination Input].Columns[TotalDue]"
+                          cachedDataType="cy"
+                          cachedName="TotalDue"
+                          externalMetadataColumnId="Package\SEQC All\DFT Source to Extract\OLE_DST Extract.Inputs[OLE DB Destination Input].ExternalColumns[TotalDue]"
+                          lineageId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Output].Columns[TotalDue]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_DST Extract.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedDate]"
+                          dataType="dbTimeStamp"
+                          name="ModifiedDate" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_DST Extract.Inputs[OLE DB Destination Input].ExternalColumns[Meta_Id]"
+                          dataType="i8"
+                          name="Meta_Id" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_DST Extract.Inputs[OLE DB Destination Input].ExternalColumns[Meta_CreateTime]"
+                          dataType="dbTimeStamp"
+                          name="Meta_CreateTime" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_DST Extract.Inputs[OLE DB Destination Input].ExternalColumns[Meta_CreateJob]"
+                          dataType="i8"
+                          name="Meta_CreateJob" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_DST Extract.Inputs[OLE DB Destination Input].ExternalColumns[PurchaseOrderID]"
+                          dataType="i4"
+                          name="PurchaseOrderID" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_DST Extract.Inputs[OLE DB Destination Input].ExternalColumns[RevisionNumber]"
+                          dataType="ui1"
+                          name="RevisionNumber" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_DST Extract.Inputs[OLE DB Destination Input].ExternalColumns[Status]"
+                          dataType="ui1"
+                          name="Status" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_DST Extract.Inputs[OLE DB Destination Input].ExternalColumns[EmployeeID]"
+                          dataType="i4"
+                          name="EmployeeID" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_DST Extract.Inputs[OLE DB Destination Input].ExternalColumns[VendorID]"
+                          dataType="i4"
+                          name="VendorID" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_DST Extract.Inputs[OLE DB Destination Input].ExternalColumns[ShipMethodID]"
+                          dataType="i4"
+                          name="ShipMethodID" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_DST Extract.Inputs[OLE DB Destination Input].ExternalColumns[OrderDate]"
+                          dataType="dbTimeStamp"
+                          name="OrderDate" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_DST Extract.Inputs[OLE DB Destination Input].ExternalColumns[ShipDate]"
+                          dataType="dbTimeStamp"
+                          name="ShipDate" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_DST Extract.Inputs[OLE DB Destination Input].ExternalColumns[SubTotal]"
+                          dataType="cy"
+                          name="SubTotal" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_DST Extract.Inputs[OLE DB Destination Input].ExternalColumns[TaxAmt]"
+                          dataType="cy"
+                          name="TaxAmt" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_DST Extract.Inputs[OLE DB Destination Input].ExternalColumns[Freight]"
+                          dataType="cy"
+                          name="Freight" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_DST Extract.Inputs[OLE DB Destination Input].ExternalColumns[TotalDue]"
+                          dataType="cy"
+                          name="TotalDue" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_DST Extract.Inputs[OLE DB Destination Input].ExternalColumns[Meta_ExternalJob]"
+                          dataType="wstr"
+                          length="255"
+                          name="Meta_ExternalJob" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SEQC All\DFT Source to Extract\OLE_DST Extract.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\SEQC All\DFT Source to Extract\OLE_DST Extract.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_DST Extract.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SEQC All\DFT Source to Extract\OLE_DST Extract.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_DST Extract.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SEQC All\DFT Source to Extract\OLE_DST Extract.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="OLE_SRC Source Data"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT        PurchaseOrderID, RevisionNumber, Status, EmployeeID, VendorID, ShipMethodID, OrderDate, ShipDate, SubTotal, TaxAmt, Freight, TotalDue, ModifiedDate
+FROM            Purchasing.PurchaseOrderHeader</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable">User::SQL_Select</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Connections[OleDbConnection]"
+                      connectionManagerID="{6730893A-6C83-4A85-8F80-E35EFB7E0F76}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[AdventureWorks OLEDB]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Output].Columns[ModifiedDate]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Output].ExternalColumns[ModifiedDate]"
+                          lineageId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Output].Columns[ModifiedDate]"
+                          name="ModifiedDate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Output].Columns[PurchaseOrderID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Output].ExternalColumns[PurchaseOrderID]"
+                          lineageId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Output].Columns[PurchaseOrderID]"
+                          name="PurchaseOrderID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Output].Columns[RevisionNumber]"
+                          dataType="ui1"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Output].ExternalColumns[RevisionNumber]"
+                          lineageId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Output].Columns[RevisionNumber]"
+                          name="RevisionNumber"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Output].Columns[Status]"
+                          dataType="ui1"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Output].ExternalColumns[Status]"
+                          lineageId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Output].Columns[Status]"
+                          name="Status"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Output].Columns[EmployeeID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Output].ExternalColumns[EmployeeID]"
+                          lineageId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Output].Columns[EmployeeID]"
+                          name="EmployeeID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Output].Columns[VendorID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Output].ExternalColumns[VendorID]"
+                          lineageId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Output].Columns[VendorID]"
+                          name="VendorID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Output].Columns[ShipMethodID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Output].ExternalColumns[ShipMethodID]"
+                          lineageId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Output].Columns[ShipMethodID]"
+                          name="ShipMethodID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Output].Columns[OrderDate]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Output].ExternalColumns[OrderDate]"
+                          lineageId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Output].Columns[OrderDate]"
+                          name="OrderDate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Output].Columns[ShipDate]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Output].ExternalColumns[ShipDate]"
+                          lineageId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Output].Columns[ShipDate]"
+                          name="ShipDate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Output].Columns[SubTotal]"
+                          dataType="cy"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Output].ExternalColumns[SubTotal]"
+                          lineageId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Output].Columns[SubTotal]"
+                          name="SubTotal"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Output].Columns[TaxAmt]"
+                          dataType="cy"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Output].ExternalColumns[TaxAmt]"
+                          lineageId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Output].Columns[TaxAmt]"
+                          name="TaxAmt"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Output].Columns[Freight]"
+                          dataType="cy"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Output].ExternalColumns[Freight]"
+                          lineageId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Output].Columns[Freight]"
+                          name="Freight"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Output].Columns[TotalDue]"
+                          dataType="cy"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Output].ExternalColumns[TotalDue]"
+                          lineageId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Output].Columns[TotalDue]"
+                          name="TotalDue"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Output].ExternalColumns[ModifiedDate]"
+                          dataType="dbTimeStamp"
+                          name="ModifiedDate" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Output].ExternalColumns[PurchaseOrderID]"
+                          dataType="i4"
+                          name="PurchaseOrderID" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Output].ExternalColumns[RevisionNumber]"
+                          dataType="ui1"
+                          name="RevisionNumber" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Output].ExternalColumns[Status]"
+                          dataType="ui1"
+                          name="Status" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Output].ExternalColumns[EmployeeID]"
+                          dataType="i4"
+                          name="EmployeeID" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Output].ExternalColumns[VendorID]"
+                          dataType="i4"
+                          name="VendorID" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Output].ExternalColumns[ShipMethodID]"
+                          dataType="i4"
+                          name="ShipMethodID" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Output].ExternalColumns[OrderDate]"
+                          dataType="dbTimeStamp"
+                          name="OrderDate" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Output].ExternalColumns[ShipDate]"
+                          dataType="dbTimeStamp"
+                          name="ShipDate" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Output].ExternalColumns[SubTotal]"
+                          dataType="cy"
+                          name="SubTotal" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Output].ExternalColumns[TaxAmt]"
+                          dataType="cy"
+                          name="TaxAmt" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Output].ExternalColumns[Freight]"
+                          dataType="cy"
+                          name="Freight" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Output].ExternalColumns[TotalDue]"
+                          dataType="cy"
+                          name="TotalDue" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Error Output].Columns[PurchaseOrderID]"
+                          dataType="i4"
+                          lineageId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Error Output].Columns[PurchaseOrderID]"
+                          name="PurchaseOrderID" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Error Output].Columns[RevisionNumber]"
+                          dataType="ui1"
+                          lineageId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Error Output].Columns[RevisionNumber]"
+                          name="RevisionNumber" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Error Output].Columns[Status]"
+                          dataType="ui1"
+                          lineageId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Error Output].Columns[Status]"
+                          name="Status" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Error Output].Columns[EmployeeID]"
+                          dataType="i4"
+                          lineageId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Error Output].Columns[EmployeeID]"
+                          name="EmployeeID" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Error Output].Columns[VendorID]"
+                          dataType="i4"
+                          lineageId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Error Output].Columns[VendorID]"
+                          name="VendorID" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Error Output].Columns[ShipMethodID]"
+                          dataType="i4"
+                          lineageId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Error Output].Columns[ShipMethodID]"
+                          name="ShipMethodID" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Error Output].Columns[OrderDate]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Error Output].Columns[OrderDate]"
+                          name="OrderDate" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Error Output].Columns[ShipDate]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Error Output].Columns[ShipDate]"
+                          name="ShipDate" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Error Output].Columns[SubTotal]"
+                          dataType="cy"
+                          lineageId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Error Output].Columns[SubTotal]"
+                          name="SubTotal" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Error Output].Columns[TaxAmt]"
+                          dataType="cy"
+                          lineageId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Error Output].Columns[TaxAmt]"
+                          name="TaxAmt" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Error Output].Columns[Freight]"
+                          dataType="cy"
+                          lineageId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Error Output].Columns[Freight]"
+                          name="Freight" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Error Output].Columns[TotalDue]"
+                          dataType="cy"
+                          lineageId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Error Output].Columns[TotalDue]"
+                          name="TotalDue" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Error Output].Columns[ModifiedDate]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Error Output].Columns[ModifiedDate]"
+                          name="ModifiedDate" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SEQC All\DFT Source to Extract\RC Selected"
+                  componentClassID="Microsoft.RowCount"
+                  contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+                  name="RC Selected">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable to hold the row count."
+                      name="VariableName">User::RecordsSelected</property>
+                  </properties>
+                  <inputs>
+                    <input
+                      refId="Package\SEQC All\DFT Source to Extract\RC Selected.Inputs[Row Count Input 1]"
+                      hasSideEffects="true"
+                      name="Row Count Input 1">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SEQC All\DFT Source to Extract\RC Selected.Outputs[Row Count Output 1]"
+                      name="Row Count Output 1"
+                      synchronousInputId="Package\SEQC All\DFT Source to Extract\RC Selected.Inputs[Row Count Input 1]">
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SEQC All\DFT Source to Extract\RC_Inserted"
+                  componentClassID="Microsoft.RowCount"
+                  contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+                  name="RC_Inserted">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable to hold the row count."
+                      name="VariableName">User::RecordsInserted</property>
+                  </properties>
+                  <inputs>
+                    <input
+                      refId="Package\SEQC All\DFT Source to Extract\RC_Inserted.Inputs[Row Count Input 1]"
+                      hasSideEffects="true"
+                      name="Row Count Input 1">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SEQC All\DFT Source to Extract\RC_Inserted.Outputs[Row Count Output 1]"
+                      name="Row Count Output 1"
+                      synchronousInputId="Package\SEQC All\DFT Source to Extract\RC_Inserted.Inputs[Row Count Input 1]">
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\SEQC All\DFT Source to Extract.Paths[Derived Column Output]"
+                  endId="Package\SEQC All\DFT Source to Extract\RC_Inserted.Inputs[Row Count Input 1]"
+                  name="Derived Column Output"
+                  startId="Package\SEQC All\DFT Source to Extract\Append metadata.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\SEQC All\DFT Source to Extract.Paths[OLE DB Source Output]"
+                  endId="Package\SEQC All\DFT Source to Extract\RC Selected.Inputs[Row Count Input 1]"
+                  name="OLE DB Source Output"
+                  startId="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data.Outputs[OLE DB Source Output]" />
+                <path
+                  refId="Package\SEQC All\DFT Source to Extract.Paths[Row Count Output 1]"
+                  endId="Package\SEQC All\DFT Source to Extract\Append metadata.Inputs[Derived Column Input]"
+                  name="Row Count Output 1"
+                  startId="Package\SEQC All\DFT Source to Extract\RC Selected.Outputs[Row Count Output 1]" />
+                <path
+                  refId="Package\SEQC All\DFT Source to Extract.Paths[Row Count Output 11]"
+                  endId="Package\SEQC All\DFT Source to Extract\OLE_DST Extract.Inputs[OLE DB Destination Input]"
+                  name="Row Count Output 1"
+                  startId="Package\SEQC All\DFT Source to Extract\RC_Inserted.Outputs[Row Count Output 1]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQC All\SQL ExtractEnd Failed"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{150FFC2C-65DF-48DF-ABFE-C4D82BE18F21}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL ExtractEnd Failed"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{E876D1E2-8BBF-459E-A9CF-60AE9D254CF1}"
+              SQLTask:SqlStatementSource="EXEC Audit.ExtractEnd @ExtractId, 'Failed'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="ExtractId"
+                SQLTask:DtsVariableName="User::ExtractId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="12"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQC All\SQL ExtractEnd Succeeded"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{A726204B-DBA3-408B-A3BA-83E8D461C203}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL ExtractEnd Succeeded"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{E876D1E2-8BBF-459E-A9CF-60AE9D254CF1}"
+              SQLTask:IsStoredProc="True"
+              SQLTask:SqlStatementSource="Audit.ExtractEnd" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="ExtractId"
+                SQLTask:DtsVariableName="User::ExtractId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="12"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="RecordsSelected"
+                SQLTask:DtsVariableName="User::RecordsSelected"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="11"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="RecordsInserted"
+                SQLTask:DtsVariableName="User::RecordsInserted"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="11"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="RecordsFailed"
+                SQLTask:DtsVariableName="User::RecordsFailed"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="11"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="RecordsDiscarded"
+                SQLTask:DtsVariableName="User::RecordsDiscarded"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="11"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQC All\SQL ExtractStart"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{24270C89-BF15-4975-838E-F0B25FA1648A}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL ExtractStart"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{E876D1E2-8BBF-459E-A9CF-60AE9D254CF1}"
+              SQLTask:IsStoredProc="True"
+              SQLTask:SqlStatementSource="Audit.ExtractStart" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="ExecutionId"
+                SQLTask:DtsVariableName="User::ExecutionId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="12"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="ExtractId"
+                SQLTask:DtsVariableName="User::ExtractId"
+                SQLTask:ParameterDirection="Output"
+                SQLTask:DataType="12"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="TableName"
+                SQLTask:DtsVariableName="$Package::TableName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="16"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="IsFullLoad"
+                SQLTask:DtsVariableName="$Package::IsFullLoad"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQC All\SQL Get DeltaLoadTime"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{B35FDBE9-91E7-4025-AF66-1BDEFA5D6AB2}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL Get DeltaLoadTime"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{E876D1E2-8BBF-459E-A9CF-60AE9D254CF1}"
+              SQLTask:SqlStmtSourceType="Variable"
+              SQLTask:SqlStatementSource="User::SQL_DeltaLoadTime" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="deltaloadtime"
+                SQLTask:DtsVariableName="User::DeltaLoadTime"
+                SQLTask:ParameterDirection="Output"
+                SQLTask:DataType="16"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQC All.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{ACA351CA-453A-40EE-88F6-0536DCC4EA27}"
+          DTS:From="Package\SEQC All\SQL ExtractStart"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\SEQC All\DFT Source to Extract" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQC All.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{E1D22C77-0D19-410E-B4D1-2FB03BE997DA}"
+          DTS:From="Package\SEQC All\SQL Get DeltaLoadTime"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\SEQC All\DFT Source to Extract" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQC All.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{499EC330-8099-468E-A5F8-BE12B57B21D6}"
+          DTS:From="Package\SEQC All\DFT Source to Extract"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\SEQC All\SQL ExtractEnd Succeeded" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQC All.PrecedenceConstraints[Constraint 3]"
+          DTS:CreationName=""
+          DTS:DTSID="{E55260CA-B5D1-40D4-9410-260389CBAC8D}"
+          DTS:From="Package\SEQC All\DFT Source to Extract"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 3"
+          DTS:To="Package\SEQC All\SQL ExtractEnd Failed"
+          DTS:Value="1" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL ExecutionEnd Failed"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{710F1E8D-E883-4447-910F-32EAF8C8A221}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL ExecutionEnd Failed"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{E876D1E2-8BBF-459E-A9CF-60AE9D254CF1}"
+          SQLTask:SqlStatementSource="EXEC Audit.ExecutionEnd @Id, 'Failed'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="Id"
+            SQLTask:DtsVariableName="User::ExecutionId"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="12"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL ExecutionEnd Succeeded"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{D2E6B9FA-B0D8-40BF-B555-FB146EEB3027}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL ExecutionEnd Succeeded"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{E876D1E2-8BBF-459E-A9CF-60AE9D254CF1}"
+          SQLTask:IsStoredProc="True"
+          SQLTask:SqlStatementSource="Audit.ExecutionEnd" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="Id"
+            SQLTask:DtsVariableName="User::ExecutionId"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="12"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL ExecutionStart"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{59842AFF-2934-442A-87E3-BABD6AD52562}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL ExecutionStart"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{E876D1E2-8BBF-459E-A9CF-60AE9D254CF1}"
+          SQLTask:IsStoredProc="True"
+          SQLTask:SqlStatementSource="Audit.ExecutionStart" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="PackageID"
+            SQLTask:DtsVariableName="System::PackageID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="9"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="PackageName"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="16"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="ParentId"
+            SQLTask:DtsVariableName="$Package::ParentExecutionId"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="12"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="Id"
+            SQLTask:DtsVariableName="User::ExecutionId"
+            SQLTask:ParameterDirection="Output"
+            SQLTask:DataType="12"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="ServerExecutionID"
+            SQLTask:DtsVariableName="System::ServerExecutionID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="12"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{12286D8A-6200-42D1-8FCC-4E93D9A9BA63}"
+      DTS:From="Package\SQL ExecutionStart"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\SEQC All" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{0479BF58-6B57-4ED6-A82E-46561805358F}"
+      DTS:From="Package\SEQC All"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\SQL ExecutionEnd Succeeded" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{BFE2E07F-3BFD-4FBE-876C-396358BC3E01}"
+      DTS:From="Package\SEQC All"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\SQL ExecutionEnd Failed"
+      DTS:Value="1" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql12">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="184,42"
+          Id="Package\SEQC All\DFT Source to Extract"
+          TopLeft="197,133" />
+        <NodeLayout
+          Size="185,42"
+          Id="Package\SEQC All\SQL ExtractEnd Failed"
+          TopLeft="327,232" />
+        <NodeLayout
+          Size="207,42"
+          Id="Package\SEQC All\SQL ExtractEnd Succeeded"
+          TopLeft="71,231" />
+        <NodeLayout
+          Size="158,42"
+          Id="Package\SEQC All\SQL ExtractStart"
+          TopLeft="96,36" />
+        <NodeLayout
+          Size="193,42"
+          Id="Package\SEQC All\SQL Get DeltaLoadTime"
+          TopLeft="312,40" />
+        <EdgeLayout
+          Id="Package\SEQC All.PrecedenceConstraints[Constraint]"
+          TopLeft="175,78">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="84.6666666666667,55"
+              Start="0,0"
+              End="84.6666666666667,47.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.7155172413793" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,28.7155172413793"
+                    Point2="0,32.7155172413793"
+                    Point3="4,32.7155172413793" />
+                  <mssgle:LineSegment
+                    End="80.6666666666667,32.7155172413793" />
+                  <mssgle:CubicBezierSegment
+                    Point1="80.6666666666667,32.7155172413793"
+                    Point2="84.6666666666667,32.7155172413793"
+                    Point3="84.6666666666667,36.7155172413793" />
+                  <mssgle:LineSegment
+                    End="84.6666666666667,47.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQC All.PrecedenceConstraints[Constraint 1]"
+          TopLeft="408.5,82">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-90.1666666666667,51"
+              Start="0,0"
+              End="-90.1666666666667,43.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.3362068965517" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26.3362068965517"
+                    Point2="0,30.3362068965517"
+                    Point3="-4,30.3362068965517" />
+                  <mssgle:LineSegment
+                    End="-86.1666666666667,30.3362068965517" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-86.1666666666667,30.3362068965517"
+                    Point2="-90.1666666666667,30.3362068965517"
+                    Point3="-90.1666666666667,34.3362068965517" />
+                  <mssgle:LineSegment
+                    End="-90.1666666666667,43.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQC All.PrecedenceConstraints[Constraint 2]"
+          TopLeft="259.666666666667,175">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-85.1666666666667,56"
+              Start="0,0"
+              End="-85.1666666666667,48.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.6896551724138" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.6896551724138"
+                    Point2="0,22.6896551724138"
+                    Point3="-4,22.6896551724138" />
+                  <mssgle:LineSegment
+                    End="-81.1666666666667,22.6896551724138" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-81.1666666666667,22.6896551724138"
+                    Point2="-85.1666666666667,22.6896551724138"
+                    Point3="-85.1666666666667,26.6896551724138" />
+                  <mssgle:LineSegment
+                    End="-85.1666666666667,48.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQC All.PrecedenceConstraints[Constraint 3]"
+          TopLeft="318.333333333333,175">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="101.166666666667,57"
+              Start="0,0"
+              End="101.166666666667,49.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.0948275862069" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19.0948275862069"
+                    Point2="0,23.0948275862069"
+                    Point3="4,23.0948275862069" />
+                  <mssgle:LineSegment
+                    End="97.1666666666667,23.0948275862069" />
+                  <mssgle:CubicBezierSegment
+                    Point1="97.1666666666667,23.0948275862069"
+                    Point2="101.166666666667,23.0948275862069"
+                    Point3="101.166666666667,27.0948275862069" />
+                  <mssgle:LineSegment
+                    End="101.166666666667,49.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="35.3419856770833,28.0948275862069,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="580,339"
+          Size="580,382"
+          Id="Package\SEQC All"
+          TopLeft="75.5,150.5" />
+        <NodeLayout
+          Size="197,42"
+          Id="Package\SQL ExecutionEnd Failed"
+          TopLeft="393.5,616.5" />
+        <NodeLayout
+          Size="220,42"
+          Id="Package\SQL ExecutionEnd Succeeded"
+          TopLeft="139.5,613.5" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\SQL ExecutionStart"
+          TopLeft="283.5,59.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="367.25,101.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,49"
+              Start="0,0"
+              End="0,41.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="270.166666666667,532.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-20.6666666666666,81"
+              Start="0,0"
+              End="-20.6666666666666,73.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.5337001375516" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,28.5337001375516"
+                    Point2="0,32.5337001375516"
+                    Point3="-4,32.5337001375516" />
+                  <mssgle:LineSegment
+                    End="-16.6666666666666,32.5337001375516" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-16.6666666666666,32.5337001375516"
+                    Point2="-20.6666666666666,32.5337001375516"
+                    Point3="-20.6666666666666,36.5337001375516" />
+                  <mssgle:LineSegment
+                    End="-20.6666666666666,73.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="460.833333333333,532.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="31.1666666666667,84"
+              Start="0,0"
+              End="31.1666666666667,76.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.7386519944979" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.7386519944979"
+                    Point2="0,33.7386519944979"
+                    Point3="4,33.7386519944979" />
+                  <mssgle:LineSegment
+                    End="27.1666666666667,33.7386519944979" />
+                  <mssgle:CubicBezierSegment
+                    Point1="27.1666666666667,33.7386519944979"
+                    Point2="31.1666666666667,33.7386519944979"
+                    Point3="31.1666666666667,37.7386519944979" />
+                  <mssgle:LineSegment
+                    End="31.1666666666667,76.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0.341985677083343,38.7386519944979,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\SEQC All\DFT Source to Extract">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="161,42"
+          Id="Package\SEQC All\DFT Source to Extract\OLE_DST Extract"
+          TopLeft="17.5,413.5" />
+        <NodeLayout
+          Size="185,42"
+          Id="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data"
+          TopLeft="5.5,5.5" />
+        <NodeLayout
+          Size="137,42"
+          Id="Package\SEQC All\DFT Source to Extract\RC Selected"
+          TopLeft="29.5,107.5" />
+        <NodeLayout
+          Size="170,42"
+          Id="Package\SEQC All\DFT Source to Extract\Append metadata"
+          TopLeft="13,209.5" />
+        <NodeLayout
+          Size="139,42"
+          Id="Package\SEQC All\DFT Source to Extract\RC_Inserted"
+          TopLeft="28.5,311.5" />
+        <EdgeLayout
+          Id="Package\SEQC All\DFT Source to Extract.Paths[OLE DB Source Output]"
+          TopLeft="98,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQC All\DFT Source to Extract.Paths[Derived Column Output]"
+          TopLeft="98,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQC All\DFT Source to Extract.Paths[Row Count Output 11]"
+          TopLeft="98,353.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQC All\DFT Source to Extract.Paths[Row Count Output 1]"
+          TopLeft="98,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\SEQC All\DFT Source to Extract\OLE_SRC Source Data">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\SEQC All\DFT Source to Extract\OLE_DST Extract">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

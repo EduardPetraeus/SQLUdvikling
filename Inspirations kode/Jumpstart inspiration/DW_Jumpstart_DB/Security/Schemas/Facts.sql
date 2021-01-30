@@ -1,0 +1,3 @@
+﻿CREATE SCHEMA [Fact]
+    AUTHORIZATION [dbo];
+GO

@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>DW_Jumpstart_DB</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{64e31564-6ac9-4392-b239-e697d4528c14}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>Jumpstart</RootNamespace>
+    <AssemblyName>Jumpstart</AssemblyName>
+    <ModelCollation>1030,CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>True</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <DacApplicationName>Jumpstart</DacApplicationName>
+    <GenerateCreateScript>False</GenerateCreateScript>
+    <Recovery>SIMPLE</Recovery>
+    <IncludeSchemaNameInFileName>False</IncludeSchemaNameInFileName>
+    <PageVerify>CHECKSUM</PageVerify>
+    <DefaultCollation>Danish_Norwegian_CI_AS</DefaultCollation>
+    <DefaultFilegroup>PRIMARY</DefaultFilegroup>
+    <AutoShrink>False</AutoShrink>
+    <TargetDatabase>Jumpstart</TargetDatabase>
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <SqlTargetName>DW_Jumpstart_DB</SqlTargetName>
+    <SqlCodeAnalysisRules>+!Microsoft.Rules.Data.SR0001;+!Microsoft.Rules.Data.SR0004;+!Microsoft.Rules.Data.SR0005;+!Microsoft.Rules.Data.SR0006;+!Microsoft.Rules.Data.SR0007;+!Microsoft.Rules.Data.SR0008;+!Microsoft.Rules.Data.SR0009;+!Microsoft.Rules.Data.SR0010;+!Microsoft.Rules.Data.SR0011;+!Microsoft.Rules.Data.SR0012;+!Microsoft.Rules.Data.SR0013;+!Microsoft.Rules.Data.SR0014;+!Microsoft.Rules.Data.SR0015;+!Microsoft.Rules.Data.SR0016</SqlCodeAnalysisRules>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="Security" />
+    <Folder Include="Security\Logins" />
+    <Folder Include="Security\Schemas" />
+    <Folder Include="Security\Users" />
+    <Folder Include="Tables" />
+    <Folder Include="Views" />
+    <Folder Include="Views\DMSA" />
+    <Folder Include="Tables\Map" />
+    <Folder Include="Tables\Audit" />
+    <Folder Include="Tables\Dimension" />
+    <Folder Include="Programmability" />
+    <Folder Include="Tables\Fasttrack" />
+    <Folder Include="Tables\Fact" />
+    <Folder Include="Tables\Staging" />
+    <Folder Include="Programmability\Procedures" />
+    <Folder Include="Programmability\Procedures\Utility" />
+    <Folder Include="Programmability\Procedures\FastTrack" />
+    <Folder Include="Programmability\Procedures\Fact" />
+    <Folder Include="Programmability\Procedures\Dimension" />
+    <Folder Include="Programmability\Procedures\Audit" />
+    <Folder Include="Scripts" />
+    <Folder Include="Scripts\Data" />
+    <Folder Include="Tables\Utility" />
+    <Folder Include="Views\Utility" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="Security\Schemas\Audit.sql" />
+    <Build Include="Security\Schemas\Dimensions.sql" />
+    <Build Include="Security\Schemas\DMSA_Dimension.sql" />
+    <Build Include="Security\Schemas\DMSA_Fact.sql" />
+    <Build Include="Security\Schemas\Facts.sql" />
+    <Build Include="Security\Schemas\Fasttrack.sql" />
+    <Build Include="Security\Schemas\Map.sql" />
+    <Build Include="Security\Schemas\Staging.sql" />
+    <Build Include="Security\Schemas\Utility.sql" />
+    <Build Include="Tables\Map\Product.sql" />
+    <Build Include="Tables\Map\Template.sql" />
+    <Build Include="Tables\Map\Vendor.sql" />
+    <Build Include="Tables\Audit\DataTransferLog.sql" />
+    <Build Include="Tables\Audit\ExecutionLog.sql" />
+    <Build Include="Tables\Audit\ExecutionQueue.sql" />
+    <Build Include="Tables\Dimension\Date.sql" />
+    <Build Include="Tables\Dimension\Product_T1.sql" />
+    <Build Include="Tables\Dimension\Product_T2.sql" />
+    <Build Include="Tables\Dimension\Template_T1.sql" />
+    <Build Include="Tables\Dimension\Template_T2.sql" />
+    <Build Include="Tables\Dimension\Vendor_T1.sql" />
+    <Build Include="Tables\Fact\Purchase.sql" />
+    <Build Include="Tables\Fact\Template.sql" />
+    <Build Include="Tables\Staging\Dimension_Product.sql" />
+    <Build Include="Tables\Staging\Dimension_Template.sql" />
+    <Build Include="Tables\Staging\Dimension_Vendor.sql" />
+    <Build Include="Tables\Staging\Fact_Purchase.sql" />
+    <Build Include="Programmability\Procedures\Utility\GenerateCalendar.sql" />
+    <Build Include="Programmability\Procedures\Utility\PrintLargeString.sql" />
+    <Build Include="Programmability\Procedures\Utility\TruncateTables.sql" />
+    <Build Include="Programmability\Procedures\FastTrack\UpdateFasttrack.sql" />
+    <Build Include="Programmability\Procedures\Fact\TruncateFact.sql" />
+    <Build Include="Programmability\Procedures\Fact\UpdateFact.sql" />
+    <Build Include="Programmability\Procedures\Dimension\InsertNullRecord.sql" />
+    <Build Include="Programmability\Procedures\Dimension\TruncateDimension.sql" />
+    <Build Include="Programmability\Procedures\Dimension\UpdateDimensionT1.sql" />
+    <Build Include="Programmability\Procedures\Dimension\UpdateDimensionT2.sql" />
+    <Build Include="Programmability\Procedures\Dimension\UpdateMap.sql" />
+    <Build Include="Programmability\Procedures\Audit\DataTransferEnd.sql" />
+    <Build Include="Programmability\Procedures\Audit\DataTransferStart.sql" />
+    <Build Include="Programmability\Procedures\Audit\ExecutionEnd.sql" />
+    <Build Include="Programmability\Procedures\Audit\ExecutionStart.sql" />
+    <None Include="Scripts\Data\SSISCodes.sql" />
+    <PostDeploy Include="Scripts\PostDeployment.sql" />
+    <PreDeploy Include="Scripts\PreDeployment.sql" />
+    <Build Include="Tables\Utility\Calendar.sql" />
+    <Build Include="Views\Utility\Calendar_DK.sql" />
+    <Build Include="Views\Utility\Calendar_UK.sql" />
+    <Build Include="Views\Utility\SSISCodes.sql" />
+    <Build Include="Programmability\Procedures\Fact\SwitchFact.sql" />
+    <Build Include="Tables\Utility\FixedValues.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <SqlCmdVariable Include="DeployEnvironment">
+      <DefaultValue>DEV</DefaultValue>
+      <Value>$(SqlCmdVar__1)</Value>
+    </SqlCmdVariable>
+  </ItemGroup>
+  <ItemGroup>
+    <ArtifactReference Include="$(DacPacRootPath)\Extensions\Microsoft\SQLDB\Extensions\SqlServer\120\SqlSchemas\master.dacpac">
+      <HintPath>$(DacPacRootPath)\Extensions\Microsoft\SQLDB\Extensions\SqlServer\120\SqlSchemas\master.dacpac</HintPath>
+      <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
+      <DatabaseVariableLiteralValue>master</DatabaseVariableLiteralValue>
+    </ArtifactReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="local.DEV.publish.xml" />
+  </ItemGroup>
+</Project>

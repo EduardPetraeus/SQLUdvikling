@@ -1,0 +1,7 @@
+﻿CREATE TABLE Utility.SSISCodes
+(
+	Code BIGINT NOT NULL PRIMARY KEY,
+	HexadecimalCode VARCHAR(10) NOT NULL,
+	SymbolicName  VARCHAR(100) NOT NULL,
+	Description  VARCHAR(1000) NOT NULL,
+)

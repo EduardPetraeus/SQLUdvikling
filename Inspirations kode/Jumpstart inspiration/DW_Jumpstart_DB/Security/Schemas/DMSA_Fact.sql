@@ -1,0 +1,2 @@
+﻿CREATE SCHEMA [DMSA_Fact]
+GO

@@ -1,0 +1,3 @@
+﻿CREATE SCHEMA [Fasttrack]
+    AUTHORIZATION [dbo];
+GO

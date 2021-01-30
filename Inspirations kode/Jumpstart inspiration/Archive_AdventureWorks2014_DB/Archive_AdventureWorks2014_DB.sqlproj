@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>Archive_AdventureWorks2014_DB</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{287cb3d6-f232-4d3a-b715-71b3bb3b4c31}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>Archive_AdventureWorks2014_DB</RootNamespace>
+    <AssemblyName>Archive_AdventureWorks2014_DB</AssemblyName>
+    <ModelCollation>1030,CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <DefaultFilegroup>PRIMARY</DefaultFilegroup>
+    <Recovery>SIMPLE</Recovery>
+    <DefaultCollation>Danish_Norwegian_CI_AS</DefaultCollation>
+    <PageVerify>CHECKSUM</PageVerify>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="Tables" />
+    <Folder Include="Tables\Audit" />
+    <Folder Include="Programmability" />
+    <Folder Include="Programmability\Procedures" />
+    <Folder Include="Programmability\Procedures\Audit" />
+    <Folder Include="Tables\Archive" />
+    <Folder Include="Programmability\Procedures\Archive" />
+    <Folder Include="Security" />
+    <Folder Include="Security\Logins" />
+    <Folder Include="Security\Schemas" />
+    <Folder Include="Security\Users" />
+    <Folder Include="Tables\Extract" />
+    <Folder Include="Scripts" />
+    <Folder Include="Scripts\Data" />
+    <Folder Include="Programmability\Procedures\Utility" />
+    <Folder Include="Tables\Utility" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="Tables\Audit\ArchiveLog.sql" />
+    <Build Include="Tables\Audit\ArchiveQueue.sql" />
+    <Build Include="Tables\Audit\ExecutionLog.sql" />
+    <Build Include="Tables\Audit\ExecutionQueue.sql" />
+    <Build Include="Tables\Audit\ExtractLog.sql" />
+    <Build Include="Programmability\Procedures\Audit\ArchiveEnd.sql" />
+    <Build Include="Programmability\Procedures\Audit\ArchiveStart.sql" />
+    <Build Include="Programmability\Procedures\Audit\ExecutionEnd.sql" />
+    <Build Include="Programmability\Procedures\Audit\ExecutionStart.sql" />
+    <Build Include="Programmability\Procedures\Audit\ExtractEnd.sql" />
+    <Build Include="Programmability\Procedures\Audit\ExtractStart.sql" />
+    <Build Include="Tables\Archive\AdventureWorks2014_Production_Product.sql" />
+    <Build Include="Tables\Archive\AdventureWorks2014_Purchasing_ProductVendor.sql" />
+    <Build Include="Tables\Archive\AdventureWorks2014_Purchasing_PurchaseOrderDetail.sql" />
+    <Build Include="Tables\Archive\AdventureWorks2014_Purchasing_PurchaseOrderHeader.sql" />
+    <Build Include="Tables\Archive\AdventureWorks2014_Purchasing_Vendor.sql" />
+    <Build Include="Programmability\Procedures\Archive\UpdateArchive.sql" />
+    <Build Include="Security\Schemas\Archive.sql" />
+    <Build Include="Security\Schemas\Audit.sql" />
+    <Build Include="Security\Schemas\Extract.sql" />
+    <Build Include="Security\Schemas\Utility.sql" />
+    <Build Include="Tables\Extract\AdventureWorks2014_Production_Product.sql" />
+    <Build Include="Tables\Extract\AdventureWorks2014_Purchasing_ProductVendor.sql" />
+    <Build Include="Tables\Extract\AdventureWorks2014_Purchasing_PurchaseOrderDetail.sql" />
+    <Build Include="Tables\Extract\AdventureWorks2014_Purchasing_PurchaseOrderHeader.sql" />
+    <Build Include="Tables\Extract\AdventureWorks2014_Purchasing_Vendor.sql" />
+    <None Include="Scripts\Data\SSISCodes.sql" />
+    <PostDeploy Include="Scripts\PostDeployment.sql" />
+    <PreDeploy Include="Scripts\PreDeployment.sql" />
+    <Build Include="Programmability\Procedures\Utility\PrintLargeString.sql" />
+    <Build Include="Programmability\Procedures\Utility\TruncateTables.sql" />
+    <Build Include="Tables\Utility\FixedValues.sql" />
+    <Build Include="Tables\Utility\SSISCodes.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="local.DEV.publish.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ArtifactReference Include="$(DacPacRootPath)\Extensions\Microsoft\SQLDB\Extensions\SqlServer\120\SqlSchemas\master.dacpac">
+      <HintPath>$(DacPacRootPath)\Extensions\Microsoft\SQLDB\Extensions\SqlServer\120\SqlSchemas\master.dacpac</HintPath>
+      <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
+      <DatabaseVariableLiteralValue>master</DatabaseVariableLiteralValue>
+    </ArtifactReference>
+  </ItemGroup>
+</Project>

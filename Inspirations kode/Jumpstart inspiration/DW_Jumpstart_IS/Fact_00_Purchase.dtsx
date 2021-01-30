@@ -1,0 +1,2910 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="6/19/2015 3:48:56 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="PCPC02DDEK"
+  DTS:CreatorName="FALCK\CON_2934_24"
+  DTS:DTSID="{D6D38256-4FDC-41BB-A65B-05A525642772}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="13.0.2165.0"
+  DTS:LocaleID="1030"
+  DTS:ObjectName="Fact_00_Purchase"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="0"
+  DTS:VersionBuild="175"
+  DTS:VersionGUID="{AE941CEF-4010-479F-9291-7FBACF0E51E3}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{7E4EF1B6-21ED-4343-AA7F-BA1C0A9D748E}"
+      DTS:ObjectName="FactName">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">Purchase</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="20"
+      DTS:DTSID="{CB849198-BB03-4E89-991A-885723990A3A}"
+      DTS:ObjectName="ParentExecutionId">
+      <DTS:Property
+        DTS:DataType="20"
+        DTS:Name="ParameterValue">-1</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{12C90B35-2513-4F10-B669-3461AD6B26C6}"
+      DTS:ObjectName="Source">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">Extract.AdventureWorks2014_Purchasing_PurchaseOrderDetail</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{A6CCEE2D-541D-45D0-820A-B497BBA1F6D5}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="ExecutionId">
+      <DTS:VariableValue
+        DTS:DataType="20">-1</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{B8AC9E10-D3BF-47FE-801C-D0274079DFB6}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ExecutionStatus">
+      <DTS:VariableValue
+        DTS:DataType="8">Succeeded</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{FCB2B569-CD5E-4E71-AE7B-925CB5B37D9E}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;Fact_&quot; +  @[$Package::FactName]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="TableName">
+      <DTS:VariableValue
+        DTS:DataType="8">Fact_Purchase</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{D237387A-3F19-4EF6-B197-2A12F870E104}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;Staging&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="TableSchemaName">
+      <DTS:VariableValue
+        DTS:DataType="8">Staging</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\SEQC All"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{E2333E7E-E1F5-442B-B3A4-FA2268A9F494}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SEQC All">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\SEQC All\DFT Staging from Archive"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{2D2DAFFC-D7DD-4313-A167-49F82B03A45C}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="DFT Staging from Archive"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{85EFED34-3A25-4D5E-83F5-0655FD8B34BB}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="User"
+              DTS:ObjectName="DataTransferId">
+              <DTS:VariableValue
+                DTS:DataType="20">-1</DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{FC62C9E7-2D40-4977-9E6F-356EF819E250}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="User"
+              DTS:ObjectName="RecordsDeleted">
+              <DTS:VariableValue
+                DTS:DataType="3">0</DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{0CC2EC7A-03CD-4EEE-940D-AF4791A1A522}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="User"
+              DTS:ObjectName="RecordsDiscarded">
+              <DTS:VariableValue
+                DTS:DataType="20">0</DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{792E35C9-A572-4F22-A26B-07F67928D977}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="User"
+              DTS:ObjectName="RecordsFailed">
+              <DTS:VariableValue
+                DTS:DataType="20">0</DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{D1BF1D2C-E4BA-47E6-921B-3EA9E1FD126B}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="User"
+              DTS:ObjectName="RecordsInserted">
+              <DTS:VariableValue
+                DTS:DataType="20">0</DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{F5CCF3FA-8577-4C85-9E99-EBF1E85EE534}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="User"
+              DTS:ObjectName="RecordsSelected">
+              <DTS:VariableValue
+                DTS:DataType="20">0</DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{8591BDA6-0D9A-4FF1-8CB9-2C5947161325}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="User"
+              DTS:ObjectName="RecordsUpdated">
+              <DTS:VariableValue
+                DTS:DataType="20">0</DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{DFBEA5FA-9DEE-4F05-932D-A1519C064395}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="TaskStatus">
+              <DTS:VariableValue
+                DTS:DataType="8">Succeeded</DTS:VariableValue>
+            </DTS:Variable>
+          </DTS:Variables>
+          <DTS:EventHandlers>
+            <DTS:EventHandler
+              DTS:refId="Package\SEQC All\DFT Staging from Archive.EventHandlers[OnPostExecute]"
+              DTS:CreationName="OnPostExecute"
+              DTS:DTSID="{A24B59B9-2E24-4916-8996-1E12C107CB66}"
+              DTS:EventID="0"
+              DTS:EventName="OnPostExecute"
+              DTS:LocaleID="-1">
+              <DTS:Variables>
+                <DTS:Variable
+                  DTS:CreationName=""
+                  DTS:Description="The propagate property of the event"
+                  DTS:DTSID="{6E8D4D4D-7A98-48B3-9459-BF0E079DEE90}"
+                  DTS:IncludeInDebugDump="6789"
+                  DTS:Namespace="System"
+                  DTS:ObjectName="Propagate">
+                  <DTS:VariableValue
+                    DTS:DataType="11">-1</DTS:VariableValue>
+                </DTS:Variable>
+              </DTS:Variables>
+              <DTS:Executables>
+                <DTS:Executable
+                  DTS:refId="Package\SEQC All\DFT Staging from Archive.EventHandlers[OnPostExecute]\SQL Audit DataTransferEnd"
+                  DTS:CreationName="Microsoft.ExecuteSQLTask"
+                  DTS:Description="Execute SQL Task"
+                  DTS:DTSID="{123bc138-091e-462b-ba37-e1f6e205f553}"
+                  DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+                  DTS:LocaleID="-1"
+                  DTS:ObjectName="SQL Audit DataTransferEnd"
+                  DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+                  <DTS:Variables />
+                  <DTS:ObjectData>
+                    <SQLTask:SqlTaskData
+                      SQLTask:Connection="{353EB879-16F7-4BEB-ABBA-D6AB4FD3D8D8}"
+                      SQLTask:IsStoredProc="True"
+                      SQLTask:SqlStatementSource="Audit.DataTransferEnd" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+                      <SQLTask:ParameterBinding
+                        SQLTask:ParameterName="DataTransferId"
+                        SQLTask:DtsVariableName="User::DataTransferId"
+                        SQLTask:ParameterDirection="Input"
+                        SQLTask:DataType="12"
+                        SQLTask:ParameterSize="-1" />
+                      <SQLTask:ParameterBinding
+                        SQLTask:ParameterName="RecordsSelected"
+                        SQLTask:DtsVariableName="User::RecordsSelected"
+                        SQLTask:ParameterDirection="Input"
+                        SQLTask:DataType="11"
+                        SQLTask:ParameterSize="-1" />
+                      <SQLTask:ParameterBinding
+                        SQLTask:ParameterName="RecordsInserted"
+                        SQLTask:DtsVariableName="User::RecordsInserted"
+                        SQLTask:ParameterDirection="Input"
+                        SQLTask:DataType="11"
+                        SQLTask:ParameterSize="-1" />
+                      <SQLTask:ParameterBinding
+                        SQLTask:ParameterName="RecordsFailed"
+                        SQLTask:DtsVariableName="User::RecordsFailed"
+                        SQLTask:ParameterDirection="Input"
+                        SQLTask:DataType="11"
+                        SQLTask:ParameterSize="-1" />
+                      <SQLTask:ParameterBinding
+                        SQLTask:ParameterName="RecordsDiscarded"
+                        SQLTask:DtsVariableName="User::RecordsDiscarded"
+                        SQLTask:ParameterDirection="Input"
+                        SQLTask:DataType="11"
+                        SQLTask:ParameterSize="-1" />
+                      <SQLTask:ParameterBinding
+                        SQLTask:ParameterName="Status"
+                        SQLTask:DtsVariableName="User::TaskStatus"
+                        SQLTask:ParameterDirection="Input"
+                        SQLTask:DataType="16"
+                        SQLTask:ParameterSize="-1" />
+                    </SQLTask:SqlTaskData>
+                  </DTS:ObjectData>
+                </DTS:Executable>
+              </DTS:Executables>
+            </DTS:EventHandler>
+            <DTS:EventHandler
+              DTS:refId="Package\SEQC All\DFT Staging from Archive.EventHandlers[OnPreExecute]"
+              DTS:CreationName="OnPreExecute"
+              DTS:DTSID="{D264E8CE-8CD6-4820-B50F-96C48B0BDCE8}"
+              DTS:EventID="0"
+              DTS:EventName="OnPreExecute"
+              DTS:LocaleID="-1">
+              <DTS:Variables>
+                <DTS:Variable
+                  DTS:CreationName=""
+                  DTS:Description="The propagate property of the event"
+                  DTS:DTSID="{26C9A0B8-06A9-4A9E-85A0-0985EDBFF9C0}"
+                  DTS:IncludeInDebugDump="6789"
+                  DTS:Namespace="System"
+                  DTS:ObjectName="Propagate">
+                  <DTS:VariableValue
+                    DTS:DataType="11">-1</DTS:VariableValue>
+                </DTS:Variable>
+              </DTS:Variables>
+              <DTS:Executables>
+                <DTS:Executable
+                  DTS:refId="Package\SEQC All\DFT Staging from Archive.EventHandlers[OnPreExecute]\SQL Audit DataTransferStart"
+                  DTS:CreationName="Microsoft.ExecuteSQLTask"
+                  DTS:Description="Execute SQL Task"
+                  DTS:DTSID="{9e811781-d167-418c-a700-d4001db76497}"
+                  DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+                  DTS:LocaleID="-1"
+                  DTS:ObjectName="SQL Audit DataTransferStart"
+                  DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+                  <DTS:Variables />
+                  <DTS:ObjectData>
+                    <SQLTask:SqlTaskData
+                      SQLTask:Connection="{353EB879-16F7-4BEB-ABBA-D6AB4FD3D8D8}"
+                      SQLTask:IsStoredProc="True"
+                      SQLTask:SqlStatementSource="Audit.DataTransferStart" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+                      <SQLTask:ParameterBinding
+                        SQLTask:ParameterName="ExecutionId"
+                        SQLTask:DtsVariableName="User::ExecutionId"
+                        SQLTask:ParameterDirection="Input"
+                        SQLTask:DataType="12"
+                        SQLTask:ParameterSize="-1" />
+                      <SQLTask:ParameterBinding
+                        SQLTask:ParameterName="DataTransferId"
+                        SQLTask:DtsVariableName="User::DataTransferId"
+                        SQLTask:ParameterDirection="Output"
+                        SQLTask:DataType="12"
+                        SQLTask:ParameterSize="-1" />
+                      <SQLTask:ParameterBinding
+                        SQLTask:ParameterName="TableName"
+                        SQLTask:DtsVariableName="User::TableName"
+                        SQLTask:ParameterDirection="Input"
+                        SQLTask:DataType="16"
+                        SQLTask:ParameterSize="-1" />
+                      <SQLTask:ParameterBinding
+                        SQLTask:ParameterName="SchemaName"
+                        SQLTask:DtsVariableName="User::TableSchemaName"
+                        SQLTask:ParameterDirection="Input"
+                        SQLTask:DataType="16"
+                        SQLTask:ParameterSize="-1" />
+                      <SQLTask:ParameterBinding
+                        SQLTask:ParameterName="TaskID"
+                        SQLTask:DtsVariableName="System::SourceID"
+                        SQLTask:ParameterDirection="Input"
+                        SQLTask:DataType="16"
+                        SQLTask:ParameterSize="-1" />
+                      <SQLTask:ParameterBinding
+                        SQLTask:ParameterName="TaskName"
+                        SQLTask:DtsVariableName="System::SourceName"
+                        SQLTask:ParameterDirection="Input"
+                        SQLTask:DataType="16"
+                        SQLTask:ParameterSize="-1" />
+                      <SQLTask:ParameterBinding
+                        SQLTask:ParameterName="Source"
+                        SQLTask:DtsVariableName="$Package::Source"
+                        SQLTask:ParameterDirection="Input"
+                        SQLTask:DataType="16"
+                        SQLTask:ParameterSize="-1" />
+                    </SQLTask:SqlTaskData>
+                  </DTS:ObjectData>
+                </DTS:Executable>
+              </DTS:Executables>
+            </DTS:EventHandler>
+            <DTS:EventHandler
+              DTS:refId="Package\SEQC All\DFT Staging from Archive.EventHandlers[OnTaskFailed]"
+              DTS:CreationName="OnTaskFailed"
+              DTS:DTSID="{DCE0A230-7ACC-4F92-B3DC-18EABFEB73B6}"
+              DTS:EventID="0"
+              DTS:EventName="OnTaskFailed"
+              DTS:LocaleID="-1">
+              <DTS:Variables>
+                <DTS:Variable
+                  DTS:CreationName=""
+                  DTS:Description="The propagate property of the event"
+                  DTS:DTSID="{9257C409-CBA9-4A79-B1E6-22A46E645543}"
+                  DTS:IncludeInDebugDump="6789"
+                  DTS:Namespace="System"
+                  DTS:ObjectName="Propagate">
+                  <DTS:VariableValue
+                    DTS:DataType="11">-1</DTS:VariableValue>
+                </DTS:Variable>
+              </DTS:Variables>
+              <DTS:Executables>
+                <DTS:Executable
+                  DTS:refId="Package\SEQC All\DFT Staging from Archive.EventHandlers[OnTaskFailed]\EXP Set TaskStatus to Failed"
+                  DTS:CreationName="Microsoft.ExpressionTask"
+                  DTS:Description="Expression Task"
+                  DTS:DTSID="{acd68afb-25d7-44db-a54b-86a9d64d4efe}"
+                  DTS:ExecutableType="Microsoft.ExpressionTask"
+                  DTS:LocaleID="-1"
+                  DTS:ObjectName="EXP Set TaskStatus to Failed"
+                  DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+                  <DTS:Variables />
+                  <DTS:ObjectData>
+                    <ExpressionTask
+                      Expression="@[User::TaskStatus] = &quot;Failed&quot;" />
+                  </DTS:ObjectData>
+                </DTS:Executable>
+              </DTS:Executables>
+            </DTS:EventHandler>
+          </DTS:EventHandlers>
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\SEQC All\DFT Staging from Archive\DER Append metadata"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="DER Append metadata"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\SEQC All\DFT Staging from Archive\DER Append metadata.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\DER Append metadata.Inputs[Derived Column Input].Columns[EKey_Date_OrderDate]"
+                          cachedDataType="i8"
+                          cachedName="EKey_Date_OrderDate"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\SEQC All\DFT Staging from Archive\LKP OrderDate.Outputs[Lookup Match Output].Columns[EKey_Date_OrderDate]"
+                          truncationRowDisposition="FailComponent"
+                          usageType="readWrite">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">[REPLACENULL](#{Package\SEQC All\DFT Staging from Archive\LKP OrderDate.Outputs[Lookup Match Output].Columns[EKey_Date_OrderDate]},-1)</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">REPLACENULL(EKey_Date_OrderDate,-1)</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\DER Append metadata.Inputs[Derived Column Input].Columns[EKey_Date_ShipDate]"
+                          cachedDataType="i8"
+                          cachedName="EKey_Date_ShipDate"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\SEQC All\DFT Staging from Archive\LKP ShipDate.Outputs[Lookup Match Output].Columns[EKey_Date_ShipDate]"
+                          truncationRowDisposition="FailComponent"
+                          usageType="readWrite">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">[REPLACENULL](#{Package\SEQC All\DFT Staging from Archive\LKP ShipDate.Outputs[Lookup Match Output].Columns[EKey_Date_ShipDate]},-1)</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">REPLACENULL(EKey_Date_ShipDate,-1)</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\DER Append metadata.Inputs[Derived Column Input].Columns[EKey_Date_DueDate]"
+                          cachedDataType="i8"
+                          cachedName="EKey_Date_DueDate"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\SEQC All\DFT Staging from Archive\LKP DueDate.Outputs[Lookup Match Output].Columns[EKey_Date_DueDate]"
+                          truncationRowDisposition="FailComponent"
+                          usageType="readWrite">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">[REPLACENULL](#{Package\SEQC All\DFT Staging from Archive\LKP DueDate.Outputs[Lookup Match Output].Columns[EKey_Date_DueDate]},-1)</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">REPLACENULL(EKey_Date_DueDate,-1)</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\DER Append metadata.Inputs[Derived Column Input].Columns[EKey_Vendor]"
+                          cachedDataType="i8"
+                          cachedName="EKey_Vendor"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\SEQC All\DFT Staging from Archive\LKP Vendor.Outputs[Lookup Match Output].Columns[EKey_Vendor]"
+                          truncationRowDisposition="FailComponent"
+                          usageType="readWrite">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">[REPLACENULL](#{Package\SEQC All\DFT Staging from Archive\LKP Vendor.Outputs[Lookup Match Output].Columns[EKey_Vendor]},-1)</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">REPLACENULL(EKey_Vendor,-1)</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\DER Append metadata.Inputs[Derived Column Input].Columns[EKey_Product]"
+                          cachedDataType="i8"
+                          cachedName="EKey_Product"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\SEQC All\DFT Staging from Archive\LKP Product.Outputs[Lookup Match Output].Columns[EKey_Product]"
+                          truncationRowDisposition="FailComponent"
+                          usageType="readWrite">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">[REPLACENULL](#{Package\SEQC All\DFT Staging from Archive\LKP Product.Outputs[Lookup Match Output].Columns[EKey_Product]},-1)</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">REPLACENULL(EKey_Product,-1)</property>
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SEQC All\DFT Staging from Archive\DER Append metadata.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\SEQC All\DFT Staging from Archive\DER Append metadata.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\DER Append metadata.Outputs[Derived Column Output].Columns[Meta_CreateJob]"
+                          dataType="i8"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\SEQC All\DFT Staging from Archive\DER Append metadata.Outputs[Derived Column Output].Columns[Meta_CreateJob]"
+                          name="Meta_CreateJob"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">@[User::DataTransferId]</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">@[User::DataTransferId]</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\DER Append metadata.Outputs[Derived Column Output].Columns[Meta_CreateDate]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\SEQC All\DFT Staging from Archive\DER Append metadata.Outputs[Derived Column Output].Columns[Meta_CreateDate]"
+                          name="Meta_CreateDate"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">[GETDATE]()</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">GETDATE()</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\SEQC All\DFT Staging from Archive\DER Append metadata.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\SEQC All\DFT Staging from Archive\DER Append metadata.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\DER Append metadata.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SEQC All\DFT Staging from Archive\DER Append metadata.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\DER Append metadata.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SEQC All\DFT Staging from Archive\DER Append metadata.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SEQC All\DFT Staging from Archive\DST Staging Purchase"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="DST Staging Purchase"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[Staging].[Fact_Purchase]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\SEQC All\DFT Staging from Archive\DST Staging Purchase.Connections[OleDbConnection]"
+                      connectionManagerID="{14D596EE-F33B-41EC-805B-60BE3FFE3546}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[DW OLEDB]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\SEQC All\DFT Staging from Archive\DST Staging Purchase.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="RedirectRow"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\DST Staging Purchase.Inputs[OLE DB Destination Input].Columns[Meta_CreateJob]"
+                          cachedDataType="i8"
+                          cachedName="Meta_CreateJob"
+                          externalMetadataColumnId="Package\SEQC All\DFT Staging from Archive\DST Staging Purchase.Inputs[OLE DB Destination Input].ExternalColumns[Meta_CreateJob]"
+                          lineageId="Package\SEQC All\DFT Staging from Archive\DER Append metadata.Outputs[Derived Column Output].Columns[Meta_CreateJob]" />
+                        <inputColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\DST Staging Purchase.Inputs[OLE DB Destination Input].Columns[PurchaseOrderID]"
+                          cachedDataType="i4"
+                          cachedName="PurchaseOrderID"
+                          externalMetadataColumnId="Package\SEQC All\DFT Staging from Archive\DST Staging Purchase.Inputs[OLE DB Destination Input].ExternalColumns[PurchaseOrderID]"
+                          lineageId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Output].Columns[PurchaseOrderID]" />
+                        <inputColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\DST Staging Purchase.Inputs[OLE DB Destination Input].Columns[PurchaseOrderDetailID]"
+                          cachedDataType="i4"
+                          cachedName="PurchaseOrderDetailID"
+                          externalMetadataColumnId="Package\SEQC All\DFT Staging from Archive\DST Staging Purchase.Inputs[OLE DB Destination Input].ExternalColumns[PurchaseOrderDetailID]"
+                          lineageId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Output].Columns[PurchaseOrderDetailID]" />
+                        <inputColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\DST Staging Purchase.Inputs[OLE DB Destination Input].Columns[OrderQty]"
+                          cachedDataType="i2"
+                          cachedName="OrderQty"
+                          externalMetadataColumnId="Package\SEQC All\DFT Staging from Archive\DST Staging Purchase.Inputs[OLE DB Destination Input].ExternalColumns[OrderQty]"
+                          lineageId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Output].Columns[OrderQty]" />
+                        <inputColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\DST Staging Purchase.Inputs[OLE DB Destination Input].Columns[UnitPrice]"
+                          cachedDataType="cy"
+                          cachedName="UnitPrice"
+                          externalMetadataColumnId="Package\SEQC All\DFT Staging from Archive\DST Staging Purchase.Inputs[OLE DB Destination Input].ExternalColumns[UnitPrice]"
+                          lineageId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Output].Columns[UnitPrice]" />
+                        <inputColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\DST Staging Purchase.Inputs[OLE DB Destination Input].Columns[LineTotal]"
+                          cachedDataType="cy"
+                          cachedName="LineTotal"
+                          externalMetadataColumnId="Package\SEQC All\DFT Staging from Archive\DST Staging Purchase.Inputs[OLE DB Destination Input].ExternalColumns[LineTotal]"
+                          lineageId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Output].Columns[LineTotal]" />
+                        <inputColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\DST Staging Purchase.Inputs[OLE DB Destination Input].Columns[Meta_CreateDate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="Meta_CreateDate"
+                          externalMetadataColumnId="Package\SEQC All\DFT Staging from Archive\DST Staging Purchase.Inputs[OLE DB Destination Input].ExternalColumns[Meta_CreateTime]"
+                          lineageId="Package\SEQC All\DFT Staging from Archive\DER Append metadata.Outputs[Derived Column Output].Columns[Meta_CreateDate]" />
+                        <inputColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\DST Staging Purchase.Inputs[OLE DB Destination Input].Columns[EKey_Date_DueDate]"
+                          cachedDataType="i8"
+                          cachedName="EKey_Date_DueDate"
+                          externalMetadataColumnId="Package\SEQC All\DFT Staging from Archive\DST Staging Purchase.Inputs[OLE DB Destination Input].ExternalColumns[EKey_Date_DueDate]"
+                          lineageId="Package\SEQC All\DFT Staging from Archive\LKP DueDate.Outputs[Lookup Match Output].Columns[EKey_Date_DueDate]" />
+                        <inputColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\DST Staging Purchase.Inputs[OLE DB Destination Input].Columns[EKey_Date_OrderDate]"
+                          cachedDataType="i8"
+                          cachedName="EKey_Date_OrderDate"
+                          externalMetadataColumnId="Package\SEQC All\DFT Staging from Archive\DST Staging Purchase.Inputs[OLE DB Destination Input].ExternalColumns[EKey_Date_OrderDate]"
+                          lineageId="Package\SEQC All\DFT Staging from Archive\LKP OrderDate.Outputs[Lookup Match Output].Columns[EKey_Date_OrderDate]" />
+                        <inputColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\DST Staging Purchase.Inputs[OLE DB Destination Input].Columns[EKey_Date_ShipDate]"
+                          cachedDataType="i8"
+                          cachedName="EKey_Date_ShipDate"
+                          externalMetadataColumnId="Package\SEQC All\DFT Staging from Archive\DST Staging Purchase.Inputs[OLE DB Destination Input].ExternalColumns[EKey_Date_ShipDate]"
+                          lineageId="Package\SEQC All\DFT Staging from Archive\LKP ShipDate.Outputs[Lookup Match Output].Columns[EKey_Date_ShipDate]" />
+                        <inputColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\DST Staging Purchase.Inputs[OLE DB Destination Input].Columns[EKey_Vendor]"
+                          cachedDataType="i8"
+                          cachedName="EKey_Vendor"
+                          externalMetadataColumnId="Package\SEQC All\DFT Staging from Archive\DST Staging Purchase.Inputs[OLE DB Destination Input].ExternalColumns[EKey_Vendor]"
+                          lineageId="Package\SEQC All\DFT Staging from Archive\LKP Vendor.Outputs[Lookup Match Output].Columns[EKey_Vendor]" />
+                        <inputColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\DST Staging Purchase.Inputs[OLE DB Destination Input].Columns[EKey_Product]"
+                          cachedDataType="i8"
+                          cachedName="EKey_Product"
+                          externalMetadataColumnId="Package\SEQC All\DFT Staging from Archive\DST Staging Purchase.Inputs[OLE DB Destination Input].ExternalColumns[EKey_Product]"
+                          lineageId="Package\SEQC All\DFT Staging from Archive\LKP Product.Outputs[Lookup Match Output].Columns[EKey_Product]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\DST Staging Purchase.Inputs[OLE DB Destination Input].ExternalColumns[Meta_CreateJob]"
+                          dataType="i8"
+                          name="Meta_CreateJob" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\DST Staging Purchase.Inputs[OLE DB Destination Input].ExternalColumns[PurchaseOrderID]"
+                          dataType="i4"
+                          name="PurchaseOrderID" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\DST Staging Purchase.Inputs[OLE DB Destination Input].ExternalColumns[PurchaseOrderDetailID]"
+                          dataType="i4"
+                          name="PurchaseOrderDetailID" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\DST Staging Purchase.Inputs[OLE DB Destination Input].ExternalColumns[OrderQty]"
+                          dataType="i4"
+                          name="OrderQty" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\DST Staging Purchase.Inputs[OLE DB Destination Input].ExternalColumns[UnitPrice]"
+                          dataType="numeric"
+                          name="UnitPrice"
+                          precision="18"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\DST Staging Purchase.Inputs[OLE DB Destination Input].ExternalColumns[LineTotal]"
+                          dataType="numeric"
+                          name="LineTotal"
+                          precision="18"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\DST Staging Purchase.Inputs[OLE DB Destination Input].ExternalColumns[Meta_CreateTime]"
+                          dataType="dbTimeStamp"
+                          name="Meta_CreateTime" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\DST Staging Purchase.Inputs[OLE DB Destination Input].ExternalColumns[EKey_Date_OrderDate]"
+                          dataType="i8"
+                          name="EKey_Date_OrderDate" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\DST Staging Purchase.Inputs[OLE DB Destination Input].ExternalColumns[EKey_Date_ShipDate]"
+                          dataType="i8"
+                          name="EKey_Date_ShipDate" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\DST Staging Purchase.Inputs[OLE DB Destination Input].ExternalColumns[EKey_Date_DueDate]"
+                          dataType="i8"
+                          name="EKey_Date_DueDate" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\DST Staging Purchase.Inputs[OLE DB Destination Input].ExternalColumns[EKey_Vendor]"
+                          dataType="i8"
+                          name="EKey_Vendor" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\DST Staging Purchase.Inputs[OLE DB Destination Input].ExternalColumns[EKey_Product]"
+                          dataType="i8"
+                          name="EKey_Product" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SEQC All\DFT Staging from Archive\DST Staging Purchase.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\SEQC All\DFT Staging from Archive\DST Staging Purchase.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\DST Staging Purchase.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SEQC All\DFT Staging from Archive\DST Staging Purchase.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\DST Staging Purchase.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SEQC All\DFT Staging from Archive\DST Staging Purchase.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SEQC All\DFT Staging from Archive\LKP DueDate"
+                  componentClassID="Microsoft.Lookup"
+                  contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+                  description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+                  name="LKP DueDate"
+                  usesDispositions="true"
+                  version="6">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the SQL statement that generates the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT        EKey_Date, CAST([Date] AS DATETIME) AS Date
+FROM            Dimension.Date</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommandParam"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (SELECT        EKey_Date, CAST([Date] AS DATETIME) AS Date
+FROM            Dimension.Date) [refTable]
+where [refTable].[Date] = ?</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the type of connection used to access the reference dataset."
+                      name="ConnectionType"
+                      typeConverter="LookupConnectionType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the cache type of the lookup table."
+                      name="CacheType"
+                      typeConverter="CacheType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                      name="NoMatchBehavior"
+                      typeConverter="LookupNoMatchBehavior">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                      name="NoMatchCachePercentage">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                      name="MaxMemoryUsage">25</property>
+                    <property
+                      dataType="System.Int64"
+                      description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                      name="MaxMemoryUsage64">25</property>
+                    <property
+                      dataType="System.String"
+                      description="Indicates whether to reference metadata in an XML format."
+                      name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="EKey_Date" dataType="DT_I8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Date" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                      name="ParameterMap">#{Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Output].Columns[DueDate]};</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                      name="TreatDuplicateKeysAsError">false</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\SEQC All\DFT Staging from Archive\LKP DueDate.Connections[OleDbConnection]"
+                      connectionManagerID="{14D596EE-F33B-41EC-805B-60BE3FFE3546}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[DW OLEDB]"
+                      description="Connection manager used to access lookup data."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\SEQC All\DFT Staging from Archive\LKP DueDate.Inputs[Lookup Input]"
+                      name="Lookup Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\LKP DueDate.Inputs[Lookup Input].Columns[DueDate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="DueDate"
+                          lineageId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Output].Columns[DueDate]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table that a column joins."
+                              name="JoinToReferenceColumn">Date</property>
+                            <property
+                              dataType="System.Null"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn" />
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SEQC All\DFT Staging from Archive\LKP DueDate.Outputs[Lookup Match Output]"
+                      errorOrTruncationOperation="Lookup"
+                      errorRowDisposition="IgnoreFailure"
+                      exclusionGroup="1"
+                      name="Lookup Match Output"
+                      synchronousInputId="Package\SEQC All\DFT Staging from Archive\LKP DueDate.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\LKP DueDate.Outputs[Lookup Match Output].Columns[EKey_Date_DueDate]"
+                          dataType="i8"
+                          errorOrTruncationOperation="Copy Column"
+                          lineageId="Package\SEQC All\DFT Staging from Archive\LKP DueDate.Outputs[Lookup Match Output].Columns[EKey_Date_DueDate]"
+                          name="EKey_Date_DueDate"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn">EKey_Date</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\SEQC All\DFT Staging from Archive\LKP DueDate.Outputs[Lookup No Match Output]"
+                      description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                      exclusionGroup="1"
+                      name="Lookup No Match Output"
+                      synchronousInputId="Package\SEQC All\DFT Staging from Archive\LKP DueDate.Inputs[Lookup Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\SEQC All\DFT Staging from Archive\LKP DueDate.Outputs[Lookup Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Lookup Error Output"
+                      synchronousInputId="Package\SEQC All\DFT Staging from Archive\LKP DueDate.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\LKP DueDate.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SEQC All\DFT Staging from Archive\LKP DueDate.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\LKP DueDate.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SEQC All\DFT Staging from Archive\LKP DueDate.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SEQC All\DFT Staging from Archive\LKP OrderDate"
+                  componentClassID="Microsoft.Lookup"
+                  contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+                  description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+                  name="LKP OrderDate"
+                  usesDispositions="true"
+                  version="6">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the SQL statement that generates the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT        EKey_Date, CAST([Date] AS DATETIME) AS Date
+FROM            Dimension.Date</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommandParam"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (SELECT        EKey_Date, CAST([Date] AS DATETIME) AS Date
+FROM            Dimension.Date) [refTable]
+where [refTable].[Date] = ?</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the type of connection used to access the reference dataset."
+                      name="ConnectionType"
+                      typeConverter="LookupConnectionType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the cache type of the lookup table."
+                      name="CacheType"
+                      typeConverter="CacheType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                      name="NoMatchBehavior"
+                      typeConverter="LookupNoMatchBehavior">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                      name="NoMatchCachePercentage">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                      name="MaxMemoryUsage">25</property>
+                    <property
+                      dataType="System.Int64"
+                      description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                      name="MaxMemoryUsage64">25</property>
+                    <property
+                      dataType="System.String"
+                      description="Indicates whether to reference metadata in an XML format."
+                      name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="EKey_Date" dataType="DT_I8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Date" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                      name="ParameterMap">#{Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Output].Columns[OrderDate]};</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                      name="TreatDuplicateKeysAsError">false</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\SEQC All\DFT Staging from Archive\LKP OrderDate.Connections[OleDbConnection]"
+                      connectionManagerID="{14D596EE-F33B-41EC-805B-60BE3FFE3546}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[DW OLEDB]"
+                      description="Connection manager used to access lookup data."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\SEQC All\DFT Staging from Archive\LKP OrderDate.Inputs[Lookup Input]"
+                      name="Lookup Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\LKP OrderDate.Inputs[Lookup Input].Columns[OrderDate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="OrderDate"
+                          lineageId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Output].Columns[OrderDate]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table that a column joins."
+                              name="JoinToReferenceColumn">Date</property>
+                            <property
+                              dataType="System.Null"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn" />
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SEQC All\DFT Staging from Archive\LKP OrderDate.Outputs[Lookup Match Output]"
+                      errorOrTruncationOperation="Lookup"
+                      errorRowDisposition="IgnoreFailure"
+                      exclusionGroup="1"
+                      name="Lookup Match Output"
+                      synchronousInputId="Package\SEQC All\DFT Staging from Archive\LKP OrderDate.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\LKP OrderDate.Outputs[Lookup Match Output].Columns[EKey_Date_OrderDate]"
+                          dataType="i8"
+                          errorOrTruncationOperation="Copy Column"
+                          lineageId="Package\SEQC All\DFT Staging from Archive\LKP OrderDate.Outputs[Lookup Match Output].Columns[EKey_Date_OrderDate]"
+                          name="EKey_Date_OrderDate"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn">EKey_Date</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\SEQC All\DFT Staging from Archive\LKP OrderDate.Outputs[Lookup No Match Output]"
+                      description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                      exclusionGroup="1"
+                      name="Lookup No Match Output"
+                      synchronousInputId="Package\SEQC All\DFT Staging from Archive\LKP OrderDate.Inputs[Lookup Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\SEQC All\DFT Staging from Archive\LKP OrderDate.Outputs[Lookup Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Lookup Error Output"
+                      synchronousInputId="Package\SEQC All\DFT Staging from Archive\LKP OrderDate.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\LKP OrderDate.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SEQC All\DFT Staging from Archive\LKP OrderDate.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\LKP OrderDate.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SEQC All\DFT Staging from Archive\LKP OrderDate.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SEQC All\DFT Staging from Archive\LKP Product"
+                  componentClassID="Microsoft.Lookup"
+                  contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+                  description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+                  name="LKP Product"
+                  usesDispositions="true"
+                  version="6">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the SQL statement that generates the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT        ProductID, EKey_Product
+FROM            Map.Product</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommandParam"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (SELECT        ProductID, EKey_Product
+FROM            Map.Product) [refTable]
+where [refTable].[ProductID] = ?</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the type of connection used to access the reference dataset."
+                      name="ConnectionType"
+                      typeConverter="LookupConnectionType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the cache type of the lookup table."
+                      name="CacheType"
+                      typeConverter="CacheType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                      name="NoMatchBehavior"
+                      typeConverter="LookupNoMatchBehavior">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                      name="NoMatchCachePercentage">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                      name="MaxMemoryUsage">25</property>
+                    <property
+                      dataType="System.Int64"
+                      description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                      name="MaxMemoryUsage64">25</property>
+                    <property
+                      dataType="System.String"
+                      description="Indicates whether to reference metadata in an XML format."
+                      name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ProductID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="EKey_Product" dataType="DT_I8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                      name="ParameterMap">#{Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Output].Columns[ProductID]};</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                      name="TreatDuplicateKeysAsError">false</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\SEQC All\DFT Staging from Archive\LKP Product.Connections[OleDbConnection]"
+                      connectionManagerID="{14D596EE-F33B-41EC-805B-60BE3FFE3546}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[DW OLEDB]"
+                      description="Connection manager used to access lookup data."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\SEQC All\DFT Staging from Archive\LKP Product.Inputs[Lookup Input]"
+                      name="Lookup Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\LKP Product.Inputs[Lookup Input].Columns[ProductID]"
+                          cachedDataType="i4"
+                          cachedName="ProductID"
+                          lineageId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Output].Columns[ProductID]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table that a column joins."
+                              name="JoinToReferenceColumn">ProductID</property>
+                            <property
+                              dataType="System.Null"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn" />
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SEQC All\DFT Staging from Archive\LKP Product.Outputs[Lookup Match Output]"
+                      errorOrTruncationOperation="Lookup"
+                      errorRowDisposition="IgnoreFailure"
+                      exclusionGroup="1"
+                      name="Lookup Match Output"
+                      synchronousInputId="Package\SEQC All\DFT Staging from Archive\LKP Product.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\LKP Product.Outputs[Lookup Match Output].Columns[EKey_Product]"
+                          dataType="i8"
+                          errorOrTruncationOperation="Copy Column"
+                          lineageId="Package\SEQC All\DFT Staging from Archive\LKP Product.Outputs[Lookup Match Output].Columns[EKey_Product]"
+                          name="EKey_Product"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn">EKey_Product</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\SEQC All\DFT Staging from Archive\LKP Product.Outputs[Lookup No Match Output]"
+                      description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                      exclusionGroup="1"
+                      name="Lookup No Match Output"
+                      synchronousInputId="Package\SEQC All\DFT Staging from Archive\LKP Product.Inputs[Lookup Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\SEQC All\DFT Staging from Archive\LKP Product.Outputs[Lookup Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Lookup Error Output"
+                      synchronousInputId="Package\SEQC All\DFT Staging from Archive\LKP Product.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\LKP Product.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SEQC All\DFT Staging from Archive\LKP Product.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\LKP Product.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SEQC All\DFT Staging from Archive\LKP Product.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SEQC All\DFT Staging from Archive\LKP ShipDate"
+                  componentClassID="Microsoft.Lookup"
+                  contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+                  description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+                  name="LKP ShipDate"
+                  usesDispositions="true"
+                  version="6">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the SQL statement that generates the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT        EKey_Date, CAST([Date] AS DATETIME) AS Date
+FROM            Dimension.Date</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommandParam"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (SELECT        EKey_Date, CAST([Date] AS DATETIME) AS Date
+FROM            Dimension.Date) [refTable]
+where [refTable].[Date] = ?</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the type of connection used to access the reference dataset."
+                      name="ConnectionType"
+                      typeConverter="LookupConnectionType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the cache type of the lookup table."
+                      name="CacheType"
+                      typeConverter="CacheType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                      name="NoMatchBehavior"
+                      typeConverter="LookupNoMatchBehavior">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                      name="NoMatchCachePercentage">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                      name="MaxMemoryUsage">25</property>
+                    <property
+                      dataType="System.Int64"
+                      description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                      name="MaxMemoryUsage64">25</property>
+                    <property
+                      dataType="System.String"
+                      description="Indicates whether to reference metadata in an XML format."
+                      name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="EKey_Date" dataType="DT_I8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Date" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                      name="ParameterMap">#{Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Output].Columns[ShipDate]};</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                      name="TreatDuplicateKeysAsError">false</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\SEQC All\DFT Staging from Archive\LKP ShipDate.Connections[OleDbConnection]"
+                      connectionManagerID="{14D596EE-F33B-41EC-805B-60BE3FFE3546}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[DW OLEDB]"
+                      description="Connection manager used to access lookup data."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\SEQC All\DFT Staging from Archive\LKP ShipDate.Inputs[Lookup Input]"
+                      name="Lookup Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\LKP ShipDate.Inputs[Lookup Input].Columns[ShipDate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="ShipDate"
+                          lineageId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Output].Columns[ShipDate]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table that a column joins."
+                              name="JoinToReferenceColumn">Date</property>
+                            <property
+                              dataType="System.Null"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn" />
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SEQC All\DFT Staging from Archive\LKP ShipDate.Outputs[Lookup Match Output]"
+                      errorOrTruncationOperation="Lookup"
+                      errorRowDisposition="IgnoreFailure"
+                      exclusionGroup="1"
+                      name="Lookup Match Output"
+                      synchronousInputId="Package\SEQC All\DFT Staging from Archive\LKP ShipDate.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\LKP ShipDate.Outputs[Lookup Match Output].Columns[EKey_Date_ShipDate]"
+                          dataType="i8"
+                          errorOrTruncationOperation="Copy Column"
+                          lineageId="Package\SEQC All\DFT Staging from Archive\LKP ShipDate.Outputs[Lookup Match Output].Columns[EKey_Date_ShipDate]"
+                          name="EKey_Date_ShipDate"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn">EKey_Date</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\SEQC All\DFT Staging from Archive\LKP ShipDate.Outputs[Lookup No Match Output]"
+                      description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                      exclusionGroup="1"
+                      name="Lookup No Match Output"
+                      synchronousInputId="Package\SEQC All\DFT Staging from Archive\LKP ShipDate.Inputs[Lookup Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\SEQC All\DFT Staging from Archive\LKP ShipDate.Outputs[Lookup Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Lookup Error Output"
+                      synchronousInputId="Package\SEQC All\DFT Staging from Archive\LKP ShipDate.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\LKP ShipDate.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SEQC All\DFT Staging from Archive\LKP ShipDate.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\LKP ShipDate.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SEQC All\DFT Staging from Archive\LKP ShipDate.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SEQC All\DFT Staging from Archive\LKP Vendor"
+                  componentClassID="Microsoft.Lookup"
+                  contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+                  description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+                  name="LKP Vendor"
+                  usesDispositions="true"
+                  version="6">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the SQL statement that generates the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT        VendorID, EKey_Vendor
+FROM            Map.Vendor</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommandParam"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (SELECT        VendorID, EKey_Vendor
+FROM            Map.Vendor) [refTable]
+where [refTable].[VendorID] = ?</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the type of connection used to access the reference dataset."
+                      name="ConnectionType"
+                      typeConverter="LookupConnectionType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the cache type of the lookup table."
+                      name="CacheType"
+                      typeConverter="CacheType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                      name="NoMatchBehavior"
+                      typeConverter="LookupNoMatchBehavior">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                      name="NoMatchCachePercentage">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                      name="MaxMemoryUsage">25</property>
+                    <property
+                      dataType="System.Int64"
+                      description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                      name="MaxMemoryUsage64">25</property>
+                    <property
+                      dataType="System.String"
+                      description="Indicates whether to reference metadata in an XML format."
+                      name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="VendorID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="EKey_Vendor" dataType="DT_I8" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                      name="ParameterMap">#{Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Output].Columns[VendorID]};</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                      name="TreatDuplicateKeysAsError">false</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\SEQC All\DFT Staging from Archive\LKP Vendor.Connections[OleDbConnection]"
+                      connectionManagerID="{14D596EE-F33B-41EC-805B-60BE3FFE3546}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[DW OLEDB]"
+                      description="Connection manager used to access lookup data."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\SEQC All\DFT Staging from Archive\LKP Vendor.Inputs[Lookup Input]"
+                      name="Lookup Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\LKP Vendor.Inputs[Lookup Input].Columns[VendorID]"
+                          cachedDataType="i4"
+                          cachedName="VendorID"
+                          lineageId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Output].Columns[VendorID]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table that a column joins."
+                              name="JoinToReferenceColumn">VendorID</property>
+                            <property
+                              dataType="System.Null"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn" />
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SEQC All\DFT Staging from Archive\LKP Vendor.Outputs[Lookup Match Output]"
+                      errorOrTruncationOperation="Lookup"
+                      errorRowDisposition="IgnoreFailure"
+                      exclusionGroup="1"
+                      name="Lookup Match Output"
+                      synchronousInputId="Package\SEQC All\DFT Staging from Archive\LKP Vendor.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\LKP Vendor.Outputs[Lookup Match Output].Columns[EKey_Vendor]"
+                          dataType="i8"
+                          errorOrTruncationOperation="Copy Column"
+                          lineageId="Package\SEQC All\DFT Staging from Archive\LKP Vendor.Outputs[Lookup Match Output].Columns[EKey_Vendor]"
+                          name="EKey_Vendor"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn">EKey_Vendor</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\SEQC All\DFT Staging from Archive\LKP Vendor.Outputs[Lookup No Match Output]"
+                      description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                      exclusionGroup="1"
+                      name="Lookup No Match Output"
+                      synchronousInputId="Package\SEQC All\DFT Staging from Archive\LKP Vendor.Inputs[Lookup Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\SEQC All\DFT Staging from Archive\LKP Vendor.Outputs[Lookup Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Lookup Error Output"
+                      synchronousInputId="Package\SEQC All\DFT Staging from Archive\LKP Vendor.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\LKP Vendor.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SEQC All\DFT Staging from Archive\LKP Vendor.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\LKP Vendor.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SEQC All\DFT Staging from Archive\LKP Vendor.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SEQC All\DFT Staging from Archive\RC Failed"
+                  componentClassID="Microsoft.RowCount"
+                  contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+                  name="RC Failed">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable to hold the row count."
+                      name="VariableName">User::RecordsFailed</property>
+                  </properties>
+                  <inputs>
+                    <input
+                      refId="Package\SEQC All\DFT Staging from Archive\RC Failed.Inputs[Row Count Input 1]"
+                      hasSideEffects="true"
+                      name="Row Count Input 1">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SEQC All\DFT Staging from Archive\RC Failed.Outputs[Row Count Output 1]"
+                      name="Row Count Output 1"
+                      synchronousInputId="Package\SEQC All\DFT Staging from Archive\RC Failed.Inputs[Row Count Input 1]">
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SEQC All\DFT Staging from Archive\RC Inserted"
+                  componentClassID="Microsoft.RowCount"
+                  contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+                  name="RC Inserted">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable to hold the row count."
+                      name="VariableName">User::RecordsInserted</property>
+                  </properties>
+                  <inputs>
+                    <input
+                      refId="Package\SEQC All\DFT Staging from Archive\RC Inserted.Inputs[Row Count Input 1]"
+                      hasSideEffects="true"
+                      name="Row Count Input 1">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SEQC All\DFT Staging from Archive\RC Inserted.Outputs[Row Count Output 1]"
+                      name="Row Count Output 1"
+                      synchronousInputId="Package\SEQC All\DFT Staging from Archive\RC Inserted.Inputs[Row Count Input 1]">
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SEQC All\DFT Staging from Archive\RC Selected"
+                  componentClassID="Microsoft.RowCount"
+                  contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+                  name="RC Selected">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable to hold the row count."
+                      name="VariableName">User::RecordsSelected</property>
+                  </properties>
+                  <inputs>
+                    <input
+                      refId="Package\SEQC All\DFT Staging from Archive\RC Selected.Inputs[Row Count Input 1]"
+                      hasSideEffects="true"
+                      name="Row Count Input 1">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SEQC All\DFT Staging from Archive\RC Selected.Outputs[Row Count Output 1]"
+                      name="Row Count Output 1"
+                      synchronousInputId="Package\SEQC All\DFT Staging from Archive\RC Selected.Inputs[Row Count Input 1]">
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[Archive].[Aria_Subscription]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT        oh.PurchaseOrderID, od.PurchaseOrderDetailID, oh.VendorID, oh.OrderDate, oh.ShipDate, od.DueDate, od.OrderQty, od.UnitPrice, od.LineTotal, oh.Meta_CreateTime, 
+                         od.ProductID
+FROM            Archive.AdventureWorks2014_Purchasing_PurchaseOrderHeader AS oh INNER JOIN
+                         Archive.AdventureWorks2014_Purchasing_PurchaseOrderDetail AS od ON od.PurchaseOrderID = oh.PurchaseOrderID</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Connections[OleDbConnection]"
+                      connectionManagerID="{9806C8B0-87AE-4987-958F-3732FFDFF31F}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[Archive_AdventureWorks2014 OLEDB]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Output].Columns[PurchaseOrderID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Output].ExternalColumns[PurchaseOrderID]"
+                          lineageId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Output].Columns[PurchaseOrderID]"
+                          name="PurchaseOrderID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Output].Columns[PurchaseOrderDetailID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Output].ExternalColumns[PurchaseOrderDetailID]"
+                          lineageId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Output].Columns[PurchaseOrderDetailID]"
+                          name="PurchaseOrderDetailID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Output].Columns[VendorID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Output].ExternalColumns[VendorID]"
+                          lineageId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Output].Columns[VendorID]"
+                          name="VendorID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Output].Columns[OrderDate]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Output].ExternalColumns[OrderDate]"
+                          lineageId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Output].Columns[OrderDate]"
+                          name="OrderDate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Output].Columns[ShipDate]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Output].ExternalColumns[ShipDate]"
+                          lineageId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Output].Columns[ShipDate]"
+                          name="ShipDate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Output].Columns[DueDate]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Output].ExternalColumns[DueDate]"
+                          lineageId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Output].Columns[DueDate]"
+                          name="DueDate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Output].Columns[OrderQty]"
+                          dataType="i2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Output].ExternalColumns[OrderQty]"
+                          lineageId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Output].Columns[OrderQty]"
+                          name="OrderQty"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Output].Columns[UnitPrice]"
+                          dataType="cy"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Output].ExternalColumns[UnitPrice]"
+                          lineageId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Output].Columns[UnitPrice]"
+                          name="UnitPrice"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Output].Columns[LineTotal]"
+                          dataType="cy"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Output].ExternalColumns[LineTotal]"
+                          lineageId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Output].Columns[LineTotal]"
+                          name="LineTotal"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Output].Columns[Meta_CreateTime]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Output].ExternalColumns[Meta_CreateTime]"
+                          lineageId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Output].Columns[Meta_CreateTime]"
+                          name="Meta_CreateTime"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Output].Columns[ProductID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Output].ExternalColumns[ProductID]"
+                          lineageId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Output].Columns[ProductID]"
+                          name="ProductID"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Output].ExternalColumns[PurchaseOrderID]"
+                          dataType="i4"
+                          name="PurchaseOrderID" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Output].ExternalColumns[PurchaseOrderDetailID]"
+                          dataType="i4"
+                          name="PurchaseOrderDetailID" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Output].ExternalColumns[VendorID]"
+                          dataType="i4"
+                          name="VendorID" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Output].ExternalColumns[OrderDate]"
+                          dataType="dbTimeStamp"
+                          name="OrderDate" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Output].ExternalColumns[ShipDate]"
+                          dataType="dbTimeStamp"
+                          name="ShipDate" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Output].ExternalColumns[DueDate]"
+                          dataType="dbTimeStamp"
+                          name="DueDate" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Output].ExternalColumns[OrderQty]"
+                          dataType="i2"
+                          name="OrderQty" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Output].ExternalColumns[UnitPrice]"
+                          dataType="cy"
+                          name="UnitPrice" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Output].ExternalColumns[LineTotal]"
+                          dataType="cy"
+                          name="LineTotal" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Output].ExternalColumns[Meta_CreateTime]"
+                          dataType="dbTimeStamp"
+                          name="Meta_CreateTime" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Output].ExternalColumns[ProductID]"
+                          dataType="i4"
+                          name="ProductID" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Error Output].Columns[PurchaseOrderID]"
+                          dataType="i4"
+                          lineageId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Error Output].Columns[PurchaseOrderID]"
+                          name="PurchaseOrderID" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Error Output].Columns[PurchaseOrderDetailID]"
+                          dataType="i4"
+                          lineageId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Error Output].Columns[PurchaseOrderDetailID]"
+                          name="PurchaseOrderDetailID" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Error Output].Columns[VendorID]"
+                          dataType="i4"
+                          lineageId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Error Output].Columns[VendorID]"
+                          name="VendorID" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Error Output].Columns[OrderDate]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Error Output].Columns[OrderDate]"
+                          name="OrderDate" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Error Output].Columns[ShipDate]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Error Output].Columns[ShipDate]"
+                          name="ShipDate" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Error Output].Columns[DueDate]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Error Output].Columns[DueDate]"
+                          name="DueDate" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Error Output].Columns[OrderQty]"
+                          dataType="i2"
+                          lineageId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Error Output].Columns[OrderQty]"
+                          name="OrderQty" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Error Output].Columns[UnitPrice]"
+                          dataType="cy"
+                          lineageId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Error Output].Columns[UnitPrice]"
+                          name="UnitPrice" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Error Output].Columns[LineTotal]"
+                          dataType="cy"
+                          lineageId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Error Output].Columns[LineTotal]"
+                          name="LineTotal" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Error Output].Columns[Meta_CreateTime]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Error Output].Columns[Meta_CreateTime]"
+                          name="Meta_CreateTime" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Error Output].Columns[ProductID]"
+                          dataType="i4"
+                          lineageId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Error Output].Columns[ProductID]"
+                          name="ProductID" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\SEQC All\DFT Staging from Archive.Paths[Derived Column Output]"
+                  endId="Package\SEQC All\DFT Staging from Archive\RC Inserted.Inputs[Row Count Input 1]"
+                  name="Derived Column Output"
+                  startId="Package\SEQC All\DFT Staging from Archive\DER Append metadata.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\SEQC All\DFT Staging from Archive.Paths[Lookup Match Output]"
+                  endId="Package\SEQC All\DFT Staging from Archive\LKP ShipDate.Inputs[Lookup Input]"
+                  name="Lookup Match Output"
+                  startId="Package\SEQC All\DFT Staging from Archive\LKP OrderDate.Outputs[Lookup Match Output]" />
+                <path
+                  refId="Package\SEQC All\DFT Staging from Archive.Paths[Lookup Match Output1]"
+                  endId="Package\SEQC All\DFT Staging from Archive\LKP DueDate.Inputs[Lookup Input]"
+                  name="Lookup Match Output"
+                  startId="Package\SEQC All\DFT Staging from Archive\LKP ShipDate.Outputs[Lookup Match Output]" />
+                <path
+                  refId="Package\SEQC All\DFT Staging from Archive.Paths[Lookup Match Output2]"
+                  endId="Package\SEQC All\DFT Staging from Archive\LKP Vendor.Inputs[Lookup Input]"
+                  name="Lookup Match Output"
+                  startId="Package\SEQC All\DFT Staging from Archive\LKP DueDate.Outputs[Lookup Match Output]" />
+                <path
+                  refId="Package\SEQC All\DFT Staging from Archive.Paths[Lookup Match Output3]"
+                  endId="Package\SEQC All\DFT Staging from Archive\LKP Product.Inputs[Lookup Input]"
+                  name="Lookup Match Output"
+                  startId="Package\SEQC All\DFT Staging from Archive\LKP Vendor.Outputs[Lookup Match Output]" />
+                <path
+                  refId="Package\SEQC All\DFT Staging from Archive.Paths[Lookup Match Output4]"
+                  endId="Package\SEQC All\DFT Staging from Archive\DER Append metadata.Inputs[Derived Column Input]"
+                  name="Lookup Match Output"
+                  startId="Package\SEQC All\DFT Staging from Archive\LKP Product.Outputs[Lookup Match Output]" />
+                <path
+                  refId="Package\SEQC All\DFT Staging from Archive.Paths[OLE DB Destination Error Output]"
+                  endId="Package\SEQC All\DFT Staging from Archive\RC Failed.Inputs[Row Count Input 1]"
+                  name="OLE DB Destination Error Output"
+                  startId="Package\SEQC All\DFT Staging from Archive\DST Staging Purchase.Outputs[OLE DB Destination Error Output]" />
+                <path
+                  refId="Package\SEQC All\DFT Staging from Archive.Paths[OLE DB Source Output]"
+                  endId="Package\SEQC All\DFT Staging from Archive\RC Selected.Inputs[Row Count Input 1]"
+                  name="OLE DB Source Output"
+                  startId="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail.Outputs[OLE DB Source Output]" />
+                <path
+                  refId="Package\SEQC All\DFT Staging from Archive.Paths[Row Count Output 1]"
+                  endId="Package\SEQC All\DFT Staging from Archive\DST Staging Purchase.Inputs[OLE DB Destination Input]"
+                  name="Row Count Output 1"
+                  startId="Package\SEQC All\DFT Staging from Archive\RC Inserted.Outputs[Row Count Output 1]" />
+                <path
+                  refId="Package\SEQC All\DFT Staging from Archive.Paths[Row Count Output 11]"
+                  endId="Package\SEQC All\DFT Staging from Archive\LKP OrderDate.Inputs[Lookup Input]"
+                  name="Row Count Output 1"
+                  startId="Package\SEQC All\DFT Staging from Archive\RC Selected.Outputs[Row Count Output 1]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQC All\SQL SwitchFact"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{9C0BFB06-50B4-4CE7-9328-D7DD6735506D}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL SwitchFact"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{353EB879-16F7-4BEB-ABBA-D6AB4FD3D8D8}"
+              SQLTask:IsStoredProc="True"
+              SQLTask:SqlStatementSource="Fact.SwitchFact" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="FactTableName"
+                SQLTask:DtsVariableName="$Package::FactName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="16"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="ExecutionId"
+                SQLTask:DtsVariableName="User::ExecutionId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="12"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQC All\SQL Truncate Staging"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{CD109B09-0532-4877-96B4-C7BA8D7E7981}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL Truncate Staging"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{14D596EE-F33B-41EC-805B-60BE3FFE3546}"
+              SQLTask:SqlStatementSource="truncate table Staging.Fact_Purchase" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQC All.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{74FBAD57-BB8E-4968-9683-7E55541256FD}"
+          DTS:From="Package\SEQC All\SQL Truncate Staging"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\SEQC All\DFT Staging from Archive" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQC All.PrecedenceConstraints[Constraint 3]"
+          DTS:CreationName=""
+          DTS:DTSID="{6CA9187B-322F-4593-A75F-DA66B853ECF0}"
+          DTS:From="Package\SEQC All\DFT Staging from Archive"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 3"
+          DTS:To="Package\SEQC All\SQL SwitchFact" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL ExecutionEnd"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{c4d698f6-79e7-4863-b133-94f04a1bae88}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL ExecutionEnd"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{353EB879-16F7-4BEB-ABBA-D6AB4FD3D8D8}"
+          SQLTask:IsStoredProc="True"
+          SQLTask:SqlStatementSource="Audit.ExecutionEnd" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="Id"
+            SQLTask:DtsVariableName="User::ExecutionId"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="12"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="Status"
+            SQLTask:DtsVariableName="User::ExecutionStatus"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="16"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL ExecutionStart"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{f2dcf976-2c26-49e9-aa66-c880e0079a73}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL ExecutionStart"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{353EB879-16F7-4BEB-ABBA-D6AB4FD3D8D8}"
+          SQLTask:IsStoredProc="True"
+          SQLTask:SqlStatementSource="Audit.ExecutionStart" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="PackageID"
+            SQLTask:DtsVariableName="System::PackageID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="9"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="PackageName"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="16"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="ParentId"
+            SQLTask:DtsVariableName="$Package::ParentExecutionId"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="12"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="Id"
+            SQLTask:DtsVariableName="User::ExecutionId"
+            SQLTask:ParameterDirection="Output"
+            SQLTask:DataType="12"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="ServerExecutionID"
+            SQLTask:DtsVariableName="System::ServerExecutionID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="12"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{2134B8CC-B377-4F5C-BE42-3A80DC3DE167}"
+      DTS:From="Package\SQL ExecutionStart"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\SEQC All" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{EF4EA985-9274-4EB7-BBB6-88B6587762AA}"
+      DTS:From="Package\SEQC All"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\SQL ExecutionEnd"
+      DTS:Value="2" />
+  </DTS:PrecedenceConstraints>
+  <DTS:EventHandlers>
+    <DTS:EventHandler
+      DTS:refId="Package.EventHandlers[OnTaskFailed]"
+      DTS:CreationName="OnTaskFailed"
+      DTS:DTSID="{A3577C6C-0E05-4AED-B210-4FE0921C4279}"
+      DTS:EventID="0"
+      DTS:EventName="OnTaskFailed"
+      DTS:LocaleID="-1">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:Description="The propagate property of the event"
+          DTS:DTSID="{64B275CE-EDDE-4D5C-979D-16B33D39CB99}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="System"
+          DTS:ObjectName="Propagate">
+          <DTS:VariableValue
+            DTS:DataType="11">-1</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package.EventHandlers[OnTaskFailed]\EXP Set ExecutionStatus to Failed"
+          DTS:CreationName="Microsoft.ExpressionTask"
+          DTS:Description="Expression Task"
+          DTS:DTSID="{bdf07483-4fb3-49f3-bb78-ac5ad7f429bf}"
+          DTS:ExecutableType="Microsoft.ExpressionTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="EXP Set ExecutionStatus to Failed"
+          DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExpressionTask
+              Expression="@[User::ExecutionStatus]  = &quot;Failed&quot;" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:EventHandler>
+  </DTS:EventHandlers>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql12">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssge="clr-namespace:Microsoft.SqlServer.Graph.Extended;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="202,42"
+          Id="Package\SEQC All\DFT Staging from Archive"
+          TopLeft="83,123.5" />
+        <NodeLayout
+          Size="183,42"
+          Id="Package\SEQC All\SQL Truncate Staging"
+          TopLeft="95.5,21.5" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\SEQC All\SQL SwitchFact"
+          TopLeft="107,225.5" />
+        <EdgeLayout
+          Id="Package\SEQC All.PrecedenceConstraints[Constraint]"
+          TopLeft="185.5,63.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQC All.PrecedenceConstraints[Constraint 3]"
+          TopLeft="184,165.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="454,323"
+          Size="454,366"
+          Id="Package\SEQC All"
+          TopLeft="42.5,123.5" />
+        <AnnotationLayout
+          Text="Fact Purchase"
+          ParentId="Package"
+          Size="155,50"
+          Id="70bdee85-3e77-4574-a55d-f2a15c7a2572"
+          TopLeft="30.5000000000001,74.5">
+          <AnnotationLayout.FontInfo>
+            <mssge:FontInfo
+              Family="Tahoma"
+              Size="20.25"
+              Color="#FF000000">
+              <mssge:FontInfo.TextDecorations>
+                <av:TextDecorationCollection />
+              </mssge:FontInfo.TextDecorations>
+            </mssge:FontInfo>
+          </AnnotationLayout.FontInfo>
+        </AnnotationLayout>
+        <NodeLayout
+          Size="171,42"
+          Id="Package\SQL ExecutionStart"
+          TopLeft="168.5,31.5" />
+        <NodeLayout
+          Size="166,42"
+          Id="Package\SQL ExecutionEnd"
+          TopLeft="376.5,33.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="254,73.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="-58.8333333333335,50"
+              Start="0,0"
+              End="-58.8333333333335,42.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.8946444249342" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,25.8946444249342"
+                    Point2="0,29.8946444249342"
+                    Point3="-4,29.8946444249342" />
+                  <mssgle:LineSegment
+                    End="-54.8333333333335,29.8946444249342" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-54.8333333333335,29.8946444249342"
+                    Point2="-58.8333333333335,29.8946444249342"
+                    Point3="-58.8333333333335,33.8946444249342" />
+                  <mssgle:LineSegment
+                    End="-58.8333333333335,42.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="343.833333333333,123.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="115.666666666667,-48"
+              Start="0,0"
+              End="115.666666666667,-40.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-15.3011413520632" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-15.3011413520632"
+                    Point2="0,-19.3011413520632"
+                    Point3="4,-19.3011413520632" />
+                  <mssgle:LineSegment
+                    End="111.666666666667,-19.3011413520632" />
+                  <mssgle:CubicBezierSegment
+                    Point1="111.666666666667,-19.3011413520632"
+                    Point2="115.666666666667,-19.3011413520632"
+                    Point3="115.666666666667,-23.3011413520632" />
+                  <mssgle:LineSegment
+                    End="115.666666666667,-40.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="32.5288802083334,-14.3011413520632,50.60890625,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\SEQC All\DFT Staging from Archive">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="135,42"
+          Id="Package\SEQC All\DFT Staging from Archive\LKP Vendor"
+          TopLeft="119.5,515.5" />
+        <NodeLayout
+          Size="137,42"
+          Id="Package\SEQC All\DFT Staging from Archive\RC Selected"
+          TopLeft="118.5,107.5" />
+        <NodeLayout
+          Size="185,42"
+          Id="Package\SEQC All\DFT Staging from Archive\DST Staging Purchase"
+          TopLeft="94.5000000000001,923.5" />
+        <NodeLayout
+          Size="144,42"
+          Id="Package\SEQC All\DFT Staging from Archive\LKP ShipDate"
+          TopLeft="115,311.5" />
+        <NodeLayout
+          Size="137,42"
+          Id="Package\SEQC All\DFT Staging from Archive\RC Inserted"
+          TopLeft="118.5,821.5" />
+        <NodeLayout
+          Size="363,42"
+          Id="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail"
+          TopLeft="5.5,5.5" />
+        <NodeLayout
+          Size="143,42"
+          Id="Package\SEQC All\DFT Staging from Archive\LKP DueDate"
+          TopLeft="115.5,413.5" />
+        <NodeLayout
+          Size="138,42"
+          Id="Package\SEQC All\DFT Staging from Archive\LKP Product"
+          TopLeft="118,617.5" />
+        <NodeLayout
+          Size="188,42"
+          Id="Package\SEQC All\DFT Staging from Archive\DER Append metadata"
+          TopLeft="93.0000000000001,719.5" />
+        <NodeLayout
+          Size="151,42"
+          Id="Package\SEQC All\DFT Staging from Archive\LKP OrderDate"
+          TopLeft="111.5,209.5" />
+        <EdgeLayout
+          Id="Package\SEQC All\DFT Staging from Archive.Paths[Lookup Match Output]"
+          TopLeft="187,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQC All\DFT Staging from Archive.Paths[Derived Column Output]"
+          TopLeft="187,761.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQC All\DFT Staging from Archive.Paths[Row Count Output 11]"
+          TopLeft="187,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQC All\DFT Staging from Archive.Paths[Row Count Output 1]"
+          TopLeft="187,863.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQC All\DFT Staging from Archive.Paths[OLE DB Source Output]"
+          TopLeft="187,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQC All\DFT Staging from Archive.Paths[Lookup Match Output4]"
+          TopLeft="187,659.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQC All\DFT Staging from Archive.Paths[Lookup Match Output3]"
+          TopLeft="187,557.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQC All\DFT Staging from Archive.Paths[Lookup Match Output2]"
+          TopLeft="187,455.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQC All\DFT Staging from Archive.Paths[Lookup Match Output1]"
+          TopLeft="187,353.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="125,42"
+          Id="Package\SEQC All\DFT Staging from Archive\RC Failed"
+          TopLeft="124.5,1025.5" />
+        <EdgeLayout
+          Id="Package\SEQC All\DFT Staging from Archive.Paths[OLE DB Destination Error Output]"
+          TopLeft="187,965.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-73.20890625,20.533203125,146.4178125,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\SEQC All\DFT Staging from Archive\LKP Vendor">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\SEQC All\DFT Staging from Archive\DST Staging Purchase">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\SEQC All\DFT Staging from Archive\LKP ShipDate">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\SEQC All\DFT Staging from Archive\SRC AdventureWorks2014_Purchasing_PurchaseOrderDetail">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\SEQC All\DFT Staging from Archive\LKP DueDate">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\SEQC All\DFT Staging from Archive\LKP Product">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\SEQC All\DFT Staging from Archive\LKP OrderDate">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <DtsEventHandler
+    design-time-name="Package.EventHandlers[OnTaskFailed]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="239,42"
+          Id="Package.EventHandlers[OnTaskFailed]\EXP Set ExecutionStatus to Failed"
+          TopLeft="60,60" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+  <DtsEventHandler
+    design-time-name="Package\SEQC All\DFT Staging from Archive.EventHandlers[OnTaskFailed]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="216,42"
+          Id="Package\SEQC All\DFT Staging from Archive.EventHandlers[OnTaskFailed]\EXP Set TaskStatus to Failed"
+          TopLeft="60,60" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+  <DtsEventHandler
+    design-time-name="Package\SEQC All\DFT Staging from Archive.EventHandlers[OnPreExecute]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="214,42"
+          Id="Package\SEQC All\DFT Staging from Archive.EventHandlers[OnPreExecute]\SQL Audit DataTransferStart"
+          TopLeft="60,60" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+  <DtsEventHandler
+    design-time-name="Package\SEQC All\DFT Staging from Archive.EventHandlers[OnPostExecute]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="210,42"
+          Id="Package\SEQC All\DFT Staging from Archive.EventHandlers[OnPostExecute]\SQL Audit DataTransferEnd"
+          TopLeft="60,60" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

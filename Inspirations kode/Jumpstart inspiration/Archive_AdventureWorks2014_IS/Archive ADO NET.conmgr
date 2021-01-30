@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="Archive ADO NET"
+  DTS:DTSID="{E876D1E2-8BBF-459E-A9CF-60AE9D254CF1}"
+  DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <DTS:PropertyExpression
+    DTS:Name="InitialCatalog">@[$Project::Conn_Archive_Catalog]</DTS:PropertyExpression>
+  <DTS:PropertyExpression
+    DTS:Name="ServerName">@[$Project::Conn_Archive_Server]</DTS:PropertyExpression>
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=T440SW7SIBR\MSSQLSERVER2014;User ID=imuser;Initial Catalog=Jumpstart;Integrated Security=True;Application Name=&quot;SSIS-{E876D1E2-8BBF-459E-A9CF-60AE9D254CF1}DW ADO NET&quot;;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

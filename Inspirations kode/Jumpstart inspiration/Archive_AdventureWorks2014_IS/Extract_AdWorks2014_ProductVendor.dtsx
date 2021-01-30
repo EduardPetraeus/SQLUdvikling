@@ -1,0 +1,1487 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/9/2015 3:09:55 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="T440SW7SIBR"
+  DTS:CreatorName="NCLAN\sibr"
+  DTS:DTSID="{4D15A4C7-0DCA-4B71-A886-2A4A5DDCFF1F}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="12.0.5000.0"
+  DTS:LocaleID="1030"
+  DTS:ObjectName="Extract_AdWorks2014_ProductVendor"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="0"
+  DTS:VersionBuild="215"
+  DTS:VersionGUID="{F0F51767-BB4F-4888-B3BE-ACD56DFE4BAD}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="11"
+      DTS:DTSID="{62675E19-451D-44A2-9BFA-7DBBCEFFDCC2}"
+      DTS:ObjectName="IsFullLoad">
+      <DTS:Property
+        DTS:DataType="11"
+        DTS:Name="ParameterValue">-1</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="20"
+      DTS:DTSID="{8AC92243-1229-4145-864C-A72D94B7A1D3}"
+      DTS:ObjectName="ParentExecutionId">
+      <DTS:Property
+        DTS:DataType="20"
+        DTS:Name="ParameterValue">-1</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{887E21F6-0944-47B1-8810-B064C41A219E}"
+      DTS:ObjectName="TableName">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">AdventureWorks2014_Production_ProductVendor</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{60581984-0468-4E53-9E77-9CE516CEE4DE}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="ExecutionId">
+      <DTS:VariableValue
+        DTS:DataType="20">-1</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{EF0B0FFB-3796-4CF4-8EC8-ADD8EDC35D8E}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="ExtractId">
+      <DTS:VariableValue
+        DTS:DataType="20">-1</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{552093ED-FD31-42E4-A477-018AB3F0B83D}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RecordsDiscarded">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{892CE716-0B46-4A95-982F-FF25F3616B0C}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RecordsFailed">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{EE26428A-6539-48C0-A9AB-104F7BB52DF3}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RecordsInserted">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{01948696-AFEC-4BFF-A6EF-4FC8457A03BA}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RecordsSelected">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\SEQC All"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{E3F2C2D6-B9DA-4DD5-83AA-47B426ADA649}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:ISOLevel="65536"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SEQC All">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\SEQC All\DFT ADW2014 ProductVendor"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{2CD9869E-C539-409C-86C5-2D1EF882515F}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="DFT ADW2014 ProductVendor"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\SEQC All\DFT ADW2014 ProductVendor\DER Append metadata"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="DER Append metadata"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\SEQC All\DFT ADW2014 ProductVendor\DER Append metadata.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SEQC All\DFT ADW2014 ProductVendor\DER Append metadata.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\SEQC All\DFT ADW2014 ProductVendor\DER Append metadata.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQC All\DFT ADW2014 ProductVendor\DER Append metadata.Outputs[Derived Column Output].Columns[Meta_CreateJob]"
+                          dataType="i8"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\SEQC All\DFT ADW2014 ProductVendor\DER Append metadata.Outputs[Derived Column Output].Columns[Meta_CreateJob]"
+                          name="Meta_CreateJob"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">@[User::ExtractId]</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">@[User::ExtractId]</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\SEQC All\DFT ADW2014 ProductVendor\DER Append metadata.Outputs[Derived Column Output].Columns[Meta_CreateTime]"
+                          dataType="date"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\SEQC All\DFT ADW2014 ProductVendor\DER Append metadata.Outputs[Derived Column Output].Columns[Meta_CreateTime]"
+                          name="Meta_CreateTime"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">@[System::ContainerStartTime]</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">@[System::ContainerStartTime]</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\SEQC All\DFT ADW2014 ProductVendor\DER Append metadata.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\SEQC All\DFT ADW2014 ProductVendor\DER Append metadata.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQC All\DFT ADW2014 ProductVendor\DER Append metadata.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SEQC All\DFT ADW2014 ProductVendor\DER Append metadata.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT ADW2014 ProductVendor\DER Append metadata.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SEQC All\DFT ADW2014 ProductVendor\DER Append metadata.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SEQC All\DFT ADW2014 ProductVendor\DEST Extract AdventureWorks2014_Purchasing_ProductVendor"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="DEST Extract AdventureWorks2014_Purchasing_ProductVendor"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[Extract].[AdventureWorks2014_Purchasing_ProductVendor]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\SEQC All\DFT ADW2014 ProductVendor\DEST Extract AdventureWorks2014_Purchasing_ProductVendor.Connections[OleDbConnection]"
+                      connectionManagerID="{3B41C6CC-BFEF-4A52-8E29-52A92550F7B5}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[Archive OLEDB]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\SEQC All\DFT ADW2014 ProductVendor\DEST Extract AdventureWorks2014_Purchasing_ProductVendor.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\SEQC All\DFT ADW2014 ProductVendor\DEST Extract AdventureWorks2014_Purchasing_ProductVendor.Inputs[OLE DB Destination Input].Columns[ModifiedDate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="ModifiedDate"
+                          externalMetadataColumnId="Package\SEQC All\DFT ADW2014 ProductVendor\DEST Extract AdventureWorks2014_Purchasing_ProductVendor.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedDate]"
+                          lineageId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Output].Columns[ModifiedDate]" />
+                        <inputColumn
+                          refId="Package\SEQC All\DFT ADW2014 ProductVendor\DEST Extract AdventureWorks2014_Purchasing_ProductVendor.Inputs[OLE DB Destination Input].Columns[Meta_CreateJob]"
+                          cachedDataType="i8"
+                          cachedName="Meta_CreateJob"
+                          externalMetadataColumnId="Package\SEQC All\DFT ADW2014 ProductVendor\DEST Extract AdventureWorks2014_Purchasing_ProductVendor.Inputs[OLE DB Destination Input].ExternalColumns[Meta_CreateJob]"
+                          lineageId="Package\SEQC All\DFT ADW2014 ProductVendor\DER Append metadata.Outputs[Derived Column Output].Columns[Meta_CreateJob]" />
+                        <inputColumn
+                          refId="Package\SEQC All\DFT ADW2014 ProductVendor\DEST Extract AdventureWorks2014_Purchasing_ProductVendor.Inputs[OLE DB Destination Input].Columns[Meta_CreateTime]"
+                          cachedDataType="date"
+                          cachedName="Meta_CreateTime"
+                          externalMetadataColumnId="Package\SEQC All\DFT ADW2014 ProductVendor\DEST Extract AdventureWorks2014_Purchasing_ProductVendor.Inputs[OLE DB Destination Input].ExternalColumns[Meta_CreateTime]"
+                          lineageId="Package\SEQC All\DFT ADW2014 ProductVendor\DER Append metadata.Outputs[Derived Column Output].Columns[Meta_CreateTime]" />
+                        <inputColumn
+                          refId="Package\SEQC All\DFT ADW2014 ProductVendor\DEST Extract AdventureWorks2014_Purchasing_ProductVendor.Inputs[OLE DB Destination Input].Columns[BusinessEntityID]"
+                          cachedDataType="i4"
+                          cachedName="BusinessEntityID"
+                          externalMetadataColumnId="Package\SEQC All\DFT ADW2014 ProductVendor\DEST Extract AdventureWorks2014_Purchasing_ProductVendor.Inputs[OLE DB Destination Input].ExternalColumns[BusinessEntityID]"
+                          lineageId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Output].Columns[BusinessEntityID]" />
+                        <inputColumn
+                          refId="Package\SEQC All\DFT ADW2014 ProductVendor\DEST Extract AdventureWorks2014_Purchasing_ProductVendor.Inputs[OLE DB Destination Input].Columns[ProductID]"
+                          cachedDataType="i4"
+                          cachedName="ProductID"
+                          externalMetadataColumnId="Package\SEQC All\DFT ADW2014 ProductVendor\DEST Extract AdventureWorks2014_Purchasing_ProductVendor.Inputs[OLE DB Destination Input].ExternalColumns[ProductID]"
+                          lineageId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Output].Columns[ProductID]" />
+                        <inputColumn
+                          refId="Package\SEQC All\DFT ADW2014 ProductVendor\DEST Extract AdventureWorks2014_Purchasing_ProductVendor.Inputs[OLE DB Destination Input].Columns[AverageLeadTime]"
+                          cachedDataType="i4"
+                          cachedName="AverageLeadTime"
+                          externalMetadataColumnId="Package\SEQC All\DFT ADW2014 ProductVendor\DEST Extract AdventureWorks2014_Purchasing_ProductVendor.Inputs[OLE DB Destination Input].ExternalColumns[AverageLeadTime]"
+                          lineageId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Output].Columns[AverageLeadTime]" />
+                        <inputColumn
+                          refId="Package\SEQC All\DFT ADW2014 ProductVendor\DEST Extract AdventureWorks2014_Purchasing_ProductVendor.Inputs[OLE DB Destination Input].Columns[StandardPrice]"
+                          cachedDataType="cy"
+                          cachedName="StandardPrice"
+                          externalMetadataColumnId="Package\SEQC All\DFT ADW2014 ProductVendor\DEST Extract AdventureWorks2014_Purchasing_ProductVendor.Inputs[OLE DB Destination Input].ExternalColumns[StandardPrice]"
+                          lineageId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Output].Columns[StandardPrice]" />
+                        <inputColumn
+                          refId="Package\SEQC All\DFT ADW2014 ProductVendor\DEST Extract AdventureWorks2014_Purchasing_ProductVendor.Inputs[OLE DB Destination Input].Columns[LastReceiptCost]"
+                          cachedDataType="cy"
+                          cachedName="LastReceiptCost"
+                          externalMetadataColumnId="Package\SEQC All\DFT ADW2014 ProductVendor\DEST Extract AdventureWorks2014_Purchasing_ProductVendor.Inputs[OLE DB Destination Input].ExternalColumns[LastReceiptCost]"
+                          lineageId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Output].Columns[LastReceiptCost]" />
+                        <inputColumn
+                          refId="Package\SEQC All\DFT ADW2014 ProductVendor\DEST Extract AdventureWorks2014_Purchasing_ProductVendor.Inputs[OLE DB Destination Input].Columns[LastReceiptDate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="LastReceiptDate"
+                          externalMetadataColumnId="Package\SEQC All\DFT ADW2014 ProductVendor\DEST Extract AdventureWorks2014_Purchasing_ProductVendor.Inputs[OLE DB Destination Input].ExternalColumns[LastReceiptDate]"
+                          lineageId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Output].Columns[LastReceiptDate]" />
+                        <inputColumn
+                          refId="Package\SEQC All\DFT ADW2014 ProductVendor\DEST Extract AdventureWorks2014_Purchasing_ProductVendor.Inputs[OLE DB Destination Input].Columns[MinOrderQty]"
+                          cachedDataType="i4"
+                          cachedName="MinOrderQty"
+                          externalMetadataColumnId="Package\SEQC All\DFT ADW2014 ProductVendor\DEST Extract AdventureWorks2014_Purchasing_ProductVendor.Inputs[OLE DB Destination Input].ExternalColumns[MinOrderQty]"
+                          lineageId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Output].Columns[MinOrderQty]" />
+                        <inputColumn
+                          refId="Package\SEQC All\DFT ADW2014 ProductVendor\DEST Extract AdventureWorks2014_Purchasing_ProductVendor.Inputs[OLE DB Destination Input].Columns[MaxOrderQty]"
+                          cachedDataType="i4"
+                          cachedName="MaxOrderQty"
+                          externalMetadataColumnId="Package\SEQC All\DFT ADW2014 ProductVendor\DEST Extract AdventureWorks2014_Purchasing_ProductVendor.Inputs[OLE DB Destination Input].ExternalColumns[MaxOrderQty]"
+                          lineageId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Output].Columns[MaxOrderQty]" />
+                        <inputColumn
+                          refId="Package\SEQC All\DFT ADW2014 ProductVendor\DEST Extract AdventureWorks2014_Purchasing_ProductVendor.Inputs[OLE DB Destination Input].Columns[OnOrderQty]"
+                          cachedDataType="i4"
+                          cachedName="OnOrderQty"
+                          externalMetadataColumnId="Package\SEQC All\DFT ADW2014 ProductVendor\DEST Extract AdventureWorks2014_Purchasing_ProductVendor.Inputs[OLE DB Destination Input].ExternalColumns[OnOrderQty]"
+                          lineageId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Output].Columns[OnOrderQty]" />
+                        <inputColumn
+                          refId="Package\SEQC All\DFT ADW2014 ProductVendor\DEST Extract AdventureWorks2014_Purchasing_ProductVendor.Inputs[OLE DB Destination Input].Columns[UnitMeasureCode]"
+                          cachedDataType="wstr"
+                          cachedLength="3"
+                          cachedName="UnitMeasureCode"
+                          externalMetadataColumnId="Package\SEQC All\DFT ADW2014 ProductVendor\DEST Extract AdventureWorks2014_Purchasing_ProductVendor.Inputs[OLE DB Destination Input].ExternalColumns[UnitMeasureCode]"
+                          lineageId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Output].Columns[UnitMeasureCode]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT ADW2014 ProductVendor\DEST Extract AdventureWorks2014_Purchasing_ProductVendor.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedDate]"
+                          dataType="dbTimeStamp"
+                          name="ModifiedDate" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT ADW2014 ProductVendor\DEST Extract AdventureWorks2014_Purchasing_ProductVendor.Inputs[OLE DB Destination Input].ExternalColumns[Meta_Id]"
+                          dataType="i8"
+                          name="Meta_Id" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT ADW2014 ProductVendor\DEST Extract AdventureWorks2014_Purchasing_ProductVendor.Inputs[OLE DB Destination Input].ExternalColumns[Meta_CreateTime]"
+                          dataType="dbTimeStamp"
+                          name="Meta_CreateTime" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT ADW2014 ProductVendor\DEST Extract AdventureWorks2014_Purchasing_ProductVendor.Inputs[OLE DB Destination Input].ExternalColumns[Meta_CreateJob]"
+                          dataType="i8"
+                          name="Meta_CreateJob" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT ADW2014 ProductVendor\DEST Extract AdventureWorks2014_Purchasing_ProductVendor.Inputs[OLE DB Destination Input].ExternalColumns[BusinessEntityID]"
+                          dataType="i4"
+                          name="BusinessEntityID" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT ADW2014 ProductVendor\DEST Extract AdventureWorks2014_Purchasing_ProductVendor.Inputs[OLE DB Destination Input].ExternalColumns[ProductID]"
+                          dataType="i4"
+                          name="ProductID" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT ADW2014 ProductVendor\DEST Extract AdventureWorks2014_Purchasing_ProductVendor.Inputs[OLE DB Destination Input].ExternalColumns[AverageLeadTime]"
+                          dataType="i4"
+                          name="AverageLeadTime" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT ADW2014 ProductVendor\DEST Extract AdventureWorks2014_Purchasing_ProductVendor.Inputs[OLE DB Destination Input].ExternalColumns[StandardPrice]"
+                          dataType="cy"
+                          name="StandardPrice" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT ADW2014 ProductVendor\DEST Extract AdventureWorks2014_Purchasing_ProductVendor.Inputs[OLE DB Destination Input].ExternalColumns[LastReceiptCost]"
+                          dataType="cy"
+                          name="LastReceiptCost" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT ADW2014 ProductVendor\DEST Extract AdventureWorks2014_Purchasing_ProductVendor.Inputs[OLE DB Destination Input].ExternalColumns[LastReceiptDate]"
+                          dataType="dbTimeStamp"
+                          name="LastReceiptDate" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT ADW2014 ProductVendor\DEST Extract AdventureWorks2014_Purchasing_ProductVendor.Inputs[OLE DB Destination Input].ExternalColumns[MinOrderQty]"
+                          dataType="i4"
+                          name="MinOrderQty" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT ADW2014 ProductVendor\DEST Extract AdventureWorks2014_Purchasing_ProductVendor.Inputs[OLE DB Destination Input].ExternalColumns[MaxOrderQty]"
+                          dataType="i4"
+                          name="MaxOrderQty" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT ADW2014 ProductVendor\DEST Extract AdventureWorks2014_Purchasing_ProductVendor.Inputs[OLE DB Destination Input].ExternalColumns[OnOrderQty]"
+                          dataType="i4"
+                          name="OnOrderQty" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT ADW2014 ProductVendor\DEST Extract AdventureWorks2014_Purchasing_ProductVendor.Inputs[OLE DB Destination Input].ExternalColumns[UnitMeasureCode]"
+                          dataType="wstr"
+                          length="3"
+                          name="UnitMeasureCode" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT ADW2014 ProductVendor\DEST Extract AdventureWorks2014_Purchasing_ProductVendor.Inputs[OLE DB Destination Input].ExternalColumns[Meta_ExternalJob]"
+                          dataType="wstr"
+                          length="255"
+                          name="Meta_ExternalJob" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SEQC All\DFT ADW2014 ProductVendor\DEST Extract AdventureWorks2014_Purchasing_ProductVendor.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\SEQC All\DFT ADW2014 ProductVendor\DEST Extract AdventureWorks2014_Purchasing_ProductVendor.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQC All\DFT ADW2014 ProductVendor\DEST Extract AdventureWorks2014_Purchasing_ProductVendor.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SEQC All\DFT ADW2014 ProductVendor\DEST Extract AdventureWorks2014_Purchasing_ProductVendor.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT ADW2014 ProductVendor\DEST Extract AdventureWorks2014_Purchasing_ProductVendor.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SEQC All\DFT ADW2014 ProductVendor\DEST Extract AdventureWorks2014_Purchasing_ProductVendor.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SEQC All\DFT ADW2014 ProductVendor\RC RecordsInserted"
+                  componentClassID="Microsoft.RowCount"
+                  contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+                  name="RC RecordsInserted">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable to hold the row count."
+                      name="VariableName">User::RecordsInserted</property>
+                  </properties>
+                  <inputs>
+                    <input
+                      refId="Package\SEQC All\DFT ADW2014 ProductVendor\RC RecordsInserted.Inputs[Row Count Input 1]"
+                      hasSideEffects="true"
+                      name="Row Count Input 1">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SEQC All\DFT ADW2014 ProductVendor\RC RecordsInserted.Outputs[Row Count Output 1]"
+                      name="Row Count Output 1"
+                      synchronousInputId="Package\SEQC All\DFT ADW2014 ProductVendor\RC RecordsInserted.Inputs[Row Count Input 1]">
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SEQC All\DFT ADW2014 ProductVendor\RC RecordsSelected"
+                  componentClassID="Microsoft.RowCount"
+                  contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+                  name="RC RecordsSelected">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable to hold the row count."
+                      name="VariableName">User::RecordsSelected</property>
+                  </properties>
+                  <inputs>
+                    <input
+                      refId="Package\SEQC All\DFT ADW2014 ProductVendor\RC RecordsSelected.Inputs[Row Count Input 1]"
+                      hasSideEffects="true"
+                      name="Row Count Input 1">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SEQC All\DFT ADW2014 ProductVendor\RC RecordsSelected.Outputs[Row Count Output 1]"
+                      name="Row Count Output 1"
+                      synchronousInputId="Package\SEQC All\DFT ADW2014 ProductVendor\RC RecordsSelected.Inputs[Row Count Input 1]">
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="SRC  ProductVendor"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT        ProductID, BusinessEntityID, AverageLeadTime, StandardPrice, LastReceiptCost, LastReceiptDate, MinOrderQty, MaxOrderQty, OnOrderQty, UnitMeasureCode, 
+                         ModifiedDate
+FROM            Purchasing.ProductVendor</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Connections[OleDbConnection]"
+                      connectionManagerID="{6730893A-6C83-4A85-8F80-E35EFB7E0F76}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[AdventureWorks OLEDB]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Output].Columns[ModifiedDate]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Output].ExternalColumns[ModifiedDate]"
+                          lineageId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Output].Columns[ModifiedDate]"
+                          name="ModifiedDate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Output].Columns[BusinessEntityID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Output].ExternalColumns[BusinessEntityID]"
+                          lineageId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Output].Columns[BusinessEntityID]"
+                          name="BusinessEntityID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Output].Columns[ProductID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Output].ExternalColumns[ProductID]"
+                          lineageId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Output].Columns[ProductID]"
+                          name="ProductID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Output].Columns[AverageLeadTime]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Output].ExternalColumns[AverageLeadTime]"
+                          lineageId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Output].Columns[AverageLeadTime]"
+                          name="AverageLeadTime"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Output].Columns[StandardPrice]"
+                          dataType="cy"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Output].ExternalColumns[StandardPrice]"
+                          lineageId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Output].Columns[StandardPrice]"
+                          name="StandardPrice"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Output].Columns[LastReceiptCost]"
+                          dataType="cy"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Output].ExternalColumns[LastReceiptCost]"
+                          lineageId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Output].Columns[LastReceiptCost]"
+                          name="LastReceiptCost"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Output].Columns[LastReceiptDate]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Output].ExternalColumns[LastReceiptDate]"
+                          lineageId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Output].Columns[LastReceiptDate]"
+                          name="LastReceiptDate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Output].Columns[MinOrderQty]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Output].ExternalColumns[MinOrderQty]"
+                          lineageId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Output].Columns[MinOrderQty]"
+                          name="MinOrderQty"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Output].Columns[MaxOrderQty]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Output].ExternalColumns[MaxOrderQty]"
+                          lineageId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Output].Columns[MaxOrderQty]"
+                          name="MaxOrderQty"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Output].Columns[OnOrderQty]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Output].ExternalColumns[OnOrderQty]"
+                          lineageId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Output].Columns[OnOrderQty]"
+                          name="OnOrderQty"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Output].Columns[UnitMeasureCode]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Output].ExternalColumns[UnitMeasureCode]"
+                          length="3"
+                          lineageId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Output].Columns[UnitMeasureCode]"
+                          name="UnitMeasureCode"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Output].ExternalColumns[ModifiedDate]"
+                          dataType="dbTimeStamp"
+                          name="ModifiedDate" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Output].ExternalColumns[BusinessEntityID]"
+                          dataType="i4"
+                          name="BusinessEntityID" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Output].ExternalColumns[ProductID]"
+                          dataType="i4"
+                          name="ProductID" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Output].ExternalColumns[AverageLeadTime]"
+                          dataType="i4"
+                          name="AverageLeadTime" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Output].ExternalColumns[StandardPrice]"
+                          dataType="cy"
+                          name="StandardPrice" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Output].ExternalColumns[LastReceiptCost]"
+                          dataType="cy"
+                          name="LastReceiptCost" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Output].ExternalColumns[LastReceiptDate]"
+                          dataType="dbTimeStamp"
+                          name="LastReceiptDate" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Output].ExternalColumns[MinOrderQty]"
+                          dataType="i4"
+                          name="MinOrderQty" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Output].ExternalColumns[MaxOrderQty]"
+                          dataType="i4"
+                          name="MaxOrderQty" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Output].ExternalColumns[OnOrderQty]"
+                          dataType="i4"
+                          name="OnOrderQty" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Output].ExternalColumns[UnitMeasureCode]"
+                          dataType="wstr"
+                          length="3"
+                          name="UnitMeasureCode" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Error Output].Columns[ProductID]"
+                          dataType="i4"
+                          lineageId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Error Output].Columns[ProductID]"
+                          name="ProductID" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Error Output].Columns[BusinessEntityID]"
+                          dataType="i4"
+                          lineageId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Error Output].Columns[BusinessEntityID]"
+                          name="BusinessEntityID" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Error Output].Columns[AverageLeadTime]"
+                          dataType="i4"
+                          lineageId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Error Output].Columns[AverageLeadTime]"
+                          name="AverageLeadTime" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Error Output].Columns[StandardPrice]"
+                          dataType="cy"
+                          lineageId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Error Output].Columns[StandardPrice]"
+                          name="StandardPrice" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Error Output].Columns[LastReceiptCost]"
+                          dataType="cy"
+                          lineageId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Error Output].Columns[LastReceiptCost]"
+                          name="LastReceiptCost" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Error Output].Columns[LastReceiptDate]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Error Output].Columns[LastReceiptDate]"
+                          name="LastReceiptDate" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Error Output].Columns[MinOrderQty]"
+                          dataType="i4"
+                          lineageId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Error Output].Columns[MinOrderQty]"
+                          name="MinOrderQty" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Error Output].Columns[MaxOrderQty]"
+                          dataType="i4"
+                          lineageId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Error Output].Columns[MaxOrderQty]"
+                          name="MaxOrderQty" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Error Output].Columns[OnOrderQty]"
+                          dataType="i4"
+                          lineageId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Error Output].Columns[OnOrderQty]"
+                          name="OnOrderQty" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Error Output].Columns[UnitMeasureCode]"
+                          dataType="wstr"
+                          length="3"
+                          lineageId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Error Output].Columns[UnitMeasureCode]"
+                          name="UnitMeasureCode" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                        <outputColumn
+                          refId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Error Output].Columns[ModifiedDate]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Error Output].Columns[ModifiedDate]"
+                          name="ModifiedDate" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\SEQC All\DFT ADW2014 ProductVendor.Paths[Derived Column Output]"
+                  endId="Package\SEQC All\DFT ADW2014 ProductVendor\RC RecordsInserted.Inputs[Row Count Input 1]"
+                  name="Derived Column Output"
+                  startId="Package\SEQC All\DFT ADW2014 ProductVendor\DER Append metadata.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\SEQC All\DFT ADW2014 ProductVendor.Paths[OLE DB Source Output]"
+                  endId="Package\SEQC All\DFT ADW2014 ProductVendor\RC RecordsSelected.Inputs[Row Count Input 1]"
+                  name="OLE DB Source Output"
+                  startId="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor.Outputs[OLE DB Source Output]" />
+                <path
+                  refId="Package\SEQC All\DFT ADW2014 ProductVendor.Paths[Row Count Output 1]"
+                  endId="Package\SEQC All\DFT ADW2014 ProductVendor\DER Append metadata.Inputs[Derived Column Input]"
+                  name="Row Count Output 1"
+                  startId="Package\SEQC All\DFT ADW2014 ProductVendor\RC RecordsSelected.Outputs[Row Count Output 1]" />
+                <path
+                  refId="Package\SEQC All\DFT ADW2014 ProductVendor.Paths[Row Count Output 11]"
+                  endId="Package\SEQC All\DFT ADW2014 ProductVendor\DEST Extract AdventureWorks2014_Purchasing_ProductVendor.Inputs[OLE DB Destination Input]"
+                  name="Row Count Output 1"
+                  startId="Package\SEQC All\DFT ADW2014 ProductVendor\RC RecordsInserted.Outputs[Row Count Output 1]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQC All\SQL ExtractEnd Failed"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{133528BE-2A01-468E-998B-C7FA1DA42814}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL ExtractEnd Failed"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{E876D1E2-8BBF-459E-A9CF-60AE9D254CF1}"
+              SQLTask:SqlStatementSource="EXEC Audit.ExtractEnd @ExtractId, 'Failed'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="ExtractId"
+                SQLTask:DtsVariableName="User::ExtractId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="12"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQC All\SQL ExtractEnd Succeeded"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{3298F7D5-7E40-4EA7-AEBB-8A056D7BAFB7}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL ExtractEnd Succeeded"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{E876D1E2-8BBF-459E-A9CF-60AE9D254CF1}"
+              SQLTask:IsStoredProc="True"
+              SQLTask:SqlStatementSource="Audit.ExtractEnd" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="ExtractId"
+                SQLTask:DtsVariableName="User::ExtractId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="12"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="RecordsSelected"
+                SQLTask:DtsVariableName="User::RecordsSelected"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="11"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="RecordsInserted"
+                SQLTask:DtsVariableName="User::RecordsInserted"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="11"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="RecordsFailed"
+                SQLTask:DtsVariableName="User::RecordsFailed"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="11"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="RecordsDiscarded"
+                SQLTask:DtsVariableName="User::RecordsDiscarded"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="11"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQC All\SQL ExtractStart"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{E32616C6-4EA0-4A26-9AD3-231A62F388FA}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL ExtractStart"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{E876D1E2-8BBF-459E-A9CF-60AE9D254CF1}"
+              SQLTask:IsStoredProc="True"
+              SQLTask:SqlStatementSource="Audit.ExtractStart" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="ExecutionId"
+                SQLTask:DtsVariableName="User::ExecutionId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="12"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="ExtractId"
+                SQLTask:DtsVariableName="User::ExtractId"
+                SQLTask:ParameterDirection="Output"
+                SQLTask:DataType="12"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="TableName"
+                SQLTask:DtsVariableName="$Package::TableName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="16"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="IsFullLoad"
+                SQLTask:DtsVariableName="$Package::IsFullLoad"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQC All.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{4C85BE91-98F2-4E32-88F9-955D7783EF66}"
+          DTS:From="Package\SEQC All\SQL ExtractStart"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\SEQC All\DFT ADW2014 ProductVendor" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQC All.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{05E7ECEF-D988-4B1D-8214-3BF311B33522}"
+          DTS:From="Package\SEQC All\DFT ADW2014 ProductVendor"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\SEQC All\SQL ExtractEnd Succeeded" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQC All.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{08F94F83-0FE2-4691-9FAD-66CB1FB221D1}"
+          DTS:From="Package\SEQC All\DFT ADW2014 ProductVendor"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\SEQC All\SQL ExtractEnd Failed"
+          DTS:Value="1" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL ExecutionEnd Failed"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{59EF23FE-B57D-4CB9-A5DF-7F6DF02EB234}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL ExecutionEnd Failed"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{E876D1E2-8BBF-459E-A9CF-60AE9D254CF1}"
+          SQLTask:SqlStatementSource="EXEC Audit.ExecutionEnd @Id, 'Failed'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="Id"
+            SQLTask:DtsVariableName="User::ExecutionId"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="12"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL ExecutionEnd Succeeded"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{EB50BD17-4470-49CC-A523-E96929649750}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL ExecutionEnd Succeeded"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{E876D1E2-8BBF-459E-A9CF-60AE9D254CF1}"
+          SQLTask:IsStoredProc="True"
+          SQLTask:SqlStatementSource="Audit.ExecutionEnd" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="Id"
+            SQLTask:DtsVariableName="User::ExecutionId"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="12"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL ExecutionStart"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{FC7D3AFD-8886-42BE-9630-D7EC24A692BC}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL ExecutionStart"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{E876D1E2-8BBF-459E-A9CF-60AE9D254CF1}"
+          SQLTask:IsStoredProc="True"
+          SQLTask:SqlStatementSource="Audit.ExecutionStart" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="PackageID"
+            SQLTask:DtsVariableName="System::PackageID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="9"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="PackageName"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="16"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="ParentId"
+            SQLTask:DtsVariableName="$Package::ParentExecutionId"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="12"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="Id"
+            SQLTask:DtsVariableName="User::ExecutionId"
+            SQLTask:ParameterDirection="Output"
+            SQLTask:DataType="12"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="ServerExecutionID"
+            SQLTask:DtsVariableName="System::ServerExecutionID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="12"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{848EFD13-064D-4A2E-A142-8AF0FB7E55E2}"
+      DTS:From="Package\SQL ExecutionStart"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\SEQC All" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{22011A22-5A07-448B-BAD7-FBF08E80C9D3}"
+      DTS:From="Package\SEQC All"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\SQL ExecutionEnd Succeeded" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{2D7AD137-E042-4056-9EFC-1719EBD4A858}"
+      DTS:From="Package\SEQC All"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\SQL ExecutionEnd Failed"
+      DTS:Value="1" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql12">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="223,42"
+          Id="Package\SEQC All\DFT ADW2014 ProductVendor"
+          TopLeft="175,135" />
+        <NodeLayout
+          Size="185,42"
+          Id="Package\SEQC All\SQL ExtractEnd Failed"
+          TopLeft="327,232" />
+        <NodeLayout
+          Size="207,42"
+          Id="Package\SEQC All\SQL ExtractEnd Succeeded"
+          TopLeft="71,233" />
+        <NodeLayout
+          Size="158,42"
+          Id="Package\SEQC All\SQL ExtractStart"
+          TopLeft="210,35" />
+        <EdgeLayout
+          Id="Package\SEQC All.PrecedenceConstraints[Constraint]"
+          TopLeft="287.75,77">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,58"
+              Start="0,0"
+              End="0,50.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,50.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQC All.PrecedenceConstraints[Constraint 1]"
+          TopLeft="286.5,177">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-112,56"
+              Start="0,0"
+              End="-112,48.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24"
+                    Point2="0,28"
+                    Point3="-4,28" />
+                  <mssgle:LineSegment
+                    End="-108,28" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-108,28"
+                    Point2="-112,28"
+                    Point3="-112,32" />
+                  <mssgle:LineSegment
+                    End="-112,48.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQC All.PrecedenceConstraints[Constraint 2]"
+          TopLeft="322.333333333333,177">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="97.1666666666667,55"
+              Start="0,0"
+              End="97.1666666666667,47.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.2350845948353" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.2350845948353"
+                    Point2="0,22.2350845948353"
+                    Point3="4,22.2350845948353" />
+                  <mssgle:LineSegment
+                    End="93.1666666666667,22.2350845948353" />
+                  <mssgle:CubicBezierSegment
+                    Point1="93.1666666666667,22.2350845948353"
+                    Point2="97.1666666666667,22.2350845948353"
+                    Point3="97.1666666666667,26.2350845948353" />
+                  <mssgle:LineSegment
+                    End="97.1666666666667,47.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="33.3419856770833,27.2350845948353,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="584,336"
+          Size="584,379"
+          Id="Package\SEQC All"
+          TopLeft="75.5,150.5" />
+        <NodeLayout
+          Size="197,42"
+          Id="Package\SQL ExecutionEnd Failed"
+          TopLeft="393.5,616.5" />
+        <NodeLayout
+          Size="220,42"
+          Id="Package\SQL ExecutionEnd Succeeded"
+          TopLeft="139.5,613.5" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\SQL ExecutionStart"
+          TopLeft="283.5,59.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="368.25,101.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,49"
+              Start="0,0"
+              End="0,41.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="271.5,529.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-22,84"
+              Start="0,0"
+              End="-22,76.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.7377049180328" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.7377049180328"
+                    Point2="0,33.7377049180328"
+                    Point3="-4,33.7377049180328" />
+                  <mssgle:LineSegment
+                    End="-18,33.7377049180328" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-18,33.7377049180328"
+                    Point2="-22,33.7377049180328"
+                    Point3="-22,37.7377049180328" />
+                  <mssgle:LineSegment
+                    End="-22,76.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="463.5,529.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="28.5,87"
+              Start="0,0"
+              End="28.5,79.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.9426229508197" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,30.9426229508197"
+                    Point2="0,34.9426229508197"
+                    Point3="4,34.9426229508197" />
+                  <mssgle:LineSegment
+                    End="24.5,34.9426229508197" />
+                  <mssgle:CubicBezierSegment
+                    Point1="24.5,34.9426229508197"
+                    Point2="28.5,34.9426229508197"
+                    Point3="28.5,38.9426229508197" />
+                  <mssgle:LineSegment
+                    End="28.5,79.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-0.991347656249999,39.9426229508197,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\SEQC All\DFT ADW2014 ProductVendor">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="176,42"
+          Id="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor"
+          TopLeft="107,5.5" />
+        <NodeLayout
+          Size="379,42"
+          Id="Package\SEQC All\DFT ADW2014 ProductVendor\DEST Extract AdventureWorks2014_Purchasing_ProductVendor"
+          TopLeft="5.50000000000006,413.5" />
+        <NodeLayout
+          Size="174,42"
+          Id="Package\SEQC All\DFT ADW2014 ProductVendor\RC RecordsSelected"
+          TopLeft="108,107.5" />
+        <NodeLayout
+          Size="174,42"
+          Id="Package\SEQC All\DFT ADW2014 ProductVendor\RC RecordsInserted"
+          TopLeft="108,311.5" />
+        <NodeLayout
+          Size="188,42"
+          Id="Package\SEQC All\DFT ADW2014 ProductVendor\DER Append metadata"
+          TopLeft="101,209.5" />
+        <EdgeLayout
+          Id="Package\SEQC All\DFT ADW2014 ProductVendor.Paths[Row Count Output 11]"
+          TopLeft="195,353.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQC All\DFT ADW2014 ProductVendor.Paths[Row Count Output 1]"
+          TopLeft="195,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQC All\DFT ADW2014 ProductVendor.Paths[OLE DB Source Output]"
+          TopLeft="195,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQC All\DFT ADW2014 ProductVendor.Paths[Derived Column Output]"
+          TopLeft="195,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\SEQC All\DFT ADW2014 ProductVendor\SRC  ProductVendor">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\SEQC All\DFT ADW2014 ProductVendor\DEST Extract AdventureWorks2014_Purchasing_ProductVendor">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

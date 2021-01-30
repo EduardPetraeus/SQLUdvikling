@@ -1,0 +1,1666 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="8/8/2017 8:30:39 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="T440SW7SIBR"
+  DTS:CreatorName="NCLAN\sibr"
+  DTS:DTSID="{FB043B0F-4838-4C9C-8F0F-7FED5147BFA3}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="12.0.5000.0"
+  DTS:LocaleID="1030"
+  DTS:ObjectName="Execute_PackagesByPattern"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="0"
+  DTS:VersionBuild="47"
+  DTS:VersionGUID="{30CCA204-FA3B-434C-855D-F0630C38E1CF}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{B2D63566-80CA-4DE4-8352-D06D66AAEAAD}"
+      DTS:ObjectName="PackageNamePattern">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">Extract_AdWorks2014_%</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="3"
+      DTS:DTSID="{61E8DB9B-7E55-4778-B7D0-9AF6F8A60FEC}"
+      DTS:ObjectName="ParallelThreads">
+      <DTS:Property
+        DTS:DataType="3"
+        DTS:Name="ParameterValue">4</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="20"
+      DTS:DTSID="{974F6CEF-7DFE-4B27-8CD9-6F9C75579B13}"
+      DTS:ObjectName="ParentExecutionId">
+      <DTS:Property
+        DTS:DataType="20"
+        DTS:Name="ParameterValue">-1</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{7435D67F-4197-49BD-A135-8E5200451C0D}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="ExecutionId">
+      <DTS:VariableValue
+        DTS:DataType="20">-1</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{614E206C-004F-4DF4-824A-390693A02BBE}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;SELECT pa.name, pa.package_guid&#xA;FROM catalog.packages pa&#xA;LEFT JOIN catalog.projects pr ON pr.project_id = pa.project_id&#xA;LEFT JOIN catalog.folders fo ON fo.folder_id = pr.folder_id&#xA;LEFT JOIN catalog.executions ex ON ex.folder_name = fo.name AND ex.project_name = pr.name&#xA;WHERE ex.execution_id = &quot;+ (DT_WSTR, 20) @[System::ServerExecutionID]  +&quot; AND pa.name LIKE '&quot;+ @[$Package::PackageNamePattern] +&quot;'&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="SQL_PackageSelect">
+      <DTS:VariableValue
+        DTS:DataType="8">SELECT pa.name, pa.package_guid
+FROM catalog.packages pa
+LEFT JOIN catalog.projects pr ON pr.project_id = pa.project_id
+LEFT JOIN catalog.folders fo ON fo.folder_id = pr.folder_id
+LEFT JOIN catalog.executions ex ON ex.folder_name = fo.name AND ex.project_name = pr.name
+WHERE ex.execution_id = 0 AND pa.name LIKE 'Extract_AdWorks2014_%'</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\SEQC All"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{9ADC7524-7449-4E20-AEC2-6EBE4F8F2128}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SEQC All">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\SEQC All\DTF Insert packages into ExecutionQueue"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{7AC502F5-17FB-4608-B38A-99F5B0CDB96D}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="DTF Insert packages into ExecutionQueue"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\SEQC All\DTF Insert packages into ExecutionQueue\DER Add ExecutionId"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="DER Add ExecutionId"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\SEQC All\DTF Insert packages into ExecutionQueue\DER Add ExecutionId.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SEQC All\DTF Insert packages into ExecutionQueue\DER Add ExecutionId.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\SEQC All\DTF Insert packages into ExecutionQueue\DER Add ExecutionId.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQC All\DTF Insert packages into ExecutionQueue\DER Add ExecutionId.Outputs[Derived Column Output].Columns[ExecutionId]"
+                          dataType="i8"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\SEQC All\DTF Insert packages into ExecutionQueue\DER Add ExecutionId.Outputs[Derived Column Output].Columns[ExecutionId]"
+                          name="ExecutionId"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">@[User::ExecutionId]</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">@[User::ExecutionId]</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\SEQC All\DTF Insert packages into ExecutionQueue\DER Add ExecutionId.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\SEQC All\DTF Insert packages into ExecutionQueue\DER Add ExecutionId.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQC All\DTF Insert packages into ExecutionQueue\DER Add ExecutionId.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SEQC All\DTF Insert packages into ExecutionQueue\DER Add ExecutionId.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SEQC All\DTF Insert packages into ExecutionQueue\DER Add ExecutionId.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SEQC All\DTF Insert packages into ExecutionQueue\DER Add ExecutionId.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SEQC All\DTF Insert packages into ExecutionQueue\OLE_DST Audit PackageQueue"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLE_DST Audit PackageQueue"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[Audit].[ExecutionQueue]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\SEQC All\DTF Insert packages into ExecutionQueue\OLE_DST Audit PackageQueue.Connections[OleDbConnection]"
+                      connectionManagerID="{3B41C6CC-BFEF-4A52-8E29-52A92550F7B5}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[Archive OLEDB]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\SEQC All\DTF Insert packages into ExecutionQueue\OLE_DST Audit PackageQueue.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\SEQC All\DTF Insert packages into ExecutionQueue\OLE_DST Audit PackageQueue.Inputs[OLE DB Destination Input].Columns[ExecutionId]"
+                          cachedDataType="i8"
+                          cachedName="ExecutionId"
+                          externalMetadataColumnId="Package\SEQC All\DTF Insert packages into ExecutionQueue\OLE_DST Audit PackageQueue.Inputs[OLE DB Destination Input].ExternalColumns[ExecutionId]"
+                          lineageId="Package\SEQC All\DTF Insert packages into ExecutionQueue\DER Add ExecutionId.Outputs[Derived Column Output].Columns[ExecutionId]" />
+                        <inputColumn
+                          refId="Package\SEQC All\DTF Insert packages into ExecutionQueue\OLE_DST Audit PackageQueue.Inputs[OLE DB Destination Input].Columns[package_guid]"
+                          cachedDataType="guid"
+                          cachedName="package_guid"
+                          externalMetadataColumnId="Package\SEQC All\DTF Insert packages into ExecutionQueue\OLE_DST Audit PackageQueue.Inputs[OLE DB Destination Input].ExternalColumns[PackageID]"
+                          lineageId="Package\SEQC All\DTF Insert packages into ExecutionQueue\OLE_SRC SSISDB Catalog Packages.Outputs[OLE DB Source Output].Columns[package_guid]" />
+                        <inputColumn
+                          refId="Package\SEQC All\DTF Insert packages into ExecutionQueue\OLE_DST Audit PackageQueue.Inputs[OLE DB Destination Input].Columns[name]"
+                          cachedDataType="wstr"
+                          cachedLength="260"
+                          cachedName="name"
+                          externalMetadataColumnId="Package\SEQC All\DTF Insert packages into ExecutionQueue\OLE_DST Audit PackageQueue.Inputs[OLE DB Destination Input].ExternalColumns[PackageName]"
+                          lineageId="Package\SEQC All\DTF Insert packages into ExecutionQueue\OLE_SRC SSISDB Catalog Packages.Outputs[OLE DB Source Output].Columns[name]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DTF Insert packages into ExecutionQueue\OLE_DST Audit PackageQueue.Inputs[OLE DB Destination Input].ExternalColumns[ExecutionId]"
+                          dataType="i8"
+                          name="ExecutionId" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DTF Insert packages into ExecutionQueue\OLE_DST Audit PackageQueue.Inputs[OLE DB Destination Input].ExternalColumns[PackageID]"
+                          dataType="wstr"
+                          length="50"
+                          name="PackageID" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DTF Insert packages into ExecutionQueue\OLE_DST Audit PackageQueue.Inputs[OLE DB Destination Input].ExternalColumns[PackageName]"
+                          dataType="wstr"
+                          length="260"
+                          name="PackageName" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SEQC All\DTF Insert packages into ExecutionQueue\OLE_DST Audit PackageQueue.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\SEQC All\DTF Insert packages into ExecutionQueue\OLE_DST Audit PackageQueue.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQC All\DTF Insert packages into ExecutionQueue\OLE_DST Audit PackageQueue.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SEQC All\DTF Insert packages into ExecutionQueue\OLE_DST Audit PackageQueue.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SEQC All\DTF Insert packages into ExecutionQueue\OLE_DST Audit PackageQueue.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SEQC All\DTF Insert packages into ExecutionQueue\OLE_DST Audit PackageQueue.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SEQC All\DTF Insert packages into ExecutionQueue\OLE_SRC SSISDB Catalog Packages"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="OLE_SRC SSISDB Catalog Packages"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable">User::SQL_PackageSelect</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\SEQC All\DTF Insert packages into ExecutionQueue\OLE_SRC SSISDB Catalog Packages.Connections[OleDbConnection]"
+                      connectionManagerID="{8367C8F9-3192-4B3A-8BD1-B5FED2139CFA}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[SSISDB OLEDB]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\SEQC All\DTF Insert packages into ExecutionQueue\OLE_SRC SSISDB Catalog Packages.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQC All\DTF Insert packages into ExecutionQueue\OLE_SRC SSISDB Catalog Packages.Outputs[OLE DB Source Output].Columns[name]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQC All\DTF Insert packages into ExecutionQueue\OLE_SRC SSISDB Catalog Packages.Outputs[OLE DB Source Output].ExternalColumns[name]"
+                          length="260"
+                          lineageId="Package\SEQC All\DTF Insert packages into ExecutionQueue\OLE_SRC SSISDB Catalog Packages.Outputs[OLE DB Source Output].Columns[name]"
+                          name="name"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SEQC All\DTF Insert packages into ExecutionQueue\OLE_SRC SSISDB Catalog Packages.Outputs[OLE DB Source Output].Columns[package_guid]"
+                          dataType="guid"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SEQC All\DTF Insert packages into ExecutionQueue\OLE_SRC SSISDB Catalog Packages.Outputs[OLE DB Source Output].ExternalColumns[package_guid]"
+                          lineageId="Package\SEQC All\DTF Insert packages into ExecutionQueue\OLE_SRC SSISDB Catalog Packages.Outputs[OLE DB Source Output].Columns[package_guid]"
+                          name="package_guid"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DTF Insert packages into ExecutionQueue\OLE_SRC SSISDB Catalog Packages.Outputs[OLE DB Source Output].ExternalColumns[name]"
+                          dataType="wstr"
+                          length="260"
+                          name="name" />
+                        <externalMetadataColumn
+                          refId="Package\SEQC All\DTF Insert packages into ExecutionQueue\OLE_SRC SSISDB Catalog Packages.Outputs[OLE DB Source Output].ExternalColumns[package_guid]"
+                          dataType="guid"
+                          name="package_guid" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\SEQC All\DTF Insert packages into ExecutionQueue\OLE_SRC SSISDB Catalog Packages.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SEQC All\DTF Insert packages into ExecutionQueue\OLE_SRC SSISDB Catalog Packages.Outputs[OLE DB Source Error Output].Columns[name]"
+                          dataType="wstr"
+                          length="260"
+                          lineageId="Package\SEQC All\DTF Insert packages into ExecutionQueue\OLE_SRC SSISDB Catalog Packages.Outputs[OLE DB Source Error Output].Columns[name]"
+                          name="name" />
+                        <outputColumn
+                          refId="Package\SEQC All\DTF Insert packages into ExecutionQueue\OLE_SRC SSISDB Catalog Packages.Outputs[OLE DB Source Error Output].Columns[package_guid]"
+                          dataType="guid"
+                          lineageId="Package\SEQC All\DTF Insert packages into ExecutionQueue\OLE_SRC SSISDB Catalog Packages.Outputs[OLE DB Source Error Output].Columns[package_guid]"
+                          name="package_guid" />
+                        <outputColumn
+                          refId="Package\SEQC All\DTF Insert packages into ExecutionQueue\OLE_SRC SSISDB Catalog Packages.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SEQC All\DTF Insert packages into ExecutionQueue\OLE_SRC SSISDB Catalog Packages.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SEQC All\DTF Insert packages into ExecutionQueue\OLE_SRC SSISDB Catalog Packages.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SEQC All\DTF Insert packages into ExecutionQueue\OLE_SRC SSISDB Catalog Packages.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\SEQC All\DTF Insert packages into ExecutionQueue.Paths[Derived Column Output]"
+                  endId="Package\SEQC All\DTF Insert packages into ExecutionQueue\OLE_DST Audit PackageQueue.Inputs[OLE DB Destination Input]"
+                  name="Derived Column Output"
+                  startId="Package\SEQC All\DTF Insert packages into ExecutionQueue\DER Add ExecutionId.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\SEQC All\DTF Insert packages into ExecutionQueue.Paths[OLE DB Source Output]"
+                  endId="Package\SEQC All\DTF Insert packages into ExecutionQueue\DER Add ExecutionId.Inputs[Derived Column Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\SEQC All\DTF Insert packages into ExecutionQueue\OLE_SRC SSISDB Catalog Packages.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQC All\FLC Loop over packages in queue 1"
+          DTS:CreationName="STOCK:FORLOOP"
+          DTS:Description="For Loop Container"
+          DTS:DTSID="{9659E0D5-AC5E-4F11-B1FE-E325C2097FCD}"
+          DTS:EvalExpression="!ISNULL(@[User::PackageName]) &amp;&amp;  LEN(@[User::PackageName]) &gt; 0"
+          DTS:ExecutableType="STOCK:FORLOOP"
+          DTS:InitExpression="@[User::PackageName]=&quot;None&quot;"
+          DTS:LocaleID="-1"
+          DTS:MaxConcurrent="1"
+          DTS:ObjectName="FLC Loop over packages in queue 1">
+          <DTS:Variables>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{3C9EE84A-C205-4198-B30C-837B1546D072}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="PackageName">
+              <DTS:VariableValue
+                DTS:DataType="8">Execute_PackagesByPattern.dtsx</DTS:VariableValue>
+            </DTS:Variable>
+          </DTS:Variables>
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\SEQC All\FLC Loop over packages in queue 1\EXEC PackageName"
+              DTS:CreationName="Microsoft.ExecutePackageTask"
+              DTS:Description="Execute Package Task"
+              DTS:DTSID="{F1FBC527-B3A4-4C3E-A865-110E428F42B2}"
+              DTS:ExecutableType="Microsoft.ExecutePackageTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="EXEC PackageName"
+              DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:PropertyExpression
+                DTS:Name="PackageName">@[User::PackageName]</DTS:PropertyExpression>
+              <DTS:ObjectData>
+                <ExecutePackageTask>
+                  <UseProjectReference>True</UseProjectReference>
+                  <PackageName>Execute_PackagesByPattern.dtsx</PackageName>
+                  <ParameterAssignment>
+                    <ParameterName>ParentExecutionId</ParameterName>
+                    <BindedVariableOrParameterName>User::ExecutionId</BindedVariableOrParameterName>
+                  </ParameterAssignment>
+                </ExecutePackageTask>
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\SEQC All\FLC Loop over packages in queue 1\SQL Fetch next package"
+              DTS:CreationName="Microsoft.ExecuteSQLTask"
+              DTS:Description="Execute SQL Task"
+              DTS:DTSID="{0B9F49BE-84BE-4F62-902D-D6F803B6D7E9}"
+              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="SQL Fetch next package"
+              DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+              DTS:ThreadHint="0">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData
+                  SQLTask:Connection="{E876D1E2-8BBF-459E-A9CF-60AE9D254CF1}"
+                  SQLTask:SqlStatementSource="DECLARE @Packages TABLE (PackageName NVARCHAR(260))&#xA;&#xA;DELETE TOP (1) FROM Audit.ExecutionQueue WITH (ROWLOCK, READPAST)&#xA;OUTPUT DELETED.PackageName INTO @Packages&#xA;WHERE ExecutionId = @ExecutionId&#xA;&#xA;SELECT TOP 1 @PackageName = PackageName FROM @Packages" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="ExecutionId"
+                    SQLTask:DtsVariableName="User::ExecutionId"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="12"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="PackageName"
+                    SQLTask:DtsVariableName="User::PackageName"
+                    SQLTask:ParameterDirection="Output"
+                    SQLTask:DataType="16"
+                    SQLTask:ParameterSize="-1" />
+                </SQLTask:SqlTaskData>
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+          <DTS:PrecedenceConstraints>
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\SEQC All\FLC Loop over packages in queue 1.PrecedenceConstraints[Constraint]"
+              DTS:CreationName=""
+              DTS:DTSID="{8BA882E5-31A6-40EE-A377-A28C86700D61}"
+              DTS:EvalOp="3"
+              DTS:Expression="!ISNULL(@[User::PackageName]) &amp;&amp;  LEN(@[User::PackageName]) &gt; 0"
+              DTS:From="Package\SEQC All\FLC Loop over packages in queue 1\SQL Fetch next package"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Constraint"
+              DTS:To="Package\SEQC All\FLC Loop over packages in queue 1\EXEC PackageName" />
+          </DTS:PrecedenceConstraints>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQC All\FLC Loop over packages in queue 2"
+          DTS:CreationName="STOCK:FORLOOP"
+          DTS:Description="For Loop Container"
+          DTS:DTSID="{4DB7B47F-C5C6-4136-9221-F58B6C26061F}"
+          DTS:EvalExpression="!ISNULL(@[User::PackageName]) &amp;&amp;  LEN(@[User::PackageName]) &gt; 0"
+          DTS:ExecutableType="STOCK:FORLOOP"
+          DTS:InitExpression="@[User::PackageName]=&quot;None&quot;"
+          DTS:LocaleID="-1"
+          DTS:MaxConcurrent="1"
+          DTS:ObjectName="FLC Loop over packages in queue 2">
+          <DTS:Variables>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{648D23C6-70D0-44C4-8F51-905B3E0C015A}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="PackageName">
+              <DTS:VariableValue
+                DTS:DataType="8">Execute_PackagesByPattern.dtsx</DTS:VariableValue>
+            </DTS:Variable>
+          </DTS:Variables>
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\SEQC All\FLC Loop over packages in queue 2\EXEC PackageName"
+              DTS:CreationName="Microsoft.ExecutePackageTask"
+              DTS:Description="Execute Package Task"
+              DTS:DTSID="{8AAF471B-4404-4924-A9D5-D7C9144EBDB0}"
+              DTS:ExecutableType="Microsoft.ExecutePackageTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="EXEC PackageName"
+              DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:PropertyExpression
+                DTS:Name="PackageName">@[User::PackageName]</DTS:PropertyExpression>
+              <DTS:ObjectData>
+                <ExecutePackageTask>
+                  <UseProjectReference>True</UseProjectReference>
+                  <PackageName>Execute_PackagesByPattern.dtsx</PackageName>
+                  <ParameterAssignment>
+                    <ParameterName>ParentExecutionId</ParameterName>
+                    <BindedVariableOrParameterName>User::ExecutionId</BindedVariableOrParameterName>
+                  </ParameterAssignment>
+                </ExecutePackageTask>
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\SEQC All\FLC Loop over packages in queue 2\SQL Fetch next package"
+              DTS:CreationName="Microsoft.ExecuteSQLTask"
+              DTS:Description="Execute SQL Task"
+              DTS:DTSID="{6DCB1288-C64D-46FB-A5EA-6E0F4E7E80F2}"
+              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="SQL Fetch next package"
+              DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+              DTS:ThreadHint="2">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData
+                  SQLTask:Connection="{E876D1E2-8BBF-459E-A9CF-60AE9D254CF1}"
+                  SQLTask:SqlStatementSource="DECLARE @Packages TABLE (PackageName NVARCHAR(260))&#xA;&#xA;DELETE TOP (1) FROM Audit.ExecutionQueue WITH (ROWLOCK, READPAST)&#xA;OUTPUT DELETED.PackageName INTO @Packages&#xA;WHERE ExecutionId = @ExecutionId&#xA;&#xA;SELECT TOP 1 @PackageName = PackageName FROM @Packages" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="ExecutionId"
+                    SQLTask:DtsVariableName="User::ExecutionId"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="12"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="PackageName"
+                    SQLTask:DtsVariableName="User::PackageName"
+                    SQLTask:ParameterDirection="Output"
+                    SQLTask:DataType="16"
+                    SQLTask:ParameterSize="-1" />
+                </SQLTask:SqlTaskData>
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+          <DTS:PrecedenceConstraints>
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\SEQC All\FLC Loop over packages in queue 2.PrecedenceConstraints[Constraint]"
+              DTS:CreationName=""
+              DTS:DTSID="{A7D47963-A568-40CA-946F-2D87B02BD3BC}"
+              DTS:EvalOp="3"
+              DTS:Expression="!ISNULL(@[User::PackageName]) &amp;&amp;  LEN(@[User::PackageName]) &gt; 0"
+              DTS:From="Package\SEQC All\FLC Loop over packages in queue 2\SQL Fetch next package"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Constraint"
+              DTS:To="Package\SEQC All\FLC Loop over packages in queue 2\EXEC PackageName" />
+          </DTS:PrecedenceConstraints>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQC All\FLC Loop over packages in queue 3"
+          DTS:CreationName="STOCK:FORLOOP"
+          DTS:Description="For Loop Container"
+          DTS:DTSID="{E4A9770D-387A-47F0-9333-BDBE728E123E}"
+          DTS:EvalExpression="!ISNULL(@[User::PackageName]) &amp;&amp;  LEN(@[User::PackageName]) &gt; 0"
+          DTS:ExecutableType="STOCK:FORLOOP"
+          DTS:InitExpression="@[User::PackageName]=&quot;None&quot;"
+          DTS:LocaleID="-1"
+          DTS:MaxConcurrent="1"
+          DTS:ObjectName="FLC Loop over packages in queue 3">
+          <DTS:Variables>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{5D5055A7-2616-4EC6-8FB3-9C8EC2E19E7B}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="PackageName">
+              <DTS:VariableValue
+                DTS:DataType="8">Execute_PackagesByPattern.dtsx</DTS:VariableValue>
+            </DTS:Variable>
+          </DTS:Variables>
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\SEQC All\FLC Loop over packages in queue 3\EXEC PackageName"
+              DTS:CreationName="Microsoft.ExecutePackageTask"
+              DTS:Description="Execute Package Task"
+              DTS:DTSID="{8123B6A5-AD30-4130-8157-545FD53A2F90}"
+              DTS:ExecutableType="Microsoft.ExecutePackageTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="EXEC PackageName"
+              DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:PropertyExpression
+                DTS:Name="PackageName">@[User::PackageName]</DTS:PropertyExpression>
+              <DTS:ObjectData>
+                <ExecutePackageTask>
+                  <UseProjectReference>True</UseProjectReference>
+                  <PackageName>Execute_PackagesByPattern.dtsx</PackageName>
+                  <ParameterAssignment>
+                    <ParameterName>ParentExecutionId</ParameterName>
+                    <BindedVariableOrParameterName>User::ExecutionId</BindedVariableOrParameterName>
+                  </ParameterAssignment>
+                </ExecutePackageTask>
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\SEQC All\FLC Loop over packages in queue 3\SQL Fetch next package"
+              DTS:CreationName="Microsoft.ExecuteSQLTask"
+              DTS:Description="Execute SQL Task"
+              DTS:DTSID="{8BA943F0-D35D-4F70-8935-F65D8EBA1DE7}"
+              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="SQL Fetch next package"
+              DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+              DTS:ThreadHint="1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData
+                  SQLTask:Connection="{E876D1E2-8BBF-459E-A9CF-60AE9D254CF1}"
+                  SQLTask:SqlStatementSource="DECLARE @Packages TABLE (PackageName NVARCHAR(260))&#xA;&#xA;DELETE TOP (1) FROM Audit.ExecutionQueue WITH (ROWLOCK, READPAST)&#xA;OUTPUT DELETED.PackageName INTO @Packages&#xA;WHERE ExecutionId = @ExecutionId&#xA;&#xA;SELECT TOP 1 @PackageName = PackageName FROM @Packages" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="ExecutionId"
+                    SQLTask:DtsVariableName="User::ExecutionId"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="12"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="PackageName"
+                    SQLTask:DtsVariableName="User::PackageName"
+                    SQLTask:ParameterDirection="Output"
+                    SQLTask:DataType="16"
+                    SQLTask:ParameterSize="-1" />
+                </SQLTask:SqlTaskData>
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+          <DTS:PrecedenceConstraints>
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\SEQC All\FLC Loop over packages in queue 3.PrecedenceConstraints[Constraint]"
+              DTS:CreationName=""
+              DTS:DTSID="{4ED140F7-2736-4EB4-AF09-AFC0FB938038}"
+              DTS:EvalOp="3"
+              DTS:Expression="!ISNULL(@[User::PackageName]) &amp;&amp;  LEN(@[User::PackageName]) &gt; 0"
+              DTS:From="Package\SEQC All\FLC Loop over packages in queue 3\SQL Fetch next package"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Constraint"
+              DTS:To="Package\SEQC All\FLC Loop over packages in queue 3\EXEC PackageName" />
+          </DTS:PrecedenceConstraints>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQC All\FLC Loop over packages in queue 4"
+          DTS:CreationName="STOCK:FORLOOP"
+          DTS:Description="For Loop Container"
+          DTS:DTSID="{3652F029-7830-4D76-84D6-78EC64234913}"
+          DTS:EvalExpression="!ISNULL(@[User::PackageName]) &amp;&amp;  LEN(@[User::PackageName]) &gt; 0"
+          DTS:ExecutableType="STOCK:FORLOOP"
+          DTS:InitExpression="@[User::PackageName]=&quot;None&quot;"
+          DTS:LocaleID="-1"
+          DTS:MaxConcurrent="1"
+          DTS:ObjectName="FLC Loop over packages in queue 4">
+          <DTS:Variables>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{2CD1C850-0037-47FC-9A78-E3F996E01B50}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="PackageName">
+              <DTS:VariableValue
+                DTS:DataType="8">Execute_PackagesByPattern.dtsx</DTS:VariableValue>
+            </DTS:Variable>
+          </DTS:Variables>
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\SEQC All\FLC Loop over packages in queue 4\EXEC PackageName"
+              DTS:CreationName="Microsoft.ExecutePackageTask"
+              DTS:Description="Execute Package Task"
+              DTS:DTSID="{2122E309-D160-4934-A4E9-F60F4D33F7C8}"
+              DTS:ExecutableType="Microsoft.ExecutePackageTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="EXEC PackageName"
+              DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:PropertyExpression
+                DTS:Name="PackageName">@[User::PackageName]</DTS:PropertyExpression>
+              <DTS:ObjectData>
+                <ExecutePackageTask>
+                  <UseProjectReference>True</UseProjectReference>
+                  <PackageName>Execute_PackagesByPattern.dtsx</PackageName>
+                  <ParameterAssignment>
+                    <ParameterName>ParentExecutionId</ParameterName>
+                    <BindedVariableOrParameterName>User::ExecutionId</BindedVariableOrParameterName>
+                  </ParameterAssignment>
+                </ExecutePackageTask>
+              </DTS:ObjectData>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\SEQC All\FLC Loop over packages in queue 4\SQL Fetch next package"
+              DTS:CreationName="Microsoft.ExecuteSQLTask"
+              DTS:Description="Execute SQL Task"
+              DTS:DTSID="{1D0AE7C1-F069-4E15-88CC-F034996CC249}"
+              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="SQL Fetch next package"
+              DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+              DTS:ThreadHint="3">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData
+                  SQLTask:Connection="{E876D1E2-8BBF-459E-A9CF-60AE9D254CF1}"
+                  SQLTask:SqlStatementSource="DECLARE @Packages TABLE (PackageName NVARCHAR(260))&#xA;&#xA;DELETE TOP (1) FROM Audit.ExecutionQueue WITH (ROWLOCK, READPAST)&#xA;OUTPUT DELETED.PackageName INTO @Packages&#xA;WHERE ExecutionId = @ExecutionId&#xA;&#xA;SELECT TOP 1 @PackageName = PackageName FROM @Packages" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="ExecutionId"
+                    SQLTask:DtsVariableName="User::ExecutionId"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="12"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="PackageName"
+                    SQLTask:DtsVariableName="User::PackageName"
+                    SQLTask:ParameterDirection="Output"
+                    SQLTask:DataType="16"
+                    SQLTask:ParameterSize="-1" />
+                </SQLTask:SqlTaskData>
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+          <DTS:PrecedenceConstraints>
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\SEQC All\FLC Loop over packages in queue 4.PrecedenceConstraints[Constraint]"
+              DTS:CreationName=""
+              DTS:DTSID="{60966149-9F71-4AE7-92AA-A9976C451D57}"
+              DTS:EvalOp="3"
+              DTS:Expression="!ISNULL(@[User::PackageName]) &amp;&amp;  LEN(@[User::PackageName]) &gt; 0"
+              DTS:From="Package\SEQC All\FLC Loop over packages in queue 4\SQL Fetch next package"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Constraint"
+              DTS:To="Package\SEQC All\FLC Loop over packages in queue 4\EXEC PackageName" />
+          </DTS:PrecedenceConstraints>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQC All\SQL Clean up ExecutionQueue"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{A239F2E4-87C7-47D9-BFAF-099865E35B1A}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL Clean up ExecutionQueue"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="4">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{E876D1E2-8BBF-459E-A9CF-60AE9D254CF1}"
+              SQLTask:SqlStatementSource="DELETE FROM Audit.ExecutionQueue WITH (ROWLOCK)&#xA;WHERE ExecutionId = @ExecutionId" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="ExecutionId"
+                SQLTask:DtsVariableName="User::ExecutionId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="12"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQC All.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{E7E6A37E-9584-48BA-8540-101F6D587E67}"
+          DTS:EvalOp="3"
+          DTS:Expression="@[$Package::ParallelThreads] &gt; 0"
+          DTS:From="Package\SEQC All\DTF Insert packages into ExecutionQueue"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\SEQC All\FLC Loop over packages in queue 1" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQC All.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{998E5148-AD2C-42AB-8BC2-2D7433403BCA}"
+          DTS:From="Package\SEQC All\FLC Loop over packages in queue 1"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\SEQC All\SQL Clean up ExecutionQueue" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQC All.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{F24F7CD0-516B-4A8C-B488-2EE978440F39}"
+          DTS:EvalOp="3"
+          DTS:Expression="@[$Package::ParallelThreads] &gt; 1"
+          DTS:From="Package\SEQC All\DTF Insert packages into ExecutionQueue"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\SEQC All\FLC Loop over packages in queue 2" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQC All.PrecedenceConstraints[Constraint 3]"
+          DTS:CreationName=""
+          DTS:DTSID="{6839EDD6-E850-4494-88AD-94E01672A553}"
+          DTS:EvalOp="3"
+          DTS:Expression="@[$Package::ParallelThreads] &gt; 2"
+          DTS:From="Package\SEQC All\DTF Insert packages into ExecutionQueue"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 3"
+          DTS:To="Package\SEQC All\FLC Loop over packages in queue 3" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQC All.PrecedenceConstraints[Constraint 4]"
+          DTS:CreationName=""
+          DTS:DTSID="{6E680383-1BCE-431B-8BE6-B48F7CC0ADF7}"
+          DTS:EvalOp="3"
+          DTS:Expression="@[$Package::ParallelThreads] &gt; 3"
+          DTS:From="Package\SEQC All\DTF Insert packages into ExecutionQueue"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 4"
+          DTS:To="Package\SEQC All\FLC Loop over packages in queue 4" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQC All.PrecedenceConstraints[Constraint 5]"
+          DTS:CreationName=""
+          DTS:DTSID="{7BDDD61B-47EA-48D7-A758-836071DE42BB}"
+          DTS:From="Package\SEQC All\FLC Loop over packages in queue 2"
+          DTS:ObjectName="Constraint 5"
+          DTS:To="Package\SEQC All\SQL Clean up ExecutionQueue" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQC All.PrecedenceConstraints[Constraint 6]"
+          DTS:CreationName=""
+          DTS:DTSID="{9E19C63B-474F-4D5A-8658-B03101006885}"
+          DTS:From="Package\SEQC All\FLC Loop over packages in queue 3"
+          DTS:ObjectName="Constraint 6"
+          DTS:To="Package\SEQC All\SQL Clean up ExecutionQueue" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\SEQC All.PrecedenceConstraints[Constraint 7]"
+          DTS:CreationName=""
+          DTS:DTSID="{33084DD9-47DC-4D36-884C-E139D96FF681}"
+          DTS:From="Package\SEQC All\FLC Loop over packages in queue 4"
+          DTS:ObjectName="Constraint 7"
+          DTS:To="Package\SEQC All\SQL Clean up ExecutionQueue" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL ExecutionEnd Failed"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{76217F56-484B-4C83-AB10-E8437A1335CE}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL ExecutionEnd Failed"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{E876D1E2-8BBF-459E-A9CF-60AE9D254CF1}"
+          SQLTask:SqlStatementSource="EXEC Audit.ExecutionEnd @Id, 'Failed'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="Id"
+            SQLTask:DtsVariableName="User::ExecutionId"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="12"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL ExecutionEnd Succeeded"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{2B16B184-7311-4630-BDD2-BE2EF10AFC99}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL ExecutionEnd Succeeded"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{E876D1E2-8BBF-459E-A9CF-60AE9D254CF1}"
+          SQLTask:IsStoredProc="True"
+          SQLTask:SqlStatementSource="Audit.ExecutionEnd" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="Id"
+            SQLTask:DtsVariableName="User::ExecutionId"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="12"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL ExecutionStart"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{3B50F08F-5BB0-402D-B984-BFA15E4A2A34}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL ExecutionStart"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{E876D1E2-8BBF-459E-A9CF-60AE9D254CF1}"
+          SQLTask:IsStoredProc="True"
+          SQLTask:SqlStatementSource="Audit.ExecutionStart" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="PackageID"
+            SQLTask:DtsVariableName="System::PackageID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="9"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="PackageName"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="16"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="ParentId"
+            SQLTask:DtsVariableName="$Package::ParentExecutionId"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="12"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="Id"
+            SQLTask:DtsVariableName="User::ExecutionId"
+            SQLTask:ParameterDirection="Output"
+            SQLTask:DataType="12"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="ServerExecutionID"
+            SQLTask:DtsVariableName="System::ServerExecutionID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="12"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{EDB74C06-DF5A-4C28-8C2F-32D82A8EBF48}"
+      DTS:From="Package\SQL ExecutionStart"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\SEQC All" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{34AF8FCF-0679-49A2-8F9D-1AEDFA59A3DC}"
+      DTS:From="Package\SEQC All"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\SQL ExecutionEnd Succeeded" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{99A3C89E-53A2-4E5B-9D38-B2C4A94FE8B1}"
+      DTS:From="Package\SEQC All"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\SQL ExecutionEnd Failed"
+      DTS:Value="1" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql12">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="195,42"
+          Id="Package\SEQC All\FLC Loop over packages in queue 1\SQL Fetch next package"
+          TopLeft="47,27" />
+        <NodeLayout
+          Size="175,42"
+          Id="Package\SEQC All\FLC Loop over packages in queue 1\EXEC PackageName"
+          TopLeft="55,116" />
+        <EdgeLayout
+          Id="Package\SEQC All\FLC Loop over packages in queue 1.PrecedenceConstraints[Constraint]"
+          TopLeft="143.5,69">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,47"
+              Start="0,0"
+              End="0,39.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,11.75,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="280,216"
+          Size="280,259"
+          Id="Package\SEQC All\FLC Loop over packages in queue 1"
+          TopLeft="41,138.75" />
+        <NodeLayout
+          Size="224,42"
+          Id="Package\SEQC All\SQL Clean up ExecutionQueue"
+          TopLeft="551.625,451" />
+        <EdgeLayout
+          Id="Package\SEQC All.PrecedenceConstraints[Constraint 1]"
+          TopLeft="181,397.75">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="417.825,53.25"
+              Start="0,0"
+              End="417.825,45.75">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.4623115577889" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,33.4623115577889"
+                    Point2="0,37.4623115577889"
+                    Point3="4,37.4623115577889" />
+                  <mssgle:LineSegment
+                    End="413.825,37.4623115577889" />
+                  <mssgle:CubicBezierSegment
+                    Point1="413.825,37.4623115577889"
+                    Point2="417.825,37.4623115577889"
+                    Point3="417.825,41.4623115577889" />
+                  <mssgle:LineSegment
+                    End="417.825,45.75" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="279,42"
+          Id="Package\SEQC All\DTF Insert packages into ExecutionQueue"
+          TopLeft="524.125,22" />
+        <EdgeLayout
+          Id="Package\SEQC All.PrecedenceConstraints[Constraint]"
+          TopLeft="582.325,64">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-401.325,74.75"
+              Start="0,0"
+              End="-401.325,67.25">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.00531107739" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.00531107739"
+                    Point2="0,22.00531107739"
+                    Point3="-4,22.00531107739" />
+                  <mssgle:LineSegment
+                    End="-397.325,22.00531107739" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-397.325,22.00531107739"
+                    Point2="-401.325,22.00531107739"
+                    Point3="-401.325,26.00531107739" />
+                  <mssgle:LineSegment
+                    End="-401.325,67.25" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-208.6625,27.00531107739,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="175,42"
+          Id="Package\SEQC All\FLC Loop over packages in queue 2\EXEC PackageName"
+          TopLeft="55,116" />
+        <NodeLayout
+          Size="195,42"
+          Id="Package\SEQC All\FLC Loop over packages in queue 2\SQL Fetch next package"
+          TopLeft="47,27" />
+        <EdgeLayout
+          Id="Package\SEQC All\FLC Loop over packages in queue 2.PrecedenceConstraints[Constraint]"
+          TopLeft="143.5,69">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,47"
+              Start="0,0"
+              End="0,39.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,11.75,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="280,216"
+          Size="280,259"
+          Id="Package\SEQC All\FLC Loop over packages in queue 2"
+          TopLeft="363.166666666667,138.75" />
+        <NodeLayout
+          Size="175,42"
+          Id="Package\SEQC All\FLC Loop over packages in queue 3\EXEC PackageName"
+          TopLeft="55,116" />
+        <NodeLayout
+          Size="195,42"
+          Id="Package\SEQC All\FLC Loop over packages in queue 3\SQL Fetch next package"
+          TopLeft="47,27" />
+        <EdgeLayout
+          Id="Package\SEQC All\FLC Loop over packages in queue 3.PrecedenceConstraints[Constraint]"
+          TopLeft="143.5,69">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,47"
+              Start="0,0"
+              End="0,39.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,11.75,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="280,216"
+          Size="280,259"
+          Id="Package\SEQC All\FLC Loop over packages in queue 3"
+          TopLeft="685.333333333333,138.75" />
+        <NodeLayout
+          Size="175,42"
+          Id="Package\SEQC All\FLC Loop over packages in queue 4\EXEC PackageName"
+          TopLeft="55,116" />
+        <NodeLayout
+          Size="195,42"
+          Id="Package\SEQC All\FLC Loop over packages in queue 4\SQL Fetch next package"
+          TopLeft="47,27" />
+        <EdgeLayout
+          Id="Package\SEQC All\FLC Loop over packages in queue 4.PrecedenceConstraints[Constraint]"
+          TopLeft="143.5,69">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,47"
+              Start="0,0"
+              End="0,39.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,11.75,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="280,216"
+          Size="280,259"
+          Id="Package\SEQC All\FLC Loop over packages in queue 4"
+          TopLeft="1007.5,138.75" />
+        <EdgeLayout
+          Id="Package\SEQC All.PrecedenceConstraints[Constraint 2]"
+          TopLeft="636.525,64">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-133.358333333333,74.75"
+              Start="0,0"
+              End="-133.358333333333,67.25">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.3541087733227" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.3541087733227"
+                    Point2="0,33.3541087733227"
+                    Point3="-4,33.3541087733227" />
+                  <mssgle:LineSegment
+                    End="-129.358333333333,33.3541087733227" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-129.358333333333,33.3541087733227"
+                    Point2="-133.358333333333,33.3541087733227"
+                    Point3="-133.358333333333,37.3541087733227" />
+                  <mssgle:LineSegment
+                    End="-133.358333333333,67.25" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-74.6791666666666,38.3541087733227,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQC All.PrecedenceConstraints[Constraint 3]"
+          TopLeft="690.725,64">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="134.608333333333,74.75"
+              Start="0,0"
+              End="134.608333333333,67.25">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.3541087733227" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.3541087733227"
+                    Point2="0,33.3541087733227"
+                    Point3="4,33.3541087733227" />
+                  <mssgle:LineSegment
+                    End="130.608333333333,33.3541087733227" />
+                  <mssgle:CubicBezierSegment
+                    Point1="130.608333333333,33.3541087733227"
+                    Point2="134.608333333333,33.3541087733227"
+                    Point3="134.608333333333,37.3541087733227" />
+                  <mssgle:LineSegment
+                    End="134.608333333333,67.25" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="59.3041666666667,38.3541087733227,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQC All.PrecedenceConstraints[Constraint 4]"
+          TopLeft="744.925,64">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="402.575,74.75"
+              Start="0,0"
+              End="402.575,67.25">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.00531107739" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.00531107739"
+                    Point2="0,22.00531107739"
+                    Point3="4,22.00531107739" />
+                  <mssgle:LineSegment
+                    End="398.575,22.00531107739" />
+                  <mssgle:CubicBezierSegment
+                    Point1="398.575,22.00531107739"
+                    Point2="402.575,22.00531107739"
+                    Point3="402.575,26.00531107739" />
+                  <mssgle:LineSegment
+                    End="402.575,67.25" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="193.2875,27.00531107739,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQC All.PrecedenceConstraints[Constraint 5]"
+          TopLeft="503.166666666667,397.75">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="138.858333333333,53.25"
+              Start="0,0"
+              End="138.858333333333,45.75">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.4664031620553" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,25.4664031620553"
+                    Point2="0,29.4664031620553"
+                    Point3="4,29.4664031620553" />
+                  <mssgle:LineSegment
+                    End="134.858333333333,29.4664031620553" />
+                  <mssgle:CubicBezierSegment
+                    Point1="134.858333333333,29.4664031620553"
+                    Point2="138.858333333333,29.4664031620553"
+                    Point3="138.858333333333,33.4664031620553" />
+                  <mssgle:LineSegment
+                    End="138.858333333333,45.75" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQC All.PrecedenceConstraints[Constraint 6]"
+          TopLeft="825.333333333333,397.75">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-140.108333333333,53.25"
+              Start="0,0"
+              End="-140.108333333333,45.75">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.4664031620553" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,25.4664031620553"
+                    Point2="0,29.4664031620553"
+                    Point3="-4,29.4664031620553" />
+                  <mssgle:LineSegment
+                    End="-136.108333333333,29.4664031620553" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-136.108333333333,29.4664031620553"
+                    Point2="-140.108333333333,29.4664031620553"
+                    Point3="-140.108333333333,33.4664031620553" />
+                  <mssgle:LineSegment
+                    End="-140.108333333333,45.75" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SEQC All.PrecedenceConstraints[Constraint 7]"
+          TopLeft="1147.5,397.75">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-419.075,53.25"
+              Start="0,0"
+              End="-419.075,45.75">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.4623115577889" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,33.4623115577889"
+                    Point2="0,37.4623115577889"
+                    Point3="-4,37.4623115577889" />
+                  <mssgle:LineSegment
+                    End="-415.075,37.4623115577889" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-415.075,37.4623115577889"
+                    Point2="-419.075,37.4623115577889"
+                    Point3="-419.075,41.4623115577889" />
+                  <mssgle:LineSegment
+                    End="-419.075,45.75" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="1342,547"
+          Size="1342,590"
+          Id="Package\SEQC All"
+          TopLeft="48.0833333333334,131.333333333333" />
+        <NodeLayout
+          Size="197,42"
+          Id="Package\SQL ExecutionEnd Failed"
+          TopLeft="848.083333333333,799.583333333334" />
+        <NodeLayout
+          Size="220,42"
+          Id="Package\SQL ExecutionEnd Succeeded"
+          TopLeft="386.083333333333,799.583333333334" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\SQL ExecutionStart"
+          TopLeft="636.083333333333,42.3333333333335" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="720.333333333333,84.3333333333335">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,46.9999999999998"
+              Start="0,0"
+              End="0,39.4999999999998">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.4999999999998" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="496.416666666667,721.333333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,78.2500000000003"
+              Start="0,0"
+              End="0,70.7500000000003">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,70.7500000000003" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="944,721.333333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,78.2500000000003"
+              Start="0,0"
+              End="0,70.7500000000003">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,70.7500000000003" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-15.24134765625,30.5004882812502,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\SEQC All\DTF Insert packages into ExecutionQueue">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="249,42"
+          Id="Package\SEQC All\DTF Insert packages into ExecutionQueue\OLE_SRC SSISDB Catalog Packages"
+          TopLeft="5.5,5.5" />
+        <NodeLayout
+          Size="181,42"
+          Id="Package\SEQC All\DTF Insert packages into ExecutionQueue\DER Add ExecutionId"
+          TopLeft="39.5,107.5" />
+        <EdgeLayout
+          Id="Package\SEQC All\DTF Insert packages into ExecutionQueue.Paths[OLE DB Source Output]"
+          TopLeft="130,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="225,42"
+          Id="Package\SEQC All\DTF Insert packages into ExecutionQueue\OLE_DST Audit PackageQueue"
+          TopLeft="17.5,209.5" />
+        <EdgeLayout
+          Id="Package\SEQC All\DTF Insert packages into ExecutionQueue.Paths[Derived Column Output]"
+          TopLeft="130,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\SEQC All\DTF Insert packages into ExecutionQueue\OLE_SRC SSISDB Catalog Packages">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\SEQC All\DTF Insert packages into ExecutionQueue\OLE_DST Audit PackageQueue">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
