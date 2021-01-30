@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseName>Archive_AdventureWorks2014</TargetDatabaseName>
+    <DeployScriptFileName>Archive_AdventureWorks2014.sql</DeployScriptFileName>
+    <ProfileVersionNumber>1</ProfileVersionNumber>
+    <TargetConnectionString>Data Source=.;Integrated Security=True;Persist Security Info=False;Pooling=False;MultipleActiveResultSets=False;Connect Timeout=60;Encrypt=False;TrustServerCertificate=True</TargetConnectionString>
+    <ScriptFileSize>True</ScriptFileSize>
+    <BlockOnPossibleDataLoss>False</BlockOnPossibleDataLoss>
+    <ScriptDatabaseCollation>True</ScriptDatabaseCollation>
+    <GenerateSmartDefaults>True</GenerateSmartDefaults>
+    <DeployDatabaseInSingleUserMode>False</DeployDatabaseInSingleUserMode>
+    <IncludeTransactionalScripts>True</IncludeTransactionalScripts>
+    <DropObjectsNotInSource>True</DropObjectsNotInSource>
+    <DoNotDropAggregates>True</DoNotDropAggregates>
+    <DoNotDropApplicationRoles>True</DoNotDropApplicationRoles>
+    <DoNotDropAssemblies>True</DoNotDropAssemblies>
+    <IncludeTransactionalScripts>True</IncludeTransactionalScripts>
+    <DoNotDropAsymmetricKeys>True</DoNotDropAsymmetricKeys>
+    <DoNotDropAudits>True</DoNotDropAudits>
+    <DoNotDropBrokerPriorities>True</DoNotDropBrokerPriorities>
+    <DoNotDropCertificates>True</DoNotDropCertificates>
+    <DoNotDropColumnEncryptionKeys>True</DoNotDropColumnEncryptionKeys>
+    <DoNotDropColumnMasterKeys>True</DoNotDropColumnMasterKeys>
+    <DoNotDropCredentials>True</DoNotDropCredentials>
+    <DoNotDropCryptographicProviders>True</DoNotDropCryptographicProviders>
+    <DoNotDropDatabaseAuditSpecifications>True</DoNotDropDatabaseAuditSpecifications>
+    <DoNotDropDatabaseRoles>True</DoNotDropDatabaseRoles>
+    <DoNotDropDatabaseScopedCredentials>True</DoNotDropDatabaseScopedCredentials>
+    <DoNotDropDefaults>True</DoNotDropDefaults>
+    <DoNotDropExtendedProperties>False</DoNotDropExtendedProperties>
+    <DoNotDropFilegroups>True</DoNotDropFilegroups>
+    <DoNotDropLinkedServers>False</DoNotDropLinkedServers>
+    <DoNotDropLogins>True</DoNotDropLogins>
+    <DoNotDropMessageTypes>True</DoNotDropMessageTypes>
+    <DoNotDropPartitionSchemes>True</DoNotDropPartitionSchemes>
+    <DoNotDropPartitionFunctions>True</DoNotDropPartitionFunctions>
+    <DoNotDropPermissions>True</DoNotDropPermissions>
+    <DoNotDropRoleMembership>True</DoNotDropRoleMembership>
+    <DoNotDropRoutes>True</DoNotDropRoutes>
+    <DoNotDropRules>True</DoNotDropRules>
+    <DoNotDropSecurityPolicies>True</DoNotDropSecurityPolicies>
+    <DoNotDropServerAuditSpecifications>True</DoNotDropServerAuditSpecifications>
+    <DoNotDropServerRoleMembership>True</DoNotDropServerRoleMembership>
+    <DoNotDropServerRoles>True</DoNotDropServerRoles>
+    <DoNotDropSignatures>True</DoNotDropSignatures>
+    <DoNotDropSymmetricKeys>True</DoNotDropSymmetricKeys>
+    <DoNotDropUsers>True</DoNotDropUsers>
+  </PropertyGroup>
+  <ItemGroup>
+    <SqlCmdVariable Include="DeployEnvironment">
+      <Value>DEV</Value>
+    </SqlCmdVariable>
+  </ItemGroup>
+</Project>
