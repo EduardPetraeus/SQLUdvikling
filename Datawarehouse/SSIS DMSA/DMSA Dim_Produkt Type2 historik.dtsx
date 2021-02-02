@@ -11,20 +11,11 @@
   DTS:LocaleID="1030"
   DTS:ObjectName="DMSA Dim_Produkt Type2 historik"
   DTS:PackageType="5"
-  DTS:VersionBuild="83"
-  DTS:VersionGUID="{881A71FB-9EC8-4D2D-8670-9A1D478BBBA4}">
+  DTS:VersionBuild="87"
+  DTS:VersionGUID="{B2E8BD0D-3EFE-4439-A686-8280E440A9D6}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
-    <DTS:Variable
-      DTS:CreationName=""
-      DTS:DTSID="{99F20F1C-7CE0-44C3-8050-E2120CA06550}"
-      DTS:IncludeInDebugDump="6789"
-      DTS:Namespace="User"
-      DTS:ObjectName="DMSAId">
-      <DTS:VariableValue
-        DTS:DataType="20">0</DTS:VariableValue>
-    </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
       DTS:DTSID="{021D93D9-EF6F-40B5-88F6-805793F157A1}"
@@ -42,24 +33,6 @@
       DTS:ObjectName="IsFullLoad">
       <DTS:VariableValue
         DTS:DataType="11">-1</DTS:VariableValue>
-    </DTS:Variable>
-    <DTS:Variable
-      DTS:CreationName=""
-      DTS:DTSID="{1CE5945A-F621-4495-9A34-9490E149AA05}"
-      DTS:IncludeInDebugDump="6789"
-      DTS:Namespace="User"
-      DTS:ObjectName="RecordsInserted">
-      <DTS:VariableValue
-        DTS:DataType="20">0</DTS:VariableValue>
-    </DTS:Variable>
-    <DTS:Variable
-      DTS:CreationName=""
-      DTS:DTSID="{E50E7C88-4867-476E-ABE7-F72CD86B6131}"
-      DTS:IncludeInDebugDump="6789"
-      DTS:Namespace="User"
-      DTS:ObjectName="RecordsSelected">
-      <DTS:VariableValue
-        DTS:DataType="20">0</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -91,81 +64,6 @@
       DTS:ObjectName="DMSA Dim_Produkt Type2 historik">
       <DTS:Variables />
       <DTS:Executables>
-        <DTS:Executable
-          DTS:refId="Package\DMSA Dim_Produkt Type2 historik\SQL DMSAEnd Failed"
-          DTS:CreationName="Microsoft.ExecuteSQLTask"
-          DTS:Description="Execute SQL Task"
-          DTS:Disabled="True"
-          DTS:DTSID="{6FA83FEA-927C-4DB1-AB31-E1538ED87855}"
-          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-          DTS:LocaleID="-1"
-          DTS:ObjectName="SQL DMSAEnd Failed"
-          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
-          <DTS:Variables />
-          <DTS:ObjectData>
-            <SQLTask:SqlTaskData
-              SQLTask:Connection="{0F0C7406-5396-43EE-BD83-FE1D8F5C75FD}"
-              SQLTask:SqlStatementSource="EXEC Audit.DMSAEnd @DMSAId, 'Failed'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
-              <SQLTask:ParameterBinding
-                SQLTask:ParameterName="DMSAId"
-                SQLTask:DtsVariableName="User::DMSAId"
-                SQLTask:ParameterDirection="Input"
-                SQLTask:DataType="12"
-                SQLTask:ParameterSize="-1" />
-            </SQLTask:SqlTaskData>
-          </DTS:ObjectData>
-        </DTS:Executable>
-        <DTS:Executable
-          DTS:refId="Package\DMSA Dim_Produkt Type2 historik\SQL DMSAStart"
-          DTS:CreationName="Microsoft.ExecuteSQLTask"
-          DTS:Description="Execute SQL Task"
-          DTS:Disabled="True"
-          DTS:DTSID="{06D9486B-8B26-4391-8139-BDA6E4752B27}"
-          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-          DTS:LocaleID="-1"
-          DTS:ObjectName="SQL DMSAStart"
-          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
-          <DTS:Variables />
-          <DTS:ObjectData>
-            <SQLTask:SqlTaskData
-              SQLTask:Connection="{0F0C7406-5396-43EE-BD83-FE1D8F5C75FD}"
-              SQLTask:IsStoredProc="True"
-              SQLTask:SqlStatementSource="Audit.DMSAStart" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
-              <SQLTask:ParameterBinding
-                SQLTask:ParameterName="ExecutionId"
-                SQLTask:DtsVariableName="User::ExecutionId"
-                SQLTask:ParameterDirection="Input"
-                SQLTask:DataType="12"
-                SQLTask:ParameterSize="-1" />
-              <SQLTask:ParameterBinding
-                SQLTask:ParameterName="DMSAId"
-                SQLTask:DtsVariableName="User::DMSAId"
-                SQLTask:ParameterDirection="Output"
-                SQLTask:DataType="12"
-                SQLTask:ParameterSize="-1" />
-              <SQLTask:ParameterBinding
-                SQLTask:ParameterName="TableName"
-                SQLTask:DtsVariableName="User::TableName"
-                SQLTask:ParameterDirection="Input"
-                SQLTask:DataType="16"
-                SQLTask:ParameterSize="-1" />
-              <SQLTask:ParameterBinding
-                SQLTask:ParameterName="Database"
-                SQLTask:DtsVariableName="$Project::Database"
-                SQLTask:ParameterDirection="Input"
-                SQLTask:DataType="16"
-                SQLTask:ParameterSize="-1" />
-              <SQLTask:ParameterBinding
-                SQLTask:ParameterName="Schema"
-                SQLTask:DtsVariableName="$Project::Schema"
-                SQLTask:ParameterDirection="Input"
-                SQLTask:DataType="16"
-                SQLTask:ParameterSize="-1" />
-            </SQLTask:SqlTaskData>
-          </DTS:ObjectData>
-        </DTS:Executable>
         <DTS:Executable
           DTS:refId="Package\DMSA Dim_Produkt Type2 historik\Staging Dim_Produkt"
           DTS:CreationName="Microsoft.Pipeline"
@@ -219,7 +117,7 @@
                       <outputColumns>
                         <outputColumn
                           refId="Package\DMSA Dim_Produkt Type2 historik\Staging Dim_Produkt\Derived Column.Outputs[Derived Column Output].Columns[Meta_CreateJob]"
-                          dataType="i8"
+                          dataType="i4"
                           errorOrTruncationOperation="Computation"
                           errorRowDisposition="FailComponent"
                           lineageId="Package\DMSA Dim_Produkt Type2 historik\Staging Dim_Produkt\Derived Column.Outputs[Derived Column Output].Columns[Meta_CreateJob]"
@@ -230,13 +128,13 @@
                               containsID="true"
                               dataType="System.String"
                               description="Derived Column Expression"
-                              name="Expression">@[User::DMSAId]</property>
+                              name="Expression">-1</property>
                             <property
                               containsID="true"
                               dataType="System.String"
                               description="Derived Column Friendly Expression"
                               expressionType="Notify"
-                              name="FriendlyExpression">@[User::DMSAId]</property>
+                              name="FriendlyExpression">-1</property>
                           </properties>
                         </outputColumn>
                         <outputColumn
@@ -387,7 +285,7 @@
                       <inputColumns>
                         <inputColumn
                           refId="Package\DMSA Dim_Produkt Type2 historik\Staging Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Meta_CreateJob]"
-                          cachedDataType="i8"
+                          cachedDataType="i4"
                           cachedName="Meta_CreateJob"
                           externalMetadataColumnId="Package\DMSA Dim_Produkt Type2 historik\Staging Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Meta_CreateJob]"
                           lineageId="Package\DMSA Dim_Produkt Type2 historik\Staging Dim_Produkt\Derived Column.Outputs[Derived Column Output].Columns[Meta_CreateJob]" />
@@ -667,86 +565,18 @@
                     </output>
                   </outputs>
                 </component>
-                <component
-                  refId="Package\DMSA Dim_Produkt Type2 historik\Staging Dim_Produkt\RC Inserted"
-                  componentClassID="Microsoft.RowCount"
-                  contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-                  description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
-                  name="RC Inserted">
-                  <properties>
-                    <property
-                      dataType="System.String"
-                      description="Specifies the variable to hold the row count."
-                      name="VariableName">User::RecordsInserted</property>
-                  </properties>
-                  <inputs>
-                    <input
-                      refId="Package\DMSA Dim_Produkt Type2 historik\Staging Dim_Produkt\RC Inserted.Inputs[Row Count Input 1]"
-                      hasSideEffects="true"
-                      name="Row Count Input 1">
-                      <externalMetadataColumns />
-                    </input>
-                  </inputs>
-                  <outputs>
-                    <output
-                      refId="Package\DMSA Dim_Produkt Type2 historik\Staging Dim_Produkt\RC Inserted.Outputs[Row Count Output 1]"
-                      name="Row Count Output 1"
-                      synchronousInputId="Package\DMSA Dim_Produkt Type2 historik\Staging Dim_Produkt\RC Inserted.Inputs[Row Count Input 1]">
-                      <externalMetadataColumns />
-                    </output>
-                  </outputs>
-                </component>
-                <component
-                  refId="Package\DMSA Dim_Produkt Type2 historik\Staging Dim_Produkt\RC Selected"
-                  componentClassID="Microsoft.RowCount"
-                  contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-                  description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
-                  name="RC Selected">
-                  <properties>
-                    <property
-                      dataType="System.String"
-                      description="Specifies the variable to hold the row count."
-                      name="VariableName">User::RecordsSelected</property>
-                  </properties>
-                  <inputs>
-                    <input
-                      refId="Package\DMSA Dim_Produkt Type2 historik\Staging Dim_Produkt\RC Selected.Inputs[Row Count Input 1]"
-                      hasSideEffects="true"
-                      name="Row Count Input 1">
-                      <externalMetadataColumns />
-                    </input>
-                  </inputs>
-                  <outputs>
-                    <output
-                      refId="Package\DMSA Dim_Produkt Type2 historik\Staging Dim_Produkt\RC Selected.Outputs[Row Count Output 1]"
-                      name="Row Count Output 1"
-                      synchronousInputId="Package\DMSA Dim_Produkt Type2 historik\Staging Dim_Produkt\RC Selected.Inputs[Row Count Input 1]">
-                      <externalMetadataColumns />
-                    </output>
-                  </outputs>
-                </component>
               </components>
               <paths>
                 <path
                   refId="Package\DMSA Dim_Produkt Type2 historik\Staging Dim_Produkt.Paths[Derived Column Output]"
-                  endId="Package\DMSA Dim_Produkt Type2 historik\Staging Dim_Produkt\RC Inserted.Inputs[Row Count Input 1]"
+                  endId="Package\DMSA Dim_Produkt Type2 historik\Staging Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input]"
                   name="Derived Column Output"
                   startId="Package\DMSA Dim_Produkt Type2 historik\Staging Dim_Produkt\Derived Column.Outputs[Derived Column Output]" />
                 <path
                   refId="Package\DMSA Dim_Produkt Type2 historik\Staging Dim_Produkt.Paths[OLE DB Source Output]"
-                  endId="Package\DMSA Dim_Produkt Type2 historik\Staging Dim_Produkt\RC Selected.Inputs[Row Count Input 1]"
+                  endId="Package\DMSA Dim_Produkt Type2 historik\Staging Dim_Produkt\Derived Column.Inputs[Derived Column Input]"
                   name="OLE DB Source Output"
                   startId="Package\DMSA Dim_Produkt Type2 historik\Staging Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output]" />
-                <path
-                  refId="Package\DMSA Dim_Produkt Type2 historik\Staging Dim_Produkt.Paths[Row Count Output 1]"
-                  endId="Package\DMSA Dim_Produkt Type2 historik\Staging Dim_Produkt\Derived Column.Inputs[Derived Column Input]"
-                  name="Row Count Output 1"
-                  startId="Package\DMSA Dim_Produkt Type2 historik\Staging Dim_Produkt\RC Selected.Outputs[Row Count Output 1]" />
-                <path
-                  refId="Package\DMSA Dim_Produkt Type2 historik\Staging Dim_Produkt.Paths[Row Count Output 11]"
-                  endId="Package\DMSA Dim_Produkt Type2 historik\Staging Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input]"
-                  name="Row Count Output 1"
-                  startId="Package\DMSA Dim_Produkt Type2 historik\Staging Dim_Produkt\RC Inserted.Outputs[Row Count Output 1]" />
               </paths>
             </pipeline>
           </DTS:ObjectData>
@@ -864,14 +694,6 @@
           DTS:ObjectName="Constraint"
           DTS:To="Package\DMSA Dim_Produkt Type2 historik\Staging Dim_Produkt" />
         <DTS:PrecedenceConstraint
-          DTS:refId="Package\DMSA Dim_Produkt Type2 historik.PrecedenceConstraints[Constraint 1]"
-          DTS:CreationName=""
-          DTS:DTSID="{09706F84-0274-43D9-80D1-ED457EBBD33D}"
-          DTS:From="Package\DMSA Dim_Produkt Type2 historik\SQL DMSAStart"
-          DTS:LogicalAnd="True"
-          DTS:ObjectName="Constraint 1"
-          DTS:To="Package\DMSA Dim_Produkt Type2 historik\Truncate table Staging Dim_Produkt" />
-        <DTS:PrecedenceConstraint
           DTS:refId="Package\DMSA Dim_Produkt Type2 historik.PrecedenceConstraints[Constraint 2]"
           DTS:CreationName=""
           DTS:DTSID="{DDC0400A-67DF-44A3-84C0-6685B5EA7E9D}"
@@ -880,22 +702,6 @@
           DTS:ObjectName="Constraint 2"
           DTS:To="Package\DMSA Dim_Produkt Type2 historik\Start UpdateMap" />
         <DTS:PrecedenceConstraint
-          DTS:refId="Package\DMSA Dim_Produkt Type2 historik.PrecedenceConstraints[Constraint 3]"
-          DTS:CreationName=""
-          DTS:DTSID="{ACB715AB-4A2F-4BA4-939F-9F241F84835C}"
-          DTS:From="Package\DMSA Dim_Produkt Type2 historik\Staging Dim_Produkt"
-          DTS:ObjectName="Constraint 3"
-          DTS:To="Package\DMSA Dim_Produkt Type2 historik\SQL DMSAEnd Failed"
-          DTS:Value="1" />
-        <DTS:PrecedenceConstraint
-          DTS:refId="Package\DMSA Dim_Produkt Type2 historik.PrecedenceConstraints[Constraint 4]"
-          DTS:CreationName=""
-          DTS:DTSID="{6B8F702B-56E9-420B-BD29-7C8CE6BEF108}"
-          DTS:From="Package\DMSA Dim_Produkt Type2 historik\Truncate table Staging Dim_Produkt"
-          DTS:ObjectName="Constraint 4"
-          DTS:To="Package\DMSA Dim_Produkt Type2 historik\SQL DMSAEnd Failed"
-          DTS:Value="1" />
-        <DTS:PrecedenceConstraint
           DTS:refId="Package\DMSA Dim_Produkt Type2 historik.PrecedenceConstraints[Constraint 5]"
           DTS:CreationName=""
           DTS:DTSID="{5F84CFCC-B618-4730-900B-A055AAF85A51}"
@@ -903,22 +709,6 @@
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 5"
           DTS:To="Package\DMSA Dim_Produkt Type2 historik\Start UpdateDimensionT2" />
-        <DTS:PrecedenceConstraint
-          DTS:refId="Package\DMSA Dim_Produkt Type2 historik.PrecedenceConstraints[Constraint 6]"
-          DTS:CreationName=""
-          DTS:DTSID="{7C087E31-6274-4D1A-8AE3-EEF4F35B0BDD}"
-          DTS:From="Package\DMSA Dim_Produkt Type2 historik\Start UpdateMap"
-          DTS:ObjectName="Constraint 6"
-          DTS:To="Package\DMSA Dim_Produkt Type2 historik\SQL DMSAEnd Failed"
-          DTS:Value="1" />
-        <DTS:PrecedenceConstraint
-          DTS:refId="Package\DMSA Dim_Produkt Type2 historik.PrecedenceConstraints[Constraint 8]"
-          DTS:CreationName=""
-          DTS:DTSID="{917A4947-C17F-4C8C-BE55-C8382F114088}"
-          DTS:From="Package\DMSA Dim_Produkt Type2 historik\Start UpdateDimensionT2"
-          DTS:ObjectName="Constraint 8"
-          DTS:To="Package\DMSA Dim_Produkt Type2 historik\SQL DMSAEnd Failed"
-          DTS:Value="1" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
     <DTS:Executable
@@ -930,7 +720,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="SQL ExecutionEnd Failed"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -954,7 +744,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="SQL ExecutionEnd Succeeded"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -1130,68 +920,26 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="191,42"
-          Id="Package\DMSA Dim_Produkt Type2 historik\SQL DMSAEnd Failed"
-          TopLeft="282,515.5" />
-        <NodeLayout
-          Size="161,42"
-          Id="Package\DMSA Dim_Produkt Type2 historik\SQL DMSAStart"
-          TopLeft="359,5.5" />
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="178,42"
           Id="Package\DMSA Dim_Produkt Type2 historik\Staging Dim_Produkt"
-          TopLeft="200.5,209.5" />
+          TopLeft="38.5,107.5" />
         <NodeLayout
           Size="200,42"
           Id="Package\DMSA Dim_Produkt Type2 historik\Start UpdateDimensionT2"
-          TopLeft="54.5000000000001,413.5" />
+          TopLeft="27.5,311.5" />
         <NodeLayout
           Size="158,42"
           Id="Package\DMSA Dim_Produkt Type2 historik\Start UpdateMap"
-          TopLeft="158.5,311.5" />
+          TopLeft="48.5,209.5" />
         <NodeLayout
           Size="244,42"
           Id="Package\DMSA Dim_Produkt Type2 historik\Truncate table Staging Dim_Produkt"
-          TopLeft="317.5,107.5" />
+          TopLeft="5.5,5.5" />
         <EdgeLayout
           Id="Package\DMSA Dim_Produkt Type2 historik.PrecedenceConstraints[Constraint]"
-          TopLeft="400.166666666667,149.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-110.666666666667,60"
-              Start="0,0"
-              End="-110.666666666667,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,20.2345276872964" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,20.2345276872964"
-                    Point2="0,24.2345276872964"
-                    Point3="-4,24.2345276872964" />
-                  <mssgle:LineSegment
-                    End="-106.666666666667,24.2345276872964" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-106.666666666667,24.2345276872964"
-                    Point2="-110.666666666667,24.2345276872964"
-                    Point3="-110.666666666667,28.2345276872964" />
-                  <mssgle:LineSegment
-                    End="-110.666666666667,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DMSA Dim_Produkt Type2 historik.PrecedenceConstraints[Constraint 1]"
-          TopLeft="439.5,47.5">
+          TopLeft="127.5,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1213,231 +961,63 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DMSA Dim_Produkt Type2 historik.PrecedenceConstraints[Constraint 2]"
-          TopLeft="261.166666666667,251.5">
+          TopLeft="127.5,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-23.6666666666667,60"
+              EndConnector="0,60"
               Start="0,0"
-              End="-23.6666666666667,52.5">
+              End="0,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,20.3207126948775" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,20.3207126948775"
-                    Point2="0,24.3207126948775"
-                    Point3="-4,24.3207126948775" />
-                  <mssgle:LineSegment
-                    End="-19.6666666666667,24.3207126948775" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-19.6666666666667,24.3207126948775"
-                    Point2="-23.6666666666667,24.3207126948775"
-                    Point3="-23.6666666666667,28.3207126948775" />
-                  <mssgle:LineSegment
-                    End="-23.6666666666667,52.5" />
+                    End="0,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DMSA Dim_Produkt Type2 historik.PrecedenceConstraints[Constraint 3]"
-          TopLeft="317.833333333333,251.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="77.9666666666668,264"
-              Start="0,0"
-              End="77.9666666666668,256.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,116.773186921939" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,116.773186921939"
-                    Point2="0,120.773186921939"
-                    Point3="4,120.773186921939" />
-                  <mssgle:LineSegment
-                    End="73.9666666666668,120.773186921939" />
-                  <mssgle:CubicBezierSegment
-                    Point1="73.9666666666668,120.773186921939"
-                    Point2="77.9666666666668,120.773186921939"
-                    Point3="77.9666666666668,124.773186921939" />
-                  <mssgle:LineSegment
-                    End="77.9666666666668,256.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="23.7419856770834,125.773186921939,30.4826953125,9.7490234375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DMSA Dim_Produkt Type2 historik.PrecedenceConstraints[Constraint 4]"
-          TopLeft="478.833333333333,149.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-46.4333333333332,366"
-              Start="0,0"
-              End="-46.4333333333332,358.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,220.897103539887" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,220.897103539887"
-                    Point2="0,224.897103539887"
-                    Point3="-4,224.897103539887" />
-                  <mssgle:LineSegment
-                    End="-42.4333333333332,224.897103539887" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-42.4333333333332,224.897103539887"
-                    Point2="-46.4333333333332,224.897103539887"
-                    Point3="-46.4333333333332,228.897103539887" />
-                  <mssgle:LineSegment
-                    End="-46.4333333333332,358.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-38.4580143229166,229.897103539887,30.4826953125,9.7490234375"
-              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DMSA Dim_Produkt Type2 historik.PrecedenceConstraints[Constraint 5]"
-          TopLeft="212.5,353.5">
+          TopLeft="127.5,251.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-58,60"
+              EndConnector="0,60"
               Start="0,0"
-              End="-58,52.5">
+              End="0,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,20.3609022556391" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,20.3609022556391"
-                    Point2="0,24.3609022556391"
-                    Point3="-4,24.3609022556391" />
-                  <mssgle:LineSegment
-                    End="-54,24.3609022556391" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-54,24.3609022556391"
-                    Point2="-58,24.3609022556391"
-                    Point3="-58,28.3609022556391" />
-                  <mssgle:LineSegment
-                    End="-58,52.5" />
+                    End="0,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DMSA Dim_Produkt Type2 historik.PrecedenceConstraints[Constraint 6]"
-          TopLeft="262.5,353.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="96.7,162"
-              Start="0,0"
-              End="96.7,154.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,70.2225341601663" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,70.2225341601663"
-                    Point2="0,74.2225341601663"
-                    Point3="4,74.2225341601663" />
-                  <mssgle:LineSegment
-                    End="92.7,74.2225341601663" />
-                  <mssgle:CubicBezierSegment
-                    Point1="92.7,74.2225341601663"
-                    Point2="96.7,74.2225341601663"
-                    Point3="96.7,78.2225341601663" />
-                  <mssgle:LineSegment
-                    End="96.7,154.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="33.10865234375,79.2225341601663,30.4826953125,9.7490234375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DMSA Dim_Produkt Type2 historik.PrecedenceConstraints[Constraint 8]"
-          TopLeft="186.5,455.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="136.1,60"
-              Start="0,0"
-              End="136.1,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,32.9187038089824" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,32.9187038089824"
-                    Point2="0,36.9187038089824"
-                    Point3="4,36.9187038089824" />
-                  <mssgle:LineSegment
-                    End="132.1,36.9187038089824" />
-                  <mssgle:CubicBezierSegment
-                    Point1="132.1,36.9187038089824"
-                    Point2="136.1,36.9187038089824"
-                    Point3="136.1,40.9187038089824" />
-                  <mssgle:LineSegment
-                    End="136.1,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="52.80865234375,41.9187038089824,30.4826953125,9.7490234375"
-              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="567,612"
-          Size="567,656"
+          PanelSize="255,408"
+          Size="255,452"
           Id="Package\DMSA Dim_Produkt Type2 historik"
-          TopLeft="115,107.5" />
+          TopLeft="271,107.5" />
         <NodeLayout
           Size="205,42"
           Id="Package\SQL ExecutionEnd Failed"
-          TopLeft="296,823.5" />
+          TopLeft="296,619.5" />
         <NodeLayout
           Size="230,42"
           Id="Package\SQL ExecutionEnd Succeeded"
-          TopLeft="5.50000000000011,823.5" />
+          TopLeft="5.50000000000011,619.5" />
         <NodeLayout
           Size="176,42"
           Id="Package\SQL ExecutionStart"
@@ -1466,30 +1046,30 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="305.333333333333,763.5">
+          TopLeft="357.333333333333,559.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-184.833333333333,60"
+              EndConnector="-236.833333333333,60"
               Start="0,0"
-              End="-184.833333333333,52.5">
+              End="-236.833333333333,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,20.1013014421386" />
+                    End="0,20.2244738893219" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,20.1013014421386"
-                    Point2="0,24.1013014421386"
-                    Point3="-4,24.1013014421386" />
+                    Point1="0,20.2244738893219"
+                    Point2="0,24.2244738893219"
+                    Point3="-4,24.2244738893219" />
                   <mssgle:LineSegment
-                    End="-180.833333333333,24.1013014421386" />
+                    End="-232.833333333333,24.2244738893219" />
                   <mssgle:CubicBezierSegment
-                    Point1="-180.833333333333,24.1013014421386"
-                    Point2="-184.833333333333,24.1013014421386"
-                    Point3="-184.833333333333,28.1013014421386" />
+                    Point1="-232.833333333333,24.2244738893219"
+                    Point2="-236.833333333333,24.2244738893219"
+                    Point3="-236.833333333333,28.2244738893219" />
                   <mssgle:LineSegment
-                    End="-184.833333333333,52.5" />
+                    End="-236.833333333333,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1500,37 +1080,37 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="491.666666666667,763.5">
+          TopLeft="439.666666666667,559.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-93.1666666666666,60"
+              EndConnector="-41.1666666666666,60"
               Start="0,0"
-              End="-93.1666666666666,52.5">
+              End="-41.1666666666666,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,20.1013014421386" />
+                    End="0,20.2244738893219" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,20.1013014421386"
-                    Point2="0,24.1013014421386"
-                    Point3="-4,24.1013014421386" />
+                    Point1="0,20.2244738893219"
+                    Point2="0,24.2244738893219"
+                    Point3="-4,24.2244738893219" />
                   <mssgle:LineSegment
-                    End="-89.1666666666666,24.1013014421386" />
+                    End="-37.1666666666666,24.2244738893219" />
                   <mssgle:CubicBezierSegment
-                    Point1="-89.1666666666666,24.1013014421386"
-                    Point2="-93.1666666666666,24.1013014421386"
-                    Point3="-93.1666666666666,28.1013014421386" />
+                    Point1="-37.1666666666666,24.2244738893219"
+                    Point2="-41.1666666666666,24.2244738893219"
+                    Point3="-41.1666666666666,28.2244738893219" />
                   <mssgle:LineSegment
-                    End="-93.1666666666666,52.5" />
+                    End="-41.1666666666666,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-61.8246809895833,29.1013014421386,30.4826953125,9.7490234375"
+              BoundingBox="-35.8246809895833,29.2244738893219,30.4826953125,9.7490234375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -1553,71 +1133,19 @@
     design-time-name="Package\DMSA Dim_Produkt Type2 historik\Staging Dim_Produkt">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="138,42"
-          Id="Package\DMSA Dim_Produkt Type2 historik\Staging Dim_Produkt\RC Inserted"
-          TopLeft="25,311.5" />
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="157,42"
           Id="Package\DMSA Dim_Produkt Type2 historik\Staging Dim_Produkt\OLE DB Source"
           TopLeft="15.5,5.5" />
         <NodeLayout
-          Size="141,42"
-          Id="Package\DMSA Dim_Produkt Type2 historik\Staging Dim_Produkt\RC Selected"
-          TopLeft="23.5,107.5" />
-        <NodeLayout
           Size="158,42"
           Id="Package\DMSA Dim_Produkt Type2 historik\Staging Dim_Produkt\Derived Column"
-          TopLeft="15,209.5" />
+          TopLeft="15,107.5" />
         <NodeLayout
           Size="177,42"
           Id="Package\DMSA Dim_Produkt Type2 historik\Staging Dim_Produkt\OLE DB Destination"
-          TopLeft="5.50000000000004,413.5" />
-        <EdgeLayout
-          Id="Package\DMSA Dim_Produkt Type2 historik\Staging Dim_Produkt.Paths[Row Count Output 11]"
-          TopLeft="94,353.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DMSA Dim_Produkt Type2 historik\Staging Dim_Produkt.Paths[Row Count Output 1]"
-          TopLeft="94,149.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          TopLeft="5.50000000000003,209.5" />
         <EdgeLayout
           Id="Package\DMSA Dim_Produkt Type2 historik\Staging Dim_Produkt.Paths[OLE DB Source Output]"
           TopLeft="94,47.5">
@@ -1642,7 +1170,7 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DMSA Dim_Produkt Type2 historik\Staging Dim_Produkt.Paths[Derived Column Output]"
-          TopLeft="94,251.5">
+          TopLeft="94,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"

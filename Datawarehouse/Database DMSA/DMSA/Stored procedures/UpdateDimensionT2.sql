@@ -368,6 +368,7 @@ BEGIN
         UPDATE [DZDB].[Audit].[DMSALog]
         SET [Status] = ''Succeeded'',
             [EndTime] = GETDATE(),
+            [IsFullLoad] = 1,
             [RecordsSelected] = @RecordsSelected,
             [RecordsInserted] = @RecordsInserted,
             [RecordsUpdated] =  @RecordsUpdated,
@@ -381,12 +382,24 @@ BEGIN
 	END
 
 
-	IF @LogingIsEnabled = 1 and @TruncateDimension = 1 BEGIN
+	IF @LogingIsEnabled = 0 and @TruncateDimension = 1 BEGIN
 		SET @SQL = @SQL + N'
 		SELECT @RecordsSelected = COUNT(*) FROM <StagingTableFullName>;
         SELECT @RecordsInserted = COUNT(*) FROM <DimensionTableFullName>;
         SET @RecordsUpdated = 0;
-        SET @RecordsDeleted = 0;'
+        --SET @RecordsDeleted = 0;
+        
+        UPDATE [DZDB].[Audit].[DMSALog]
+        SET [Status] = ''Succeeded'',
+            [EndTime] = GETDATE(),
+            [IsFullLoad] = 0,
+            [RecordsSelected] = @RecordsSelected,
+            [RecordsInserted] = @RecordsInserted,
+            [RecordsUpdated] =  @RecordsUpdated,
+            [RecordsFailed] = 0,
+            [RecordsDiscarded] = 0
+        WHERE [Id] = @DMSAId
+        '
 	END
 	
 
@@ -395,7 +408,7 @@ BEGIN
 		EXECUTE [DZDB].[Audit].[DMSAEnd] @DMSAId = @DMSAId,
                                           @RecordsSelected = @RecordsSelected,
                                           @RecordsInserted = @RecordsInserted,
-										  @RecordsUpdated = @RecordsUpdated,
+										  @RecordsUpdated = @RecordsUpdated;
                                           --@RecordsDeleted = @RecordsDeleted;
     '
     END
@@ -405,10 +418,10 @@ BEGIN
 	END TRY
 	BEGIN CATCH
         /*** Rollback if transaction was started here OR rollback to @SavePoint if transaction OK ***/
-        --IF @TranCounter = 0
-	    --    ROLLBACK TRANSACTION;
-        --ELSE IF XACT_STATE() = 1
-	    --    ROLLBACK TRANSACTION @SavePoint;
+       IF @TranCounter = 0
+	        ROLLBACK TRANSACTION;
+        ELSE IF XACT_STATE() = 1
+	        ROLLBACK TRANSACTION @SavePoint;
     '
 
     IF @LogingIsEnabled = 0 BEGIN
