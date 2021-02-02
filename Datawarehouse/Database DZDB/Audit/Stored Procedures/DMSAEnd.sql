@@ -3,6 +3,7 @@
     @Status NVARCHAR (20) = 'Succeeded',
     @RecordsSelected INT = 0,
     @RecordsInserted INT = 0,
+    @RecordsUpdated INT = 0,
     @RecordsFailed INT = 0,
     @RecordsDiscarded INT = 0
 AS
@@ -16,6 +17,7 @@ BEGIN
             [EndTime] = GETDATE(),
             [RecordsSelected] = @RecordsSelected,
             [RecordsInserted] = @RecordsInserted,
+            [RecordsUpdated] =  @RecordsUpdated,
             [RecordsFailed] = @RecordsFailed,
             [RecordsDiscarded] = @RecordsDiscarded
         WHERE [Id] = @DMSAId

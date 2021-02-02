@@ -11,8 +11,8 @@
   DTS:LocaleID="1030"
   DTS:ObjectName="Staging Dim_Produkt"
   DTS:PackageType="5"
-  DTS:VersionBuild="34"
-  DTS:VersionGUID="{E73C92D0-5849-462F-891D-0D840B54A798}">
+  DTS:VersionBuild="35"
+  DTS:VersionGUID="{4DE3F219-8896-4A98-8CB6-1F1339BD7695}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:PackageParameters>
@@ -83,7 +83,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="SQL ExecutionEnd Failed"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -107,7 +107,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="SQL ExecutionEnd Succeeded"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -520,6 +520,22 @@
                           dataType="wstr"
                           length="50"
                           name="Aisle" />
+                        <externalMetadataColumn
+                          refId="Package\Staging Dim_Produkt\Staging Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Meta_UpdateTime]"
+                          dataType="dbTimeStamp"
+                          name="Meta_UpdateTime" />
+                        <externalMetadataColumn
+                          refId="Package\Staging Dim_Produkt\Staging Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Meta_UpdateJob]"
+                          dataType="i8"
+                          name="Meta_UpdateJob" />
+                        <externalMetadataColumn
+                          refId="Package\Staging Dim_Produkt\Staging Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Meta_DeleteTime]"
+                          dataType="dbTimeStamp"
+                          name="Meta_DeleteTime" />
+                        <externalMetadataColumn
+                          refId="Package\Staging Dim_Produkt\Staging Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Meta_DeleteJob]"
+                          dataType="i8"
+                          name="Meta_DeleteJob" />
                       </externalMetadataColumns>
                     </input>
                   </inputs>

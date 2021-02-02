@@ -56,7 +56,7 @@ BEGIN
         SET @SQL = @SQL + N'
     /*** Start log ***/
     DECLARE @DMSAId BIGINT = -1;
-    EXECUTE [Audit].[DMSAStart]         @Database  = ''<Database>'',
+    EXECUTE [DZDB].[Audit].[DMSAStart]         @Database  = ''<Database>'',
                                         @TableName = ''<FactTableName>'',
                                         @Schema = ''<FactSchemaName>'',
                                         @DMSAId = @DMSAId OUTPUT,
@@ -99,9 +99,9 @@ BEGIN
         SET @SQL = @SQL + N'
         /*** End log - Succeeded ***/
         DECLARE @RecordsSelected INT = 0, @RecordsInserted INT = 0;
-        SELECT @RecordsSelected = COUNT(*), @RecordsInserted = COUNT(*) FROM <StagingTableFullName>;
+        SELECT @RecordsSelected = COUNT(*), @RecordsInserted = COUNT(*) FROM <FactTableFullName>;
 
-        EXECUTE [Audit].[DMSAEnd]         @DMSAId = @DMSAId,
+        EXECUTE [DZDB].[Audit].[DMSAEnd]         @DMSAId = @DMSAId,
                                           @RecordsSelected = @RecordsSelected,
                                           @RecordsInserted = @RecordsInserted;
     '
@@ -120,7 +120,7 @@ BEGIN
     IF @LogingIsEnabled = 1 BEGIN
         SET @SQL = @SQL + N'
         /*** End log - Failed ***/
-        EXECUTE [Audit].[DMSAEnd] @DMSAId = @DMSAId,
+        EXECUTE [DZDB].[Audit].[DMSAEnd] @DMSAId = @DMSAId,
                                   @Status = N''Failed'';
         '
     END

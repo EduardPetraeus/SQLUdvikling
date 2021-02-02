@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">PC0QGDKR</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAoy22zAAyH06k+AWfPTRHawAAAAACAAAAAAADZgAAwAAAABAAAADYQmtJv7n61fIpZspuZodbAAAAAASAAACgAAAAEAAAAAdC40M5EAj2dTxBI9Y2laaIAAAAqKqp1kQMXUqKo+a8fd/vtNzzx0+FXUq6zpk6+bhftX7GveX7xLYEF0PLyOi/XT20Tkj+LZv6VP9J++m41DC87hAXOx8bH9ywCTUM0l9UBVuy5Y6SYyYGsMOmWFUhieMA1/wKEjhBrbX93ssQQ9DAXlUPWhDD18SXPfxq5XAK5X6Kvr8ng0EWyxQAAAAvn8qZ0VLC/D5yi20+p6hzTeXuBQ==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAoy22zAAyH06k+AWfPTRHawAAAAACAAAAAAADZgAAwAAAABAAAAC+PVEYoJz07njQzVFp00GNAAAAAASAAACgAAAAEAAAADLURmpXMt8JI3q9lkQopQmIAAAA36W1g2tF2zx7YZNyder2qepl9X5yj7pdFSPKl/2hE+Zf94K5sVkYqResMvOeRQjPqJBnzaHjrthe97/wVFYIeYv1IP+DscY+EBG/jV1uiTKYQwvWtRs+tUvgTFda5tIVjG3eG0rg3aEhgBEemiriVeaB0a7Bd3wS92iMgra3b12xMXcUGAf3rxQAAADacPW4eg8DtIPmT2WbQnpL6CrfuQ==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -38,6 +38,7 @@
           <SSIS:Package SSIS:Name="Utility InsertNullRecords.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="Process Cube Ordre.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="DMSA Dim_Produkt_Delta_Load.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="DMSA Dim_Produkt Type2 historik.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="ADO.NET DZDB.conmgr" />
@@ -708,6 +709,23 @@
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionGUID">{9C8CF9AC-0337-441C-8386-653748187611}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="DMSA Dim_Produkt Type2 historik.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{A6C9009E-5F6C-4401-97E8-C20634936419}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">DMSA Dim_Produkt Type2 historik</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">63</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{22ADA266-55C7-4592-AC17-7F2C87B8B1C7}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
