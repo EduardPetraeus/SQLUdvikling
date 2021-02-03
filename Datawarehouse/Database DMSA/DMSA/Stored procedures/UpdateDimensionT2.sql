@@ -229,10 +229,7 @@ BEGIN
                                         @Schema = @Schema,
                                         @DMSAId = @DMSAId OUTPUT,
                                         @ExecutionId = @ExecutionId;
-                                        --@Source = ''<StagingSchemaName>.<StagingTableName>'',
-                                        --@StoredProcedureName = ''SwitchFact'',
-                                        --@StoredProcedureVersion = ''1.0'',
-                                        --@TableTruncated = 1;
+                        
 
     '
     END
