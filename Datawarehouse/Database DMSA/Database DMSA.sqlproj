@@ -71,6 +71,7 @@
     <Folder Include="Map\Stored procedures" />
     <Folder Include="Map\Tables" />
     <Folder Include="Staging\Tables" />
+    <Folder Include="Staging\Views" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DMSA.dev.publish.xml" />
@@ -105,5 +106,45 @@
     <Build Include="Map\Stored procedures\UpdateMap.sql" />
     <Build Include="Map\Tables\Dim_Produkt.sql" />
     <Build Include="Staging\Tables\Dim_Produkt.sql" />
+    <Build Include="Staging\Views\v_Fact_Ordre.sql" />
+    <Build Include="DMSA\Tables\Full_Data_Fact_Ordre_Columnstore_Index.sql" />
+    <Build Include="Load\Full_Data_Fact_Ordre_Columnstore_Index.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Database salg\Database Salg.sqlproj">
+      <Name>Database Salg</Name>
+      <Project>{fe8b664f-937d-49f0-aa66-8dcf20fc96ae}</Project>
+      <Private>True</Private>
+      <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
+      <DatabaseVariableLiteralValue>Salg</DatabaseVariableLiteralValue>
+    </ProjectReference>
+    <ProjectReference Include="..\Database LZDB\Database LZDB.sqlproj">
+      <Name>Database LZDB</Name>
+      <Project>{ea7d88b0-0350-48ca-b674-62c8f5400ae2}</Project>
+      <Private>True</Private>
+      <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
+      <DatabaseVariableLiteralValue>LZDB</DatabaseVariableLiteralValue>
+    </ProjectReference>
+    <ProjectReference Include="..\Database Staging\Database Staging.sqlproj">
+      <Name>Database Staging</Name>
+      <Project>{f3dbfcca-32b1-46ea-ad8d-c375a567608c}</Project>
+      <Private>True</Private>
+      <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
+      <DatabaseVariableLiteralValue>Staging</DatabaseVariableLiteralValue>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <SqlCmdVariable Include="LZDB">
+      <DefaultValue>LZDB</DefaultValue>
+      <Value>$(SqlCmdVar__2)</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="Salg">
+      <DefaultValue>Salg</DefaultValue>
+      <Value>$(SqlCmdVar__1)</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="Staging">
+      <DefaultValue>Staging</DefaultValue>
+      <Value>$(SqlCmdVar__3)</Value>
+    </SqlCmdVariable>
   </ItemGroup>
 </Project>

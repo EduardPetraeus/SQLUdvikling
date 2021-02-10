@@ -13,5 +13,14 @@
     <SqlCmdVariable Include="DMSA">
       <Value>DMSA</Value>
     </SqlCmdVariable>
+    <SqlCmdVariable Include="LZDB">
+      <Value>LZDB</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="Salg">
+      <Value>Salg</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="Staging">
+      <Value>Staging</Value>
+    </SqlCmdVariable>
   </ItemGroup>
 </Project>

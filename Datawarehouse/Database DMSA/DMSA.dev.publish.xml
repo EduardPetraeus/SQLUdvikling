@@ -9,4 +9,15 @@
     <BlockOnPossibleDataLoss>True</BlockOnPossibleDataLoss>
     <CreateNewDatabase>False</CreateNewDatabase>
   </PropertyGroup>
+  <ItemGroup>
+    <SqlCmdVariable Include="LZDB">
+      <Value>LZDB</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="Salg">
+      <Value>Salg</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="Staging">
+      <Value>Staging</Value>
+    </SqlCmdVariable>
+  </ItemGroup>
 </Project>

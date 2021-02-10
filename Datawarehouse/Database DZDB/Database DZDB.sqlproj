@@ -112,11 +112,51 @@
       <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
       <DatabaseVariableLiteralValue>DMSA</DatabaseVariableLiteralValue>
     </ProjectReference>
+    <ProjectReference Include="..\Database LZDB\Database LZDB.sqlproj">
+      <Name>Database LZDB</Name>
+      <Project>{ea7d88b0-0350-48ca-b674-62c8f5400ae2}</Project>
+      <Private>True</Private>
+      <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
+      <DatabaseVariableLiteralValue>LZDB</DatabaseVariableLiteralValue>
+    </ProjectReference>
+    <ProjectReference Include="..\Database salg\Database Salg.sqlproj">
+      <Name>Database Salg</Name>
+      <Project>{fe8b664f-937d-49f0-aa66-8dcf20fc96ae}</Project>
+      <Private>True</Private>
+      <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
+      <DatabaseVariableLiteralValue>Salg</DatabaseVariableLiteralValue>
+    </ProjectReference>
+    <ProjectReference Include="..\Database Staging\Database Staging.sqlproj">
+      <Name>Database Staging</Name>
+      <Project>{f3dbfcca-32b1-46ea-ad8d-c375a567608c}</Project>
+      <Private>True</Private>
+      <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
+      <DatabaseVariableLiteralValue>Staging</DatabaseVariableLiteralValue>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <SqlCmdVariable Include="DMSA">
       <DefaultValue>DMSA</DefaultValue>
       <Value>$(SqlCmdVar__1)</Value>
     </SqlCmdVariable>
+    <SqlCmdVariable Include="LZDB">
+      <DefaultValue>LZDB</DefaultValue>
+      <Value>$(SqlCmdVar__2)</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="Salg">
+      <DefaultValue>Salg</DefaultValue>
+      <Value>$(SqlCmdVar__3)</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="Staging">
+      <DefaultValue>Staging</DefaultValue>
+      <Value>$(SqlCmdVar__4)</Value>
+    </SqlCmdVariable>
+  </ItemGroup>
+  <ItemGroup>
+    <ArtifactReference Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\IDE\Extensions\Microsoft\SQLDB\Extensions\SqlServer\130\SqlSchemas\master.dacpac">
+      <HintPath>C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\IDE\Extensions\Microsoft\SQLDB\Extensions\SqlServer\130\SqlSchemas\master.dacpac</HintPath>
+      <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
+      <DatabaseVariableLiteralValue>master</DatabaseVariableLiteralValue>
+    </ArtifactReference>
   </ItemGroup>
 </Project>
