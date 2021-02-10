@@ -6,6 +6,21 @@ SELECT
       ,SAO.[Eval_Set]
       ,SAO.[Order_Number]
       ,SAO.[Order_Dow]
+       	,CASE SAO.[Order_Dow]
+		WHEN 0
+			THEN 2021
+		WHEN 1
+			THEN 2020
+		WHEN 2
+			THEN 2019
+		WHEN 3
+			THEN 2018
+		WHEN 5
+			THEN 2017
+		WHEN 6
+			THEN 2016
+		ELSE 2016
+		END AS [Årstal]
       ,SAO.[Order_Hour_Of_Day]
       ,ISNULL(CAST(SAO.[Days_Since_Prior_Order] AS DECIMAL(6,1)),-1) AS [Days_Since_Prior_Order]
 	  ,ISNULL(SOP.[Product_Id],-1) AS [Bkey_Dim_Produkt]

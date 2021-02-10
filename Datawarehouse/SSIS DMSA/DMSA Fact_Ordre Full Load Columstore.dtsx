@@ -1,0 +1,1732 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/11/2020 9:36:52 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="PC0QGDKR"
+  DTS:CreatorName="NCLAN\cep"
+  DTS:DTSID="{C6CBF81A-CB80-4537-B7A9-5038C78E89E9}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.94"
+  DTS:LocaleID="1030"
+  DTS:ObjectName="DMSA Fact_Ordre Full Load Columstore"
+  DTS:PackageType="5"
+  DTS:VersionBuild="63"
+  DTS:VersionGUID="{2BFF1F70-7449-4FF2-A06C-1CE8AD632C42}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{DE4F0518-0609-485A-B669-348A00685BB7}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="DMSAId">
+      <DTS:VariableValue
+        DTS:DataType="20">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{4853FAE0-26CE-49DA-B9A4-5401F4282139}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="ExecutionId">
+      <DTS:VariableValue
+        DTS:DataType="20">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{4618940B-9C5B-461D-9981-E1E0D8B03B3D}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RecordsInserted">
+      <DTS:VariableValue
+        DTS:DataType="20">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{4E5CB936-3FAC-4855-AFF1-0F87D6076C8F}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RecordsSelected">
+      <DTS:VariableValue
+        DTS:DataType="20">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{7F53CE27-2D43-4088-96A7-AD7E21315842}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="TableName">
+      <DTS:VariableValue
+        DTS:DataType="8">Full_Data_Fact_Ordre_Columnstore_Index</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DMSA Fact_Ordre"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{52A329AF-682B-47B7-88EF-C5860848F180}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DMSA Fact_Ordre">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{ADB1E7EC-3FF7-4F42-BE3E-F93F73D80577}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Load Full_Data_Fact_Ordre_Columnstore_Index"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\Derived Column"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="Derived Column"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\Derived Column.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\Derived Column.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\Derived Column.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\Derived Column.Outputs[Derived Column Output].Columns[Meta_CreateJob]"
+                          dataType="i8"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\Derived Column.Outputs[Derived Column Output].Columns[Meta_CreateJob]"
+                          name="Meta_CreateJob"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">@[User::DMSAId]</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">@[User::DMSAId]</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\Derived Column.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\Derived Column.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Destination"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLE DB Destination"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[Load].[Full_Data_Fact_Ordre_Columnstore_Index]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Destination.Connections[OleDbConnection]"
+                      connectionManagerID="{F5C1CDE6-F86D-47FA-8AA6-4A8DB6466950}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[OLEDB DMSA]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Meta_CreateJob]"
+                          cachedDataType="i8"
+                          cachedName="Meta_CreateJob"
+                          externalMetadataColumnId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Meta_CreateJob]"
+                          lineageId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\Derived Column.Outputs[Derived Column Output].Columns[Meta_CreateJob]" />
+                        <inputColumn
+                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Order_Id]"
+                          cachedDataType="i4"
+                          cachedName="Order_Id"
+                          externalMetadataColumnId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Order_Id]"
+                          lineageId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].Columns[Order_Id]" />
+                        <inputColumn
+                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Eval_Set]"
+                          cachedDataType="wstr"
+                          cachedLength="20"
+                          cachedName="Eval_Set"
+                          externalMetadataColumnId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Eval_Set]"
+                          lineageId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].Columns[Eval_Set]" />
+                        <inputColumn
+                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Order_Number]"
+                          cachedDataType="i2"
+                          cachedName="Order_Number"
+                          externalMetadataColumnId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Order_Number]"
+                          lineageId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].Columns[Order_Number]" />
+                        <inputColumn
+                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Order_Dow]"
+                          cachedDataType="i2"
+                          cachedName="Order_Dow"
+                          externalMetadataColumnId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Order_Dow]"
+                          lineageId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].Columns[Order_Dow]" />
+                        <inputColumn
+                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Order_Hour_Of_Day]"
+                          cachedDataType="i2"
+                          cachedName="Order_Hour_Of_Day"
+                          externalMetadataColumnId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Order_Hour_Of_Day]"
+                          lineageId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].Columns[Order_Hour_Of_Day]" />
+                        <inputColumn
+                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Days_Since_Prior_Order]"
+                          cachedDataType="numeric"
+                          cachedName="Days_Since_Prior_Order"
+                          cachedPrecision="6"
+                          cachedScale="1"
+                          externalMetadataColumnId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Days_Since_Prior_Order]"
+                          lineageId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].Columns[Days_Since_Prior_Order]" />
+                        <inputColumn
+                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Add_To_Cart_Order]"
+                          cachedDataType="i2"
+                          cachedName="Add_To_Cart_Order"
+                          externalMetadataColumnId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Add_To_Cart_Order]"
+                          lineageId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].Columns[Add_To_Cart_Order]" />
+                        <inputColumn
+                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Reordered]"
+                          cachedDataType="i2"
+                          cachedName="Reordered"
+                          externalMetadataColumnId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Reordered]"
+                          lineageId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].Columns[Reordered]" />
+                        <inputColumn
+                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Initial_Load_Time]"
+                          cachedDataType="dbTimeStamp2"
+                          cachedName="Initial_Load_Time"
+                          cachedScale="7"
+                          externalMetadataColumnId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Initial_Load_Time]"
+                          lineageId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].Columns[Initial_Load_Time]" />
+                        <inputColumn
+                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Bkey_Dim_Kunde]"
+                          cachedDataType="i4"
+                          cachedName="Bkey_Dim_Kunde"
+                          externalMetadataColumnId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Bkey_Kunde]"
+                          lineageId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].Columns[Bkey_Dim_Kunde]" />
+                        <inputColumn
+                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Bkey_Dim_Produkt]"
+                          cachedDataType="i4"
+                          cachedName="Bkey_Dim_Produkt"
+                          externalMetadataColumnId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Bkey_Produkt]"
+                          lineageId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].Columns[Bkey_Dim_Produkt]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Meta_CreateTime]"
+                          dataType="dbTimeStamp"
+                          name="Meta_CreateTime" />
+                        <externalMetadataColumn
+                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Meta_CreateJob]"
+                          dataType="i8"
+                          name="Meta_CreateJob" />
+                        <externalMetadataColumn
+                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Order_Id]"
+                          dataType="i4"
+                          name="Order_Id" />
+                        <externalMetadataColumn
+                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Eval_Set]"
+                          dataType="wstr"
+                          length="20"
+                          name="Eval_Set" />
+                        <externalMetadataColumn
+                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Order_Number]"
+                          dataType="i2"
+                          name="Order_Number" />
+                        <externalMetadataColumn
+                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Order_Dow]"
+                          dataType="i2"
+                          name="Order_Dow" />
+                        <externalMetadataColumn
+                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Order_Hour_Of_Day]"
+                          dataType="i2"
+                          name="Order_Hour_Of_Day" />
+                        <externalMetadataColumn
+                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Days_Since_Prior_Order]"
+                          dataType="numeric"
+                          name="Days_Since_Prior_Order"
+                          precision="6"
+                          scale="1" />
+                        <externalMetadataColumn
+                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Add_To_Cart_Order]"
+                          dataType="i2"
+                          name="Add_To_Cart_Order" />
+                        <externalMetadataColumn
+                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Reordered]"
+                          dataType="i2"
+                          name="Reordered" />
+                        <externalMetadataColumn
+                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Initial_Load_Time]"
+                          dataType="dbTimeStamp2"
+                          name="Initial_Load_Time"
+                          scale="7" />
+                        <externalMetadataColumn
+                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Bkey_Kunde]"
+                          dataType="i4"
+                          name="Bkey_Kunde" />
+                        <externalMetadataColumn
+                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Bkey_Produkt]"
+                          dataType="i4"
+                          name="Bkey_Produkt" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="OLE DB Source"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[Staging].[Fact_Ordre]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [Bkey_Dim_Kunde]
+      ,[Order_Id]
+      ,[Eval_Set]
+      ,[Order_Number]
+      ,[Order_Dow]
+      ,[Order_Hour_Of_Day]
+      ,[Days_Since_Prior_Order]
+      ,[Bkey_Dim_Produkt]
+      ,[Add_To_Cart_Order]
+      ,[Reordered]
+      ,[Initial_Load_Time]
+  FROM [DMSA].[Staging].[v_Fact_Ordre]</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Connections[OleDbConnection]"
+                      connectionManagerID="{F5C1CDE6-F86D-47FA-8AA6-4A8DB6466950}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[OLEDB DMSA]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].Columns[Order_Id]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Order_Id]"
+                          lineageId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].Columns[Order_Id]"
+                          name="Order_Id"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].Columns[Eval_Set]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Eval_Set]"
+                          length="20"
+                          lineageId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].Columns[Eval_Set]"
+                          name="Eval_Set"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].Columns[Order_Number]"
+                          dataType="i2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Order_Number]"
+                          lineageId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].Columns[Order_Number]"
+                          name="Order_Number"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].Columns[Order_Dow]"
+                          dataType="i2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Order_Dow]"
+                          lineageId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].Columns[Order_Dow]"
+                          name="Order_Dow"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].Columns[Order_Hour_Of_Day]"
+                          dataType="i2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Order_Hour_Of_Day]"
+                          lineageId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].Columns[Order_Hour_Of_Day]"
+                          name="Order_Hour_Of_Day"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].Columns[Days_Since_Prior_Order]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Days_Since_Prior_Order]"
+                          lineageId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].Columns[Days_Since_Prior_Order]"
+                          name="Days_Since_Prior_Order"
+                          precision="6"
+                          scale="1"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].Columns[Add_To_Cart_Order]"
+                          dataType="i2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Add_To_Cart_Order]"
+                          lineageId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].Columns[Add_To_Cart_Order]"
+                          name="Add_To_Cart_Order"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].Columns[Reordered]"
+                          dataType="i2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Reordered]"
+                          lineageId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].Columns[Reordered]"
+                          name="Reordered"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].Columns[Initial_Load_Time]"
+                          dataType="dbTimeStamp2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Initial_Load_Time]"
+                          lineageId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].Columns[Initial_Load_Time]"
+                          name="Initial_Load_Time"
+                          scale="7"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].Columns[Bkey_Dim_Kunde]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Bkey_Dim_Kunde]"
+                          lineageId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].Columns[Bkey_Dim_Kunde]"
+                          name="Bkey_Dim_Kunde"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].Columns[Bkey_Dim_Produkt]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Bkey_Dim_Produkt]"
+                          lineageId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].Columns[Bkey_Dim_Produkt]"
+                          name="Bkey_Dim_Produkt"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Order_Id]"
+                          dataType="i4"
+                          name="Order_Id" />
+                        <externalMetadataColumn
+                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Eval_Set]"
+                          dataType="wstr"
+                          length="20"
+                          name="Eval_Set" />
+                        <externalMetadataColumn
+                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Order_Number]"
+                          dataType="i2"
+                          name="Order_Number" />
+                        <externalMetadataColumn
+                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Order_Dow]"
+                          dataType="i2"
+                          name="Order_Dow" />
+                        <externalMetadataColumn
+                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Order_Hour_Of_Day]"
+                          dataType="i2"
+                          name="Order_Hour_Of_Day" />
+                        <externalMetadataColumn
+                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Days_Since_Prior_Order]"
+                          dataType="numeric"
+                          name="Days_Since_Prior_Order"
+                          precision="6"
+                          scale="1" />
+                        <externalMetadataColumn
+                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Add_To_Cart_Order]"
+                          dataType="i2"
+                          name="Add_To_Cart_Order" />
+                        <externalMetadataColumn
+                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Reordered]"
+                          dataType="i2"
+                          name="Reordered" />
+                        <externalMetadataColumn
+                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Initial_Load_Time]"
+                          dataType="dbTimeStamp2"
+                          name="Initial_Load_Time"
+                          scale="7" />
+                        <externalMetadataColumn
+                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Bkey_Dim_Kunde]"
+                          dataType="i4"
+                          name="Bkey_Dim_Kunde" />
+                        <externalMetadataColumn
+                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Bkey_Dim_Produkt]"
+                          dataType="i4"
+                          name="Bkey_Dim_Produkt" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Bkey_Dim_Kunde]"
+                          dataType="i4"
+                          lineageId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Bkey_Dim_Kunde]"
+                          name="Bkey_Dim_Kunde" />
+                        <outputColumn
+                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Order_Id]"
+                          dataType="i4"
+                          lineageId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Order_Id]"
+                          name="Order_Id" />
+                        <outputColumn
+                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Eval_Set]"
+                          dataType="wstr"
+                          length="20"
+                          lineageId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Eval_Set]"
+                          name="Eval_Set" />
+                        <outputColumn
+                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Order_Number]"
+                          dataType="i2"
+                          lineageId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Order_Number]"
+                          name="Order_Number" />
+                        <outputColumn
+                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Order_Dow]"
+                          dataType="i2"
+                          lineageId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Order_Dow]"
+                          name="Order_Dow" />
+                        <outputColumn
+                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Order_Hour_Of_Day]"
+                          dataType="i2"
+                          lineageId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Order_Hour_Of_Day]"
+                          name="Order_Hour_Of_Day" />
+                        <outputColumn
+                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Days_Since_Prior_Order]"
+                          dataType="numeric"
+                          lineageId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Days_Since_Prior_Order]"
+                          name="Days_Since_Prior_Order"
+                          precision="6"
+                          scale="1" />
+                        <outputColumn
+                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Bkey_Dim_Produkt]"
+                          dataType="i4"
+                          lineageId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Bkey_Dim_Produkt]"
+                          name="Bkey_Dim_Produkt" />
+                        <outputColumn
+                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Add_To_Cart_Order]"
+                          dataType="i2"
+                          lineageId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Add_To_Cart_Order]"
+                          name="Add_To_Cart_Order" />
+                        <outputColumn
+                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Reordered]"
+                          dataType="i2"
+                          lineageId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Reordered]"
+                          name="Reordered" />
+                        <outputColumn
+                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Initial_Load_Time]"
+                          dataType="dbTimeStamp2"
+                          lineageId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Initial_Load_Time]"
+                          name="Initial_Load_Time"
+                          scale="7" />
+                        <outputColumn
+                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\RC Inserted"
+                  componentClassID="Microsoft.RowCount"
+                  contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+                  name="RC Inserted">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable to hold the row count."
+                      name="VariableName">User::RecordsInserted</property>
+                  </properties>
+                  <inputs>
+                    <input
+                      refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\RC Inserted.Inputs[Row Count Input 1]"
+                      hasSideEffects="true"
+                      name="Row Count Input 1">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\RC Inserted.Outputs[Row Count Output 1]"
+                      name="Row Count Output 1"
+                      synchronousInputId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\RC Inserted.Inputs[Row Count Input 1]">
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\RC Selected"
+                  componentClassID="Microsoft.RowCount"
+                  contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+                  name="RC Selected">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable to hold the row count."
+                      name="VariableName">User::RecordsSelected</property>
+                  </properties>
+                  <inputs>
+                    <input
+                      refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\RC Selected.Inputs[Row Count Input 1]"
+                      hasSideEffects="true"
+                      name="Row Count Input 1">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\RC Selected.Outputs[Row Count Output 1]"
+                      name="Row Count Output 1"
+                      synchronousInputId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\RC Selected.Inputs[Row Count Input 1]">
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index.Paths[Derived Column Output]"
+                  endId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\RC Inserted.Inputs[Row Count Input 1]"
+                  name="Derived Column Output"
+                  startId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\Derived Column.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index.Paths[OLE DB Source Output]"
+                  endId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\RC Selected.Inputs[Row Count Input 1]"
+                  name="OLE DB Source Output"
+                  startId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output]" />
+                <path
+                  refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index.Paths[Row Count Output 1]"
+                  endId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\Derived Column.Inputs[Derived Column Input]"
+                  name="Row Count Output 1"
+                  startId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\RC Selected.Outputs[Row Count Output 1]" />
+                <path
+                  refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index.Paths[Row Count Output 11]"
+                  endId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  name="Row Count Output 1"
+                  startId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\RC Inserted.Outputs[Row Count Output 1]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\DMSA Fact_Ordre\SQL DMSA SwitchFact"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{2AFA0019-C346-47CB-A945-298BD5BFA9BF}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL DMSA SwitchFact"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{E5E14666-AF2C-4CA1-B276-7003A891D597}"
+              SQLTask:IsStoredProc="True"
+              SQLTask:SqlStatementSource="[DMSA].[SwitchFact]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="FactTableName"
+                SQLTask:DtsVariableName="User::TableName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="16"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="StagingTableName"
+                SQLTask:DtsVariableName="User::TableName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="16"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="Database"
+                SQLTask:DtsVariableName="$Project::Database"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="16"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="ExecutionId"
+                SQLTask:DtsVariableName="User::ExecutionId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="12"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\DMSA Fact_Ordre\SQL DMSAEnd Failed"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{0AF43EB5-B817-4964-9D72-E0F3E68F1C4E}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL DMSAEnd Failed"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{0F0C7406-5396-43EE-BD83-FE1D8F5C75FD}"
+              SQLTask:SqlStatementSource="EXEC Audit.DMSAEnd @DMSAId, 'Failed'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="DMSAId"
+                SQLTask:DtsVariableName="User::DMSAId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="12"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\DMSA Fact_Ordre\SQL DMSAEnd Succeeded"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{2EBC4659-2F48-4F23-859B-9B48881B08EE}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL DMSAEnd Succeeded"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{0F0C7406-5396-43EE-BD83-FE1D8F5C75FD}"
+              SQLTask:IsStoredProc="True"
+              SQLTask:SqlStatementSource="Audit.DMSAEnd" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="DMSAId"
+                SQLTask:DtsVariableName="User::DMSAId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="12"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="RecordsSelected"
+                SQLTask:DtsVariableName="User::RecordsSelected"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="12"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="RecordsInserted"
+                SQLTask:DtsVariableName="User::RecordsInserted"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="12"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\DMSA Fact_Ordre\SQL DMSAStart"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{A6A78002-C29F-4181-97D9-2E207D379407}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL DMSAStart"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{0F0C7406-5396-43EE-BD83-FE1D8F5C75FD}"
+              SQLTask:IsStoredProc="True"
+              SQLTask:SqlStatementSource="Audit.DMSAStart" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="ExecutionId"
+                SQLTask:DtsVariableName="User::ExecutionId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="12"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="DMSAId"
+                SQLTask:DtsVariableName="User::DMSAId"
+                SQLTask:ParameterDirection="Output"
+                SQLTask:DataType="12"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="TableName"
+                SQLTask:DtsVariableName="User::TableName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="16"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="Database"
+                SQLTask:DtsVariableName="$Project::Database"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="16"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="Schema"
+                SQLTask:DtsVariableName="$Project::Schema"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="16"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\DMSA Fact_Ordre\Truncate table Load Fact_Ordre"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{085CB8A0-1646-4FC9-BC50-9E1F6D266F38}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Truncate table Load Fact_Ordre"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{F5C1CDE6-F86D-47FA-8AA6-4A8DB6466950}"
+              SQLTask:SqlStatementSource="truncate table Load.Full_Data_Fact_Ordre_Columnstore_Index" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\DMSA Fact_Ordre.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{278655A2-D2BB-4587-B2D7-E2DD47E01A65}"
+          DTS:From="Package\DMSA Fact_Ordre\Truncate table Load Fact_Ordre"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\DMSA Fact_Ordre.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{D8E64671-4C02-4B09-83E0-4B1F087BA891}"
+          DTS:From="Package\DMSA Fact_Ordre\SQL DMSAStart"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\DMSA Fact_Ordre\Truncate table Load Fact_Ordre" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\DMSA Fact_Ordre.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{D0E42518-C084-4300-A7EA-3B2A84C9E0A7}"
+          DTS:From="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\DMSA Fact_Ordre\SQL DMSA SwitchFact" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\DMSA Fact_Ordre.PrecedenceConstraints[Constraint 3]"
+          DTS:CreationName=""
+          DTS:DTSID="{1B547531-9D89-46AE-ABB3-B2C3A05C9F80}"
+          DTS:From="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index"
+          DTS:ObjectName="Constraint 3"
+          DTS:To="Package\DMSA Fact_Ordre\SQL DMSAEnd Failed"
+          DTS:Value="1" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\DMSA Fact_Ordre.PrecedenceConstraints[Constraint 4]"
+          DTS:CreationName=""
+          DTS:DTSID="{D80B630F-E32C-4DBC-A42B-D96315935394}"
+          DTS:From="Package\DMSA Fact_Ordre\Truncate table Load Fact_Ordre"
+          DTS:ObjectName="Constraint 4"
+          DTS:To="Package\DMSA Fact_Ordre\SQL DMSAEnd Failed"
+          DTS:Value="1" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\DMSA Fact_Ordre.PrecedenceConstraints[Constraint 5]"
+          DTS:CreationName=""
+          DTS:DTSID="{55F6A2B9-A8D7-417E-A153-7B508D8ACFEE}"
+          DTS:From="Package\DMSA Fact_Ordre\SQL DMSA SwitchFact"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 5"
+          DTS:To="Package\DMSA Fact_Ordre\SQL DMSAEnd Succeeded" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\DMSA Fact_Ordre.PrecedenceConstraints[Constraint 6]"
+          DTS:CreationName=""
+          DTS:DTSID="{834D4D02-1915-4606-AD5D-53D699F14775}"
+          DTS:From="Package\DMSA Fact_Ordre\SQL DMSA SwitchFact"
+          DTS:ObjectName="Constraint 6"
+          DTS:To="Package\DMSA Fact_Ordre\SQL DMSAEnd Failed"
+          DTS:Value="1" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL ExecutionEnd Failed"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{2E7C249D-9B2B-4677-B256-67C8471C8142}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL ExecutionEnd Failed"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{0F0C7406-5396-43EE-BD83-FE1D8F5C75FD}"
+          SQLTask:SqlStatementSource="EXEC Audit.ExecutionEnd @Id, 'Failed'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="Id"
+            SQLTask:DtsVariableName="User::ExecutionId"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="12"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL ExecutionEnd Succeeded"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{779A0908-7489-457B-BDD9-A3D96FDE0035}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL ExecutionEnd Succeeded"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{0F0C7406-5396-43EE-BD83-FE1D8F5C75FD}"
+          SQLTask:IsStoredProc="True"
+          SQLTask:SqlStatementSource="Audit.ExecutionEnd" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="Id"
+            SQLTask:DtsVariableName="User::ExecutionId"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="12"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL ExecutionStart"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{EEEE0614-8035-487D-8608-F90492A318FA}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL ExecutionStart"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{0F0C7406-5396-43EE-BD83-FE1D8F5C75FD}"
+          SQLTask:IsStoredProc="True"
+          SQLTask:SqlStatementSource="Audit.ExecutionStart" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="Id"
+            SQLTask:DtsVariableName="User::ExecutionId"
+            SQLTask:ParameterDirection="Output"
+            SQLTask:DataType="12"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="PackageID"
+            SQLTask:DtsVariableName="System::PackageID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="9"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="PackageName"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="16"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="Database"
+            SQLTask:DtsVariableName="$Project::Database"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="16"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="ServerExecutionID"
+            SQLTask:DtsVariableName="System::ServerExecutionID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="12"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{2921527F-3903-4C5D-904E-AFD74DA8BC68}"
+      DTS:From="Package\SQL ExecutionStart"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\DMSA Fact_Ordre" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{C561E665-966C-44DA-BDFA-6B5A0D6B7A86}"
+      DTS:From="Package\DMSA Fact_Ordre"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\SQL ExecutionEnd Succeeded" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{16AF34FD-0CCA-4DCA-B052-24A54A4AB26F}"
+      DTS:From="Package\DMSA Fact_Ordre"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\SQL ExecutionEnd Failed"
+      DTS:Value="1" />
+  </DTS:PrecedenceConstraints>
+  <DTS:EventHandlers>
+    <DTS:EventHandler
+      DTS:refId="Package.EventHandlers[OnError]"
+      DTS:CreationName="OnError"
+      DTS:DTSID="{E9B06B30-B72B-4A34-A751-DC6FDB8F0316}"
+      DTS:EventID="0"
+      DTS:EventName="OnError"
+      DTS:LocaleID="-1">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:Description="The propagate property of the event"
+          DTS:DTSID="{D414AF31-8D2F-4BE1-9DC6-E977D230B171}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="System"
+          DTS:ObjectName="Propagate">
+          <DTS:VariableValue
+            DTS:DataType="11">-1</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package.EventHandlers[OnError]\SQL ExecutionError"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{1411AF8B-4D30-4DCE-AC23-161AF72231D7}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL ExecutionError"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{0F0C7406-5396-43EE-BD83-FE1D8F5C75FD}"
+              SQLTask:IsStoredProc="True"
+              SQLTask:SqlStatementSource="Audit.ExecutionError" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="ExecutionID"
+                SQLTask:DtsVariableName="User::ExecutionId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="12"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="ErrorCode"
+                SQLTask:DtsVariableName="System::ErrorCode"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="11"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="ErrorDescription"
+                SQLTask:DtsVariableName="System::ErrorDescription"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="16"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="SourceName"
+                SQLTask:DtsVariableName="System::SourceName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="16"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="SourceDescription"
+                SQLTask:DtsVariableName="System::SourceDescription"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="16"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:EventHandler>
+  </DTS:EventHandlers>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="305,42"
+          Id="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index"
+          TopLeft="159,209.5" />
+        <NodeLayout
+          Size="216,42"
+          Id="Package\DMSA Fact_Ordre\SQL DMSA SwitchFact"
+          TopLeft="38.5,311.5" />
+        <NodeLayout
+          Size="191,42"
+          Id="Package\DMSA Fact_Ordre\SQL DMSAEnd Failed"
+          TopLeft="282,413.5" />
+        <NodeLayout
+          Size="216,42"
+          Id="Package\DMSA Fact_Ordre\SQL DMSAEnd Succeeded"
+          TopLeft="5.50000000000006,413.5" />
+        <NodeLayout
+          Size="161,42"
+          Id="Package\DMSA Fact_Ordre\SQL DMSAStart"
+          TopLeft="297,5.5" />
+        <NodeLayout
+          Size="244,42"
+          Id="Package\DMSA Fact_Ordre\Truncate table Load Fact_Ordre"
+          TopLeft="255.5,107.5" />
+        <EdgeLayout
+          Id="Package\DMSA Fact_Ordre.PrecedenceConstraints[Constraint]"
+          TopLeft="338.166666666667,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-26.6666666666666,60"
+              Start="0,0"
+              End="-26.6666666666666,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.2345276872964" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.2345276872964"
+                    Point2="0,24.2345276872964"
+                    Point3="-4,24.2345276872964" />
+                  <mssgle:LineSegment
+                    End="-22.6666666666666,24.2345276872964" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-22.6666666666666,24.2345276872964"
+                    Point2="-26.6666666666666,24.2345276872964"
+                    Point3="-26.6666666666666,28.2345276872964" />
+                  <mssgle:LineSegment
+                    End="-26.6666666666666,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DMSA Fact_Ordre.PrecedenceConstraints[Constraint 1]"
+          TopLeft="377.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DMSA Fact_Ordre.PrecedenceConstraints[Constraint 2]"
+          TopLeft="262,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-115.5,60"
+              Start="0,0"
+              End="-115.5,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.187866927593" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.187866927593"
+                    Point2="0,24.187866927593"
+                    Point3="-4,24.187866927593" />
+                  <mssgle:LineSegment
+                    End="-111.5,24.187866927593" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-111.5,24.187866927593"
+                    Point2="-115.5,24.187866927593"
+                    Point3="-115.5,28.187866927593" />
+                  <mssgle:LineSegment
+                    End="-115.5,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DMSA Fact_Ordre.PrecedenceConstraints[Constraint 3]"
+          TopLeft="361,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="16.5,162"
+              Start="0,0"
+              End="16.5,154.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,61.307240704501" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,61.307240704501"
+                    Point2="0,65.307240704501"
+                    Point3="4,65.307240704501" />
+                  <mssgle:LineSegment
+                    End="12.5,65.307240704501" />
+                  <mssgle:CubicBezierSegment
+                    Point1="12.5,65.307240704501"
+                    Point2="16.5,65.307240704501"
+                    Point3="16.5,69.307240704501" />
+                  <mssgle:LineSegment
+                    End="16.5,154.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-6.99134765625,70.307240704501,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DMSA Fact_Ordre.PrecedenceConstraints[Constraint 4]"
+          TopLeft="420.041666666667,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,264"
+              Start="0,0"
+              End="0,256.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,256.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-15.24134765625,123.37548828125,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DMSA Fact_Ordre.PrecedenceConstraints[Constraint 5]"
+          TopLeft="112.666666666667,353.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DMSA Fact_Ordre.PrecedenceConstraints[Constraint 6]"
+          TopLeft="181.166666666667,353.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="150.583333333333,60"
+              Start="0,0"
+              End="150.583333333333,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.9518974386598" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.9518974386598"
+                    Point2="0,33.9518974386598"
+                    Point3="4,33.9518974386598" />
+                  <mssgle:LineSegment
+                    End="146.583333333333,33.9518974386598" />
+                  <mssgle:CubicBezierSegment
+                    Point1="146.583333333333,33.9518974386598"
+                    Point2="150.583333333333,33.9518974386598"
+                    Point3="150.583333333333,37.9518974386598" />
+                  <mssgle:LineSegment
+                    End="150.583333333333,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="60.0503190104167,38.9518974386598,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="505,511"
+          Size="505,554"
+          Id="Package\DMSA Fact_Ordre"
+          TopLeft="146,107.5" />
+        <NodeLayout
+          Size="205,42"
+          Id="Package\SQL ExecutionEnd Failed"
+          TopLeft="296,721.5" />
+        <NodeLayout
+          Size="230,42"
+          Id="Package\SQL ExecutionEnd Succeeded"
+          TopLeft="5.50000000000011,721.5" />
+        <NodeLayout
+          Size="176,42"
+          Id="Package\SQL ExecutionStart"
+          TopLeft="310.5,5.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="398.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="315.666666666667,661.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-195.166666666667,60"
+              Start="0,0"
+              End="-195.166666666667,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.1136991709435" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.1136991709435"
+                    Point2="0,24.1136991709435"
+                    Point3="-4,24.1136991709435" />
+                  <mssgle:LineSegment
+                    End="-191.166666666667,24.1136991709435" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-191.166666666667,24.1136991709435"
+                    Point2="-195.166666666667,24.1136991709435"
+                    Point3="-195.166666666667,28.1136991709435" />
+                  <mssgle:LineSegment
+                    End="-195.166666666667,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="481.333333333333,661.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-82.8333333333333,60"
+              Start="0,0"
+              End="-82.8333333333333,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.1136991709435" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.1136991709435"
+                    Point2="0,24.1136991709435"
+                    Point3="-4,24.1136991709435" />
+                  <mssgle:LineSegment
+                    End="-78.8333333333333,24.1136991709435" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-78.8333333333333,24.1136991709435"
+                    Point2="-82.8333333333333,24.1136991709435"
+                    Point3="-82.8333333333333,28.1136991709435" />
+                  <mssgle:LineSegment
+                    End="-82.8333333333333,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-56.6580143229166,29.1136991709435,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <DtsEventHandler
+    design-time-name="Package.EventHandlers[OnError]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="177,42"
+          Id="Package.EventHandlers[OnError]\SQL ExecutionError"
+          TopLeft="450,168" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+  <TaskHost
+    design-time-name="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="138,42"
+          Id="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\RC Inserted"
+          TopLeft="25,311.5" />
+        <NodeLayout
+          Size="157,42"
+          Id="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source"
+          TopLeft="15.5,5.5" />
+        <NodeLayout
+          Size="177,42"
+          Id="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Destination"
+          TopLeft="5.50000000000004,413.5" />
+        <NodeLayout
+          Size="141,42"
+          Id="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\RC Selected"
+          TopLeft="23.5,107.5" />
+        <NodeLayout
+          Size="158,42"
+          Id="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\Derived Column"
+          TopLeft="15,209.5" />
+        <EdgeLayout
+          Id="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index.Paths[Row Count Output 1]"
+          TopLeft="94,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index.Paths[OLE DB Source Output]"
+          TopLeft="94,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index.Paths[Derived Column Output]"
+          TopLeft="94,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index.Paths[Row Count Output 11]"
+          TopLeft="94,353.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

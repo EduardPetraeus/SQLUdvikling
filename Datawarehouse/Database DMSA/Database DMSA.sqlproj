@@ -72,6 +72,9 @@
     <Folder Include="Map\Tables" />
     <Folder Include="Staging\Tables" />
     <Folder Include="Staging\Views" />
+    <Folder Include="DMSA\Tables\Partitioneret Fact tabel" />
+    <Folder Include="Load\Partitioneret Fact tabel" />
+    <Folder Include="DMSA\Views" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DMSA.dev.publish.xml" />
@@ -109,6 +112,11 @@
     <Build Include="Staging\Views\v_Fact_Ordre.sql" />
     <Build Include="DMSA\Tables\Full_Data_Fact_Ordre_Columnstore_Index.sql" />
     <Build Include="Load\Full_Data_Fact_Ordre_Columnstore_Index.sql" />
+    <Build Include="Load\Partitioneret Fact tabel\Fact_Ordre_2021.sql" />
+    <Build Include="DMSA\Tables\Partitioneret Fact tabel\Fact_Ordre_2021.sql" />
+    <Build Include="Load\Partitioneret Fact tabel\Fact_Ordre_2020.sql" />
+    <Build Include="DMSA\Tables\Partitioneret Fact tabel\Fact_Ordre_2020.sql" />
+    <Build Include="DMSA\Views\v_Fact_Ordre_Partitioneret.sql" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Database salg\Database Salg.sqlproj">

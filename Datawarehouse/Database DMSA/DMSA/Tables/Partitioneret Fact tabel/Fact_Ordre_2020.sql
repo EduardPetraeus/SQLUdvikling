@@ -1,8 +1,9 @@
-﻿CREATE TABLE [DMSA].[Full_Data_Fact_Ordre_Columnstore_Index]
+﻿CREATE TABLE [DMSA].[Fact_Ordre_2020]
 (   [Bkey_Kunde]               INT                    NOT NULL,
 	[Order_Id]                 INT                    NOT NULL,
 	[Eval_Set]                 NVARCHAR(20)           NULL,
 	[Order_Number]             SMALLINT               NOT NULL,
+	[Year]                     SMALLINT               NOT NULL,
 	[Order_Dow]                SMALLINT               NOT NULL,
 	[Order_Hour_Of_Day]        SMALLINT               NOT NULL,
 	[Days_Since_Prior_Order]   DECIMAL(6,1)           NULL,
@@ -18,8 +19,11 @@
 )
 GO 
 
-CREATE CLUSTERED COLUMNSTORE INDEX DMSA_Full_Data_Fact_Ordre_Columnstore_Index ON [DMSA].[Full_Data_Fact_Ordre_Columnstore_Index]
-
+CREATE CLUSTERED COLUMNSTORE INDEX CCI_Load_Fact_Ordre_2020 ON [DMSA].[Fact_Ordre_2020]
 GO
-CREATE  NONCLUSTERED  INDEX NCX_Bkey_Kunde_Bkey_Produkt ON [DMSA].[Full_Data_Fact_Ordre_Columnstore_Index] ( [Bkey_Kunde], [Bkey_Produkt] )
+
+CREATE  NONCLUSTERED  INDEX NCX_Bkey_Kunde_Bkey_Produkt ON [DMSA].[Fact_Ordre_2020] ( [Bkey_Kunde], [Bkey_Produkt] )
+GO
+
+CREATE  NONCLUSTERED  INDEX NCX_Year ON [DMSA].[Fact_Ordre_2020] ( [Year] )
 GO

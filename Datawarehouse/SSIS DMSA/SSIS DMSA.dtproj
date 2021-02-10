@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">PC0QGDKR</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAoy22zAAyH06k+AWfPTRHawAAAAACAAAAAAADZgAAwAAAABAAAAC+PVEYoJz07njQzVFp00GNAAAAAASAAACgAAAAEAAAADLURmpXMt8JI3q9lkQopQmIAAAA36W1g2tF2zx7YZNyder2qepl9X5yj7pdFSPKl/2hE+Zf94K5sVkYqResMvOeRQjPqJBnzaHjrthe97/wVFYIeYv1IP+DscY+EBG/jV1uiTKYQwvWtRs+tUvgTFda5tIVjG3eG0rg3aEhgBEemiriVeaB0a7Bd3wS92iMgra3b12xMXcUGAf3rxQAAADacPW4eg8DtIPmT2WbQnpL6CrfuQ==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAoy22zAAyH06k+AWfPTRHawAAAAACAAAAAAADZgAAwAAAABAAAACeNMnJOasPKx01fZLGhcwDAAAAAASAAACgAAAAEAAAAFIItborYbO7UQi5OxW3MUGIAAAAT6B4NZPIOWULxv7Hg3Fq2HF2gxRahwVYqMSpGU2VKqEO4GZHsj1h0pZS3sJzUyRyqUx4yTfr3aVtpu4KaWk0afToe+fgvWJlZV/NS+ZhLQc5UEeJdWBg4hXsgndg1pnYp+fjTdScQnmGaou4cfcrmoBacub5xIzgtxE3QvGLs5j8+HtqFZSS/RQAAAAog4ekxYX8CF0kGu5L8YP13G428Q==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -39,6 +39,8 @@
           <SSIS:Package SSIS:Name="Process Cube Ordre.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="DMSA Dim_Produkt_Delta_Load.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="DMSA Dim_Produkt Type2 historik.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="DMSA Fact_Ordre Full Load Columstore.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="DMSA Fact_Ordre Partitioneret tabeller.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="ADO.NET DZDB.conmgr" />
@@ -726,6 +728,40 @@
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionGUID">{22ADA266-55C7-4592-AC17-7F2C87B8B1C7}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="DMSA Fact_Ordre Full Load Columstore.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{C6CBF81A-CB80-4537-B7A9-5038C78E89E9}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">DMSA Fact_Ordre Full Load Columstore</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">62</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{6806FE5B-1F6E-4E5D-B3CD-3262A523A79E}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="DMSA Fact_Ordre Partitioneret tabeller.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{A225F5E9-7DD3-4E37-9443-1370C79C43A0}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">DMSA Fact_Ordre Partitioneret tabeller</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">65</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{4143A0A9-C807-43F8-B27B-B5797CBB6FA8}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>

@@ -21,4 +21,5 @@ GO
 CREATE CLUSTERED COLUMNSTORE INDEX Load_Full_Data_Fact_Ordre_Columnstore_Index ON [Load].[Full_Data_Fact_Ordre_Columnstore_Index]
 
 GO
-
+CREATE  NONCLUSTERED  INDEX NCX_Bkey_Kunde_Bkey_Produkt ON [Load].[Full_Data_Fact_Ordre_Columnstore_Index] ( [Bkey_Kunde], [Bkey_Produkt] )
+GO
