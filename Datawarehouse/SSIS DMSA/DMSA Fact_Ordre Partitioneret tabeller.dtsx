@@ -11,8 +11,8 @@
   DTS:LocaleID="1030"
   DTS:ObjectName="DMSA Fact_Ordre Partitioneret tabeller"
   DTS:PackageType="5"
-  DTS:VersionBuild="104"
-  DTS:VersionGUID="{57769E6F-0587-4F49-9CD2-3EA7BDC0BA24}">
+  DTS:VersionBuild="112"
+  DTS:VersionGUID="{A12F44F5-A504-4992-A12E-7AE07EDA71C7}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -68,7 +68,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="Styringsværdi">
       <DTS:VariableValue
-        DTS:DataType="2">1</DTS:VariableValue>
+        DTS:DataType="2">2</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -119,7 +119,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Hent Styringsværdier ud"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="2">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -167,7 +167,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Indsæt styringsværdier i tabel"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="2">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -231,7 +231,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Hent Styringsværdier ud"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -1024,7 +1024,7 @@ WHERE [Årstal] = ?</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL DMSA SwitchFact"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -1067,7 +1067,7 @@ WHERE [Årstal] = ?</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL DMSAEnd Failed"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="2">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -1091,7 +1091,7 @@ WHERE [Årstal] = ?</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL DMSAEnd Succeeded"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -1128,7 +1128,7 @@ WHERE [Årstal] = ?</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL DMSAStart"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -1177,7 +1177,7 @@ WHERE [Årstal] = ?</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Truncate table Load Fact_Ordre"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -1199,11 +1199,11 @@ WHERE [Årstal] = ?</property>
         <DTS:PrecedenceConstraint
           DTS:refId="Package\DMSA Fact_Ordre.PrecedenceConstraints[Constraint 1]"
           DTS:CreationName=""
-          DTS:DTSID="{C7486873-A162-44D2-B08E-09B351B08F5B}"
+          DTS:DTSID="{12BBA474-B14F-4A3C-A221-83140BF74C67}"
           DTS:From="Package\DMSA Fact_Ordre\SQL DMSAStart"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 1"
-          DTS:To="Package\DMSA Fact_Ordre\Hent Styringsværdier ud" />
+          DTS:To="Package\DMSA Fact_Ordre\Truncate table Load Fact_Ordre" />
         <DTS:PrecedenceConstraint
           DTS:refId="Package\DMSA Fact_Ordre.PrecedenceConstraints[Constraint 2]"
           DTS:CreationName=""
@@ -1247,15 +1247,15 @@ WHERE [Årstal] = ?</property>
         <DTS:PrecedenceConstraint
           DTS:refId="Package\DMSA Fact_Ordre.PrecedenceConstraints[Constraint 7]"
           DTS:CreationName=""
-          DTS:DTSID="{D6797B9F-201A-421B-A075-1C7B78BE0A10}"
+          DTS:DTSID="{BE42D682-DB20-4BE7-8D9A-3899DAB2E86D}"
           DTS:From="Package\DMSA Fact_Ordre\Hent Styringsværdier ud"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 7"
-          DTS:To="Package\DMSA Fact_Ordre\Truncate table Load Fact_Ordre" />
+          DTS:To="Package\DMSA Fact_Ordre\SQL DMSAStart" />
         <DTS:PrecedenceConstraint
           DTS:refId="Package\DMSA Fact_Ordre.PrecedenceConstraints[Constraint 8]"
           DTS:CreationName=""
-          DTS:DTSID="{B2492546-876F-4ED0-B90D-57BCFBB74449}"
+          DTS:DTSID="{7DAC8507-F364-4041-8F64-D7C1500C2D3B}"
           DTS:From="Package\DMSA Fact_Ordre\Hent Styringsværdier ud"
           DTS:ObjectName="Constraint 8"
           DTS:To="Package\DMSA Fact_Ordre\SQL DMSAEnd Failed"
@@ -1271,7 +1271,7 @@ WHERE [Årstal] = ?</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="SQL ExecutionEnd Failed"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -1295,7 +1295,7 @@ WHERE [Årstal] = ?</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="SQL ExecutionEnd Succeeded"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="2">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -1320,7 +1320,7 @@ WHERE [Årstal] = ?</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="SQL ExecutionStart"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -1473,6 +1473,47 @@ WHERE [Årstal] = ?</property>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
+          Size="194,42"
+          Id="Package\Data flow til at hente værdier, sætte dem i variabler og indsætte dem i tabeller\Hent Styringsværdier ud"
+          TopLeft="19,5.5" />
+        <NodeLayout
+          Size="221,42"
+          Id="Package\Data flow til at hente værdier, sætte dem i variabler og indsætte dem i tabeller\Indsæt styringsværdier i tabel"
+          TopLeft="5.50000000000001,107.5" />
+        <EdgeLayout
+          Id="Package\Data flow til at hente værdier, sætte dem i variabler og indsætte dem i tabeller.PrecedenceConstraints[Constraint]"
+          TopLeft="116,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="232,205"
+          Size="232,248"
+          Id="Package\Data flow til at hente værdier, sætte dem i variabler og indsætte dem i tabeller"
+          TopLeft="768.5,174.5" />
+        <NodeLayout
+          Size="194,42"
+          Id="Package\DMSA Fact_Ordre\Hent Styringsværdier ud"
+          TopLeft="296.5,8.5" />
+        <NodeLayout
           Size="218,42"
           Id="Package\DMSA Fact_Ordre\Load Fact_Ordre partitioneret"
           TopLeft="98.5,311.5" />
@@ -1491,7 +1532,7 @@ WHERE [Årstal] = ?</property>
         <NodeLayout
           Size="161,42"
           Id="Package\DMSA Fact_Ordre\SQL DMSAStart"
-          TopLeft="297,5.5" />
+          TopLeft="221,109.5" />
         <NodeLayout
           Size="244,42"
           Id="Package\DMSA Fact_Ordre\Truncate table Load Fact_Ordre"
@@ -1694,13 +1735,9 @@ WHERE [Årstal] = ?</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="194,42"
-          Id="Package\DMSA Fact_Ordre\Hent Styringsværdier ud"
-          TopLeft="280.5,107.5" />
         <EdgeLayout
           Id="Package\DMSA Fact_Ordre.PrecedenceConstraints[Constraint 1]"
-          TopLeft="377.5,47.5">
+          TopLeft="299.5,151.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1722,30 +1759,30 @@ WHERE [Årstal] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DMSA Fact_Ordre.PrecedenceConstraints[Constraint 7]"
-          TopLeft="346.5,149.5">
+          TopLeft="362.5,50.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-49,62"
+              EndConnector="-61,59"
               Start="0,0"
-              End="-49,54.5">
+              End="-61,51.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,21.1042944785276" />
+                    End="0,19.8895705521472" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,21.1042944785276"
-                    Point2="0,25.1042944785276"
-                    Point3="-4,25.1042944785276" />
+                    Point1="0,19.8895705521472"
+                    Point2="0,23.8895705521472"
+                    Point3="-4,23.8895705521472" />
                   <mssgle:LineSegment
-                    End="-45,25.1042944785276" />
+                    End="-57,23.8895705521472" />
                   <mssgle:CubicBezierSegment
-                    Point1="-45,25.1042944785276"
-                    Point2="-49,25.1042944785276"
-                    Point3="-49,29.1042944785276" />
+                    Point1="-57,23.8895705521472"
+                    Point2="-61,23.8895705521472"
+                    Point3="-61,27.8895705521472" />
                   <mssgle:LineSegment
-                    End="-49,54.5" />
+                    End="-61,51.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1756,55 +1793,43 @@ WHERE [Årstal] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DMSA Fact_Ordre.PrecedenceConstraints[Constraint 8]"
-          TopLeft="408.5,149.5">
+          TopLeft="428.45,50.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="23.9000000000001,366"
+              EndConnector="0,465"
               Start="0,0"
-              End="23.9000000000001,358.5">
+              End="0,457.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,221.256610553451" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,221.256610553451"
-                    Point2="0,225.256610553451"
-                    Point3="4,225.256610553451" />
-                  <mssgle:LineSegment
-                    End="19.9000000000001,225.256610553451" />
-                  <mssgle:CubicBezierSegment
-                    Point1="19.9000000000001,225.256610553451"
-                    Point2="23.9000000000001,225.256610553451"
-                    Point3="23.9000000000001,229.256610553451" />
-                  <mssgle:LineSegment
-                    End="23.9000000000001,358.5" />
+                    End="0,457.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-3.29134765624995,230.256610553451,30.4826953125,9.7490234375"
+              BoundingBox="-15.24134765625,223.87548828125,30.4826953125,9.7490234375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="505,612"
+          PanelSize="505,613"
           Size="505,656"
           Id="Package\DMSA Fact_Ordre"
           TopLeft="146,107.5" />
         <NodeLayout
           Size="205,42"
           Id="Package\SQL ExecutionEnd Failed"
-          TopLeft="296,926.5" />
+          TopLeft="306,853.5" />
         <NodeLayout
           Size="230,42"
           Id="Package\SQL ExecutionEnd Succeeded"
-          TopLeft="5.50000000000011,926.5" />
+          TopLeft="15.5000000000001,853.5" />
         <NodeLayout
           Size="176,42"
           Id="Package\SQL ExecutionStart"
@@ -1837,26 +1862,26 @@ WHERE [Årstal] = ?</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-195.166666666667,163"
+              EndConnector="-185.166666666667,90"
               Start="0,0"
-              End="-195.166666666667,155.5">
+              End="-185.166666666667,82.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,61.50888274773" />
+                    End="0,32.1705487564153" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,61.50888274773"
-                    Point2="0,65.50888274773"
-                    Point3="-4,65.50888274773" />
+                    Point1="0,32.1705487564153"
+                    Point2="0,36.1705487564153"
+                    Point3="-4,36.1705487564153" />
                   <mssgle:LineSegment
-                    End="-191.166666666667,65.50888274773" />
+                    End="-181.166666666667,36.1705487564153" />
                   <mssgle:CubicBezierSegment
-                    Point1="-191.166666666667,65.50888274773"
-                    Point2="-195.166666666667,65.50888274773"
-                    Point3="-195.166666666667,69.50888274773" />
+                    Point1="-181.166666666667,36.1705487564153"
+                    Point2="-185.166666666667,36.1705487564153"
+                    Point3="-185.166666666667,40.1705487564153" />
                   <mssgle:LineSegment
-                    End="-195.166666666667,155.5" />
+                    End="-185.166666666667,82.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1871,73 +1896,36 @@ WHERE [Årstal] = ?</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-82.8333333333333,163"
+              EndConnector="-72.8333333333333,90"
               Start="0,0"
-              End="-82.8333333333333,155.5">
+              End="-72.8333333333333,82.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,61.50888274773" />
+                    End="0,32.1705487564153" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,61.50888274773"
-                    Point2="0,65.50888274773"
-                    Point3="-4,65.50888274773" />
+                    Point1="0,32.1705487564153"
+                    Point2="0,36.1705487564153"
+                    Point3="-4,36.1705487564153" />
                   <mssgle:LineSegment
-                    End="-78.8333333333333,65.50888274773" />
+                    End="-68.8333333333333,36.1705487564153" />
                   <mssgle:CubicBezierSegment
-                    Point1="-78.8333333333333,65.50888274773"
-                    Point2="-82.8333333333333,65.50888274773"
-                    Point3="-82.8333333333333,69.50888274773" />
+                    Point1="-68.8333333333333,36.1705487564153"
+                    Point2="-72.8333333333333,36.1705487564153"
+                    Point3="-72.8333333333333,40.1705487564153" />
                   <mssgle:LineSegment
-                    End="-82.8333333333333,155.5" />
+                    End="-72.8333333333333,82.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-56.6580143229166,70.50888274773,30.4826953125,9.7490234375"
+              BoundingBox="-51.6580143229167,41.1705487564153,30.4826953125,9.7490234375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="194,42"
-          Id="Package\Data flow til at hente værdier, sætte dem i variabler og indsætte dem i tabeller\Hent Styringsværdier ud"
-          TopLeft="19,5.5" />
-        <NodeLayout
-          Size="221,42"
-          Id="Package\Data flow til at hente værdier, sætte dem i variabler og indsætte dem i tabeller\Indsæt styringsværdier i tabel"
-          TopLeft="5.50000000000001,107.5" />
-        <EdgeLayout
-          Id="Package\Data flow til at hente værdier, sætte dem i variabler og indsætte dem i tabeller.PrecedenceConstraints[Constraint]"
-          TopLeft="116,47.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <ContainerLayout
-          HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="232,204"
-          Size="232,248"
-          Id="Package\Data flow til at hente værdier, sætte dem i variabler og indsætte dem i tabeller"
-          TopLeft="768.5,174.5" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
