@@ -103,6 +103,7 @@
     <Build Include="Security\Meta.sql" />
     <Build Include="Meta\Tables\LastSuccessfullLoad.sql" />
     <Build Include="Meta\Stored procedures\Update_LastSuccessfullLoad.sql" />
+    <Build Include="Meta\Tables\VariblesForSSIS.sql" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Database DMSA\Database DMSA.sqlproj">
