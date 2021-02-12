@@ -6,7 +6,9 @@
 [TruncateTable]        NVARCHAR(200)               NULL,
 [Year]                 SMALLINT	 	               NULL,
 [DateCreated]          DATETIME  DEFAULT GETDATE() NULL,
-[Ajour_Antal]          INT DEFAULT 0               NOT NULL,
+[Ajour_Antal]          INT       DEFAULT 0         NOT NULL,
+[Valid_From_Week]      SMALLINT  DEFAULT 1         NOT NULL,
+[Valid_To_Week]        SMALLINT  DEFAULT 1         NOT NULL,
 CONSTRAINT PK_VariblesForSSIS_Id PRIMARY KEY CLUSTERED ([Id])
 ) 
 GO
