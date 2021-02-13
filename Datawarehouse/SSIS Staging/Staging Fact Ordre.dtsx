@@ -11,8 +11,8 @@
   DTS:LocaleID="1030"
   DTS:ObjectName="Staging Fact Ordre"
   DTS:PackageType="5"
-  DTS:VersionBuild="46"
-  DTS:VersionGUID="{8DFEDE2B-141E-4CB3-BBF8-87B3A9FC917B}">
+  DTS:VersionBuild="50"
+  DTS:VersionGUID="{0F7FDC54-6B17-4511-B4E2-F3D08BD91319}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:PackageParameters>
@@ -83,7 +83,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="SQL ExecutionEnd Failed"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -107,7 +107,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="SQL ExecutionEnd Succeeded"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -581,7 +581,7 @@ where [refTable].[Order_Id] = ?</property>
                       containsID="true"
                       dataType="System.String"
                       description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                      name="ParameterMap">#{Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Order_Id]};</property>
+                      name="ParameterMap">#{Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Bkey_Kunde]};</property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -605,10 +605,10 @@ where [refTable].[Order_Id] = ?</property>
                       name="Lookup Input">
                       <inputColumns>
                         <inputColumn
-                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Lookup Dim_Kunde.Inputs[Lookup Input].Columns[Order_Id]"
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Lookup Dim_Kunde.Inputs[Lookup Input].Columns[Bkey_Kunde]"
                           cachedDataType="i4"
-                          cachedName="Order_Id"
-                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Order_Id]">
+                          cachedName="Bkey_Kunde"
+                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Bkey_Kunde]">
                           <properties>
                             <property
                               dataType="System.String"
@@ -743,7 +743,7 @@ where [refTable].[Product_Id] = ?</property>
                       containsID="true"
                       dataType="System.String"
                       description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                      name="ParameterMap">#{Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Bkey_Dim_Produkt]};</property>
+                      name="ParameterMap">#{Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Bkey_Produkt]};</property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -767,10 +767,10 @@ where [refTable].[Product_Id] = ?</property>
                       name="Lookup Input">
                       <inputColumns>
                         <inputColumn
-                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Lookup Dim_Produkt.Inputs[Lookup Input].Columns[Bkey_Dim_Produkt]"
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\Lookup Dim_Produkt.Inputs[Lookup Input].Columns[Bkey_Produkt]"
                           cachedDataType="i4"
-                          cachedName="Bkey_Dim_Produkt"
-                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Bkey_Dim_Produkt]">
+                          cachedName="Bkey_Produkt"
+                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Bkey_Produkt]">
                           <properties>
                             <property
                               dataType="System.String"
@@ -1108,14 +1108,15 @@ where [refTable].[Product_Id] = ?</property>
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [Bkey_Dim_Kunde]
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
+       [Bkey_Kunde]
       ,[Order_Id]
       ,[Eval_Set]
       ,[Order_Number]
       ,[Order_Dow]
       ,[Order_Hour_Of_Day]
       ,[Days_Since_Prior_Order]
-      ,[Bkey_Dim_Produkt]
+      ,[Bkey_Produkt]
       ,[Add_To_Cart_Order]
       ,[Reordered]
       ,[Initial_Load_Time]
@@ -1183,15 +1184,6 @@ where [refTable].[Product_Id] = ?</property>
                           name="Reordered"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
-                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Bkey_Dim_Kunde]"
-                          dataType="i4"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Bkey_Dim_Kunde]"
-                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Bkey_Dim_Kunde]"
-                          name="Bkey_Dim_Kunde"
-                          truncationRowDisposition="FailComponent" />
-                        <outputColumn
                           refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Eval_Set]"
                           dataType="wstr"
                           errorOrTruncationOperation="Conversion"
@@ -1240,15 +1232,6 @@ where [refTable].[Product_Id] = ?</property>
                           scale="1"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
-                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Bkey_Dim_Produkt]"
-                          dataType="i4"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Bkey_Dim_Produkt]"
-                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Bkey_Dim_Produkt]"
-                          name="Bkey_Dim_Produkt"
-                          truncationRowDisposition="FailComponent" />
-                        <outputColumn
                           refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Initial_Load_Time]"
                           dataType="dbTimeStamp2"
                           errorOrTruncationOperation="Conversion"
@@ -1257,6 +1240,24 @@ where [refTable].[Product_Id] = ?</property>
                           lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Initial_Load_Time]"
                           name="Initial_Load_Time"
                           scale="7"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Bkey_Kunde]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Bkey_Kunde]"
+                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Bkey_Kunde]"
+                          name="Bkey_Kunde"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Bkey_Produkt]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Bkey_Produkt]"
+                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].Columns[Bkey_Produkt]"
+                          name="Bkey_Produkt"
                           truncationRowDisposition="FailComponent" />
                       </outputColumns>
                       <externalMetadataColumns
@@ -1273,10 +1274,6 @@ where [refTable].[Product_Id] = ?</property>
                           refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Reordered]"
                           dataType="i2"
                           name="Reordered" />
-                        <externalMetadataColumn
-                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Bkey_Dim_Kunde]"
-                          dataType="i4"
-                          name="Bkey_Dim_Kunde" />
                         <externalMetadataColumn
                           refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Eval_Set]"
                           dataType="wstr"
@@ -1301,14 +1298,18 @@ where [refTable].[Product_Id] = ?</property>
                           precision="6"
                           scale="1" />
                         <externalMetadataColumn
-                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Bkey_Dim_Produkt]"
-                          dataType="i4"
-                          name="Bkey_Dim_Produkt" />
-                        <externalMetadataColumn
                           refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Initial_Load_Time]"
                           dataType="dbTimeStamp2"
                           name="Initial_Load_Time"
                           scale="7" />
+                        <externalMetadataColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Bkey_Kunde]"
+                          dataType="i4"
+                          name="Bkey_Kunde" />
+                        <externalMetadataColumn
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Bkey_Produkt]"
+                          dataType="i4"
+                          name="Bkey_Produkt" />
                       </externalMetadataColumns>
                     </output>
                     <output
@@ -1317,10 +1318,10 @@ where [refTable].[Product_Id] = ?</property>
                       name="OLE DB Source Error Output">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Bkey_Dim_Kunde]"
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Bkey_Kunde]"
                           dataType="i4"
-                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Bkey_Dim_Kunde]"
-                          name="Bkey_Dim_Kunde" />
+                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Bkey_Kunde]"
+                          name="Bkey_Kunde" />
                         <outputColumn
                           refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Order_Id]"
                           dataType="i4"
@@ -1355,10 +1356,10 @@ where [refTable].[Product_Id] = ?</property>
                           precision="6"
                           scale="1" />
                         <outputColumn
-                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Bkey_Dim_Produkt]"
+                          refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Bkey_Produkt]"
                           dataType="i4"
-                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Bkey_Dim_Produkt]"
-                          name="Bkey_Dim_Produkt" />
+                          lineageId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Bkey_Produkt]"
+                          name="Bkey_Produkt" />
                         <outputColumn
                           refId="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Add_To_Cart_Order]"
                           dataType="i2"
@@ -2610,6 +2611,10 @@ where [refTable].[Product_Id] = ?</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
+          Size="138,42"
+          Id="Package\Staging Dim_Produkt\Staging Fact_Ordre\RC Inserted"
+          TopLeft="34.5000000000001,515.5" />
+        <NodeLayout
           Size="175,42"
           Id="Package\Staging Dim_Produkt\Staging Fact_Ordre\Lookup Dim_Kunde"
           TopLeft="18,209.5" />
@@ -2618,25 +2623,21 @@ where [refTable].[Product_Id] = ?</property>
           Id="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Destination"
           TopLeft="17.0000000000001,617.5" />
         <NodeLayout
+          Size="141,42"
+          Id="Package\Staging Dim_Produkt\Staging Fact_Ordre\RC Selected"
+          TopLeft="39,107.5" />
+        <NodeLayout
           Size="182,42"
           Id="Package\Staging Dim_Produkt\Staging Fact_Ordre\Lookup Dim_Produkt"
           TopLeft="14.5,311.5" />
-        <NodeLayout
-          Size="157,42"
-          Id="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source"
-          TopLeft="27,5.5" />
         <NodeLayout
           Size="154,42"
           Id="Package\Staging Dim_Produkt\Staging Fact_Ordre\Derived Column"
           TopLeft="30,424" />
         <NodeLayout
-          Size="138,42"
-          Id="Package\Staging Dim_Produkt\Staging Fact_Ordre\RC Inserted"
-          TopLeft="34.5000000000001,515.5" />
-        <NodeLayout
-          Size="141,42"
-          Id="Package\Staging Dim_Produkt\Staging Fact_Ordre\RC Selected"
-          TopLeft="39,107.5" />
+          Size="157,42"
+          Id="Package\Staging Dim_Produkt\Staging Fact_Ordre\OLE DB Source"
+          TopLeft="27,5.5" />
         <EdgeLayout
           Id="Package\Staging Dim_Produkt\Staging Fact_Ordre.Paths[Row Count Output 11]"
           TopLeft="104.5,557.5">
@@ -2782,7 +2783,7 @@ where [refTable].[Product_Id] = ?</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:string">false</Value>
+          type="q2:boolean">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -2792,7 +2793,7 @@ where [refTable].[Product_Id] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:string">0</Value>
+          type="q4:int">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2818,7 +2819,7 @@ where [refTable].[Product_Id] = ?</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:string">false</Value>
+          type="q2:boolean">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -2828,7 +2829,7 @@ where [refTable].[Product_Id] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:string">0</Value>
+          type="q4:int">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2847,15 +2848,15 @@ where [refTable].[Product_Id] = ?</property>
     design-time-name="Package\Staging Dim_Produkt\Staging Temp_Orders_Products">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="157,42"
-          Id="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Source"
-          TopLeft="12.5,5.5" />
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="171,42"
           Id="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Destination"
           TopLeft="5.50000000000001,107.5" />
+        <NodeLayout
+          Size="157,42"
+          Id="Package\Staging Dim_Produkt\Staging Temp_Orders_Products\OLE DB Source"
+          TopLeft="12.5,5.5" />
         <EdgeLayout
           Id="Package\Staging Dim_Produkt\Staging Temp_Orders_Products.Paths[OLE DB Source Output]"
           TopLeft="91,47.5">
@@ -2875,7 +2876,9 @@ where [refTable].[Product_Id] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

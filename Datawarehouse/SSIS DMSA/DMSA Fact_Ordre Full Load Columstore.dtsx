@@ -11,8 +11,8 @@
   DTS:LocaleID="1030"
   DTS:ObjectName="DMSA Fact_Ordre Full Load Columstore"
   DTS:PackageType="5"
-  DTS:VersionBuild="63"
-  DTS:VersionGUID="{2BFF1F70-7449-4FF2-A06C-1CE8AD632C42}">
+  DTS:VersionBuild="66"
+  DTS:VersionGUID="{D53941C7-6852-4C31-9295-0D153A82D89B}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -297,17 +297,17 @@
                           externalMetadataColumnId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Initial_Load_Time]"
                           lineageId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].Columns[Initial_Load_Time]" />
                         <inputColumn
-                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Bkey_Dim_Kunde]"
+                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Bkey_Kunde]"
                           cachedDataType="i4"
-                          cachedName="Bkey_Dim_Kunde"
+                          cachedName="Bkey_Kunde"
                           externalMetadataColumnId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Bkey_Kunde]"
-                          lineageId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].Columns[Bkey_Dim_Kunde]" />
+                          lineageId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].Columns[Bkey_Kunde]" />
                         <inputColumn
-                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Bkey_Dim_Produkt]"
+                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Bkey_Produkt]"
                           cachedDataType="i4"
-                          cachedName="Bkey_Dim_Produkt"
+                          cachedName="Bkey_Produkt"
                           externalMetadataColumnId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Bkey_Produkt]"
-                          lineageId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].Columns[Bkey_Dim_Produkt]" />
+                          lineageId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].Columns[Bkey_Produkt]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -420,14 +420,15 @@
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [Bkey_Dim_Kunde]
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
+       [Bkey_Kunde]
       ,[Order_Id]
       ,[Eval_Set]
       ,[Order_Number]
       ,[Order_Dow]
       ,[Order_Hour_Of_Day]
       ,[Days_Since_Prior_Order]
-      ,[Bkey_Dim_Produkt]
+      ,[Bkey_Produkt]
       ,[Add_To_Cart_Order]
       ,[Reordered]
       ,[Initial_Load_Time]
@@ -553,22 +554,22 @@
                           scale="7"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
-                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].Columns[Bkey_Dim_Kunde]"
+                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].Columns[Bkey_Kunde]"
                           dataType="i4"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Bkey_Dim_Kunde]"
-                          lineageId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].Columns[Bkey_Dim_Kunde]"
-                          name="Bkey_Dim_Kunde"
+                          externalMetadataColumnId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Bkey_Kunde]"
+                          lineageId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].Columns[Bkey_Kunde]"
+                          name="Bkey_Kunde"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
-                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].Columns[Bkey_Dim_Produkt]"
+                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].Columns[Bkey_Produkt]"
                           dataType="i4"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Bkey_Dim_Produkt]"
-                          lineageId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].Columns[Bkey_Dim_Produkt]"
-                          name="Bkey_Dim_Produkt"
+                          externalMetadataColumnId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Bkey_Produkt]"
+                          lineageId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].Columns[Bkey_Produkt]"
+                          name="Bkey_Produkt"
                           truncationRowDisposition="FailComponent" />
                       </outputColumns>
                       <externalMetadataColumns
@@ -614,13 +615,13 @@
                           name="Initial_Load_Time"
                           scale="7" />
                         <externalMetadataColumn
-                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Bkey_Dim_Kunde]"
+                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Bkey_Kunde]"
                           dataType="i4"
-                          name="Bkey_Dim_Kunde" />
+                          name="Bkey_Kunde" />
                         <externalMetadataColumn
-                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Bkey_Dim_Produkt]"
+                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Bkey_Produkt]"
                           dataType="i4"
-                          name="Bkey_Dim_Produkt" />
+                          name="Bkey_Produkt" />
                       </externalMetadataColumns>
                     </output>
                     <output
@@ -629,10 +630,10 @@
                       name="OLE DB Source Error Output">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Bkey_Dim_Kunde]"
+                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Bkey_Kunde]"
                           dataType="i4"
-                          lineageId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Bkey_Dim_Kunde]"
-                          name="Bkey_Dim_Kunde" />
+                          lineageId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Bkey_Kunde]"
+                          name="Bkey_Kunde" />
                         <outputColumn
                           refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Order_Id]"
                           dataType="i4"
@@ -667,10 +668,10 @@
                           precision="6"
                           scale="1" />
                         <outputColumn
-                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Bkey_Dim_Produkt]"
+                          refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Bkey_Produkt]"
                           dataType="i4"
-                          lineageId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Bkey_Dim_Produkt]"
-                          name="Bkey_Dim_Produkt" />
+                          lineageId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Bkey_Produkt]"
+                          name="Bkey_Produkt" />
                         <outputColumn
                           refId="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Add_To_Cart_Order]"
                           dataType="i2"

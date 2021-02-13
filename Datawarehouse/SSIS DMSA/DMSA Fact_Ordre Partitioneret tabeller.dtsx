@@ -11,8 +11,8 @@
   DTS:LocaleID="1030"
   DTS:ObjectName="DMSA Fact_Ordre Partitioneret tabeller"
   DTS:PackageType="5"
-  DTS:VersionBuild="123"
-  DTS:VersionGUID="{72BDA793-0E1D-4241-9EA6-2404DF321EAB}">
+  DTS:VersionBuild="131"
+  DTS:VersionGUID="{434E2A0F-3F3F-43F3-8E39-B544568EBBCC}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -119,7 +119,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Hent Styringsværdier ud"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -167,7 +167,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Indsæt styringsværdier i tabel"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -231,7 +231,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Hent Styringsværdier ud baseret på kørsler"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -261,7 +261,7 @@
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{66A8BC93-6A3C-483F-B5F0-5EE80B09578F}"
-              SQLTask:SqlStatementSource="SELECT TOP (1) ? = [Id]&#xA;  FROM [DZDB].[Meta].[VariblesForSSIS]&#xA;    WHERE (&#xA;&#x9;&#x9;SELECT DATEPART(WEEK, GETDATE())&#xA;&#x9;&#x9;) &#xA;&#x9;&#x9;BETWEEN [Valid_From_Week]&#xA;&#x9;&#x9;AND     [Valid_To_Week]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              SQLTask:SqlStatementSource="SELECT TOP (1) ? = [Id]&#xA;  FROM [DZDB].[Meta].[VariblesForSSIS]&#xA;    WHERE (&#xA;&#x9;&#x9;SELECT DATEPART(WEEKDAY, GETDATE())&#xA;&#x9;&#x9;) &#xA;&#x9;&#x9;BETWEEN [Valid_From_Day]&#xA;&#x9;&#x9;AND     [Valid_To_Day]&#xA;&#x9;  ORDER BY [Ajour_Antal], [Id] " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
                 SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="User::Styringsværdi"
@@ -280,7 +280,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Hent tabel information ud"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -543,23 +543,23 @@
                           externalMetadataColumnId="Package\DMSA Fact_Ordre\Load Fact_Ordre partitioneret\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Initial_Load_Time]"
                           lineageId="Package\DMSA Fact_Ordre\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].Columns[Initial_Load_Time]" />
                         <inputColumn
-                          refId="Package\DMSA Fact_Ordre\Load Fact_Ordre partitioneret\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Bkey_Dim_Kunde]"
-                          cachedDataType="i4"
-                          cachedName="Bkey_Dim_Kunde"
-                          externalMetadataColumnId="Package\DMSA Fact_Ordre\Load Fact_Ordre partitioneret\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Bkey_Kunde]"
-                          lineageId="Package\DMSA Fact_Ordre\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].Columns[Bkey_Dim_Kunde]" />
-                        <inputColumn
-                          refId="Package\DMSA Fact_Ordre\Load Fact_Ordre partitioneret\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Bkey_Dim_Produkt]"
-                          cachedDataType="i4"
-                          cachedName="Bkey_Dim_Produkt"
-                          externalMetadataColumnId="Package\DMSA Fact_Ordre\Load Fact_Ordre partitioneret\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Bkey_Produkt]"
-                          lineageId="Package\DMSA Fact_Ordre\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].Columns[Bkey_Dim_Produkt]" />
-                        <inputColumn
                           refId="Package\DMSA Fact_Ordre\Load Fact_Ordre partitioneret\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Årstal]"
                           cachedDataType="i4"
                           cachedName="Årstal"
                           externalMetadataColumnId="Package\DMSA Fact_Ordre\Load Fact_Ordre partitioneret\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Year]"
                           lineageId="Package\DMSA Fact_Ordre\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].Columns[Årstal]" />
+                        <inputColumn
+                          refId="Package\DMSA Fact_Ordre\Load Fact_Ordre partitioneret\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Bkey_Kunde]"
+                          cachedDataType="i4"
+                          cachedName="Bkey_Kunde"
+                          externalMetadataColumnId="Package\DMSA Fact_Ordre\Load Fact_Ordre partitioneret\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Bkey_Kunde]"
+                          lineageId="Package\DMSA Fact_Ordre\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].Columns[Bkey_Kunde]" />
+                        <inputColumn
+                          refId="Package\DMSA Fact_Ordre\Load Fact_Ordre partitioneret\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Bkey_Produkt]"
+                          cachedDataType="i4"
+                          cachedName="Bkey_Produkt"
+                          externalMetadataColumnId="Package\DMSA Fact_Ordre\Load Fact_Ordre partitioneret\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Bkey_Produkt]"
+                          lineageId="Package\DMSA Fact_Ordre\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].Columns[Bkey_Produkt]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -676,7 +676,8 @@
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT  [Bkey_Dim_Kunde]
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT  
+       [Bkey_Kunde]
       ,[Order_Id]
       ,[Eval_Set]
       ,[Order_Number]
@@ -684,7 +685,7 @@
       ,[Order_Dow]
       ,[Order_Hour_Of_Day]
       ,[Days_Since_Prior_Order]
-      ,[Bkey_Dim_Produkt]
+      ,[Bkey_Produkt]
       ,[Add_To_Cart_Order]
       ,[Reordered]
       ,[Initial_Load_Time]
@@ -811,24 +812,6 @@ WHERE [Årstal] = ?</property>
                           scale="7"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
-                          refId="Package\DMSA Fact_Ordre\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].Columns[Bkey_Dim_Kunde]"
-                          dataType="i4"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\DMSA Fact_Ordre\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Bkey_Dim_Kunde]"
-                          lineageId="Package\DMSA Fact_Ordre\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].Columns[Bkey_Dim_Kunde]"
-                          name="Bkey_Dim_Kunde"
-                          truncationRowDisposition="FailComponent" />
-                        <outputColumn
-                          refId="Package\DMSA Fact_Ordre\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].Columns[Bkey_Dim_Produkt]"
-                          dataType="i4"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\DMSA Fact_Ordre\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Bkey_Dim_Produkt]"
-                          lineageId="Package\DMSA Fact_Ordre\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].Columns[Bkey_Dim_Produkt]"
-                          name="Bkey_Dim_Produkt"
-                          truncationRowDisposition="FailComponent" />
-                        <outputColumn
                           refId="Package\DMSA Fact_Ordre\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].Columns[Årstal]"
                           dataType="i4"
                           errorOrTruncationOperation="Conversion"
@@ -836,6 +819,24 @@ WHERE [Årstal] = ?</property>
                           externalMetadataColumnId="Package\DMSA Fact_Ordre\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Årstal]"
                           lineageId="Package\DMSA Fact_Ordre\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].Columns[Årstal]"
                           name="Årstal"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DMSA Fact_Ordre\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].Columns[Bkey_Kunde]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DMSA Fact_Ordre\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Bkey_Kunde]"
+                          lineageId="Package\DMSA Fact_Ordre\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].Columns[Bkey_Kunde]"
+                          name="Bkey_Kunde"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DMSA Fact_Ordre\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].Columns[Bkey_Produkt]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DMSA Fact_Ordre\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Bkey_Produkt]"
+                          lineageId="Package\DMSA Fact_Ordre\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].Columns[Bkey_Produkt]"
+                          name="Bkey_Produkt"
                           truncationRowDisposition="FailComponent" />
                       </outputColumns>
                       <externalMetadataColumns
@@ -881,17 +882,17 @@ WHERE [Årstal] = ?</property>
                           name="Initial_Load_Time"
                           scale="7" />
                         <externalMetadataColumn
-                          refId="Package\DMSA Fact_Ordre\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Bkey_Dim_Kunde]"
-                          dataType="i4"
-                          name="Bkey_Dim_Kunde" />
-                        <externalMetadataColumn
-                          refId="Package\DMSA Fact_Ordre\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Bkey_Dim_Produkt]"
-                          dataType="i4"
-                          name="Bkey_Dim_Produkt" />
-                        <externalMetadataColumn
                           refId="Package\DMSA Fact_Ordre\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Årstal]"
                           dataType="i4"
                           name="Årstal" />
+                        <externalMetadataColumn
+                          refId="Package\DMSA Fact_Ordre\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Bkey_Kunde]"
+                          dataType="i4"
+                          name="Bkey_Kunde" />
+                        <externalMetadataColumn
+                          refId="Package\DMSA Fact_Ordre\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Bkey_Produkt]"
+                          dataType="i4"
+                          name="Bkey_Produkt" />
                       </externalMetadataColumns>
                     </output>
                     <output
@@ -900,10 +901,10 @@ WHERE [Årstal] = ?</property>
                       name="OLE DB Source Error Output">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\DMSA Fact_Ordre\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Bkey_Dim_Kunde]"
+                          refId="Package\DMSA Fact_Ordre\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Bkey_Kunde]"
                           dataType="i4"
-                          lineageId="Package\DMSA Fact_Ordre\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Bkey_Dim_Kunde]"
-                          name="Bkey_Dim_Kunde" />
+                          lineageId="Package\DMSA Fact_Ordre\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Bkey_Kunde]"
+                          name="Bkey_Kunde" />
                         <outputColumn
                           refId="Package\DMSA Fact_Ordre\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Order_Id]"
                           dataType="i4"
@@ -943,10 +944,10 @@ WHERE [Årstal] = ?</property>
                           precision="6"
                           scale="1" />
                         <outputColumn
-                          refId="Package\DMSA Fact_Ordre\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Bkey_Dim_Produkt]"
+                          refId="Package\DMSA Fact_Ordre\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Bkey_Produkt]"
                           dataType="i4"
-                          lineageId="Package\DMSA Fact_Ordre\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Bkey_Dim_Produkt]"
-                          name="Bkey_Dim_Produkt" />
+                          lineageId="Package\DMSA Fact_Ordre\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Bkey_Produkt]"
+                          name="Bkey_Produkt" />
                         <outputColumn
                           refId="Package\DMSA Fact_Ordre\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Add_To_Cart_Order]"
                           dataType="i2"
@@ -1073,7 +1074,7 @@ WHERE [Årstal] = ?</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Opdater styringsværdier i tabel"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -1097,7 +1098,7 @@ WHERE [Årstal] = ?</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL DMSA SwitchFact"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -1164,7 +1165,7 @@ WHERE [Årstal] = ?</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL DMSAEnd Succeeded"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -1201,7 +1202,7 @@ WHERE [Årstal] = ?</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL DMSAStart"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -1250,7 +1251,7 @@ WHERE [Årstal] = ?</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="Truncate table Load Fact_Ordre"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -1376,7 +1377,7 @@ WHERE [Årstal] = ?</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="SQL ExecutionEnd Failed"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="2">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -1400,7 +1401,7 @@ WHERE [Årstal] = ?</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="SQL ExecutionEnd Succeeded"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="2">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -1425,7 +1426,7 @@ WHERE [Årstal] = ?</property>
       DTS:LocaleID="-1"
       DTS:ObjectName="SQL ExecutionStart"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -1610,10 +1611,18 @@ WHERE [Årstal] = ?</property>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="232,204"
+          PanelSize="232,205"
           Size="232,248"
           Id="Package\Data flow til at hente værdier, sætte dem i variabler og indsætte dem i tabeller"
           TopLeft="68.5000000000001,159.5" />
+        <NodeLayout
+          Size="282,42"
+          Id="Package\DMSA Fact_Ordre\Hent Styringsværdier ud baseret på kørsler"
+          TopLeft="333,5.5" />
+        <NodeLayout
+          Size="262,42"
+          Id="Package\DMSA Fact_Ordre\Hent Styringsværdier ud baseret på tid"
+          TopLeft="10,5.5" />
         <NodeLayout
           Size="200,42"
           Id="Package\DMSA Fact_Ordre\Hent tabel information ud"
@@ -1622,6 +1631,10 @@ WHERE [Årstal] = ?</property>
           Size="218,42"
           Id="Package\DMSA Fact_Ordre\Load Fact_Ordre partitioneret"
           TopLeft="133,413.5" />
+        <NodeLayout
+          Size="221,42"
+          Id="Package\DMSA Fact_Ordre\Opdater styringsværdier i tabel"
+          TopLeft="5.50000000000011,617.5" />
         <NodeLayout
           Size="216,42"
           Id="Package\DMSA Fact_Ordre\SQL DMSA SwitchFact"
@@ -1702,6 +1715,110 @@ WHERE [Årstal] = ?</property>
                     Point3="-41,34" />
                   <mssgle:LineSegment
                     End="-41,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DMSA Fact_Ordre.PrecedenceConstraints[Constraint 11]"
+          TopLeft="80.5000000000001,659.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="35.5,60"
+              Start="0,0"
+              End="35.5,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.2587601078167" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.2587601078167"
+                    Point2="0,24.2587601078167"
+                    Point3="4,24.2587601078167" />
+                  <mssgle:LineSegment
+                    End="31.5,24.2587601078167" />
+                  <mssgle:CubicBezierSegment
+                    Point1="31.5,24.2587601078167"
+                    Point2="35.5,24.2587601078167"
+                    Point3="35.5,28.2587601078167" />
+                  <mssgle:LineSegment
+                    End="35.5,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DMSA Fact_Ordre.PrecedenceConstraints[Constraint 12]"
+          TopLeft="151.5,659.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="167.5,60"
+              Start="0,0"
+              End="167.5,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.1580673819449" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,35.1580673819449"
+                    Point2="0,39.1580673819449"
+                    Point3="4,39.1580673819449" />
+                  <mssgle:LineSegment
+                    End="163.5,39.1580673819449" />
+                  <mssgle:CubicBezierSegment
+                    Point1="163.5,39.1580673819449"
+                    Point2="167.5,39.1580673819449"
+                    Point3="167.5,43.1580673819449" />
+                  <mssgle:LineSegment
+                    End="167.5,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="68.50865234375,44.1580673819449,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DMSA Fact_Ordre.PrecedenceConstraints[Constraint 13]"
+          TopLeft="141,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="301,60"
+              Start="0,0"
+              End="301,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.7142857142857" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.7142857142857"
+                    Point2="0,35.7142857142857"
+                    Point3="4,35.7142857142857" />
+                  <mssgle:LineSegment
+                    End="297,35.7142857142857" />
+                  <mssgle:CubicBezierSegment
+                    Point1="297,35.7142857142857"
+                    Point2="301,35.7142857142857"
+                    Point3="301,39.7142857142857" />
+                  <mssgle:LineSegment
+                    End="301,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1817,6 +1934,40 @@ WHERE [Årstal] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
+          Id="Package\DMSA Fact_Ordre.PrecedenceConstraints[Constraint 5]"
+          TopLeft="146.333333333333,557.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-30.3333333333333,60"
+              Start="0,0"
+              End="-30.3333333333333,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.2647058823529" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.2647058823529"
+                    Point2="0,24.2647058823529"
+                    Point3="-4,24.2647058823529" />
+                  <mssgle:LineSegment
+                    End="-26.3333333333333,24.2647058823529" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-26.3333333333333,24.2647058823529"
+                    Point2="-30.3333333333333,24.2647058823529"
+                    Point3="-30.3333333333333,28.2647058823529" />
+                  <mssgle:LineSegment
+                    End="-30.3333333333333,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
           Id="Package\DMSA Fact_Ordre.PrecedenceConstraints[Constraint 6]"
           TopLeft="215.666666666667,557.5">
           <EdgeLayout.Curve>
@@ -1922,10 +2073,6 @@ WHERE [Årstal] = ?</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="282,42"
-          Id="Package\DMSA Fact_Ordre\Hent Styringsværdier ud baseret på kørsler"
-          TopLeft="333,5.5" />
         <EdgeLayout
           Id="Package\DMSA Fact_Ordre.PrecedenceConstraints[Constraint 9]"
           TopLeft="474,47.5">
@@ -1960,156 +2107,10 @@ WHERE [Årstal] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="221,42"
-          Id="Package\DMSA Fact_Ordre\Opdater styringsværdier i tabel"
-          TopLeft="5.50000000000011,617.5" />
-        <EdgeLayout
-          Id="Package\DMSA Fact_Ordre.PrecedenceConstraints[Constraint 5]"
-          TopLeft="146.333333333333,557.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-30.3333333333333,60"
-              Start="0,0"
-              End="-30.3333333333333,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,20.2647058823529" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,20.2647058823529"
-                    Point2="0,24.2647058823529"
-                    Point3="-4,24.2647058823529" />
-                  <mssgle:LineSegment
-                    End="-26.3333333333333,24.2647058823529" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-26.3333333333333,24.2647058823529"
-                    Point2="-30.3333333333333,24.2647058823529"
-                    Point3="-30.3333333333333,28.2647058823529" />
-                  <mssgle:LineSegment
-                    End="-30.3333333333333,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DMSA Fact_Ordre.PrecedenceConstraints[Constraint 11]"
-          TopLeft="80.5000000000001,659.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="35.5,60"
-              Start="0,0"
-              End="35.5,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,20.2587601078167" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,20.2587601078167"
-                    Point2="0,24.2587601078167"
-                    Point3="4,24.2587601078167" />
-                  <mssgle:LineSegment
-                    End="31.5,24.2587601078167" />
-                  <mssgle:CubicBezierSegment
-                    Point1="31.5,24.2587601078167"
-                    Point2="35.5,24.2587601078167"
-                    Point3="35.5,28.2587601078167" />
-                  <mssgle:LineSegment
-                    End="35.5,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DMSA Fact_Ordre.PrecedenceConstraints[Constraint 12]"
-          TopLeft="151.5,659.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="167.5,60"
-              Start="0,0"
-              End="167.5,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,35.1580673819449" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,35.1580673819449"
-                    Point2="0,39.1580673819449"
-                    Point3="4,39.1580673819449" />
-                  <mssgle:LineSegment
-                    End="163.5,39.1580673819449" />
-                  <mssgle:CubicBezierSegment
-                    Point1="163.5,39.1580673819449"
-                    Point2="167.5,39.1580673819449"
-                    Point3="167.5,43.1580673819449" />
-                  <mssgle:LineSegment
-                    End="167.5,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="68.50865234375,44.1580673819449,30.4826953125,9.7490234375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="262,42"
-          Id="Package\DMSA Fact_Ordre\Hent Styringsværdier ud baseret på tid"
-          TopLeft="10,5.5" />
-        <EdgeLayout
-          Id="Package\DMSA Fact_Ordre.PrecedenceConstraints[Constraint 13]"
-          TopLeft="141,47.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="301,60"
-              Start="0,0"
-              End="301,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,31.7142857142857" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,31.7142857142857"
-                    Point2="0,35.7142857142857"
-                    Point3="4,35.7142857142857" />
-                  <mssgle:LineSegment
-                    End="297,35.7142857142857" />
-                  <mssgle:CubicBezierSegment
-                    Point1="297,35.7142857142857"
-                    Point2="301,35.7142857142857"
-                    Point3="301,39.7142857142857" />
-                  <mssgle:LineSegment
-                    End="301,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="620,816"
+          PanelSize="620,817"
           Size="620,860"
           Id="Package\DMSA Fact_Ordre"
           TopLeft="381.5,107.5" />

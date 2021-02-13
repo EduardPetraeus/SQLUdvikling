@@ -117,6 +117,9 @@
     <Build Include="Load\Partitioneret Fact tabel\Fact_Ordre_2020.sql" />
     <Build Include="DMSA\Tables\Partitioneret Fact tabel\Fact_Ordre_2020.sql" />
     <Build Include="DMSA\Views\v_Fact_Ordre_Partitioneret.sql" />
+    <Build Include="DMSA\Tables\PersonNummer.sql" />
+    <Build Include="DMSA\Views\v_UdregningAlderMedPersonNummer.sql" />
+    <Build Include="DMSA\Views\v_MachineLearningView.sql" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Database salg\Database Salg.sqlproj">

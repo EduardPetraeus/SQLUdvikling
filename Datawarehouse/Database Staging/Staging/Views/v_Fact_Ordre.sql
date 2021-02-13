@@ -1,14 +1,14 @@
 ﻿CREATE VIEW [Staging].[v_Fact_Ordre]
 	AS 
 SELECT TOP 5000000  -- Jeg tager kun 5 millioner rækker med over, fordi min lokale maskine har problemer med at køre flere rækker over uden at chrashe. Datasættet indeholder omkring 35 millioner rækker
-       SAO.[Order_Id] AS [Bkey_Dim_Kunde]
+       SAO.[Order_Id] AS [Bkey_Kunde]
       ,SAO.[Order_Id]
       ,SAO.[Eval_Set]
       ,SAO.[Order_Number]
       ,SAO.[Order_Dow]
       ,SAO.[Order_Hour_Of_Day]
       ,CAST(SAO.[Days_Since_Prior_Order] AS DECIMAL(6,1)) AS [Days_Since_Prior_Order]
-	  ,SOP.[Product_Id] AS [Bkey_Dim_Produkt]
+	  ,SOP.[Product_Id] AS [Bkey_Produkt]
       ,SOP.[Add_To_Cart_Order]
       ,SOP.[Reordered]
       ,LAE.[StartTime] AS [Initial_Load_Time]

@@ -1,7 +1,7 @@
 ﻿CREATE VIEW [Staging].[v_Fact_Ordre]
 	AS 
 SELECT  
-       SAO.[Order_Id] AS [Bkey_Dim_Kunde]
+       SAO.[Order_Id] AS [Bkey_Kunde]
       ,SAO.[Order_Id]
       ,SAO.[Eval_Set]
       ,SAO.[Order_Number]
@@ -23,7 +23,7 @@ SELECT
 		END AS [Årstal]
       ,SAO.[Order_Hour_Of_Day]
       ,ISNULL(CAST(SAO.[Days_Since_Prior_Order] AS DECIMAL(6,1)),-1) AS [Days_Since_Prior_Order]
-	  ,ISNULL(SOP.[Product_Id],-1) AS [Bkey_Dim_Produkt]
+	  ,ISNULL(SOP.[Product_Id],-1) AS [Bkey_Produkt]
       ,ISNULL(SOP.[Add_To_Cart_Order],-1) AS [Add_To_Cart_Order]
       ,ISNULL(SOP.[Reordered],-1) [Reordered]
       ,LAE.[StartTime] AS [Initial_Load_Time]
