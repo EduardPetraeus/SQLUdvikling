@@ -3,7 +3,9 @@
 SELECT 
      a.[Product_Id]
 	,a.[Product_Name]
+	,s.[Department_Id]
 	,s.[Department]
+	,d.[Aisle_Id]
 	,d.[Aisle]
 FROM [Salg].[Archive].[Products] a
 LEFT JOIN Salg.Archive.Departments s ON s.Department_Id = CAST(a.Department_Id AS SMALLINT)
