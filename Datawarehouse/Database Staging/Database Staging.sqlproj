@@ -67,6 +67,7 @@
     <Folder Include="Map\Stored Procedures" />
     <Folder Include="Load" />
     <Folder Include="Distribution" />
+    <Folder Include="Staging\Stored procedures" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Staging.dev.publish.xml" />
@@ -90,6 +91,12 @@
     <Build Include="Load\Produkt.sql" />
     <Build Include="Distribution\Produkt.sql" />
     <Build Include="Staging\Views\v_Produkt.sql" />
+    <Build Include="Load\Adresse_Koordinat.sql" />
+    <Build Include="Staging\Views\v_Adresse_Koordinat.sql" />
+    <Build Include="Staging\Tables\Adresse.sql" />
+    <Build Include="Staging\Tables\Adresse_Koordinat.sql" />
+    <Build Include="Staging\Tables\Adresse_NoMatch.sql" />
+    <Build Include="Staging\Stored procedures\sp_Adresse_Koordinat.sql" />
   </ItemGroup>
   <ItemGroup>
     <SqlCmdVariable Include="LZDB">
