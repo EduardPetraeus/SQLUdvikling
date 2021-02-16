@@ -184,7 +184,7 @@ BEGIN
 		-- Insert værdier i tabel.
 		INSERT [Staging].[Dim_Dato] (		
 
-			 [Dato_Kode]
+			 [Ekey_Dato]
 			,[Dato]
 			,[Aar]
 			,[Kvartal]

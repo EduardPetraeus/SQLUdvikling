@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [Staging].[Dim_Dato]
 (
-	 [Dato_Kode] INT NOT NULL
+	 [Ekey_Dato] INT NOT NULL
 	,[Dato] DATETIME NOT NULL
 	,[Aar] INT NOT NULL
 	,[Kvartal] INT NOT NULL
