@@ -1,7 +1,7 @@
 ﻿CREATE VIEW [DMSA].[v_MachineLearningView]
 	AS 
 
-SELECT TOP(5000000)  -- Train rækker: SELECT TOP(514377). Test rækker: SELECT TOP(547057). Dette antal er valgt, da det matcher med afslutningen af ordre for en specifik kunde. Rækkerne skal ind i et Excel ark, så derfor skal der ikke for mange rækker med.
+SELECT TOP(15000000)  -- Train rækker: SELECT TOP(514377). Test rækker: SELECT TOP(547057). Dette antal er valgt, da det matcher med afslutningen af ordre for en specifik kunde. Rækkerne skal ind i et Excel ark, så derfor skal der ikke for mange rækker med.
        SAO.[User_Id]                                                                    AS [Kunde Id]
       ,SAO.[Order_Id]                                                                   AS [Ordre Id]		
       ,ISNULL(SAO.[Eval_Set],'Ukendt')                                                  AS [Evaluerings saet]		
