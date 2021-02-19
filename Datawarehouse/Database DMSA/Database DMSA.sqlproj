@@ -124,6 +124,8 @@
     <Build Include="DMSA\Table_Valued_Functions\ufn_Find_Produkter_Købt_I_Ordre.sql" />
     <Build Include="DMSA\Views\v_Ordre_Pr_Produkt.sql" />
     <Build Include="DMSA\Table_Valued_Functions\ufn_Find_Ordre_Inklustiv_Produkter_Pr_Produkt.sql" />
+    <Build Include="DMSA\Stored procedures\UpdateHistoryForTable.sql" />
+    <Build Include="DMSA\Tables\MachineLearningView.sql" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Database salg\Database Salg.sqlproj">
