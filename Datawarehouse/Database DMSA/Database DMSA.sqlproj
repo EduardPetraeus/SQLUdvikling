@@ -76,6 +76,7 @@
     <Folder Include="Load\Partitioneret Fact tabel" />
     <Folder Include="DMSA\Views" />
     <Folder Include="DMSA\Table_Valued_Functions" />
+    <Folder Include="DMSA_History" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DMSA.dev.publish.xml" />
@@ -126,6 +127,9 @@
     <Build Include="DMSA\Table_Valued_Functions\ufn_Find_Ordre_Inklustiv_Produkter_Pr_Produkt.sql" />
     <Build Include="DMSA\Stored procedures\UpdateHistoryForTable.sql" />
     <Build Include="DMSA\Tables\MachineLearningView.sql" />
+    <Build Include="Security\DMSA_History.sql" />
+    <Build Include="DMSA_History\Dim_Produkt.sql" />
+    <Build Include="Utility\Utility\TruncateWithReseed.sql" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Database salg\Database Salg.sqlproj">

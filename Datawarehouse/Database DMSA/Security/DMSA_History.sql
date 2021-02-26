@@ -1,0 +1,2 @@
+﻿CREATE SCHEMA [DMSA_History]
+ AUTHORIZATION [dbo];
