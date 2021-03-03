@@ -1,12 +1,11 @@
 ﻿CREATE PROCEDURE [DMSA].[UpdateHistoryForTable]
 
-@table  NVARCHAR(120),
-@Schema NVARCHAR(50)
+@table  NVARCHAR(120)
 
 AS 
-
-DECLARE @v_prefixedTable NVARCHAR(180) = '[' + @Schema + ']' + '.' + '[' + @table + ']'
-DECLARE @v_historyTable NVARCHAR(200) = '[' + @Schema +  '_History' + ']' + '.' + '[' +  @table + ']'
+DECLARE @v_Schema NVARCHAR(50) = 'DMSA'
+DECLARE @v_prefixedTable NVARCHAR(180) = '[' + @v_Schema + ']' + '.' + '[' + @table + ']'
+DECLARE @v_historyTable NVARCHAR(200) = '[' + @v_Schema +  '_History' + ']' + '.' + '[' +  @table + ']'
 --DECLARE @opgørelsesmåned NCHAR(6) = FORMAT(DATEADD(MONTH, -1, GETDATE()), 'yyyyMM'), -- kan bruges hvis man vil arkivere baseret på en bestemt måned
 
 -- Check if the procedure has been run before in the current reporting month.

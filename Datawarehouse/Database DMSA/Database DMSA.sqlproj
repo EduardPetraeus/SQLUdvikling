@@ -130,6 +130,8 @@
     <Build Include="Security\DMSA_History.sql" />
     <Build Include="DMSA_History\Dim_Produkt.sql" />
     <Build Include="Utility\Utility\TruncateWithReseed.sql" />
+    <Build Include="DMSA\Stored procedures\UpdateHistoryForAllTables.sql" />
+    <Build Include="DMSA_History\Dim_Produkt_Delta_Load.sql" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Database salg\Database Salg.sqlproj">
