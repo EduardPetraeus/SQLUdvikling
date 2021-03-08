@@ -77,6 +77,7 @@
     <Folder Include="DMSA\Views" />
     <Folder Include="DMSA\Table_Valued_Functions" />
     <Folder Include="DMSA_History" />
+    <Folder Include="Prev" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DMSA.dev.publish.xml" />
@@ -132,6 +133,11 @@
     <Build Include="Utility\Utility\TruncateWithReseed.sql" />
     <Build Include="DMSA\Stored procedures\UpdateHistoryForAllTables.sql" />
     <Build Include="DMSA_History\Dim_Produkt_Delta_Load.sql" />
+    <Build Include="DMSA\Stored procedures\CreateTableSyntaxFromSysTables.sql" />
+    <Build Include="DMSA\Stored procedures\SwitchSchema.sql" />
+    <Build Include="Security\Prev.sql" />
+    <Build Include="Prev\Fact_Ordre.sql" />
+    <Build Include="Prev\Full_Data_Fact_Ordre_Columnstore_Index.sql" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Database salg\Database Salg.sqlproj">
