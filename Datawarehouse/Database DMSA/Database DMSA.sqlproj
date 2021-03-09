@@ -102,7 +102,7 @@
     <Build Include="DMSA\Tables\Dim_Produkt.sql" />
     <Build Include="DMSA\Tables\Dim_Produkt_Delta_Load.sql" />
     <Build Include="DMSA\Tables\Fact_Ordre.sql" />
-    <Build Include="DMSA\Stored procedures\SwitchFact.sql" />
+    <Build Include="DMSA\Stored procedures\SwitchPartition.sql" />
     <Build Include="DMSA\Stored procedures\UpdateFact.sql" />
     <Build Include="Load\Fact_Ordre.sql" />
     <Build Include="DMSA\Stored procedures\UpdateDimensionT2.sql" />
@@ -138,6 +138,8 @@
     <Build Include="Security\Prev.sql" />
     <Build Include="Prev\Fact_Ordre.sql" />
     <Build Include="Prev\Full_Data_Fact_Ordre_Columnstore_Index.sql" />
+    <Build Include="DMSA\Stored procedures\SwitchTable.sql" />
+    <Build Include="DMSA\Tables\Staging_Dim_Produkt.sql" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Database salg\Database Salg.sqlproj">

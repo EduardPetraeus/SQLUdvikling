@@ -1,4 +1,6 @@
-﻿CREATE PROCEDURE [DMSA].[SwitchFact]
+﻿CREATE PROCEDURE [DMSA].[SwitchPartition]
+-- Denne stored procedure kan bruges på alle tabeller, selvom parametre og variabler hedder noget med Fact.
+-- Det kræver dog at tabellerne, som bruges til at stage data og udstille data er fuldstændig ens.
     @FactTableName NVARCHAR (255) = NULL,
     @StagingTableName NVARCHAR(255) = NULL,
     @Database NVARCHAR(50) = NULL,

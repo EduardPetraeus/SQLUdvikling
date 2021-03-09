@@ -1,11 +1,13 @@
-﻿CREATE PROCEDURE [DMSA].[SwitchSchema]
+﻿CREATE PROCEDURE [DMSA].[SwitchTable]
 -- Denne stored procedure kan bruges på alle tabeller, selvom parametre og variabler hedder noget med Fact.
 -- Det kræver dog at tabellerne, som bruges til at stage data og udstille data er fuldstændig ens.
+-- Staging tabellen skal Pre eller Postfixes med Staging eller lign, så den ikke hedder det samme som udstillings tabellen.
     @FactTableName NVARCHAR (255) = NULL,
     @StagingTableName NVARCHAR(255) = NULL,
     @Database NVARCHAR(50) = NULL,
     @ExecutionId BIGINT = -1,
     @PrintOnly BIT = 0
+   --,@Select_SQL NVARCHAR(MAX) OUTPUT
 AS
 BEGIN
     SET NOCOUNT ON
@@ -22,12 +24,18 @@ BEGIN
     IF @StagingTableName IS NULL SET @StagingTableName = N'Fact_' + @FactTableName
 
     DECLARE @FactSchemaName NVARCHAR(255) = N'DMSA'
-    DECLARE @StagingSchemaName NVARCHAR(255) = N'Load'
-    DECLARE @HistorySchemaName NVARCHAR(255) = N'Prev'
+    -- DECLARE @StagingSchemaName NVARCHAR(255) = N'Load'  -- Denne skal ikke bruges ved Table switch, da tabellerne antages at ligge i samme skema. 
+    -- Man kan placere det i forskellige skemaer, men så skal denne procedure tilpasses. længere nede i koden.
+    DECLARE @HistoryPrefix NVARCHAR(255) = N'Prev'
 
-    DECLARE @StagingTableFullName NVARCHAR(500) = QUOTENAME(@StagingSchemaName) + N'.' + QUOTENAME(@StagingTableName)
-    DECLARE @FactTableFullName NVARCHAR(500) =  QUOTENAME(@FactSchemaName) + N'.' + QUOTENAME(@FactTableName);
-    DECLARE @HistoryTableFullName NVARCHAR(500) =  QUOTENAME(@HistorySchemaName) + N'.' + QUOTENAME(@FactTableName);
+    DECLARE @HistoryTableNamePrefix NVARCHAR(500) =  @HistoryPrefix + N'_' + @FactTableName;
+    DECLARE @QuoteFactTableName NVARCHAR(500) =  QUOTENAME(@FactTableName);
+    DECLARE @QuoteStagingTableName NVARCHAR(500) =  QUOTENAME(@StagingTableName);
+    DECLARE @QuoteHistoryTableNamePrefix NVARCHAR(500) =  QUOTENAME(@HistoryPrefix + N'_' + @FactTableName);
+    DECLARE @StagingTableFullName NVARCHAR(500)      = QUOTENAME(@FactSchemaName + N'.' + @StagingTableName)
+    DECLARE @FactTableFullName NVARCHAR(500)         = QUOTENAME(@FactSchemaName + N'.' + @FactTableName);
+    DECLARE @HistoryTableFullNamePrefix NVARCHAR(500) =  QUOTENAME(@FactSchemaName + N'.' + @HistoryTableNamePrefix);
+    
 
 
     -----------------------------------------------------------------------------------------------
@@ -46,9 +54,9 @@ BEGIN
         RAISERROR(N'The DMSA fact table %s does not exists.', 16, 1, @FactTableFullName)
     END
 
-    IF NOT EXISTS(SELECT TOP 1 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = @StagingSchemaName AND TABLE_NAME = @StagingTableName) BEGIN
-        RAISERROR(N'The staging load table %s does not exists.', 16, 1, @StagingTableFullName)
-    END
+    --IF NOT EXISTS(SELECT TOP 1 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = @StagingSchemaName AND TABLE_NAME = @StagingTableName) BEGIN
+    --    RAISERROR(N'The staging load table %s does not exists.', 16, 1, @StagingTableFullName)
+    --END
 
     
     -----------------------------------------------------------------------------------------------
@@ -83,30 +91,20 @@ BEGIN
         DECLARE @TranCounter INT = @@TRANCOUNT;
         DECLARE @SavePoint NVARCHAR(32) = CAST(@@PROCID AS NVARCHAR(20)) + N''_'' + CAST(@@NESTLEVEL AS NVARCHAR(2));
 
-
-
-
         IF @TranCounter > 0
             SAVE TRANSACTION @SavePoint;
         ELSE
             BEGIN TRANSACTION;
-             
-        DECLARE @Table_Select nvarchar(max);
 
-        EXEC [DMSA].[CreateTableSyntaxFromSysTables]
-		@Schema_Name  = <StagingSchemaName>,
-        @Table_Name   = <StagingTableName>,
-		@Create_Table = @Table_Select OUTPUT
+     -- Switch data from production table into production previous table
+     EXECUTE sp_rename <FactTableFullName>, <QuoteHistoryTableNamePrefix>;
 
-        /*** Switch schemas ***/
-     DROP TABLE IF EXISTS <HistoryTableFullName>;
+     -- Switch data from staging-table into production table
+     EXECUTE sp_rename <StagingTableFullName>, <QuoteFactTableName>;
 
-     ALTER SCHEMA [Prev] TRANSFER <FactTableFullName>;
-     
-     ALTER SCHEMA [DMSA] TRANSFER <StagingTableFullName>;
+     -- Switch data from production previous table from into staging-table 
+     EXECUTE sp_rename <HistoryTableFullNamePrefix>, <QuoteStagingTableName>;
 
-     EXEC sys.sp_executesql @Table_Select
-        
         /*** Commit transaction (if started here) ***/
 		IF @TranCounter = 0 BEGIN
 			COMMIT TRANSACTION;
@@ -150,13 +148,18 @@ BEGIN
 
     SET @SQL = REPLACE(@SQL, N'<FactSchemaName>', @FactSchemaName);
 	SET @SQL = REPLACE(@SQL, N'<FactTableName>', @FactTableName);
-    SET @SQL = REPLACE(@SQL, N'<StagingSchemaName>', @StagingSchemaName);
+ --   SET @SQL = REPLACE(@SQL, N'<StagingSchemaName>', @StagingSchemaName);
     SET @SQL = REPLACE(@SQL, N'<StagingTableName>', @StagingTableName);
     SET @SQL = REPLACE(@SQL, N'<StagingTableFullName>', @StagingTableFullName);
     SET @SQL = REPLACE(@SQL, N'<FactTableFullName>', @FactTableFullName);
-    SET @SQL = REPLACE(@SQL, N'<HistoryTableFullName>', @HistoryTableFullName);
+    SET @SQL = REPLACE(@SQL, N'<HistoryTableFullNamePrefix>', @HistoryTableFullNamePrefix);
+    SET @SQL = REPLACE(@SQL, N'<QuoteHistoryTableNamePrefix>', @QuoteHistoryTableNamePrefix);
+    SET @SQL = REPLACE(@SQL, N'<QuoteStagingTableName>', @QuoteStagingTableName);
+    SET @SQL = REPLACE(@SQL, N'<QuoteFactTableName>', @QuoteFactTableName);
     SET @SQL = REPLACE(@SQL, N'<Database>', @Database);
 
+
+    -- SET @Select_SQL  = @SQL
 
     -----------------------------------------------------------------------------------------------
     -- Execute or print SQL statement

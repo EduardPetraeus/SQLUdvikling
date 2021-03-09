@@ -11,8 +11,8 @@
   DTS:LocaleID="1030"
   DTS:ObjectName="DMSA Fact_Ordre Full Load Columstore"
   DTS:PackageType="5"
-  DTS:VersionBuild="66"
-  DTS:VersionGUID="{D53941C7-6852-4C31-9295-0D153A82D89B}">
+  DTS:VersionBuild="69"
+  DTS:VersionGUID="{AB8A91BB-6C2F-4B98-B115-B8E6835EC030}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -420,7 +420,7 @@
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT
        [Bkey_Kunde]
       ,[Order_Id]
       ,[Eval_Set]
@@ -790,13 +790,13 @@
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
-          DTS:refId="Package\DMSA Fact_Ordre\SQL DMSA SwitchFact"
+          DTS:refId="Package\DMSA Fact_Ordre\SQL DMSA SwitchPartition"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
           DTS:DTSID="{2AFA0019-C346-47CB-A945-298BD5BFA9BF}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
-          DTS:ObjectName="SQL DMSA SwitchFact"
+          DTS:ObjectName="SQL DMSA SwitchPartition"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
           DTS:ThreadHint="0">
           <DTS:Variables />
@@ -804,7 +804,7 @@
             <SQLTask:SqlTaskData
               SQLTask:Connection="{E5E14666-AF2C-4CA1-B276-7003A891D597}"
               SQLTask:IsStoredProc="True"
-              SQLTask:SqlStatementSource="[DMSA].[SwitchFact]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              SQLTask:SqlStatementSource="[DMSA].[SwitchPartition]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
                 SQLTask:ParameterName="FactTableName"
                 SQLTask:DtsVariableName="User::TableName"
@@ -984,7 +984,7 @@
           DTS:From="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 2"
-          DTS:To="Package\DMSA Fact_Ordre\SQL DMSA SwitchFact" />
+          DTS:To="Package\DMSA Fact_Ordre\SQL DMSA SwitchPartition" />
         <DTS:PrecedenceConstraint
           DTS:refId="Package\DMSA Fact_Ordre.PrecedenceConstraints[Constraint 3]"
           DTS:CreationName=""
@@ -1005,7 +1005,7 @@
           DTS:refId="Package\DMSA Fact_Ordre.PrecedenceConstraints[Constraint 5]"
           DTS:CreationName=""
           DTS:DTSID="{55F6A2B9-A8D7-417E-A153-7B508D8ACFEE}"
-          DTS:From="Package\DMSA Fact_Ordre\SQL DMSA SwitchFact"
+          DTS:From="Package\DMSA Fact_Ordre\SQL DMSA SwitchPartition"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 5"
           DTS:To="Package\DMSA Fact_Ordre\SQL DMSAEnd Succeeded" />
@@ -1013,7 +1013,7 @@
           DTS:refId="Package\DMSA Fact_Ordre.PrecedenceConstraints[Constraint 6]"
           DTS:CreationName=""
           DTS:DTSID="{834D4D02-1915-4606-AD5D-53D699F14775}"
-          DTS:From="Package\DMSA Fact_Ordre\SQL DMSA SwitchFact"
+          DTS:From="Package\DMSA Fact_Ordre\SQL DMSA SwitchPartition"
           DTS:ObjectName="Constraint 6"
           DTS:To="Package\DMSA Fact_Ordre\SQL DMSAEnd Failed"
           DTS:Value="1" />
@@ -1028,7 +1028,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="SQL ExecutionEnd Failed"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -1052,7 +1052,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="SQL ExecutionEnd Succeeded"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -1235,7 +1235,7 @@
           TopLeft="159,209.5" />
         <NodeLayout
           Size="216,42"
-          Id="Package\DMSA Fact_Ordre\SQL DMSA SwitchFact"
+          Id="Package\DMSA Fact_Ordre\SQL DMSA SwitchPartition"
           TopLeft="38.5,311.5" />
         <NodeLayout
           Size="191,42"
