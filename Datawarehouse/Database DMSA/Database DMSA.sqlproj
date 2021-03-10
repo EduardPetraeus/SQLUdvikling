@@ -90,7 +90,7 @@
     <Build Include="Utility\Utility\usp_CursorCountRows.sql" />
     <Build Include="Utility\Utility\usp_DeleteNullRecord.sql" />
     <Build Include="Utility\Utility\usp_InsertNullRecord.sql" />
-    <Build Include="Utility\Utility\usp_PrintLargeValues.sql" />
+    <Build Include="Utility\Utility\usp_PrintLargeString.sql" />
     <Build Include="Security\Ordre.sql" />
     <Build Include="Ordre\v_Ordre.sql" />
     <Build Include="Ordre\v_Kunde.sql" />
