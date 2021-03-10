@@ -151,4 +151,4 @@ SELECT @SQL = 'CREATE TABLE ' + @object_name + CHAR(13) + '(' + CHAR(13) + STUFF
 
    SET @Create_Table  = @SQL
 
--- SELECT @tableInto
+-- SELECT @Create_Table

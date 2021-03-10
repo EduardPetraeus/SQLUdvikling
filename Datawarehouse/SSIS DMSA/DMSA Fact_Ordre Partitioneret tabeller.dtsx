@@ -11,11 +11,20 @@
   DTS:LocaleID="1030"
   DTS:ObjectName="DMSA Fact_Ordre Partitioneret tabeller"
   DTS:PackageType="5"
-  DTS:VersionBuild="131"
-  DTS:VersionGUID="{434E2A0F-3F3F-43F3-8E39-B544568EBBCC}">
+  DTS:VersionBuild="136"
+  DTS:VersionGUID="{30276C77-CED2-4ED9-8D17-89888F627A78}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{6743C5FC-37A9-4485-A08A-076614D9B516}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="CounterNumber">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
       DTS:DTSID="{1EEC4A36-6126-4C92-A7AB-1FCE9FF7FADF}"
@@ -119,7 +128,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Hent Styringsværdier ud"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="4">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -167,7 +176,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Indsæt styringsværdier i tabel"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="4">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -216,6 +225,7 @@
       DTS:refId="Package\DMSA Fact_Ordre"
       DTS:CreationName="STOCK:SEQUENCE"
       DTS:Description="Sequence Container"
+      DTS:Disabled="True"
       DTS:DTSID="{B79F702B-C3FE-4C0C-82BA-6CD9239FB335}"
       DTS:ExecutableType="STOCK:SEQUENCE"
       DTS:LocaleID="-1"
@@ -231,7 +241,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Hent Styringsværdier ud baseret på kørsler"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="3">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -256,7 +266,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="Hent Styringsværdier ud baseret på tid"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="2">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -676,7 +686,7 @@
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT  
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT  TOP 1000
        [Bkey_Kunde]
       ,[Order_Id]
       ,[Eval_Set]
@@ -1090,13 +1100,13 @@ WHERE [Årstal] = ?</property>
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
-          DTS:refId="Package\DMSA Fact_Ordre\SQL DMSA SwitchFact"
+          DTS:refId="Package\DMSA Fact_Ordre\SQL DMSA SwitchPartition"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
           DTS:DTSID="{5BAF219C-A08C-4121-B91C-A763F48F0399}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
-          DTS:ObjectName="SQL DMSA SwitchFact"
+          DTS:ObjectName="SQL DMSA SwitchPartition"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
           DTS:ThreadHint="0">
           <DTS:Variables />
@@ -1104,7 +1114,7 @@ WHERE [Årstal] = ?</property>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{E5E14666-AF2C-4CA1-B276-7003A891D597}"
               SQLTask:IsStoredProc="True"
-              SQLTask:SqlStatementSource="[DMSA].[SwitchFact]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              SQLTask:SqlStatementSource="[DMSA].[SwitchPartition]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
                 SQLTask:ParameterName="FactTableName"
                 SQLTask:DtsVariableName="User::TableName"
@@ -1141,7 +1151,7 @@ WHERE [Årstal] = ?</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL DMSAEnd Failed"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="2">
+          DTS:ThreadHint="3">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -1309,7 +1319,7 @@ WHERE [Årstal] = ?</property>
           DTS:From="Package\DMSA Fact_Ordre\Load Fact_Ordre partitioneret"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 2"
-          DTS:To="Package\DMSA Fact_Ordre\SQL DMSA SwitchFact" />
+          DTS:To="Package\DMSA Fact_Ordre\SQL DMSA SwitchPartition" />
         <DTS:PrecedenceConstraint
           DTS:refId="Package\DMSA Fact_Ordre.PrecedenceConstraints[Constraint 3]"
           DTS:CreationName=""
@@ -1330,7 +1340,7 @@ WHERE [Årstal] = ?</property>
           DTS:refId="Package\DMSA Fact_Ordre.PrecedenceConstraints[Constraint 5]"
           DTS:CreationName=""
           DTS:DTSID="{77B1828C-15E6-4F15-86C9-ECF34898DAD4}"
-          DTS:From="Package\DMSA Fact_Ordre\SQL DMSA SwitchFact"
+          DTS:From="Package\DMSA Fact_Ordre\SQL DMSA SwitchPartition"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 5"
           DTS:To="Package\DMSA Fact_Ordre\Opdater styringsværdier i tabel" />
@@ -1338,7 +1348,7 @@ WHERE [Årstal] = ?</property>
           DTS:refId="Package\DMSA Fact_Ordre.PrecedenceConstraints[Constraint 6]"
           DTS:CreationName=""
           DTS:DTSID="{DB8832A4-378F-47BB-975D-07FD879F486A}"
-          DTS:From="Package\DMSA Fact_Ordre\SQL DMSA SwitchFact"
+          DTS:From="Package\DMSA Fact_Ordre\SQL DMSA SwitchPartition"
           DTS:ObjectName="Constraint 6"
           DTS:To="Package\DMSA Fact_Ordre\SQL DMSAEnd Failed"
           DTS:Value="1" />
@@ -1369,13 +1379,1198 @@ WHERE [Årstal] = ?</property>
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
     <DTS:Executable
+      DTS:refId="Package\For Loop Container"
+      DTS:AssignExpression="@CounterNumber = @CounterNumber +1"
+      DTS:CreationName="STOCK:FORLOOP"
+      DTS:Description="For Loop Container"
+      DTS:DTSID="{0E114726-72CE-4BF3-9D40-E5436D17D23B}"
+      DTS:EvalExpression="@CounterNumber &lt;= 1"
+      DTS:ExecutableType="STOCK:FORLOOP"
+      DTS:InitExpression="@CounterNumber = 0"
+      DTS:LocaleID="-1"
+      DTS:MaxConcurrent="1"
+      DTS:ObjectName="For Loop Container">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\For Loop Container\Hent Styringsværdier ud baseret på kørsler"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{e36046a0-f416-4995-873a-7e9f5bacbcb3}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Hent Styringsværdier ud baseret på kørsler"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="2">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{66A8BC93-6A3C-483F-B5F0-5EE80B09578F}"
+              SQLTask:SqlStatementSource="SELECT TOP(1)  ? = [Id]&#xA;  FROM [DZDB].[Meta].[VariblesForSSIS]&#xA;  ORDER BY [Ajour_Antal], [Id] " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::Styringsværdi"
+                SQLTask:ParameterDirection="Output"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\For Loop Container\Hent Styringsværdier ud baseret på tid"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:Disabled="True"
+          DTS:DTSID="{726cc479-37a1-4330-a2f3-3b0722b393c0}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Hent Styringsværdier ud baseret på tid"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{66A8BC93-6A3C-483F-B5F0-5EE80B09578F}"
+              SQLTask:SqlStatementSource="SELECT TOP (1) ? = [Id]&#xA;  FROM [DZDB].[Meta].[VariblesForSSIS]&#xA;    WHERE (&#xA;  SELECT DATEPART(WEEKDAY, GETDATE())&#xA;  ) &#xA;  BETWEEN [Valid_From_Day]&#xA;  AND     [Valid_To_Day]&#xA;   ORDER BY [Ajour_Antal], [Id] " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::Styringsværdi"
+                SQLTask:ParameterDirection="Output"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\For Loop Container\Hent tabel information ud"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{d0a189cf-a66f-4184-b8a0-5f8ce3c4cd57}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Hent tabel information ud"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{66A8BC93-6A3C-483F-B5F0-5EE80B09578F}"
+              SQLTask:SqlStatementSource="SELECT TOP 1 ? = [SchemaTableName], ? = [TableName], ? = [TruncateTable], ? = [Year]&#xA;&#xA;  FROM [DZDB].[Meta].[VariblesForSSIS]&#xA;WHERE Id = ?&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::SchemaTableName"
+                SQLTask:ParameterDirection="Output"
+                SQLTask:DataType="130"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="User::TableName"
+                SQLTask:ParameterDirection="Output"
+                SQLTask:DataType="130"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="2"
+                SQLTask:DtsVariableName="User::TruncateTable"
+                SQLTask:ParameterDirection="Output"
+                SQLTask:DataType="130"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="3"
+                SQLTask:DtsVariableName="User::Year"
+                SQLTask:ParameterDirection="Output"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="4"
+                SQLTask:DtsVariableName="User::Styringsværdi"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\For Loop Container\Load Fact_Ordre partitioneret"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{83d46b33-9453-4260-8335-53d4f019bd2a}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Load Fact_Ordre partitioneret"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\For Loop Container\Load Fact_Ordre partitioneret\Derived Column"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="Derived Column"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\For Loop Container\Load Fact_Ordre partitioneret\Derived Column.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\For Loop Container\Load Fact_Ordre partitioneret\Derived Column.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\For Loop Container\Load Fact_Ordre partitioneret\Derived Column.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\For Loop Container\Load Fact_Ordre partitioneret\Derived Column.Outputs[Derived Column Output].Columns[Meta_CreateJob]"
+                          dataType="i8"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\For Loop Container\Load Fact_Ordre partitioneret\Derived Column.Outputs[Derived Column Output].Columns[Meta_CreateJob]"
+                          name="Meta_CreateJob"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">@[User::DMSAId]</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">@[User::DMSAId]</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\For Loop Container\Load Fact_Ordre partitioneret\Derived Column.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\For Loop Container\Load Fact_Ordre partitioneret\Derived Column.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\For Loop Container\Load Fact_Ordre partitioneret\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\For Loop Container\Load Fact_Ordre partitioneret\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Load Fact_Ordre partitioneret\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\For Loop Container\Load Fact_Ordre partitioneret\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Destination"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLE DB Destination"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[Load].[Fact_Ordre_2020]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable">User::SchemaTableName</property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">4</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Destination.Connections[OleDbConnection]"
+                      connectionManagerID="{F5C1CDE6-F86D-47FA-8AA6-4A8DB6466950}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[OLEDB DMSA]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Meta_CreateJob]"
+                          cachedDataType="i8"
+                          cachedName="Meta_CreateJob"
+                          externalMetadataColumnId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Meta_CreateJob]"
+                          lineageId="Package\For Loop Container\Load Fact_Ordre partitioneret\Derived Column.Outputs[Derived Column Output].Columns[Meta_CreateJob]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Order_Id]"
+                          cachedDataType="i4"
+                          cachedName="Order_Id"
+                          externalMetadataColumnId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Order_Id]"
+                          lineageId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].Columns[Order_Id]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Eval_Set]"
+                          cachedDataType="wstr"
+                          cachedLength="20"
+                          cachedName="Eval_Set"
+                          externalMetadataColumnId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Eval_Set]"
+                          lineageId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].Columns[Eval_Set]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Order_Number]"
+                          cachedDataType="i2"
+                          cachedName="Order_Number"
+                          externalMetadataColumnId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Order_Number]"
+                          lineageId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].Columns[Order_Number]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Order_Dow]"
+                          cachedDataType="i2"
+                          cachedName="Order_Dow"
+                          externalMetadataColumnId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Order_Dow]"
+                          lineageId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].Columns[Order_Dow]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Order_Hour_Of_Day]"
+                          cachedDataType="i2"
+                          cachedName="Order_Hour_Of_Day"
+                          externalMetadataColumnId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Order_Hour_Of_Day]"
+                          lineageId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].Columns[Order_Hour_Of_Day]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Days_Since_Prior_Order]"
+                          cachedDataType="numeric"
+                          cachedName="Days_Since_Prior_Order"
+                          cachedPrecision="6"
+                          cachedScale="1"
+                          externalMetadataColumnId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Days_Since_Prior_Order]"
+                          lineageId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].Columns[Days_Since_Prior_Order]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Add_To_Cart_Order]"
+                          cachedDataType="i2"
+                          cachedName="Add_To_Cart_Order"
+                          externalMetadataColumnId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Add_To_Cart_Order]"
+                          lineageId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].Columns[Add_To_Cart_Order]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Reordered]"
+                          cachedDataType="i2"
+                          cachedName="Reordered"
+                          externalMetadataColumnId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Reordered]"
+                          lineageId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].Columns[Reordered]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Initial_Load_Time]"
+                          cachedDataType="dbTimeStamp2"
+                          cachedName="Initial_Load_Time"
+                          cachedScale="7"
+                          externalMetadataColumnId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Initial_Load_Time]"
+                          lineageId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].Columns[Initial_Load_Time]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Årstal]"
+                          cachedDataType="i4"
+                          cachedName="Årstal"
+                          externalMetadataColumnId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Year]"
+                          lineageId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].Columns[Årstal]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Bkey_Kunde]"
+                          cachedDataType="i4"
+                          cachedName="Bkey_Kunde"
+                          externalMetadataColumnId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Bkey_Kunde]"
+                          lineageId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].Columns[Bkey_Kunde]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Bkey_Produkt]"
+                          cachedDataType="i4"
+                          cachedName="Bkey_Produkt"
+                          externalMetadataColumnId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Bkey_Produkt]"
+                          lineageId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].Columns[Bkey_Produkt]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Meta_CreateTime]"
+                          dataType="dbTimeStamp"
+                          name="Meta_CreateTime" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Meta_CreateJob]"
+                          dataType="i8"
+                          name="Meta_CreateJob" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Order_Id]"
+                          dataType="i4"
+                          name="Order_Id" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Eval_Set]"
+                          dataType="wstr"
+                          length="20"
+                          name="Eval_Set" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Order_Number]"
+                          dataType="i2"
+                          name="Order_Number" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Order_Dow]"
+                          dataType="i2"
+                          name="Order_Dow" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Order_Hour_Of_Day]"
+                          dataType="i2"
+                          name="Order_Hour_Of_Day" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Days_Since_Prior_Order]"
+                          dataType="numeric"
+                          name="Days_Since_Prior_Order"
+                          precision="6"
+                          scale="1" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Add_To_Cart_Order]"
+                          dataType="i2"
+                          name="Add_To_Cart_Order" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Reordered]"
+                          dataType="i2"
+                          name="Reordered" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Initial_Load_Time]"
+                          dataType="dbTimeStamp2"
+                          name="Initial_Load_Time"
+                          scale="7" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Bkey_Kunde]"
+                          dataType="i4"
+                          name="Bkey_Kunde" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Bkey_Produkt]"
+                          dataType="i4"
+                          name="Bkey_Produkt" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Year]"
+                          dataType="i2"
+                          name="Year" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="OLE DB Source"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[Staging].[Fact_Ordre]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT  TOP 1000
+       [Bkey_Kunde]
+      ,[Order_Id]
+      ,[Eval_Set]
+      ,[Order_Number]
+      ,[Årstal]
+      ,[Order_Dow]
+      ,[Order_Hour_Of_Day]
+      ,[Days_Since_Prior_Order]
+      ,[Bkey_Produkt]
+      ,[Add_To_Cart_Order]
+      ,[Reordered]
+      ,[Initial_Load_Time]
+  FROM [DMSA].[Staging].[v_Fact_Ordre]
+WHERE [Årstal] = ?</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping">"Parameter0:Input",{69B998DF-8884-4108-90E4-9BAF4A903E1D};</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Connections[OleDbConnection]"
+                      connectionManagerID="{F5C1CDE6-F86D-47FA-8AA6-4A8DB6466950}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[OLEDB DMSA]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].Columns[Order_Id]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Order_Id]"
+                          lineageId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].Columns[Order_Id]"
+                          name="Order_Id"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].Columns[Eval_Set]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Eval_Set]"
+                          length="20"
+                          lineageId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].Columns[Eval_Set]"
+                          name="Eval_Set"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].Columns[Order_Number]"
+                          dataType="i2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Order_Number]"
+                          lineageId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].Columns[Order_Number]"
+                          name="Order_Number"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].Columns[Order_Dow]"
+                          dataType="i2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Order_Dow]"
+                          lineageId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].Columns[Order_Dow]"
+                          name="Order_Dow"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].Columns[Order_Hour_Of_Day]"
+                          dataType="i2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Order_Hour_Of_Day]"
+                          lineageId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].Columns[Order_Hour_Of_Day]"
+                          name="Order_Hour_Of_Day"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].Columns[Days_Since_Prior_Order]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Days_Since_Prior_Order]"
+                          lineageId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].Columns[Days_Since_Prior_Order]"
+                          name="Days_Since_Prior_Order"
+                          precision="6"
+                          scale="1"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].Columns[Add_To_Cart_Order]"
+                          dataType="i2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Add_To_Cart_Order]"
+                          lineageId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].Columns[Add_To_Cart_Order]"
+                          name="Add_To_Cart_Order"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].Columns[Reordered]"
+                          dataType="i2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Reordered]"
+                          lineageId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].Columns[Reordered]"
+                          name="Reordered"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].Columns[Initial_Load_Time]"
+                          dataType="dbTimeStamp2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Initial_Load_Time]"
+                          lineageId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].Columns[Initial_Load_Time]"
+                          name="Initial_Load_Time"
+                          scale="7"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].Columns[Årstal]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Årstal]"
+                          lineageId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].Columns[Årstal]"
+                          name="Årstal"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].Columns[Bkey_Kunde]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Bkey_Kunde]"
+                          lineageId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].Columns[Bkey_Kunde]"
+                          name="Bkey_Kunde"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].Columns[Bkey_Produkt]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Bkey_Produkt]"
+                          lineageId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].Columns[Bkey_Produkt]"
+                          name="Bkey_Produkt"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Order_Id]"
+                          dataType="i4"
+                          name="Order_Id" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Eval_Set]"
+                          dataType="wstr"
+                          length="20"
+                          name="Eval_Set" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Order_Number]"
+                          dataType="i2"
+                          name="Order_Number" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Order_Dow]"
+                          dataType="i2"
+                          name="Order_Dow" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Order_Hour_Of_Day]"
+                          dataType="i2"
+                          name="Order_Hour_Of_Day" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Days_Since_Prior_Order]"
+                          dataType="numeric"
+                          name="Days_Since_Prior_Order"
+                          precision="6"
+                          scale="1" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Add_To_Cart_Order]"
+                          dataType="i2"
+                          name="Add_To_Cart_Order" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Reordered]"
+                          dataType="i2"
+                          name="Reordered" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Initial_Load_Time]"
+                          dataType="dbTimeStamp2"
+                          name="Initial_Load_Time"
+                          scale="7" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Årstal]"
+                          dataType="i4"
+                          name="Årstal" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Bkey_Kunde]"
+                          dataType="i4"
+                          name="Bkey_Kunde" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Bkey_Produkt]"
+                          dataType="i4"
+                          name="Bkey_Produkt" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Bkey_Kunde]"
+                          dataType="i4"
+                          lineageId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Bkey_Kunde]"
+                          name="Bkey_Kunde" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Order_Id]"
+                          dataType="i4"
+                          lineageId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Order_Id]"
+                          name="Order_Id" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Eval_Set]"
+                          dataType="wstr"
+                          length="20"
+                          lineageId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Eval_Set]"
+                          name="Eval_Set" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Order_Number]"
+                          dataType="i2"
+                          lineageId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Order_Number]"
+                          name="Order_Number" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Årstal]"
+                          dataType="i4"
+                          lineageId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Årstal]"
+                          name="Årstal" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Order_Dow]"
+                          dataType="i2"
+                          lineageId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Order_Dow]"
+                          name="Order_Dow" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Order_Hour_Of_Day]"
+                          dataType="i2"
+                          lineageId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Order_Hour_Of_Day]"
+                          name="Order_Hour_Of_Day" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Days_Since_Prior_Order]"
+                          dataType="numeric"
+                          lineageId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Days_Since_Prior_Order]"
+                          name="Days_Since_Prior_Order"
+                          precision="6"
+                          scale="1" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Bkey_Produkt]"
+                          dataType="i4"
+                          lineageId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Bkey_Produkt]"
+                          name="Bkey_Produkt" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Add_To_Cart_Order]"
+                          dataType="i2"
+                          lineageId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Add_To_Cart_Order]"
+                          name="Add_To_Cart_Order" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Reordered]"
+                          dataType="i2"
+                          lineageId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Reordered]"
+                          name="Reordered" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Initial_Load_Time]"
+                          dataType="dbTimeStamp2"
+                          lineageId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Initial_Load_Time]"
+                          name="Initial_Load_Time"
+                          scale="7" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\For Loop Container\Load Fact_Ordre partitioneret\RC Inserted"
+                  componentClassID="Microsoft.RowCount"
+                  contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+                  name="RC Inserted">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable to hold the row count."
+                      name="VariableName">User::RecordsInserted</property>
+                  </properties>
+                  <inputs>
+                    <input
+                      refId="Package\For Loop Container\Load Fact_Ordre partitioneret\RC Inserted.Inputs[Row Count Input 1]"
+                      hasSideEffects="true"
+                      name="Row Count Input 1">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\For Loop Container\Load Fact_Ordre partitioneret\RC Inserted.Outputs[Row Count Output 1]"
+                      name="Row Count Output 1"
+                      synchronousInputId="Package\For Loop Container\Load Fact_Ordre partitioneret\RC Inserted.Inputs[Row Count Input 1]">
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\For Loop Container\Load Fact_Ordre partitioneret\RC Selected"
+                  componentClassID="Microsoft.RowCount"
+                  contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+                  name="RC Selected">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable to hold the row count."
+                      name="VariableName">User::RecordsSelected</property>
+                  </properties>
+                  <inputs>
+                    <input
+                      refId="Package\For Loop Container\Load Fact_Ordre partitioneret\RC Selected.Inputs[Row Count Input 1]"
+                      hasSideEffects="true"
+                      name="Row Count Input 1">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\For Loop Container\Load Fact_Ordre partitioneret\RC Selected.Outputs[Row Count Output 1]"
+                      name="Row Count Output 1"
+                      synchronousInputId="Package\For Loop Container\Load Fact_Ordre partitioneret\RC Selected.Inputs[Row Count Input 1]">
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\For Loop Container\Load Fact_Ordre partitioneret.Paths[Derived Column Output]"
+                  endId="Package\For Loop Container\Load Fact_Ordre partitioneret\RC Inserted.Inputs[Row Count Input 1]"
+                  name="Derived Column Output"
+                  startId="Package\For Loop Container\Load Fact_Ordre partitioneret\Derived Column.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\For Loop Container\Load Fact_Ordre partitioneret.Paths[OLE DB Source Output]"
+                  endId="Package\For Loop Container\Load Fact_Ordre partitioneret\RC Selected.Inputs[Row Count Input 1]"
+                  name="OLE DB Source Output"
+                  startId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source.Outputs[OLE DB Source Output]" />
+                <path
+                  refId="Package\For Loop Container\Load Fact_Ordre partitioneret.Paths[Row Count Output 1]"
+                  endId="Package\For Loop Container\Load Fact_Ordre partitioneret\Derived Column.Inputs[Derived Column Input]"
+                  name="Row Count Output 1"
+                  startId="Package\For Loop Container\Load Fact_Ordre partitioneret\RC Selected.Outputs[Row Count Output 1]" />
+                <path
+                  refId="Package\For Loop Container\Load Fact_Ordre partitioneret.Paths[Row Count Output 11]"
+                  endId="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  name="Row Count Output 1"
+                  startId="Package\For Loop Container\Load Fact_Ordre partitioneret\RC Inserted.Outputs[Row Count Output 1]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\For Loop Container\Opdater styringsværdier i tabel"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{8ea94c7d-6668-4ad0-96fc-2724735247cc}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Opdater styringsværdier i tabel"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{66A8BC93-6A3C-483F-B5F0-5EE80B09578F}"
+              SQLTask:SqlStatementSource=" UPDATE [DZDB].[Meta].[VariblesForSSIS]&#xA;  SET [Ajour_Antal] = [Ajour_Antal] + 1&#xA;  WHERE Id = ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="@Id"
+                SQLTask:DtsVariableName="User::Styringsværdi"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\For Loop Container\SQL DMSA SwitchPartition"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{a08ba722-f50b-4953-8507-874a61dfc7d5}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL DMSA SwitchPartition"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{E5E14666-AF2C-4CA1-B276-7003A891D597}"
+              SQLTask:IsStoredProc="True"
+              SQLTask:SqlStatementSource="[DMSA].[SwitchPartition]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="FactTableName"
+                SQLTask:DtsVariableName="User::TableName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="16"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="StagingTableName"
+                SQLTask:DtsVariableName="User::TableName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="16"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="Database"
+                SQLTask:DtsVariableName="$Project::Database"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="16"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="ExecutionId"
+                SQLTask:DtsVariableName="User::ExecutionId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="12"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\For Loop Container\SQL DMSAEnd Failed"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{526cc89b-4a2c-4086-87db-66eca9916e42}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL DMSAEnd Failed"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="2">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{0F0C7406-5396-43EE-BD83-FE1D8F5C75FD}"
+              SQLTask:SqlStatementSource="EXEC Audit.DMSAEnd @DMSAId, 'Failed'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="DMSAId"
+                SQLTask:DtsVariableName="User::DMSAId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="12"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\For Loop Container\SQL DMSAEnd Succeeded"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{68740b29-9239-48a0-86ea-0d6aad75423c}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL DMSAEnd Succeeded"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{0F0C7406-5396-43EE-BD83-FE1D8F5C75FD}"
+              SQLTask:IsStoredProc="True"
+              SQLTask:SqlStatementSource="Audit.DMSAEnd" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="DMSAId"
+                SQLTask:DtsVariableName="User::DMSAId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="12"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="RecordsSelected"
+                SQLTask:DtsVariableName="User::RecordsSelected"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="12"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="RecordsInserted"
+                SQLTask:DtsVariableName="User::RecordsInserted"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="12"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\For Loop Container\SQL DMSAStart"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{05ccb4cd-33cd-4991-b2a1-a586ea8c5306}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL DMSAStart"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{0F0C7406-5396-43EE-BD83-FE1D8F5C75FD}"
+              SQLTask:IsStoredProc="True"
+              SQLTask:SqlStatementSource="Audit.DMSAStart" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="ExecutionId"
+                SQLTask:DtsVariableName="User::ExecutionId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="12"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="DMSAId"
+                SQLTask:DtsVariableName="User::DMSAId"
+                SQLTask:ParameterDirection="Output"
+                SQLTask:DataType="12"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="TableName"
+                SQLTask:DtsVariableName="User::TableName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="16"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="Database"
+                SQLTask:DtsVariableName="$Project::Database"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="16"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="Schema"
+                SQLTask:DtsVariableName="$Project::Schema"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="16"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\For Loop Container\Truncate table Load Fact_Ordre"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{892a15a4-db1b-465a-b150-d0cfd890a179}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Truncate table Load Fact_Ordre"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{F5C1CDE6-F86D-47FA-8AA6-4A8DB6466950}"
+              SQLTask:SqlStmtSourceType="Variable"
+              SQLTask:SqlStatementSource="User::TruncateTable" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\For Loop Container.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{8984b06a-1a27-4dcc-8743-6e82474ab9ef}"
+          DTS:From="Package\For Loop Container\Truncate table Load Fact_Ordre"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\For Loop Container\Load Fact_Ordre partitioneret" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\For Loop Container.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{7a4f47b6-455d-4e8d-8cff-99b5a66308a4}"
+          DTS:From="Package\For Loop Container\SQL DMSAStart"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\For Loop Container\Truncate table Load Fact_Ordre" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\For Loop Container.PrecedenceConstraints[Constraint 11]"
+          DTS:CreationName=""
+          DTS:DTSID="{f1471802-8d4c-40c9-9301-4050191c518f}"
+          DTS:From="Package\For Loop Container\Opdater styringsværdier i tabel"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 11"
+          DTS:To="Package\For Loop Container\SQL DMSAEnd Succeeded" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\For Loop Container.PrecedenceConstraints[Constraint 12]"
+          DTS:CreationName=""
+          DTS:DTSID="{99dba482-a2e2-4507-9999-a047030f6a2c}"
+          DTS:From="Package\For Loop Container\Opdater styringsværdier i tabel"
+          DTS:ObjectName="Constraint 12"
+          DTS:To="Package\For Loop Container\SQL DMSAEnd Failed"
+          DTS:Value="1" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\For Loop Container.PrecedenceConstraints[Constraint 13]"
+          DTS:CreationName=""
+          DTS:DTSID="{712f0db2-2b8d-4cbd-b697-813e018cc19b}"
+          DTS:From="Package\For Loop Container\Hent Styringsværdier ud baseret på tid"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 13"
+          DTS:To="Package\For Loop Container\Hent tabel information ud" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\For Loop Container.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{5e90e425-9315-46e5-95f8-7f7ceee9c849}"
+          DTS:From="Package\For Loop Container\Load Fact_Ordre partitioneret"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\For Loop Container\SQL DMSA SwitchPartition" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\For Loop Container.PrecedenceConstraints[Constraint 3]"
+          DTS:CreationName=""
+          DTS:DTSID="{60b0c928-03bb-46b2-8ef5-8becbd06c4d2}"
+          DTS:From="Package\For Loop Container\Load Fact_Ordre partitioneret"
+          DTS:ObjectName="Constraint 3"
+          DTS:To="Package\For Loop Container\SQL DMSAEnd Failed"
+          DTS:Value="1" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\For Loop Container.PrecedenceConstraints[Constraint 4]"
+          DTS:CreationName=""
+          DTS:DTSID="{e2bc5c6d-72ee-451e-94de-7cb61841d3ad}"
+          DTS:From="Package\For Loop Container\Truncate table Load Fact_Ordre"
+          DTS:ObjectName="Constraint 4"
+          DTS:To="Package\For Loop Container\SQL DMSAEnd Failed"
+          DTS:Value="1" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\For Loop Container.PrecedenceConstraints[Constraint 5]"
+          DTS:CreationName=""
+          DTS:DTSID="{ee8af305-30ae-4c15-ac7e-642a16858ce5}"
+          DTS:From="Package\For Loop Container\SQL DMSA SwitchPartition"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 5"
+          DTS:To="Package\For Loop Container\Opdater styringsværdier i tabel" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\For Loop Container.PrecedenceConstraints[Constraint 6]"
+          DTS:CreationName=""
+          DTS:DTSID="{ef1fa7b3-6b8a-4182-92de-f1620d15476a}"
+          DTS:From="Package\For Loop Container\SQL DMSA SwitchPartition"
+          DTS:ObjectName="Constraint 6"
+          DTS:To="Package\For Loop Container\SQL DMSAEnd Failed"
+          DTS:Value="1" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\For Loop Container.PrecedenceConstraints[Constraint 7]"
+          DTS:CreationName=""
+          DTS:DTSID="{c9b6cd90-b581-4be1-b837-5c99f8a43c17}"
+          DTS:From="Package\For Loop Container\Hent tabel information ud"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 7"
+          DTS:To="Package\For Loop Container\SQL DMSAStart" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\For Loop Container.PrecedenceConstraints[Constraint 8]"
+          DTS:CreationName=""
+          DTS:DTSID="{de675ad3-4eb0-4574-a734-7f5172ffc85a}"
+          DTS:From="Package\For Loop Container\Hent tabel information ud"
+          DTS:ObjectName="Constraint 8"
+          DTS:To="Package\For Loop Container\SQL DMSAEnd Failed"
+          DTS:Value="1" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\For Loop Container.PrecedenceConstraints[Constraint 9]"
+          DTS:CreationName=""
+          DTS:DTSID="{a5fa0d86-afb9-427c-aa1e-7c32199b0796}"
+          DTS:From="Package\For Loop Container\Hent Styringsværdier ud baseret på kørsler"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 9"
+          DTS:To="Package\For Loop Container\Hent tabel information ud" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
       DTS:refId="Package\SQL ExecutionEnd Failed"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
+      DTS:Disabled="True"
       DTS:DTSID="{A778C5F0-1AAC-436D-888C-1EF6C402D7BD}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="SQL ExecutionEnd Failed"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="3">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{0F0C7406-5396-43EE-BD83-FE1D8F5C75FD}"
+          SQLTask:SqlStatementSource="EXEC Audit.ExecutionEnd @Id, 'Failed'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="Id"
+            SQLTask:DtsVariableName="User::ExecutionId"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="12"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL ExecutionEnd Failed 1"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{cb002997-deea-4c7f-90d0-bc79d5ee41b7}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL ExecutionEnd Failed 1"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
       DTS:ThreadHint="2">
       <DTS:Variables />
@@ -1396,6 +2591,7 @@ WHERE [Årstal] = ?</property>
       DTS:refId="Package\SQL ExecutionEnd Succeeded"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
+      DTS:Disabled="True"
       DTS:DTSID="{AE9BC24D-189A-49CE-8BE7-DDBD45D078A8}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
@@ -1418,15 +2614,90 @@ WHERE [Årstal] = ?</property>
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
+      DTS:refId="Package\SQL ExecutionEnd Succeeded 1"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{f964e92e-45a3-4d16-a441-30870870e162}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL ExecutionEnd Succeeded 1"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{0F0C7406-5396-43EE-BD83-FE1D8F5C75FD}"
+          SQLTask:IsStoredProc="True"
+          SQLTask:SqlStatementSource="Audit.ExecutionEnd" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="Id"
+            SQLTask:DtsVariableName="User::ExecutionId"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="12"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
       DTS:refId="Package\SQL ExecutionStart"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
+      DTS:Disabled="True"
       DTS:DTSID="{156B54A4-3942-4F02-AA8C-9A57A9D42220}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="SQL ExecutionStart"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
       DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{0F0C7406-5396-43EE-BD83-FE1D8F5C75FD}"
+          SQLTask:IsStoredProc="True"
+          SQLTask:SqlStatementSource="Audit.ExecutionStart" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="Id"
+            SQLTask:DtsVariableName="User::ExecutionId"
+            SQLTask:ParameterDirection="Output"
+            SQLTask:DataType="12"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="PackageID"
+            SQLTask:DtsVariableName="System::PackageID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="9"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="PackageName"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="16"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="Database"
+            SQLTask:DtsVariableName="$Project::Database"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="16"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="ServerExecutionID"
+            SQLTask:DtsVariableName="System::ServerExecutionID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="12"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL ExecutionStart 1"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{9157f840-ba72-4b91-9a27-1dd36118bf28}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL ExecutionStart 1"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -1492,6 +2763,31 @@ WHERE [Årstal] = ?</property>
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 2"
       DTS:To="Package\SQL ExecutionEnd Failed"
+      DTS:Value="1" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{3CDA6C73-7B22-424F-BC31-3B73E4EA2281}"
+      DTS:From="Package\SQL ExecutionStart 1"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\For Loop Container" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{EC720694-0EB0-434C-9FF3-01134ADCC7A6}"
+      DTS:From="Package\For Loop Container"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 4"
+      DTS:To="Package\SQL ExecutionEnd Succeeded 1" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
+      DTS:CreationName=""
+      DTS:DTSID="{D407A405-0BCE-4D17-B0D8-CE2EC57835C4}"
+      DTS:From="Package\For Loop Container"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 5"
+      DTS:To="Package\SQL ExecutionEnd Failed 1"
       DTS:Value="1" />
   </DTS:PrecedenceConstraints>
   <DTS:EventHandlers>
@@ -1614,7 +2910,7 @@ WHERE [Årstal] = ?</property>
           PanelSize="232,205"
           Size="232,248"
           Id="Package\Data flow til at hente værdier, sætte dem i variabler og indsætte dem i tabeller"
-          TopLeft="68.5000000000001,159.5" />
+          TopLeft="1766,34.5" />
         <NodeLayout
           Size="282,42"
           Id="Package\DMSA Fact_Ordre\Hent Styringsværdier ud baseret på kørsler"
@@ -1637,7 +2933,7 @@ WHERE [Årstal] = ?</property>
           TopLeft="5.50000000000011,617.5" />
         <NodeLayout
           Size="216,42"
-          Id="Package\DMSA Fact_Ordre\SQL DMSA SwitchFact"
+          Id="Package\DMSA Fact_Ordre\SQL DMSA SwitchPartition"
           TopLeft="73.0000000000001,515.5" />
         <NodeLayout
           Size="191,42"
@@ -2113,33 +3409,544 @@ WHERE [Årstal] = ?</property>
           PanelSize="620,817"
           Size="620,860"
           Id="Package\DMSA Fact_Ordre"
-          TopLeft="381.5,107.5" />
+          TopLeft="1294.5,298" />
         <NodeLayout
-          Size="205,42"
-          Id="Package\SQL ExecutionEnd Failed"
-          TopLeft="589,1130.5" />
+          Size="218,42"
+          Id="Package\For Loop Container\Load Fact_Ordre partitioneret"
+          TopLeft="250.5,428" />
         <NodeLayout
-          Size="230,42"
-          Id="Package\SQL ExecutionEnd Succeeded"
-          TopLeft="298.5,1130.5" />
+          Size="221,42"
+          Id="Package\For Loop Container\Opdater styringsværdier i tabel"
+          TopLeft="123,632" />
         <NodeLayout
-          Size="176,42"
-          Id="Package\SQL ExecutionStart"
-          TopLeft="603.5,5.5" />
+          Size="216,42"
+          Id="Package\For Loop Container\SQL DMSA SwitchPartition"
+          TopLeft="190.5,530" />
+        <NodeLayout
+          Size="191,42"
+          Id="Package\For Loop Container\SQL DMSAEnd Failed"
+          TopLeft="402,734" />
+        <NodeLayout
+          Size="216,42"
+          Id="Package\For Loop Container\SQL DMSAEnd Succeeded"
+          TopLeft="125.5,734" />
+        <NodeLayout
+          Size="244,42"
+          Id="Package\For Loop Container\Truncate table Load Fact_Ordre"
+          TopLeft="286.5,326" />
+        <NodeLayout
+          Size="161,42"
+          Id="Package\For Loop Container\SQL DMSAStart"
+          TopLeft="369,224" />
+        <NodeLayout
+          Size="200,42"
+          Id="Package\For Loop Container\Hent tabel information ud"
+          TopLeft="491.5,122" />
+        <NodeLayout
+          Size="282,42"
+          Id="Package\For Loop Container\Hent Styringsværdier ud baseret på kørsler"
+          TopLeft="450.5,20" />
+        <NodeLayout
+          Size="262,42"
+          Id="Package\For Loop Container\Hent Styringsværdier ud baseret på tid"
+          TopLeft="127.5,20" />
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="691.5,47.5">
+          Id="Package\For Loop Container.PrecedenceConstraints[Constraint]"
+          TopLeft="369.166666666667,368">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60"
+              EndConnector="-9.66666666666666,60"
               Start="0,0"
-              End="0,52.5">
+              End="-9.66666666666666,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5" />
+                    End="0,20.2345276872964" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.2345276872964"
+                    Point2="0,24.2345276872964"
+                    Point3="-4,24.2345276872964" />
+                  <mssgle:LineSegment
+                    End="-5.66666666666666,24.2345276872964" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-5.66666666666666,24.2345276872964"
+                    Point2="-9.66666666666666,24.2345276872964"
+                    Point3="-9.66666666666666,28.2345276872964" />
+                  <mssgle:LineSegment
+                    End="-9.66666666666666,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\For Loop Container.PrecedenceConstraints[Constraint 12]"
+          TopLeft="269,674">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="167.5,60"
+              Start="0,0"
+              End="167.5,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.1580673819449" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,35.1580673819449"
+                    Point2="0,39.1580673819449"
+                    Point3="4,39.1580673819449" />
+                  <mssgle:LineSegment
+                    End="163.5,39.1580673819449" />
+                  <mssgle:CubicBezierSegment
+                    Point1="163.5,39.1580673819449"
+                    Point2="167.5,39.1580673819449"
+                    Point3="167.5,43.1580673819449" />
+                  <mssgle:LineSegment
+                    End="167.5,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="68.50865234375,44.1580673819449,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\For Loop Container.PrecedenceConstraints[Constraint 2]"
+          TopLeft="324.5,470">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-26,60"
+              Start="0,0"
+              End="-26,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.2622950819672" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.2622950819672"
+                    Point2="0,24.2622950819672"
+                    Point3="-4,24.2622950819672" />
+                  <mssgle:LineSegment
+                    End="-22,24.2622950819672" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-22,24.2622950819672"
+                    Point2="-26,24.2622950819672"
+                    Point3="-26,28.2622950819672" />
+                  <mssgle:LineSegment
+                    End="-26,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\For Loop Container.PrecedenceConstraints[Constraint 3]"
+          TopLeft="394.5,470">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="103,264"
+              Start="0,0"
+              End="103,256.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,102.754098360656" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,102.754098360656"
+                    Point2="0,106.754098360656"
+                    Point3="4,106.754098360656" />
+                  <mssgle:LineSegment
+                    End="99.0000000000001,106.754098360656" />
+                  <mssgle:CubicBezierSegment
+                    Point1="99.0000000000001,106.754098360656"
+                    Point2="103,106.754098360656"
+                    Point3="103,110.754098360656" />
+                  <mssgle:LineSegment
+                    End="103,256.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="36.25865234375,111.754098360656,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\For Loop Container.PrecedenceConstraints[Constraint 4]"
+          TopLeft="447.833333333333,368">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="80.1666666666667,366"
+              Start="0,0"
+              End="80.1666666666667,358.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,178.59139739647" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,178.59139739647"
+                    Point2="0,182.59139739647"
+                    Point3="4,182.59139739647" />
+                  <mssgle:LineSegment
+                    End="76.1666666666667,182.59139739647" />
+                  <mssgle:CubicBezierSegment
+                    Point1="76.1666666666667,182.59139739647"
+                    Point2="80.1666666666667,182.59139739647"
+                    Point3="80.1666666666667,186.59139739647" />
+                  <mssgle:LineSegment
+                    End="80.1666666666667,358.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="24.8419856770834,187.59139739647,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\For Loop Container.PrecedenceConstraints[Constraint 5]"
+          TopLeft="263.833333333333,572">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-30.3333333333333,60"
+              Start="0,0"
+              End="-30.3333333333333,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.2647058823529" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.2647058823529"
+                    Point2="0,24.2647058823529"
+                    Point3="-4,24.2647058823529" />
+                  <mssgle:LineSegment
+                    End="-26.3333333333333,24.2647058823529" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-26.3333333333333,24.2647058823529"
+                    Point2="-30.3333333333333,24.2647058823529"
+                    Point3="-30.3333333333333,28.2647058823529" />
+                  <mssgle:LineSegment
+                    End="-30.3333333333333,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\For Loop Container.PrecedenceConstraints[Constraint 6]"
+          TopLeft="333.166666666667,572">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="133.833333333333,162"
+              Start="0,0"
+              End="133.833333333333,154.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,76.9037318754457" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,76.9037318754457"
+                    Point2="0,80.9037318754457"
+                    Point3="4,80.9037318754457" />
+                  <mssgle:LineSegment
+                    End="129.833333333333,80.9037318754457" />
+                  <mssgle:CubicBezierSegment
+                    Point1="129.833333333333,80.9037318754457"
+                    Point2="133.833333333333,80.9037318754457"
+                    Point3="133.833333333333,84.9037318754457" />
+                  <mssgle:LineSegment
+                    End="133.833333333333,154.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="51.6753190104167,85.9037318754457,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\For Loop Container.PrecedenceConstraints[Constraint 8]"
+          TopLeft="623.5,164">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-64.9999999999999,570"
+              Start="0,0"
+              End="-64.9999999999999,562.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,368.242558326629" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,368.242558326629"
+                    Point2="0,372.242558326629"
+                    Point3="-4,372.242558326629" />
+                  <mssgle:LineSegment
+                    End="-60.9999999999999,372.242558326629" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-60.9999999999999,372.242558326629"
+                    Point2="-64.9999999999999,372.242558326629"
+                    Point3="-64.9999999999999,376.242558326629" />
+                  <mssgle:LineSegment
+                    End="-64.9999999999999,562.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-47.74134765625,377.242558326629,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\For Loop Container.PrecedenceConstraints[Constraint 11]"
+          TopLeft="198,674">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="35.5,60"
+              Start="0,0"
+              End="35.5,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.2587601078167" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.2587601078167"
+                    Point2="0,24.2587601078167"
+                    Point3="4,24.2587601078167" />
+                  <mssgle:LineSegment
+                    End="31.5,24.2587601078167" />
+                  <mssgle:CubicBezierSegment
+                    Point1="31.5,24.2587601078167"
+                    Point2="35.5,24.2587601078167"
+                    Point3="35.5,28.2587601078167" />
+                  <mssgle:LineSegment
+                    End="35.5,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\For Loop Container.PrecedenceConstraints[Constraint 13]"
+          TopLeft="258.5,62">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="301,60"
+              Start="0,0"
+              End="301,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.7142857142857" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.7142857142857"
+                    Point2="0,35.7142857142857"
+                    Point3="4,35.7142857142857" />
+                  <mssgle:LineSegment
+                    End="297,35.7142857142857" />
+                  <mssgle:CubicBezierSegment
+                    Point1="297,35.7142857142857"
+                    Point2="301,35.7142857142857"
+                    Point3="301,39.7142857142857" />
+                  <mssgle:LineSegment
+                    End="301,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\For Loop Container.PrecedenceConstraints[Constraint 9]"
+          TopLeft="591.5,62">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="32.0000000000001,60"
+              Start="0,0"
+              End="32.0000000000001,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.7142857142857" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.7142857142857"
+                    Point2="0,35.7142857142857"
+                    Point3="4,35.7142857142857" />
+                  <mssgle:LineSegment
+                    End="28.0000000000001,35.7142857142857" />
+                  <mssgle:CubicBezierSegment
+                    Point1="28.0000000000001,35.7142857142857"
+                    Point2="32.0000000000001,35.7142857142857"
+                    Point3="32.0000000000001,39.7142857142857" />
+                  <mssgle:LineSegment
+                    End="32.0000000000001,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\For Loop Container.PrecedenceConstraints[Constraint 7]"
+          TopLeft="559.5,164">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-110,60"
+              Start="0,0"
+              End="-110,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.2857142857143" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.2857142857143"
+                    Point2="0,24.2857142857143"
+                    Point3="-4,24.2857142857143" />
+                  <mssgle:LineSegment
+                    End="-106,24.2857142857143" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-106,24.2857142857143"
+                    Point2="-110,24.2857142857143"
+                    Point3="-110,28.2857142857143" />
+                  <mssgle:LineSegment
+                    End="-110,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\For Loop Container.PrecedenceConstraints[Constraint 1]"
+          TopLeft="449.5,266">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-41,60"
+              Start="0,0"
+              End="-41,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26"
+                    Point2="0,30"
+                    Point3="-4,30" />
+                  <mssgle:LineSegment
+                    End="-37,30" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-37,30"
+                    Point2="-41,30"
+                    Point3="-41,34" />
+                  <mssgle:LineSegment
+                    End="-41,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="738,831"
+          Size="738,874"
+          Id="Package\For Loop Container"
+          TopLeft="187.5,347" />
+        <NodeLayout
+          Size="205,42"
+          Id="Package\SQL ExecutionEnd Failed"
+          TopLeft="1524,1263" />
+        <NodeLayout
+          Size="230,42"
+          Id="Package\SQL ExecutionEnd Succeeded"
+          TopLeft="1221,1238" />
+        <NodeLayout
+          Size="176,42"
+          Id="Package\SQL ExecutionStart"
+          TopLeft="1463.5,208" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="1551.5,250">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="53,48"
+              Start="0,0"
+              End="53,40.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20"
+                    Point2="0,24"
+                    Point3="4,24" />
+                  <mssgle:LineSegment
+                    End="49,24" />
+                  <mssgle:CubicBezierSegment
+                    Point1="49,24"
+                    Point2="53,24"
+                    Point3="53,28" />
+                  <mssgle:LineSegment
+                    End="53,40.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2150,30 +3957,30 @@ WHERE [Årstal] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="589.5,967.5">
+          TopLeft="1502.5,1158">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-176,163"
+              EndConnector="-166.5,80"
               Start="0,0"
-              End="-176,155.5">
+              End="-166.5,72.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,61.4517374517374" />
+                    End="0,28.1235521235521" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,61.4517374517374"
-                    Point2="0,65.4517374517374"
-                    Point3="-4,65.4517374517374" />
+                    Point1="0,28.1235521235521"
+                    Point2="0,32.1235521235521"
+                    Point3="-4,32.1235521235521" />
                   <mssgle:LineSegment
-                    End="-172,65.4517374517374" />
+                    End="-162.5,32.1235521235521" />
                   <mssgle:CubicBezierSegment
-                    Point1="-172,65.4517374517374"
-                    Point2="-176,65.4517374517374"
-                    Point3="-176,69.4517374517374" />
+                    Point1="-162.5,32.1235521235521"
+                    Point2="-166.5,32.1235521235521"
+                    Point3="-166.5,36.1235521235521" />
                   <mssgle:LineSegment
-                    End="-176,155.5" />
+                    End="-166.5,72.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2184,37 +3991,153 @@ WHERE [Årstal] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="793.5,967.5">
+          TopLeft="1706.5,1158">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-102,163"
+              EndConnector="-80,105"
               Start="0,0"
-              End="-102,155.5">
+              End="-80,97.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,61.4517374517374" />
+                    End="0,38.1621621621621" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,61.4517374517374"
-                    Point2="0,65.4517374517374"
-                    Point3="-4,65.4517374517374" />
+                    Point1="0,38.1621621621621"
+                    Point2="0,42.1621621621621"
+                    Point3="-4,42.1621621621621" />
                   <mssgle:LineSegment
-                    End="-98,65.4517374517374" />
+                    End="-76,42.1621621621621" />
                   <mssgle:CubicBezierSegment
-                    Point1="-98,65.4517374517374"
-                    Point2="-102,65.4517374517374"
-                    Point3="-102,69.4517374517374" />
+                    Point1="-76,42.1621621621621"
+                    Point2="-80,42.1621621621621"
+                    Point3="-80,46.1621621621621" />
                   <mssgle:LineSegment
-                    End="-102,155.5" />
+                    End="-80,97.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-66.24134765625,70.4517374517374,30.4826953125,9.7490234375"
+              BoundingBox="-55.24134765625,47.1621621621621,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="176,42"
+          Id="Package\SQL ExecutionStart 1"
+          TopLeft="506,208.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="594,250.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-37.5,96.5"
+              Start="0,0"
+              End="-37.5,89">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,44.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,44.25"
+                    Point2="0,48.25"
+                    Point3="-4,48.25" />
+                  <mssgle:LineSegment
+                    End="-33.5,48.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-33.5,48.25"
+                    Point2="-37.5,48.25"
+                    Point3="-37.5,52.25" />
+                  <mssgle:LineSegment
+                    End="-37.5,89" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="227,42"
+          Id="Package\SQL ExecutionEnd Succeeded 1"
+          TopLeft="88.5,1281" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="556.5,1221">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-354.5,60"
+              Start="0,0"
+              End="-354.5,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26"
+                    Point2="0,30"
+                    Point3="-4,30" />
+                  <mssgle:LineSegment
+                    End="-350.5,30" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-350.5,30"
+                    Point2="-354.5,30"
+                    Point3="-354.5,34" />
+                  <mssgle:LineSegment
+                    End="-354.5,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="204,42"
+          Id="Package\SQL ExecutionEnd Failed 1"
+          TopLeft="631,1285.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 5]"
+          TopLeft="678.166666666667,1221">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="54.8333333333335,64.5"
+              Start="0,0"
+              End="54.8333333333335,57">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.8837209302326" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21.8837209302326"
+                    Point2="0,25.8837209302326"
+                    Point3="4,25.8837209302326" />
+                  <mssgle:LineSegment
+                    End="50.8333333333335,25.8837209302326" />
+                  <mssgle:CubicBezierSegment
+                    Point1="50.8333333333335,25.8837209302326"
+                    Point2="54.8333333333335,25.8837209302326"
+                    Point3="54.8333333333335,29.8837209302326" />
+                  <mssgle:LineSegment
+                    End="54.8333333333335,57" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="12.1753190104167,30.8837209302326,30.4826953125,9.7490234375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -2237,7 +4160,7 @@ WHERE [Årstal] = ?</property>
     design-time-name="Package\DMSA Fact_Ordre\Load Fact_Ordre partitioneret">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="157,42"
           Id="Package\DMSA Fact_Ordre\Load Fact_Ordre partitioneret\OLE DB Source"
@@ -2277,7 +4200,9 @@ WHERE [Årstal] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2299,7 +4224,9 @@ WHERE [Årstal] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2321,7 +4248,9 @@ WHERE [Årstal] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2343,7 +4272,9 @@ WHERE [Årstal] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -2375,5 +4306,129 @@ WHERE [Årstal] = ?</property>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\For Loop Container\Load Fact_Ordre partitioneret">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="157,42"
+          Id="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Source"
+          TopLeft="15.5,5.5" />
+        <NodeLayout
+          Size="141,42"
+          Id="Package\For Loop Container\Load Fact_Ordre partitioneret\RC Selected"
+          TopLeft="23.5,107.5" />
+        <NodeLayout
+          Size="177,42"
+          Id="Package\For Loop Container\Load Fact_Ordre partitioneret\OLE DB Destination"
+          TopLeft="5.50000000000004,413.5" />
+        <NodeLayout
+          Size="158,42"
+          Id="Package\For Loop Container\Load Fact_Ordre partitioneret\Derived Column"
+          TopLeft="15,209.5" />
+        <NodeLayout
+          Size="138,42"
+          Id="Package\For Loop Container\Load Fact_Ordre partitioneret\RC Inserted"
+          TopLeft="25,311.5" />
+        <EdgeLayout
+          Id="Package\For Loop Container\Load Fact_Ordre partitioneret.Paths[Row Count Output 11]"
+          TopLeft="94,353.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\For Loop Container\Load Fact_Ordre partitioneret.Paths[Row Count Output 1]"
+          TopLeft="94,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\For Loop Container\Load Fact_Ordre partitioneret.Paths[OLE DB Source Output]"
+          TopLeft="94,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\For Loop Container\Load Fact_Ordre partitioneret.Paths[Derived Column Output]"
+          TopLeft="94,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>

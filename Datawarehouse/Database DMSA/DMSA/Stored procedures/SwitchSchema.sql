@@ -91,21 +91,23 @@ BEGIN
         ELSE
             BEGIN TRANSACTION;
              
-        DECLARE @Table_Select nvarchar(max);
-
-        EXEC [DMSA].[CreateTableSyntaxFromSysTables]
-		@Schema_Name  = <StagingSchemaName>,
-        @Table_Name   = <StagingTableName>,
-		@Create_Table = @Table_Select OUTPUT
+     --   DECLARE @Table_Select nvarchar(max);
+       
+     --   EXEC [DMSA].[CreateTableSyntaxFromSysTables]
+	 --   @Schema_Name  = <StagingSchemaName>,
+     --   @Table_Name   = <StagingTableName>,
+	 --   @Create_Table = @Table_Select OUTPUT
 
         /*** Switch schemas ***/
-     DROP TABLE IF EXISTS <HistoryTableFullName>;
+     -- DROP TABLE IF EXISTS <HistoryTableFullName>;
 
      ALTER SCHEMA [Prev] TRANSFER <FactTableFullName>;
      
      ALTER SCHEMA [DMSA] TRANSFER <StagingTableFullName>;
 
-     EXEC sys.sp_executesql @Table_Select
+     ALTER SCHEMA [Load] TRANSFER <HistoryTableFullName>;
+
+     -- EXEC sys.sp_executesql @Table_Select
         
         /*** Commit transaction (if started here) ***/
 		IF @TranCounter = 0 BEGIN

@@ -136,8 +136,6 @@
     <Build Include="DMSA\Stored procedures\CreateTableSyntaxFromSysTables.sql" />
     <Build Include="DMSA\Stored procedures\SwitchSchema.sql" />
     <Build Include="Security\Prev.sql" />
-    <Build Include="Prev\Fact_Ordre.sql" />
-    <Build Include="Prev\Full_Data_Fact_Ordre_Columnstore_Index.sql" />
     <Build Include="DMSA\Stored procedures\SwitchTable.sql" />
     <Build Include="DMSA\Tables\Staging_Dim_Produkt.sql" />
   </ItemGroup>

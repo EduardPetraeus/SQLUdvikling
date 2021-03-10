@@ -1,0 +1,1719 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/11/2020 9:36:52 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="PC0QGDKR"
+  DTS:CreatorName="NCLAN\cep"
+  DTS:DTSID="{E3A23607-E359-4AD3-8BBA-442897B8E92C}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.94"
+  DTS:LocaleID="1030"
+  DTS:ObjectName="DMSA Dim_Produkt Table_Switch"
+  DTS:PackageType="5"
+  DTS:VersionBuild="77"
+  DTS:VersionGUID="{9F0A2A94-AC37-441F-B230-78CF09C66CDF}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{34288F93-C8EC-4960-A9E1-BEC99055FA59}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="DMSAId">
+      <DTS:VariableValue
+        DTS:DataType="20">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{228E313E-936C-4DA6-BBB6-08B85E9FDDD4}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="ExecutionId">
+      <DTS:VariableValue
+        DTS:DataType="20">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{3803A2EB-6E6A-4609-A2CA-D5B333CA80DC}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="IsFullLoad">
+      <DTS:VariableValue
+        DTS:DataType="11">-1</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{59E75488-0621-47FB-987B-4351D871EC6D}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RecordsInserted">
+      <DTS:VariableValue
+        DTS:DataType="20">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{E984A330-AAFE-4F64-9D5B-CB852D2BC3EE}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RecordsSelected">
+      <DTS:VariableValue
+        DTS:DataType="20">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{DC266761-D977-429D-8D32-2E4718C530C2}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="StagingTableName">
+      <DTS:VariableValue
+        DTS:DataType="8">Staging_Dim_Produkt</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{969DE81F-087C-43F5-B47A-E19D65B7D922}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="TableName">
+      <DTS:VariableValue
+        DTS:DataType="8">Dim_Produkt</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DMSA Dim_Produkt"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{A3A72EFE-738A-4F74-8766-73A4A3F6D35C}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DMSA Dim_Produkt">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{0DB67A79-3850-4BBE-80B0-A2D7BD83FA4E}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Indlaes til DMSA Staging_Dim_Produkt"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\Derived Column"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="Derived Column"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\Derived Column.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\Derived Column.Inputs[Derived Column Input].Columns[Department]"
+                          cachedDataType="wstr"
+                          cachedLength="30"
+                          cachedName="Department"
+                          lineageId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].Columns[Department]" />
+                        <inputColumn
+                          refId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\Derived Column.Inputs[Derived Column Input].Columns[Aisle]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Aisle"
+                          lineageId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].Columns[Aisle]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\Derived Column.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\Derived Column.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\Derived Column.Outputs[Derived Column Output].Columns[Meta_CreateJob]"
+                          dataType="i8"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\Derived Column.Outputs[Derived Column Output].Columns[Meta_CreateJob]"
+                          name="Meta_CreateJob"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">@[User::DMSAId]</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">@[User::DMSAId]</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\Derived Column.Outputs[Derived Column Output].Columns[Derived Column Department]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="30"
+                          lineageId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\Derived Column.Outputs[Derived Column Output].Columns[Derived Column Department]"
+                          name="Derived Column Department"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">(DT_WSTR,30)[REPLACENULL](#{Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].Columns[Department]},"Ukendt")</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(DT_WSTR,30)REPLACENULL(Department,"Ukendt")</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\Derived Column.Outputs[Derived Column Output].Columns[Derived Column Aisle]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="50"
+                          lineageId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\Derived Column.Outputs[Derived Column Output].Columns[Derived Column Aisle]"
+                          name="Derived Column Aisle"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">(DT_WSTR,50)[REPLACENULL](#{Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].Columns[Aisle]},"Ukendt")</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(DT_WSTR,50)REPLACENULL(Aisle,"Ukendt")</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\Derived Column.Outputs[Derived Column Output].Columns[Meta_CreateTime]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\Derived Column.Outputs[Derived Column Output].Columns[Meta_CreateTime]"
+                          name="Meta_CreateTime"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">[GETDATE]()</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">GETDATE()</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\Derived Column.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\Derived Column.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Destination"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLE DB Destination"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[DMSA].[Staging_Dim_Produkt]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Destination.Connections[OleDbConnection]"
+                      connectionManagerID="{F5C1CDE6-F86D-47FA-8AA6-4A8DB6466950}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[OLEDB DMSA]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Meta_CreateJob]"
+                          cachedDataType="i8"
+                          cachedName="Meta_CreateJob"
+                          externalMetadataColumnId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Meta_CreateJob]"
+                          lineageId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\Derived Column.Outputs[Derived Column Output].Columns[Meta_CreateJob]" />
+                        <inputColumn
+                          refId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Product_Name]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="100"
+                          cachedName="Product_Name"
+                          externalMetadataColumnId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Product_Name]"
+                          lineageId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].Columns[Product_Name]" />
+                        <inputColumn
+                          refId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Product_Id]"
+                          cachedDataType="i4"
+                          cachedName="Product_Id"
+                          externalMetadataColumnId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Product_Id]"
+                          lineageId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].Columns[Product_Id]" />
+                        <inputColumn
+                          refId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Ekey_Produkt]"
+                          cachedDataType="i4"
+                          cachedName="Ekey_Produkt"
+                          externalMetadataColumnId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Ekey_Produkt]"
+                          lineageId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].Columns[Ekey_Produkt]" />
+                        <inputColumn
+                          refId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Derived Column Department]"
+                          cachedDataType="wstr"
+                          cachedLength="30"
+                          cachedName="Derived Column Department"
+                          externalMetadataColumnId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Department]"
+                          lineageId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\Derived Column.Outputs[Derived Column Output].Columns[Derived Column Department]" />
+                        <inputColumn
+                          refId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Derived Column Aisle]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Derived Column Aisle"
+                          externalMetadataColumnId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Aisle]"
+                          lineageId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\Derived Column.Outputs[Derived Column Output].Columns[Derived Column Aisle]" />
+                        <inputColumn
+                          refId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Meta_CreateTime]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="Meta_CreateTime"
+                          externalMetadataColumnId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Meta_CreateTime]"
+                          lineageId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\Derived Column.Outputs[Derived Column Output].Columns[Meta_CreateTime]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Meta_CreateTime]"
+                          dataType="dbTimeStamp"
+                          name="Meta_CreateTime" />
+                        <externalMetadataColumn
+                          refId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Meta_CreateJob]"
+                          dataType="i8"
+                          name="Meta_CreateJob" />
+                        <externalMetadataColumn
+                          refId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Product_Name]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="Product_Name" />
+                        <externalMetadataColumn
+                          refId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Department]"
+                          dataType="wstr"
+                          length="30"
+                          name="Department" />
+                        <externalMetadataColumn
+                          refId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Aisle]"
+                          dataType="wstr"
+                          length="50"
+                          name="Aisle" />
+                        <externalMetadataColumn
+                          refId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Product_Id]"
+                          dataType="i4"
+                          name="Product_Id" />
+                        <externalMetadataColumn
+                          refId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Ekey_Produkt]"
+                          dataType="i4"
+                          name="Ekey_Produkt" />
+                        <externalMetadataColumn
+                          refId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Meta_UpdateTime]"
+                          dataType="dbTimeStamp"
+                          name="Meta_UpdateTime" />
+                        <externalMetadataColumn
+                          refId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Meta_UpdateJob]"
+                          dataType="i8"
+                          name="Meta_UpdateJob" />
+                        <externalMetadataColumn
+                          refId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Meta_DeleteTime]"
+                          dataType="dbTimeStamp"
+                          name="Meta_DeleteTime" />
+                        <externalMetadataColumn
+                          refId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Meta_DeleteJob]"
+                          dataType="i8"
+                          name="Meta_DeleteJob" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Source"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="OLE DB Source"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[Staging].[v_Temp_Orders_Products]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
+       MDP.[Ekey_Produkt]
+      ,SDP.[Product_Id]
+      ,SDP.[Product_Name]
+      ,SDP.[Department]
+      ,SDP.[Aisle]
+  FROM [Staging].[Dim_Produkt] SDP
+  INNER JOIN [Map].[Dim_Produkt] MDP
+  ON MDP.Product_Id = SDP.Product_Id</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Source.Connections[OleDbConnection]"
+                      connectionManagerID="{BE2D85CB-B110-4CF2-BEA6-80DF97861CC3}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[OLEDDB Staging]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].Columns[Product_Name]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Product_Name]"
+                          length="100"
+                          lineageId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].Columns[Product_Name]"
+                          name="Product_Name"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].Columns[Department]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Department]"
+                          length="30"
+                          lineageId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].Columns[Department]"
+                          name="Department"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].Columns[Aisle]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Aisle]"
+                          length="50"
+                          lineageId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].Columns[Aisle]"
+                          name="Aisle"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].Columns[Product_Id]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Product_Id]"
+                          lineageId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].Columns[Product_Id]"
+                          name="Product_Id"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].Columns[Ekey_Produkt]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Ekey_Produkt]"
+                          lineageId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].Columns[Ekey_Produkt]"
+                          name="Ekey_Produkt"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Product_Name]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="Product_Name" />
+                        <externalMetadataColumn
+                          refId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Department]"
+                          dataType="wstr"
+                          length="30"
+                          name="Department" />
+                        <externalMetadataColumn
+                          refId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Aisle]"
+                          dataType="wstr"
+                          length="50"
+                          name="Aisle" />
+                        <externalMetadataColumn
+                          refId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Product_Id]"
+                          dataType="i4"
+                          name="Product_Id" />
+                        <externalMetadataColumn
+                          refId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Ekey_Produkt]"
+                          dataType="i4"
+                          name="Ekey_Produkt" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Ekey_Produkt]"
+                          dataType="i4"
+                          lineageId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Ekey_Produkt]"
+                          name="Ekey_Produkt" />
+                        <outputColumn
+                          refId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Product_Id]"
+                          dataType="i4"
+                          lineageId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Product_Id]"
+                          name="Product_Id" />
+                        <outputColumn
+                          refId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Product_Name]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          lineageId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Product_Name]"
+                          name="Product_Name" />
+                        <outputColumn
+                          refId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Department]"
+                          dataType="wstr"
+                          length="30"
+                          lineageId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Department]"
+                          name="Department" />
+                        <outputColumn
+                          refId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Aisle]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Aisle]"
+                          name="Aisle" />
+                        <outputColumn
+                          refId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\RC Inserted"
+                  componentClassID="Microsoft.RowCount"
+                  contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+                  name="RC Inserted">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable to hold the row count."
+                      name="VariableName">User::RecordsInserted</property>
+                  </properties>
+                  <inputs>
+                    <input
+                      refId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\RC Inserted.Inputs[Row Count Input 1]"
+                      hasSideEffects="true"
+                      name="Row Count Input 1">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\RC Inserted.Outputs[Row Count Output 1]"
+                      name="Row Count Output 1"
+                      synchronousInputId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\RC Inserted.Inputs[Row Count Input 1]">
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\RC Selected"
+                  componentClassID="Microsoft.RowCount"
+                  contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+                  name="RC Selected">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable to hold the row count."
+                      name="VariableName">User::RecordsSelected</property>
+                  </properties>
+                  <inputs>
+                    <input
+                      refId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\RC Selected.Inputs[Row Count Input 1]"
+                      hasSideEffects="true"
+                      name="Row Count Input 1">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\RC Selected.Outputs[Row Count Output 1]"
+                      name="Row Count Output 1"
+                      synchronousInputId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\RC Selected.Inputs[Row Count Input 1]">
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt.Paths[Derived Column Output]"
+                  endId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\RC Inserted.Inputs[Row Count Input 1]"
+                  name="Derived Column Output"
+                  startId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\Derived Column.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt.Paths[OLE DB Source Output]"
+                  endId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\RC Selected.Inputs[Row Count Input 1]"
+                  name="OLE DB Source Output"
+                  startId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Source.Outputs[OLE DB Source Output]" />
+                <path
+                  refId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt.Paths[Row Count Output 1]"
+                  endId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\Derived Column.Inputs[Derived Column Input]"
+                  name="Row Count Output 1"
+                  startId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\RC Selected.Outputs[Row Count Output 1]" />
+                <path
+                  refId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt.Paths[Row Count Output 11]"
+                  endId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  name="Row Count Output 1"
+                  startId="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\RC Inserted.Outputs[Row Count Output 1]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\DMSA Dim_Produkt\SQL DMSAEnd Failed"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{288FEC79-2277-4A4A-9638-E2C7F26D8754}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL DMSAEnd Failed"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{0F0C7406-5396-43EE-BD83-FE1D8F5C75FD}"
+              SQLTask:SqlStatementSource="EXEC Audit.DMSAEnd @DMSAId, 'Failed'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="DMSAId"
+                SQLTask:DtsVariableName="User::DMSAId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="12"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\DMSA Dim_Produkt\SQL DMSAEnd Succeeded"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{a7426dcd-d33d-43bc-ac80-a3af374c1a44}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL DMSAEnd Succeeded"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{0F0C7406-5396-43EE-BD83-FE1D8F5C75FD}"
+              SQLTask:IsStoredProc="True"
+              SQLTask:SqlStatementSource="Audit.DMSAEnd" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="DMSAId"
+                SQLTask:DtsVariableName="User::DMSAId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="12"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="RecordsSelected"
+                SQLTask:DtsVariableName="User::RecordsSelected"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="12"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="RecordsInserted"
+                SQLTask:DtsVariableName="User::RecordsInserted"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="12"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\DMSA Dim_Produkt\SQL DMSAStart"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{0036FC2D-05FB-4DCB-A0AB-4A7AC566EF52}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL DMSAStart"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{0F0C7406-5396-43EE-BD83-FE1D8F5C75FD}"
+              SQLTask:IsStoredProc="True"
+              SQLTask:SqlStatementSource="Audit.DMSAStart" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="ExecutionId"
+                SQLTask:DtsVariableName="User::ExecutionId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="12"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="DMSAId"
+                SQLTask:DtsVariableName="User::DMSAId"
+                SQLTask:ParameterDirection="Output"
+                SQLTask:DataType="12"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="TableName"
+                SQLTask:DtsVariableName="User::TableName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="16"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="Database"
+                SQLTask:DtsVariableName="$Project::Database"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="16"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="Schema"
+                SQLTask:DtsVariableName="$Project::Schema"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="16"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\DMSA Dim_Produkt\Start SwitchTable"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{00DDFC0D-198E-4AAF-BE69-3970C33087D9}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Start SwitchTable"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{E5E14666-AF2C-4CA1-B276-7003A891D597}"
+              SQLTask:IsStoredProc="True"
+              SQLTask:SqlStatementSource="[DMSA].[SwitchTable]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="FactTableName"
+                SQLTask:DtsVariableName="User::TableName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="16"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="StagingTableName"
+                SQLTask:DtsVariableName="User::StagingTableName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="16"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="Database"
+                SQLTask:DtsVariableName="$Project::Database"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="16"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="ExecutionId"
+                SQLTask:DtsVariableName="User::ExecutionId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="12"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\DMSA Dim_Produkt\Truncate table DMSA Staging_Dim_Produkt"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{CCDA4B9F-3F3C-48B9-96D5-EBDBED55A392}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Truncate table DMSA Staging_Dim_Produkt"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{F5C1CDE6-F86D-47FA-8AA6-4A8DB6466950}"
+              SQLTask:SqlStatementSource="truncate table [DMSA].[Staging_Dim_Produkt]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\DMSA Dim_Produkt.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{C42325EA-4516-4A2B-B9C9-63F33AA75157}"
+          DTS:From="Package\DMSA Dim_Produkt\Truncate table DMSA Staging_Dim_Produkt"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\DMSA Dim_Produkt.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{521E46BD-ABCE-43FE-BAA7-33ECB9E6255B}"
+          DTS:From="Package\DMSA Dim_Produkt\SQL DMSAStart"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\DMSA Dim_Produkt\Truncate table DMSA Staging_Dim_Produkt" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\DMSA Dim_Produkt.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{76DA9FE4-AC42-4672-8555-4DC1B234D5BA}"
+          DTS:From="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\DMSA Dim_Produkt\Start SwitchTable" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\DMSA Dim_Produkt.PrecedenceConstraints[Constraint 3]"
+          DTS:CreationName=""
+          DTS:DTSID="{7C8594D2-1CD7-45D2-9F9A-9EF4796FA6A4}"
+          DTS:From="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt"
+          DTS:ObjectName="Constraint 3"
+          DTS:To="Package\DMSA Dim_Produkt\SQL DMSAEnd Failed"
+          DTS:Value="1" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\DMSA Dim_Produkt.PrecedenceConstraints[Constraint 4]"
+          DTS:CreationName=""
+          DTS:DTSID="{8AF353AE-D7C1-4B90-B381-F09FFABF7FE9}"
+          DTS:From="Package\DMSA Dim_Produkt\Truncate table DMSA Staging_Dim_Produkt"
+          DTS:ObjectName="Constraint 4"
+          DTS:To="Package\DMSA Dim_Produkt\SQL DMSAEnd Failed"
+          DTS:Value="1" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\DMSA Dim_Produkt.PrecedenceConstraints[Constraint 5]"
+          DTS:CreationName=""
+          DTS:DTSID="{845BC119-685C-4EFD-8196-4A8EC25A2354}"
+          DTS:From="Package\DMSA Dim_Produkt\Start SwitchTable"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 5"
+          DTS:To="Package\DMSA Dim_Produkt\SQL DMSAEnd Succeeded" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\DMSA Dim_Produkt.PrecedenceConstraints[Constraint 6]"
+          DTS:CreationName=""
+          DTS:DTSID="{C5322F69-1619-4228-8E04-2BDC444BED7E}"
+          DTS:From="Package\DMSA Dim_Produkt\Start SwitchTable"
+          DTS:ObjectName="Constraint 6"
+          DTS:To="Package\DMSA Dim_Produkt\SQL DMSAEnd Failed"
+          DTS:Value="1" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL ExecutionEnd Failed"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{55F4B550-886A-4C2F-B303-0A95EB71E726}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL ExecutionEnd Failed"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{0F0C7406-5396-43EE-BD83-FE1D8F5C75FD}"
+          SQLTask:SqlStatementSource="EXEC Audit.ExecutionEnd @Id, 'Failed'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="Id"
+            SQLTask:DtsVariableName="User::ExecutionId"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="12"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL ExecutionEnd Succeeded"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{FD8A6BCE-8C9C-4CE4-B2B3-048E74DA1D71}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL ExecutionEnd Succeeded"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{0F0C7406-5396-43EE-BD83-FE1D8F5C75FD}"
+          SQLTask:IsStoredProc="True"
+          SQLTask:SqlStatementSource="Audit.ExecutionEnd" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="Id"
+            SQLTask:DtsVariableName="User::ExecutionId"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="12"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL ExecutionStart"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{02447764-92F3-4B6C-97ED-54F36F6F386B}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL ExecutionStart"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{0F0C7406-5396-43EE-BD83-FE1D8F5C75FD}"
+          SQLTask:IsStoredProc="True"
+          SQLTask:SqlStatementSource="Audit.ExecutionStart" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="Id"
+            SQLTask:DtsVariableName="User::ExecutionId"
+            SQLTask:ParameterDirection="Output"
+            SQLTask:DataType="12"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="PackageID"
+            SQLTask:DtsVariableName="System::PackageID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="9"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="PackageName"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="16"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="Database"
+            SQLTask:DtsVariableName="$Project::Database"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="16"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="ServerExecutionID"
+            SQLTask:DtsVariableName="System::ServerExecutionID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="12"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{EEC2F035-6D58-490F-B550-5061586FD5C7}"
+      DTS:From="Package\SQL ExecutionStart"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\DMSA Dim_Produkt" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{82763E49-D0DA-4F26-A806-02A3B2FA122A}"
+      DTS:From="Package\DMSA Dim_Produkt"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\SQL ExecutionEnd Succeeded" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{4D102289-A450-4A11-A439-9E452EEC5B63}"
+      DTS:From="Package\DMSA Dim_Produkt"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\SQL ExecutionEnd Failed"
+      DTS:Value="1" />
+  </DTS:PrecedenceConstraints>
+  <DTS:EventHandlers>
+    <DTS:EventHandler
+      DTS:refId="Package.EventHandlers[OnError]"
+      DTS:CreationName="OnError"
+      DTS:DTSID="{CCF782A3-0893-45B1-BCB2-61D12B994939}"
+      DTS:EventID="0"
+      DTS:EventName="OnError"
+      DTS:LocaleID="-1">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:Description="The propagate property of the event"
+          DTS:DTSID="{537875A8-2391-461B-B08B-1E17623D6924}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="System"
+          DTS:ObjectName="Propagate">
+          <DTS:VariableValue
+            DTS:DataType="11">-1</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package.EventHandlers[OnError]\SQL ExecutionError"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{53D4A83E-196F-44B8-89D1-76885180F1F8}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL ExecutionError"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{0F0C7406-5396-43EE-BD83-FE1D8F5C75FD}"
+              SQLTask:IsStoredProc="True"
+              SQLTask:SqlStatementSource="Audit.ExecutionError" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="ExecutionID"
+                SQLTask:DtsVariableName="User::ExecutionId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="12"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="ErrorCode"
+                SQLTask:DtsVariableName="System::ErrorCode"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="11"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="ErrorDescription"
+                SQLTask:DtsVariableName="System::ErrorDescription"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="16"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="SourceName"
+                SQLTask:DtsVariableName="System::SourceName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="16"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="SourceDescription"
+                SQLTask:DtsVariableName="System::SourceDescription"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="16"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:EventHandler>
+  </DTS:EventHandlers>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="261,42"
+          Id="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt"
+          TopLeft="150.5,209.5" />
+        <NodeLayout
+          Size="191,42"
+          Id="Package\DMSA Dim_Produkt\SQL DMSAEnd Failed"
+          TopLeft="282,413.5" />
+        <NodeLayout
+          Size="161,42"
+          Id="Package\DMSA Dim_Produkt\SQL DMSAStart"
+          TopLeft="297,5.5" />
+        <NodeLayout
+          Size="166,42"
+          Id="Package\DMSA Dim_Produkt\Start SwitchTable"
+          TopLeft="88.5,311.5" />
+        <NodeLayout
+          Size="283,42"
+          Id="Package\DMSA Dim_Produkt\Truncate table DMSA Staging_Dim_Produkt"
+          TopLeft="255.5,107.5" />
+        <EdgeLayout
+          Id="Package\DMSA Dim_Produkt.PrecedenceConstraints[Constraint]"
+          TopLeft="351.166666666667,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-70.1666666666666,60"
+              Start="0,0"
+              End="-70.1666666666666,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.2023893183415" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.2023893183415"
+                    Point2="0,24.2023893183415"
+                    Point3="-4,24.2023893183415" />
+                  <mssgle:LineSegment
+                    End="-66.1666666666666,24.2023893183415" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-66.1666666666666,24.2023893183415"
+                    Point2="-70.1666666666666,24.2023893183415"
+                    Point3="-70.1666666666666,28.2023893183415" />
+                  <mssgle:LineSegment
+                    End="-70.1666666666666,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DMSA Dim_Produkt.PrecedenceConstraints[Constraint 1]"
+          TopLeft="377.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="19.5,60"
+              Start="0,0"
+              End="19.5,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26"
+                    Point2="0,30"
+                    Point3="4,30" />
+                  <mssgle:LineSegment
+                    End="15.5,30" />
+                  <mssgle:CubicBezierSegment
+                    Point1="15.5,30"
+                    Point2="19.5,30"
+                    Point3="19.5,34" />
+                  <mssgle:LineSegment
+                    End="19.5,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DMSA Dim_Produkt.PrecedenceConstraints[Constraint 2]"
+          TopLeft="238.833333333333,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-67.3333333333333,60"
+              Start="0,0"
+              End="-67.3333333333333,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.2193450114242" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.2193450114242"
+                    Point2="0,24.2193450114242"
+                    Point3="-4,24.2193450114242" />
+                  <mssgle:LineSegment
+                    End="-63.3333333333333,24.2193450114242" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-63.3333333333333,24.2193450114242"
+                    Point2="-67.3333333333333,24.2193450114242"
+                    Point3="-67.3333333333333,28.2193450114242" />
+                  <mssgle:LineSegment
+                    End="-67.3333333333333,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DMSA Dim_Produkt.PrecedenceConstraints[Constraint 3]"
+          TopLeft="323.166666666667,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="54.3333333333334,162"
+              Start="0,0"
+              End="54.3333333333334,154.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,61.3922315308454" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,61.3922315308454"
+                    Point2="0,65.3922315308454"
+                    Point3="4,65.3922315308454" />
+                  <mssgle:LineSegment
+                    End="50.3333333333334,65.3922315308454" />
+                  <mssgle:CubicBezierSegment
+                    Point1="50.3333333333334,65.3922315308454"
+                    Point2="54.3333333333334,65.3922315308454"
+                    Point3="54.3333333333334,69.3922315308454" />
+                  <mssgle:LineSegment
+                    End="54.3333333333334,154.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="11.9253190104167,70.3922315308454,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DMSA Dim_Produkt.PrecedenceConstraints[Constraint 4]"
+          TopLeft="442.833333333333,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-19.5833333333333,264"
+              Start="0,0"
+              End="-19.5833333333333,256.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,145.108498038478" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,145.108498038478"
+                    Point2="0,149.108498038478"
+                    Point3="-4,149.108498038478" />
+                  <mssgle:LineSegment
+                    End="-15.5833333333333,149.108498038478" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-15.5833333333333,149.108498038478"
+                    Point2="-19.5833333333333,149.108498038478"
+                    Point3="-19.5833333333333,153.108498038478" />
+                  <mssgle:LineSegment
+                    End="-19.5833333333333,256.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-25.0330143229166,154.108498038478,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DMSA Dim_Produkt.PrecedenceConstraints[Constraint 6]"
+          TopLeft="197.833333333333,353.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="133.916666666667,60"
+              Start="0,0"
+              End="133.916666666667,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.0323693565433" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,30.0323693565433"
+                    Point2="0,34.0323693565433"
+                    Point3="4,34.0323693565433" />
+                  <mssgle:LineSegment
+                    End="129.916666666667,34.0323693565433" />
+                  <mssgle:CubicBezierSegment
+                    Point1="129.916666666667,34.0323693565433"
+                    Point2="133.916666666667,34.0323693565433"
+                    Point3="133.916666666667,38.0323693565433" />
+                  <mssgle:LineSegment
+                    End="133.916666666667,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="51.7169856770833,39.0323693565433,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="216,42"
+          Id="Package\DMSA Dim_Produkt\SQL DMSAEnd Succeeded"
+          TopLeft="5.50000000000006,413.5" />
+        <EdgeLayout
+          Id="Package\DMSA Dim_Produkt.PrecedenceConstraints[Constraint 5]"
+          TopLeft="145.166666666667,353.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-31.6666666666666,60"
+              Start="0,0"
+              End="-31.6666666666666,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.3436754176611" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.3436754176611"
+                    Point2="0,24.3436754176611"
+                    Point3="-4,24.3436754176611" />
+                  <mssgle:LineSegment
+                    End="-27.6666666666666,24.3436754176611" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-27.6666666666666,24.3436754176611"
+                    Point2="-31.6666666666666,24.3436754176611"
+                    Point3="-31.6666666666666,28.3436754176611" />
+                  <mssgle:LineSegment
+                    End="-31.6666666666666,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="544,510"
+          Size="544,554"
+          Id="Package\DMSA Dim_Produkt"
+          TopLeft="146,107.5" />
+        <NodeLayout
+          Size="205,42"
+          Id="Package\SQL ExecutionEnd Failed"
+          TopLeft="296,721.5" />
+        <NodeLayout
+          Size="230,42"
+          Id="Package\SQL ExecutionEnd Succeeded"
+          TopLeft="5.50000000000011,721.5" />
+        <NodeLayout
+          Size="176,42"
+          Id="Package\SQL ExecutionStart"
+          TopLeft="310.5,5.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="398.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="315.666666666667,661.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-195.166666666667,60"
+              Start="0,0"
+              End="-195.166666666667,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.1136991709435" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.1136991709435"
+                    Point2="0,24.1136991709435"
+                    Point3="-4,24.1136991709435" />
+                  <mssgle:LineSegment
+                    End="-191.166666666667,24.1136991709435" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-191.166666666667,24.1136991709435"
+                    Point2="-195.166666666667,24.1136991709435"
+                    Point3="-195.166666666667,28.1136991709435" />
+                  <mssgle:LineSegment
+                    End="-195.166666666667,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="481.333333333333,661.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-82.8333333333333,60"
+              Start="0,0"
+              End="-82.8333333333333,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.1136991709435" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.1136991709435"
+                    Point2="0,24.1136991709435"
+                    Point3="-4,24.1136991709435" />
+                  <mssgle:LineSegment
+                    End="-78.8333333333333,24.1136991709435" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-78.8333333333333,24.1136991709435"
+                    Point2="-82.8333333333333,24.1136991709435"
+                    Point3="-82.8333333333333,28.1136991709435" />
+                  <mssgle:LineSegment
+                    End="-82.8333333333333,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-56.6580143229166,29.1136991709435,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <DtsEventHandler
+    design-time-name="Package.EventHandlers[OnError]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="177,42"
+          Id="Package.EventHandlers[OnError]\SQL ExecutionError"
+          TopLeft="450,168" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+  <TaskHost
+    design-time-name="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="157,42"
+          Id="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Source"
+          TopLeft="15.5,5.5" />
+        <NodeLayout
+          Size="141,42"
+          Id="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\RC Selected"
+          TopLeft="23.5,107.5" />
+        <NodeLayout
+          Size="138,42"
+          Id="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\RC Inserted"
+          TopLeft="25,311.5" />
+        <NodeLayout
+          Size="158,42"
+          Id="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\Derived Column"
+          TopLeft="15,209.5" />
+        <NodeLayout
+          Size="177,42"
+          Id="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Destination"
+          TopLeft="5.50000000000004,413.5" />
+        <EdgeLayout
+          Id="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt.Paths[Row Count Output 11]"
+          TopLeft="94,353.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt.Paths[Row Count Output 1]"
+          TopLeft="94,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt.Paths[OLE DB Source Output]"
+          TopLeft="94,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt.Paths[Derived Column Output]"
+          TopLeft="94,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DMSA Dim_Produkt\Indlaes til DMSA Staging_Dim_Produkt\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">View</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

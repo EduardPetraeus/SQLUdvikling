@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">PC0QGDKR</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAoy22zAAyH06k+AWfPTRHawAAAAACAAAAAAADZgAAwAAAABAAAACqWvRi/vFiHRjdTcm+eIn0AAAAAASAAACgAAAAEAAAAA1LXPYCFOQ2q6P5sn7Nw3OIAAAAkAa0p/cc1zmlYxkCMfmnEevKOScJ1cB4GPcxmjEmCrhKIFnWCKc5fjApY2HObyYejIRHnmYeuJ++5B83MwNovq6scXfkwCM791jwuqJPwQkjiFyy8xVWQV67PvCrW9TpKyd9lvYendQj0ZjxT+3wl7PPieE9wiCHIdZe/l6Jce/It4Ef8lhm9BQAAAAHj2XbJ7AmgRIhDBbN3QJMEFrpkg==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAoy22zAAyH06k+AWfPTRHawAAAAACAAAAAAADZgAAwAAAABAAAABCb+WxkzZbJIODsa4UVmaqAAAAAASAAACgAAAAEAAAAOQpfuz7aSlyIk80cX7mnRGIAAAAINQD+wE88rHo60a6JSpOsi3DTMa+trgbwjkyrVUm9aiRYNKbFnPm6JOvxq3AC00nWJundQxhPyjLr9EpCiNGR8bxjQVmAfvhbm6B3QoS+RhK+7H0VokBqgdnldryVRnbaQHk8MelJNVIJgZovvyuoeaEDq0PjwdvhqU2ojpcyrB0D9gKU3BXtBQAAAD6iMBLi0mueWDT3eaIKSoBmDs7Uw==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -39,10 +39,11 @@
           <SSIS:Package SSIS:Name="Process Cube Ordre.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="DMSA Dim_Produkt_Delta_Load.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="DMSA Dim_Produkt Type2 historik.dtsx" SSIS:EntryPoint="1" />
-          <SSIS:Package SSIS:Name="DMSA Fact_Ordre Full Load Columstore.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="DMSA Fact_Ordre Partitioneret tabeller.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="DMSA Machine_Learning SSIS pakke til Excel ark.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="DMSA Machine_Learning SSIS pakke.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="DMSA Dim_Produkt Table_Switch.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="DMSA Fact_Ordre Schema_Or_Partition_Switch.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="ADO.NET DZDB.conmgr" />
@@ -856,23 +857,6 @@
               </SSIS:Properties>
               <SSIS:Parameters />
             </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="DMSA Fact_Ordre Full Load Columstore.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{C6CBF81A-CB80-4537-B7A9-5038C78E89E9}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">DMSA Fact_Ordre Full Load Columstore</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">66</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{D53941C7-6852-4C31-9295-0D153A82D89B}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
-            </SSIS:PackageMetaData>
             <SSIS:PackageMetaData SSIS:Name="DMSA Fact_Ordre Partitioneret tabeller.dtsx">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">{A225F5E9-7DD3-4E37-9443-1370C79C43A0}</SSIS:Property>
@@ -1068,8 +1052,6 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">
-                    </SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -1283,8 +1265,6 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">
-                    </SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -1319,6 +1299,40 @@
                   </SSIS:Properties>
                 </SSIS:Parameter>
               </SSIS:Parameters>
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="DMSA Dim_Produkt Table_Switch.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{E3A23607-E359-4AD3-8BBA-442897B8E92C}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">DMSA Dim_Produkt Table_Switch</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">77</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{9F0A2A94-AC37-441F-B230-78CF09C66CDF}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="DMSA Fact_Ordre Schema_Or_Partition_Switch.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{6EEEB77D-F5E1-4E17-BCD1-D03525D73896}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">DMSA Fact_Ordre Schema_Or_Partition_Switch</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">77</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{621FC9F5-8746-4746-A282-A3B05554CDBA}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
             </SSIS:PackageMetaData>
           </SSIS:PackageInfo>
         </SSIS:DeploymentInfo>

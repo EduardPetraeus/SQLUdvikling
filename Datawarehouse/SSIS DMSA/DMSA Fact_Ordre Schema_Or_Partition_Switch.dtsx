@@ -5,14 +5,14 @@
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="PC0QGDKR"
   DTS:CreatorName="NCLAN\cep"
-  DTS:DTSID="{C6CBF81A-CB80-4537-B7A9-5038C78E89E9}"
+  DTS:DTSID="{6EEEB77D-F5E1-4E17-BCD1-D03525D73896}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="15.0.2000.94"
   DTS:LocaleID="1030"
-  DTS:ObjectName="DMSA Fact_Ordre Full Load Columstore"
+  DTS:ObjectName="DMSA Fact_Ordre Schema_Or_Partition_Switch"
   DTS:PackageType="5"
-  DTS:VersionBuild="69"
-  DTS:VersionGUID="{AB8A91BB-6C2F-4B98-B115-B8E6835EC030}">
+  DTS:VersionBuild="84"
+  DTS:VersionGUID="{BA21825B-10C0-4EF7-A749-04EADAC273E7}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -420,7 +420,7 @@
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT TOP 1000
        [Bkey_Kunde]
       ,[Order_Id]
       ,[Eval_Set]
@@ -793,6 +793,7 @@
           DTS:refId="Package\DMSA Fact_Ordre\SQL DMSA SwitchPartition"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
+          DTS:Disabled="True"
           DTS:DTSID="{2AFA0019-C346-47CB-A945-298BD5BFA9BF}"
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
@@ -833,6 +834,49 @@
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
+          DTS:refId="Package\DMSA Fact_Ordre\SQL DMSA SwitchSchema"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{4b686591-4eac-4c23-a7bc-a5534a4e3d74}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL DMSA SwitchSchema"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{E5E14666-AF2C-4CA1-B276-7003A891D597}"
+              SQLTask:IsStoredProc="True"
+              SQLTask:SqlStatementSource="[DMSA].[SwitchSchema]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="FactTableName"
+                SQLTask:DtsVariableName="User::TableName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="16"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="StagingTableName"
+                SQLTask:DtsVariableName="User::TableName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="16"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="Database"
+                SQLTask:DtsVariableName="$Project::Database"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="16"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="ExecutionId"
+                SQLTask:DtsVariableName="User::ExecutionId"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="12"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
           DTS:refId="Package\DMSA Fact_Ordre\SQL DMSAEnd Failed"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
@@ -841,7 +885,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL DMSAEnd Failed"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="2">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -1017,6 +1061,30 @@
           DTS:ObjectName="Constraint 6"
           DTS:To="Package\DMSA Fact_Ordre\SQL DMSAEnd Failed"
           DTS:Value="1" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\DMSA Fact_Ordre.PrecedenceConstraints[Constraint 7]"
+          DTS:CreationName=""
+          DTS:DTSID="{BCDB7F74-C085-44E0-B2F9-ECFF917C3387}"
+          DTS:From="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 7"
+          DTS:To="Package\DMSA Fact_Ordre\SQL DMSA SwitchSchema" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\DMSA Fact_Ordre.PrecedenceConstraints[Constraint 8]"
+          DTS:CreationName=""
+          DTS:DTSID="{1BDE3E01-79B0-4056-A954-4BE3E1DB523B}"
+          DTS:From="Package\DMSA Fact_Ordre\SQL DMSA SwitchSchema"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 8"
+          DTS:To="Package\DMSA Fact_Ordre\SQL DMSAEnd Succeeded" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\DMSA Fact_Ordre.PrecedenceConstraints[Constraint 9]"
+          DTS:CreationName=""
+          DTS:DTSID="{9BB3D026-CF7B-4D90-ADCE-71D9B4CA75E8}"
+          DTS:From="Package\DMSA Fact_Ordre\SQL DMSA SwitchSchema"
+          DTS:ObjectName="Constraint 9"
+          DTS:To="Package\DMSA Fact_Ordre\SQL DMSAEnd Failed"
+          DTS:Value="1" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
     <DTS:Executable
@@ -1028,7 +1096,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="SQL ExecutionEnd Failed"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -1052,7 +1120,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="SQL ExecutionEnd Succeeded"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -1232,53 +1300,57 @@
         <NodeLayout
           Size="305,42"
           Id="Package\DMSA Fact_Ordre\Load Full_Data_Fact_Ordre_Columnstore_Index"
-          TopLeft="159,209.5" />
+          TopLeft="155,190.5" />
         <NodeLayout
           Size="216,42"
           Id="Package\DMSA Fact_Ordre\SQL DMSA SwitchPartition"
-          TopLeft="38.5,311.5" />
+          TopLeft="527.5,311.5" />
+        <NodeLayout
+          Size="216,42"
+          Id="Package\DMSA Fact_Ordre\SQL DMSA SwitchSchema"
+          TopLeft="287.5,314.5" />
         <NodeLayout
           Size="191,42"
           Id="Package\DMSA Fact_Ordre\SQL DMSAEnd Failed"
-          TopLeft="282,413.5" />
+          TopLeft="40.0000000000001,454.5" />
         <NodeLayout
           Size="216,42"
           Id="Package\DMSA Fact_Ordre\SQL DMSAEnd Succeeded"
-          TopLeft="5.50000000000006,413.5" />
+          TopLeft="474.5,506.5" />
         <NodeLayout
           Size="161,42"
           Id="Package\DMSA Fact_Ordre\SQL DMSAStart"
-          TopLeft="297,5.5" />
+          TopLeft="47,5.5" />
         <NodeLayout
           Size="244,42"
           Id="Package\DMSA Fact_Ordre\Truncate table Load Fact_Ordre"
-          TopLeft="255.5,107.5" />
+          TopLeft="5.5,107.5" />
         <EdgeLayout
           Id="Package\DMSA Fact_Ordre.PrecedenceConstraints[Constraint]"
-          TopLeft="338.166666666667,149.5">
+          TopLeft="166.833333333333,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-26.6666666666666,60"
+              EndConnector="140.666666666667,40.9999999999999"
               Start="0,0"
-              End="-26.6666666666666,52.5">
+              End="140.666666666667,33.4999999999999">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,20.2345276872964" />
+                    End="0,12.5602605863192" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,20.2345276872964"
-                    Point2="0,24.2345276872964"
-                    Point3="-4,24.2345276872964" />
+                    Point1="0,12.5602605863192"
+                    Point2="0,16.5602605863192"
+                    Point3="4,16.5602605863192" />
                   <mssgle:LineSegment
-                    End="-22.6666666666666,24.2345276872964" />
+                    End="136.666666666667,16.5602605863192" />
                   <mssgle:CubicBezierSegment
-                    Point1="-22.6666666666666,24.2345276872964"
-                    Point2="-26.6666666666666,24.2345276872964"
-                    Point3="-26.6666666666666,28.2345276872964" />
+                    Point1="136.666666666667,16.5602605863192"
+                    Point2="140.666666666667,16.5602605863192"
+                    Point3="140.666666666667,20.5602605863192" />
                   <mssgle:LineSegment
-                    End="-26.6666666666666,52.5" />
+                    End="140.666666666667,33.4999999999999" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1289,7 +1361,7 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DMSA Fact_Ordre.PrecedenceConstraints[Constraint 1]"
-          TopLeft="377.5,47.5">
+          TopLeft="127.5,47.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1311,30 +1383,30 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DMSA Fact_Ordre.PrecedenceConstraints[Constraint 2]"
-          TopLeft="262,251.5">
+          TopLeft="381.75,232.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-115.5,60"
+              EndConnector="253.75,79"
               Start="0,0"
-              End="-115.5,52.5">
+              End="253.75,71.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,20.187866927593" />
+                    End="0,22.7898158179848" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,20.187866927593"
-                    Point2="0,24.187866927593"
-                    Point3="-4,24.187866927593" />
+                    Point1="0,22.7898158179848"
+                    Point2="0,26.7898158179848"
+                    Point3="4,26.7898158179848" />
                   <mssgle:LineSegment
-                    End="-111.5,24.187866927593" />
+                    End="249.75,26.7898158179848" />
                   <mssgle:CubicBezierSegment
-                    Point1="-111.5,24.187866927593"
-                    Point2="-115.5,24.187866927593"
-                    Point3="-115.5,28.187866927593" />
+                    Point1="249.75,26.7898158179848"
+                    Point2="253.75,26.7898158179848"
+                    Point3="253.75,30.7898158179848" />
                   <mssgle:LineSegment
-                    End="-115.5,52.5" />
+                    End="253.75,71.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1345,78 +1417,90 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DMSA Fact_Ordre.PrecedenceConstraints[Constraint 3]"
-          TopLeft="361,251.5">
+          TopLeft="233.25,232.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="16.5,162"
+              EndConnector="-116.05,222"
               Start="0,0"
-              End="16.5,154.5">
+              End="-116.05,214.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,61.307240704501" />
+                    End="0,82.1991595601655" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,61.307240704501"
-                    Point2="0,65.307240704501"
-                    Point3="4,65.307240704501" />
+                    Point1="0,82.1991595601655"
+                    Point2="0,86.1991595601655"
+                    Point3="-4,86.1991595601655" />
                   <mssgle:LineSegment
-                    End="12.5,65.307240704501" />
+                    End="-112.05,86.1991595601655" />
                   <mssgle:CubicBezierSegment
-                    Point1="12.5,65.307240704501"
-                    Point2="16.5,65.307240704501"
-                    Point3="16.5,69.307240704501" />
+                    Point1="-112.05,86.1991595601655"
+                    Point2="-116.05,86.1991595601655"
+                    Point3="-116.05,90.1991595601655" />
                   <mssgle:LineSegment
-                    End="16.5,154.5" />
+                    End="-116.05,214.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-6.99134765625,70.307240704501,30.4826953125,9.7490234375"
+              BoundingBox="-73.26634765625,91.1991595601655,30.4826953125,9.7490234375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DMSA Fact_Ordre.PrecedenceConstraints[Constraint 4]"
-          TopLeft="420.041666666667,149.5">
+          TopLeft="84.3833333333334,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,264"
+              EndConnector="0,305"
               Start="0,0"
-              End="0,256.5">
+              End="0,297.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,256.5" />
+                    End="0,297.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-15.24134765625,123.37548828125,30.4826953125,9.7490234375"
+              BoundingBox="-15.24134765625,143.87548828125,30.4826953125,9.7490234375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DMSA Fact_Ordre.PrecedenceConstraints[Constraint 5]"
-          TopLeft="112.666666666667,353.5">
+          TopLeft="670.166666666667,353.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60"
+              EndConnector="-53,153"
               Start="0,0"
-              End="0,52.5">
+              End="-53,145.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5" />
+                    End="0,72.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,72.5"
+                    Point2="0,76.5"
+                    Point3="-4,76.5" />
+                  <mssgle:LineSegment
+                    End="-49,76.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-49,76.5"
+                    Point2="-53,76.5"
+                    Point3="-53,80.5" />
+                  <mssgle:LineSegment
+                    End="-53,145.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1427,55 +1511,159 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DMSA Fact_Ordre.PrecedenceConstraints[Constraint 6]"
-          TopLeft="181.166666666667,353.5">
+          TopLeft="600.833333333333,353.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="150.583333333333,60"
+              EndConnector="-410.433333333333,101"
               Start="0,0"
-              End="150.583333333333,52.5">
+              End="-410.433333333333,93.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,29.9518974386598" />
+                    End="0,58.1117303391835" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,29.9518974386598"
-                    Point2="0,33.9518974386598"
-                    Point3="4,33.9518974386598" />
+                    Point1="0,58.1117303391835"
+                    Point2="0,62.1117303391835"
+                    Point3="-4,62.1117303391835" />
                   <mssgle:LineSegment
-                    End="146.583333333333,33.9518974386598" />
+                    End="-406.433333333333,62.1117303391835" />
                   <mssgle:CubicBezierSegment
-                    Point1="146.583333333333,33.9518974386598"
-                    Point2="150.583333333333,33.9518974386598"
-                    Point3="150.583333333333,37.9518974386598" />
+                    Point1="-406.433333333333,62.1117303391835"
+                    Point2="-410.433333333333,62.1117303391835"
+                    Point3="-410.433333333333,66.1117303391835" />
                   <mssgle:LineSegment
-                    End="150.583333333333,52.5" />
+                    End="-410.433333333333,93.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="60.0503190104167,38.9518974386598,30.4826953125,9.7490234375"
+              BoundingBox="-220.458014322917,67.1117303391835,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DMSA Fact_Ordre.PrecedenceConstraints[Constraint 7]"
+          TopLeft="307.5,232.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="88.0000000000001,82"
+              Start="0,0"
+              End="88.0000000000001,74.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,37"
+                    Point2="0,41"
+                    Point3="4,41" />
+                  <mssgle:LineSegment
+                    End="84.0000000000001,41" />
+                  <mssgle:CubicBezierSegment
+                    Point1="84.0000000000001,41"
+                    Point2="88.0000000000001,41"
+                    Point3="88.0000000000001,45" />
+                  <mssgle:LineSegment
+                    End="88.0000000000001,74.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DMSA Fact_Ordre.PrecedenceConstraints[Constraint 8]"
+          TopLeft="430.166666666667,356.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="117.666666666667,150"
+              Start="0,0"
+              End="117.666666666667,142.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,71" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,71"
+                    Point2="0,75"
+                    Point3="4,75" />
+                  <mssgle:LineSegment
+                    End="113.666666666667,75" />
+                  <mssgle:CubicBezierSegment
+                    Point1="113.666666666667,75"
+                    Point2="117.666666666667,75"
+                    Point3="117.666666666667,79" />
+                  <mssgle:LineSegment
+                    End="117.666666666667,142.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DMSA Fact_Ordre.PrecedenceConstraints[Constraint 9]"
+          TopLeft="360.833333333333,356.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-207.033333333333,98"
+              Start="0,0"
+              End="-207.033333333333,90.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.7382601667" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,40.7382601667"
+                    Point2="0,44.7382601667"
+                    Point3="-4,44.7382601667" />
+                  <mssgle:LineSegment
+                    End="-203.033333333333,44.7382601667" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-203.033333333333,44.7382601667"
+                    Point2="-207.033333333333,44.7382601667"
+                    Point3="-207.033333333333,48.7382601667" />
+                  <mssgle:LineSegment
+                    End="-207.033333333333,90.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-118.758014322917,49.7382601667,30.4826953125,9.7490234375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="505,511"
-          Size="505,554"
+          PanelSize="749,598"
+          Size="749,641"
           Id="Package\DMSA Fact_Ordre"
-          TopLeft="146,107.5" />
+          TopLeft="24.0000000000001,107.5" />
         <NodeLayout
           Size="205,42"
           Id="Package\SQL ExecutionEnd Failed"
-          TopLeft="296,721.5" />
+          TopLeft="416,799.5" />
         <NodeLayout
           Size="230,42"
           Id="Package\SQL ExecutionEnd Succeeded"
-          TopLeft="5.50000000000011,721.5" />
+          TopLeft="125.5,799.5" />
         <NodeLayout
           Size="176,42"
           Id="Package\SQL ExecutionStart"
@@ -1504,30 +1692,30 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="315.666666666667,661.5">
+          TopLeft="275,748.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-195.166666666667,60"
+              EndConnector="-34.4999999999999,51"
               Start="0,0"
-              End="-195.166666666667,52.5">
+              End="-34.4999999999999,43.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,20.1136991709435" />
+                    End="0,16.4652278177458" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,20.1136991709435"
-                    Point2="0,24.1136991709435"
-                    Point3="-4,24.1136991709435" />
+                    Point1="0,16.4652278177458"
+                    Point2="0,20.4652278177458"
+                    Point3="-4,20.4652278177458" />
                   <mssgle:LineSegment
-                    End="-191.166666666667,24.1136991709435" />
+                    End="-30.4999999999999,20.4652278177458" />
                   <mssgle:CubicBezierSegment
-                    Point1="-191.166666666667,24.1136991709435"
-                    Point2="-195.166666666667,24.1136991709435"
-                    Point3="-195.166666666667,28.1136991709435" />
+                    Point1="-30.4999999999999,20.4652278177458"
+                    Point2="-34.4999999999999,20.4652278177458"
+                    Point3="-34.4999999999999,24.4652278177458" />
                   <mssgle:LineSegment
-                    End="-195.166666666667,52.5" />
+                    End="-34.4999999999999,43.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1538,37 +1726,25 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="481.333333333333,661.5">
+          TopLeft="520.25,748.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-82.8333333333333,60"
+              EndConnector="0,51"
               Start="0,0"
-              End="-82.8333333333333,52.5">
+              End="0,43.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,20.1136991709435" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,20.1136991709435"
-                    Point2="0,24.1136991709435"
-                    Point3="-4,24.1136991709435" />
-                  <mssgle:LineSegment
-                    End="-78.8333333333333,24.1136991709435" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-78.8333333333333,24.1136991709435"
-                    Point2="-82.8333333333333,24.1136991709435"
-                    Point3="-82.8333333333333,28.1136991709435" />
-                  <mssgle:LineSegment
-                    End="-82.8333333333333,52.5" />
+                    End="0,43.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-56.6580143229166,29.1136991709435,30.4826953125,9.7490234375"
+              BoundingBox="-15.24134765625,16.87548828125,30.4826953125,9.7490234375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
