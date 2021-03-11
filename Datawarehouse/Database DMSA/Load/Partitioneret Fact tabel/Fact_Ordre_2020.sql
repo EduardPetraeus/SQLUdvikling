@@ -3,7 +3,7 @@
 	[Order_Id]                 INT                    NOT NULL,
 	[Eval_Set]                 NVARCHAR(20)           NULL,
 	[Order_Number]             SMALLINT               NOT NULL,
-	[Year]                     SMALLINT               NOT NULL,
+	[Year]                     SMALLINT               NOT NULL CHECK( [Year] = 2020),
 	[Order_Dow]                SMALLINT               NOT NULL,
 	[Order_Hour_Of_Day]        SMALLINT               NOT NULL,
 	[Days_Since_Prior_Order]   DECIMAL(6,1)           NULL,

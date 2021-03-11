@@ -11,8 +11,8 @@
   DTS:LocaleID="1030"
   DTS:ObjectName="DMSA Fact_Ordre Partitioneret tabeller"
   DTS:PackageType="5"
-  DTS:VersionBuild="138"
-  DTS:VersionGUID="{2CE8B45E-30C6-4315-9B7F-C80EBB5114E0}">
+  DTS:VersionBuild="140"
+  DTS:VersionGUID="{3D87F02F-C3D5-4346-8785-8C334B6824DA}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -252,7 +252,7 @@
               DTS:LocaleID="-1"
               DTS:ObjectName="Hent Styringsværdier ud baseret på kørsler"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="3">
+              DTS:ThreadHint="1">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
@@ -276,7 +276,7 @@
               DTS:LocaleID="-1"
               DTS:ObjectName="Hent Styringsværdier ud baseret på tid"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="4">
+              DTS:ThreadHint="2">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
@@ -300,7 +300,7 @@
               DTS:LocaleID="-1"
               DTS:ObjectName="Hent tabel information ud"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="3">
+              DTS:ThreadHint="1">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
@@ -1089,12 +1089,13 @@ WHERE [Årstal] = ?</property>
               DTS:refId="Package\Sequence Container\DMSA Fact_Ordre\Opdater styringsværdier i tabel"
               DTS:CreationName="Microsoft.ExecuteSQLTask"
               DTS:Description="Execute SQL Task"
+              DTS:Disabled="True"
               DTS:DTSID="{2b4cd205-6c98-4a6e-9201-43e5958926ba}"
               DTS:ExecutableType="Microsoft.ExecuteSQLTask"
               DTS:LocaleID="-1"
               DTS:ObjectName="Opdater styringsværdier i tabel"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="3">
+              DTS:ThreadHint="1">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
@@ -1118,7 +1119,7 @@ WHERE [Årstal] = ?</property>
               DTS:LocaleID="-1"
               DTS:ObjectName="SQL DMSA SwitchPartition"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="3">
+              DTS:ThreadHint="1">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
@@ -1161,7 +1162,7 @@ WHERE [Årstal] = ?</property>
               DTS:LocaleID="-1"
               DTS:ObjectName="SQL DMSAEnd Failed"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="4">
+              DTS:ThreadHint="2">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
@@ -1185,7 +1186,7 @@ WHERE [Årstal] = ?</property>
               DTS:LocaleID="-1"
               DTS:ObjectName="SQL DMSAEnd Succeeded"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="3">
+              DTS:ThreadHint="1">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
@@ -1222,7 +1223,7 @@ WHERE [Årstal] = ?</property>
               DTS:LocaleID="-1"
               DTS:ObjectName="SQL DMSAStart"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="3">
+              DTS:ThreadHint="1">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
@@ -1271,7 +1272,7 @@ WHERE [Årstal] = ?</property>
               DTS:LocaleID="-1"
               DTS:ObjectName="Truncate table Load Fact_Ordre"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="3">
+              DTS:ThreadHint="1">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
@@ -1397,7 +1398,7 @@ WHERE [Årstal] = ?</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL ExecutionEnd Failed"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="4">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -1421,7 +1422,7 @@ WHERE [Årstal] = ?</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL ExecutionEnd Succeeded"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="3">
+          DTS:ThreadHint="2">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -1446,7 +1447,7 @@ WHERE [Årstal] = ?</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL ExecutionStart"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="3">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -1548,7 +1549,7 @@ WHERE [Årstal] = ?</property>
               DTS:LocaleID="-1"
               DTS:ObjectName="Hent Styringsværdier ud baseret på kørsler"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="2">
+              DTS:ThreadHint="3">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
@@ -1573,7 +1574,7 @@ WHERE [Årstal] = ?</property>
               DTS:LocaleID="-1"
               DTS:ObjectName="Hent Styringsværdier ud baseret på tid"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="1">
+              DTS:ThreadHint="4">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
@@ -1597,7 +1598,7 @@ WHERE [Årstal] = ?</property>
               DTS:LocaleID="-1"
               DTS:ObjectName="Hent tabel information ud"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="1">
+              DTS:ThreadHint="3">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
@@ -2391,7 +2392,7 @@ WHERE [Årstal] = ?</property>
               DTS:LocaleID="-1"
               DTS:ObjectName="Opdater styringsværdier i tabel"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="1">
+              DTS:ThreadHint="3">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
@@ -2415,7 +2416,7 @@ WHERE [Årstal] = ?</property>
               DTS:LocaleID="-1"
               DTS:ObjectName="SQL DMSA SwitchPartition"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="1">
+              DTS:ThreadHint="3">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
@@ -2458,7 +2459,7 @@ WHERE [Årstal] = ?</property>
               DTS:LocaleID="-1"
               DTS:ObjectName="SQL DMSAEnd Failed"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="2">
+              DTS:ThreadHint="4">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
@@ -2482,7 +2483,7 @@ WHERE [Årstal] = ?</property>
               DTS:LocaleID="-1"
               DTS:ObjectName="SQL DMSAEnd Succeeded"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="1">
+              DTS:ThreadHint="3">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
@@ -2519,7 +2520,7 @@ WHERE [Årstal] = ?</property>
               DTS:LocaleID="-1"
               DTS:ObjectName="SQL DMSAStart"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="1">
+              DTS:ThreadHint="3">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
@@ -2568,7 +2569,7 @@ WHERE [Årstal] = ?</property>
               DTS:LocaleID="-1"
               DTS:ObjectName="Truncate table Load Fact_Ordre"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="1">
+              DTS:ThreadHint="3">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
@@ -2694,7 +2695,7 @@ WHERE [Årstal] = ?</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL ExecutionEnd Failed 1"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="3">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -2718,7 +2719,7 @@ WHERE [Årstal] = ?</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL ExecutionEnd Succeeded 1"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="2">
+          DTS:ThreadHint="4">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -2743,7 +2744,7 @@ WHERE [Årstal] = ?</property>
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL ExecutionStart 1"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="3">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -3433,6 +3434,18 @@ WHERE [Årstal] = ?</property>
           Size="620,860"
           Id="Package\Sequence Container\DMSA Fact_Ordre"
           TopLeft="79,95.5" />
+        <NodeLayout
+          Size="205,42"
+          Id="Package\Sequence Container\SQL ExecutionEnd Failed"
+          TopLeft="308.5,1060.5" />
+        <NodeLayout
+          Size="230,42"
+          Id="Package\Sequence Container\SQL ExecutionEnd Succeeded"
+          TopLeft="5.5,1035.5" />
+        <NodeLayout
+          Size="176,42"
+          Id="Package\Sequence Container\SQL ExecutionStart"
+          TopLeft="248,5.5" />
         <EdgeLayout
           Id="Package\Sequence Container.PrecedenceConstraints[Constraint]"
           TopLeft="336,47.4999999999999">
@@ -3537,18 +3550,6 @@ WHERE [Årstal] = ?</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="205,42"
-          Id="Package\Sequence Container\SQL ExecutionEnd Failed"
-          TopLeft="308.5,1060.5" />
-        <NodeLayout
-          Size="230,42"
-          Id="Package\Sequence Container\SQL ExecutionEnd Succeeded"
-          TopLeft="5.5,1035.5" />
-        <NodeLayout
-          Size="176,42"
-          Id="Package\Sequence Container\SQL ExecutionStart"
-          TopLeft="248,5.5" />
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
@@ -4055,6 +4056,18 @@ WHERE [Årstal] = ?</property>
           Size="738,874"
           Id="Package\Sequence Container 1\For Loop Container"
           TopLeft="104.5,144" />
+        <NodeLayout
+          Size="204,42"
+          Id="Package\Sequence Container 1\SQL ExecutionEnd Failed 1"
+          TopLeft="548,1082.5" />
+        <NodeLayout
+          Size="227,42"
+          Id="Package\Sequence Container 1\SQL ExecutionEnd Succeeded 1"
+          TopLeft="5.5,1078" />
+        <NodeLayout
+          Size="176,42"
+          Id="Package\Sequence Container 1\SQL ExecutionStart 1"
+          TopLeft="423,5.5" />
         <EdgeLayout
           Id="Package\Sequence Container 1.PrecedenceConstraints[Constraint 3]"
           TopLeft="511,47.4999999999999">
@@ -4159,18 +4172,6 @@ WHERE [Årstal] = ?</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="204,42"
-          Id="Package\Sequence Container 1\SQL ExecutionEnd Failed 1"
-          TopLeft="548,1082.5" />
-        <NodeLayout
-          Size="227,42"
-          Id="Package\Sequence Container 1\SQL ExecutionEnd Succeeded 1"
-          TopLeft="5.5,1078" />
-        <NodeLayout
-          Size="176,42"
-          Id="Package\Sequence Container 1\SQL ExecutionStart 1"
-          TopLeft="423,5.5" />
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
