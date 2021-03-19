@@ -68,6 +68,7 @@
     <Folder Include="Load" />
     <Folder Include="Distribution" />
     <Folder Include="Staging\Stored procedures" />
+    <Folder Include="Staging\Functions" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Staging.dev.publish.xml" />
@@ -99,6 +100,8 @@
     <Build Include="Staging\Stored procedures\sp_Adresse_Koordinat.sql" />
     <Build Include="Staging\Stored procedures\sp_Data_Dim_Dato.sql" />
     <Build Include="Staging\Tables\Dim_Dato.sql" />
+    <Build Include="Staging\Functions\ufn_Levenshtein_Distance.sql" />
+    <Build Include="Staging\Functions\ufn_RetunerDublet.sql" />
   </ItemGroup>
   <ItemGroup>
     <SqlCmdVariable Include="LZDB">
