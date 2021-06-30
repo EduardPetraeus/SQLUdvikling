@@ -80,7 +80,7 @@
     <Build Include="Audit\Tables\DMSALog.sql" />
     <Build Include="Audit\Tables\ExecutionErrorLog.sql" />
     <Build Include="Audit\Tables\Executionlog.sql" />
-    <Build Include="Audit\Stored Procedures\CountRows_Ordre.sql" />
+    <Build Include="Audit\Stored Procedures\CountRows_Forudsætningsoverblik.sql" />
     <Build Include="Audit\Stored Procedures\DMSAEnd.sql" />
     <Build Include="Audit\Stored Procedures\DMSAStart.sql" />
     <Build Include="Audit\Stored Procedures\ExecutionEnd.sql" />
